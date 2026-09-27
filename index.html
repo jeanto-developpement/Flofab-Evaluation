@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="fr-CA">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+  <meta name="theme-color" content="#14233C">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-title" content="Évaluation Flo-Fab">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black">
+  <meta name="format-detection" content="telephone=no">
+  <link rel="manifest" href="manifest.webmanifest">
+  <link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+  <title>Évaluation technique — Flo-Fab</title>
+  <meta name="description" content="Questionnaires d'évaluation des connaissances techniques : électricité, VFD, filage, PLC, HMI, pompes, PID et mécanique.">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><circle cx='50' cy='50' r='44' fill='%2314233C'/><path d='M50 50 L78 34' stroke='%23F5B82E' stroke-width='9' stroke-linecap='round'/></svg>">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Sans:wght@400;500;600;700&family=IBM+Plex+Sans+Condensed:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="offline-banner" id="offline-banner" role="status" hidden>Aucune connexion Internet. Vous pouvez continuer ; les rapports seront envoyés au retour de la connexion.</div>
+  <header class="topbar">
+    <div class="wrap topbar-inner">
+      <a class="brand" href="#" data-action="home" aria-label="Retour à l'accueil">
+        <img class="brand-logo" src="icons/logo-flofab-blanc.svg" alt="Flo-Fab" width="104" height="45">
+        <span class="brand-sub">Évaluation technique</span>
+      </a>
+      <span class="topbar-status" id="topbar-status"></span>
+    </div>
+  </header>
+
+  <main id="app" class="wrap" tabindex="-1">
+    <noscript><p class="notice">Cette application nécessite JavaScript.</p></noscript>
+  </main>
+
+  <footer class="site-footer wrap">
+    <p>Flo-Fab Inc., Bois-des-Filion (Québec). Les résultats sont conservés dans ce navigateur. Si l'envoi par courriel est configuré, le rapport PDF est transmis à l'adresse de l'entreprise.</p>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/jspdf@2.5.1/dist/jspdf.umd.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/jspdf-autotable@3.8.2/dist/jspdf.plugin.autotable.min.js"></script>
+  <script src="config.js"></script>
+  <script src="icons/logo-pdf.js"></script>
+  <script src="data/questionnaires.js"></script>
+  <script src="app.js"></script>
+</body>
+</html>
