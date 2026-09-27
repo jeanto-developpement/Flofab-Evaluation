@@ -20,7 +20,7 @@ window.FLOFAB_CONFIG = {
   // Le candidat ne voit jamais son résultat ; seul le responsable, avec ce code, peut le consulter.
   // Changez cette valeur pour un code connu seulement des responsables.
   responsable: {
-    code: "1981",
+    code: "1980",
   },
   courriel: {
     methode: "auto",
