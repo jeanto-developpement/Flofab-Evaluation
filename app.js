@@ -10,6 +10,138 @@
   const KEY_SESSION = "flofab-eval-session";
   const KEY_HISTORY = "flofab-eval-historique";
   const KEY_ATTEMPTS = "flofab-eval-tentatives";
+  const KEY_LANG = "flofab-eval-lang";
+
+  // ---------- Langue (français / anglais) ----------
+  // Choisie par le candidat sur la page d'accueil ; l'espace responsable (résultats, PDF, CSV, courriels)
+  // reste en français, comme le reste de la documentation interne de Flo-Fab.
+  let LANG = (() => { try { return localStorage.getItem(KEY_LANG) === "en" ? "en" : "fr"; } catch (e) { return "fr"; } })();
+  let CURRENT = { view: "home" };
+  // Accès bilingue aux données (titres, questions, choix, explications) : { fr, en } -> valeur dans la langue courante.
+  const qt = v => (v && typeof v === "object" && !Array.isArray(v) && "fr" in v ? v[LANG] : v);
+  const UI = {
+    fr: {
+      brandSub: "Évaluation technique",
+      footer: "Flo-Fab Inc., Bois-des-Filion (Québec). Les résultats sont conservés dans ce navigateur. Si l'envoi par courriel est configuré, le rapport PDF est transmis à l'adresse de l'entreprise.",
+      offline: "Aucune connexion Internet. Vous pouvez continuer ; les rapports seront envoyés au retour de la connexion.",
+      homeTitle: "Évaluer les connaissances techniques",
+      homeLede: "Choisissez un questionnaire de 25 questions. À la fin, la note, le pourcentage et le niveau du candidat s'affichent selon la grille d'évaluation Flo-Fab. Les bonnes réponses ne sont pas affichées.",
+      storageWarnTitle: "Le stockage de ce navigateur est désactivé",
+      storageWarnBody: "(navigation privée ou réglage de sécurité). Les tentatives, l'historique et la reprise d'un questionnaire ne peuvent pas être enregistrés. Utilisez une fenêtre de navigation normale.",
+      installTipTablet: "Installez l'application sur cette tablette pour l'utiliser en plein écran, même sans connexion.",
+      installBtn: "Installer l'application", laterBtn: "Plus tard",
+      installTipIOS: "Pour utiliser l'application en plein écran sur iPad : touchez le bouton Partager de Safari, puis « Sur l'écran d'accueil ».",
+      understoodBtn: "Compris",
+      savedNoticeTitle: "Un questionnaire est en cours",
+      resumeBtn: "Reprendre le questionnaire", discardBtn: "Abandonner",
+      answeredOf: (n, t) => `${n} réponse(s) sur ${t}`,
+      questionnairesHeading: "Questionnaires",
+      questionsApprox: n => `${n} questions, environ 20 minutes`,
+      startBtn: "Commencer", startAria: t => `Commencer : ${t}`,
+      completeTitle: "Questionnaire complet",
+      completeMeta: (n, tot) => `Les ${n} thèmes, ${tot} questions, résultat par section et global`,
+      levelsHeading: "Grille d'évaluation",
+      colResult: "Résultat", colLevel: "Niveau", colDesc: "Description", colRec: "Recommandation",
+      levelNote: p => `Seuil de réussite suggéré : ${p} % (niveau Avancé). Chaque question vaut 1, 2 ou 3 points selon sa complexité (faible, moyenne ou élevée) ; le pourcentage est calculé sur les points obtenus.`,
+      respTeaser: "Les résultats, les tentatives et l'évaluation sur papier sont réservés au responsable.",
+      respBtnLabel: "Espace responsable",
+      pinTitle: "Espace responsable", pinHint: "Entrez le code du responsable pour voir les résultats.",
+      pinLabel: "Code", pinErr: "Code incorrect.", pinOk: "Déverrouiller", cancelBtn: "Annuler",
+      startSubtitle: n => `${n} questions. Les bonnes réponses ne sont pas affichées.`,
+      labelNom: "Nom du candidat", labelPoste: "Poste", labelDate: "Date",
+      errNom: "Inscrivez le nom du candidat pour commencer.",
+      attemptInfoMax: n => `Maximum de ${n} tentatives par candidat pour ce questionnaire.`,
+      attemptInfoMaxReached: (u, m) => `Nombre maximal de tentatives atteint (${u} sur ${m}). Un responsable peut réinitialiser les tentatives depuis l'accueil.`,
+      attemptInfoUsed: (u, m, nx) => `Tentatives utilisées : ${u} sur ${m}. Ce sera la tentative ${nx}.`,
+      instructionsPara: "Une seule réponse est correcte par question. Vous pouvez naviguer entre les questions et modifier vos réponses jusqu'à la fin. Seul le résultat s'affiche à la fin. Aucune calculatrice n'est nécessaire.",
+      startQuizBtn: "Commencer le questionnaire", backBtn: "Retour",
+      questionMeta: (i, t) => `Question ${i} de ${t}`,
+      sectionMeta: (n, t) => `, section ${n} : ${t}`,
+      complexityLabel: (lvl, pts) => `Complexité ${lvl}, ${pts} point${pts > 1 ? "s" : ""}`,
+      complexite: { 1: "faible", 2: "moyenne", 3: "élevée" },
+      kbdHint: "Raccourcis : A à D pour répondre, ← → pour changer de question.",
+      touchHint: "Glissez vers la gauche ou la droite pour changer de question.",
+      prevBtn: "Question précédente", nextBtn: "Question suivante", finishBtn: "Terminer le questionnaire",
+      questionsAside: "Questions", answeredLegend: (n, t) => `${n} sur ${t} répondues.`,
+      progressAria: "Progression", gotoAria: (n, ans) => `Question ${n}${ans ? ", répondue" : ""}`,
+      missingMsg: n => `${n} question(s) sans réponse. Elles seront comptées comme incorrectes.`,
+      finishAnywayBtn: "Terminer quand même",
+      doneTitle: "Questionnaire terminé",
+      doneThanks: (nom, srv) => `Merci, ${nom}. Vos réponses ont été enregistrées${srv ? " et transmises au responsable" : ""}.`,
+      doneBody: srv => `Le résultat vous sera communiqué par le responsable de l'évaluation. ${srv ? "" : "Veuillez remettre l'appareil au responsable."}`,
+      homeBtn: "Retour à l'accueil",
+    },
+    en: {
+      brandSub: "Technical Assessment",
+      footer: "Flo-Fab Inc., Bois-des-Filion (Quebec). Results are kept in this browser. If email sending is configured, the PDF report is sent to the company's address.",
+      offline: "No Internet connection. You can continue; reports will be sent once the connection returns.",
+      homeTitle: "Assess Technical Knowledge",
+      homeLede: "Choose a 25-question quiz. At the end, the candidate's score, percentage, and level are shown according to Flo-Fab's evaluation scale. Correct answers are not displayed.",
+      storageWarnTitle: "This browser's storage is disabled",
+      storageWarnBody: "(private browsing or a security setting). Attempts, history, and resuming a quiz cannot be saved. Use a normal browsing window.",
+      installTipTablet: "Install the app on this tablet to use it full-screen, even offline.",
+      installBtn: "Install the app", laterBtn: "Later",
+      installTipIOS: "To use the app full-screen on iPad: tap Safari's Share button, then \"Add to Home Screen.\"",
+      understoodBtn: "Got it",
+      savedNoticeTitle: "A quiz is in progress",
+      resumeBtn: "Resume the quiz", discardBtn: "Discard",
+      answeredOf: (n, t) => `${n} answer(s) out of ${t}`,
+      questionnairesHeading: "Quizzes",
+      questionsApprox: n => `${n} questions, about 20 minutes`,
+      startBtn: "Start", startAria: t => `Start: ${t}`,
+      completeTitle: "Complete Questionnaire",
+      completeMeta: (n, tot) => `All ${n} topics, ${tot} questions, per-section and overall results`,
+      levelsHeading: "Evaluation Scale",
+      colResult: "Score", colLevel: "Level", colDesc: "Description", colRec: "Recommendation",
+      levelNote: p => `Suggested passing score: ${p}% (Advanced level). Each question is worth 1, 2, or 3 points based on its complexity (low, medium, or high); the percentage is calculated on the points earned.`,
+      respTeaser: "Results, attempts, and paper evaluation are restricted to the supervisor.",
+      respBtnLabel: "Supervisor area",
+      pinTitle: "Supervisor area", pinHint: "Enter the supervisor code to view the results.",
+      pinLabel: "Code", pinErr: "Incorrect code.", pinOk: "Unlock", cancelBtn: "Cancel",
+      startSubtitle: n => `${n} questions. Correct answers are not displayed.`,
+      labelNom: "Candidate name", labelPoste: "Position", labelDate: "Date",
+      errNom: "Enter the candidate's name to begin.",
+      attemptInfoMax: n => `Maximum of ${n} attempts per candidate for this quiz.`,
+      attemptInfoMaxReached: (u, m) => `Maximum number of attempts reached (${u} of ${m}). A supervisor can reset attempts from the home page.`,
+      attemptInfoUsed: (u, m, nx) => `Attempts used: ${u} of ${m}. This will be attempt ${nx}.`,
+      instructionsPara: "Only one answer is correct per question. You can navigate between questions and change your answers until the end. Only the result is shown at the end. No calculator is needed.",
+      startQuizBtn: "Start the quiz", backBtn: "Back",
+      questionMeta: (i, t) => `Question ${i} of ${t}`,
+      sectionMeta: (n, t) => `, section ${n}: ${t}`,
+      complexityLabel: (lvl, pts) => `Complexity ${lvl}, ${pts} point${pts > 1 ? "s" : ""}`,
+      complexite: { 1: "low", 2: "medium", 3: "high" },
+      kbdHint: "Shortcuts: A to D to answer, ← → to change question.",
+      touchHint: "Swipe left or right to change question.",
+      prevBtn: "Previous question", nextBtn: "Next question", finishBtn: "Finish the quiz",
+      questionsAside: "Questions", answeredLegend: (n, t) => `${n} of ${t} answered.`,
+      progressAria: "Progress", gotoAria: (n, ans) => `Question ${n}${ans ? ", answered" : ""}`,
+      missingMsg: n => `${n} question(s) left unanswered. They will be counted as incorrect.`,
+      finishAnywayBtn: "Finish anyway",
+      doneTitle: "Quiz Completed",
+      doneThanks: (nom, srv) => `Thank you, ${nom}. Your answers have been recorded${srv ? " and sent to the supervisor" : ""}.`,
+      doneBody: srv => `Your result will be communicated by the person running the assessment. ${srv ? "" : "Please hand the device back to the supervisor."}`,
+      homeBtn: "Back to home",
+    },
+  };
+  const T = key => UI[LANG][key];
+  const LEVEL_NAME_EN = { "Expert": "Expert", "Avancé": "Advanced", "Intermédiaire": "Intermediate", "Débutant": "Beginner", "Insuffisant": "Insufficient" };
+  const LEVEL_DESC_EN = {
+    "Expert": "Complete mastery of the subject. Independent; can advise and train other employees.",
+    "Avancé": "Good mastery with minor gaps. Independent for most tasks.",
+    "Intermédiaire": "Partial mastery. Occasional supervision needed for more complex tasks.",
+    "Débutant": "Basic knowledge only. Supervision required.",
+    "Insuffisant": "Insufficient knowledge. Should not work without direct supervision in this area.",
+  };
+  const LEVEL_REC_EN = {
+    "Expert": "No training required. Can act as a resource person.",
+    "Avancé": "Targeted review of missed questions.",
+    "Intermédiaire": "Targeted training on weak points, then reassessment.",
+    "Débutant": "Structured training with mentoring by an experienced person.",
+    "Insuffisant": "Full training required before reassessment.",
+  };
+  const levelName = l => (LANG === "en" ? LEVEL_NAME_EN[l.name] : l.name);
+  const levelDesc = l => (LANG === "en" ? LEVEL_DESC_EN[l.name] : l.desc);
+  const levelRec = l => (LANG === "en" ? LEVEL_REC_EN[l.name] : l.rec);
   const MAX_ATTEMPTS = 3;            // nombre maximal de tentatives par candidat et par questionnaire
   // La correction n'est jamais affichée au candidat. Elle figure seulement dans le PDF envoyé automatiquement par le serveur (méthode « serveur »).
   const CORRECTION_DANS_PDF_COURRIEL = true;
@@ -108,11 +240,11 @@
   function requireResp(cb) {
     if (unlocked) { armLock(); cb(); return; }
     const d = document.createElement("dialog");
-    d.innerHTML = `<form method="dialog" class="pin-form"><h2 style="font-size:1.25rem">Espace responsable</h2>
-      <p class="small muted">Entrez le code du responsable pour voir les résultats.</p>
-      <div class="field"><label for="pin-input">Code</label><input id="pin-input" type="password" inputmode="numeric" autocomplete="off" required></div>
-      <p class="error" id="pin-err" hidden>Code incorrect.</p>
-      <div class="btn-row" style="margin-top:1rem"><button class="btn" value="ok">Déverrouiller</button><button class="btn btn-ghost" value="cancel" formnovalidate>Annuler</button></div></form>`;
+    d.innerHTML = `<form method="dialog" class="pin-form"><h2 style="font-size:1.25rem">${esc(T("pinTitle"))}</h2>
+      <p class="small muted">${esc(T("pinHint"))}</p>
+      <div class="field"><label for="pin-input">${esc(T("pinLabel"))}</label><input id="pin-input" type="password" inputmode="numeric" autocomplete="off" required></div>
+      <p class="error" id="pin-err" hidden>${esc(T("pinErr"))}</p>
+      <div class="btn-row" style="margin-top:1rem"><button class="btn" value="ok">${esc(T("pinOk"))}</button><button class="btn btn-ghost" value="cancel" formnovalidate>${esc(T("cancelBtn"))}</button></div></form>`;
     document.body.appendChild(d);
     const input = d.querySelector("#pin-input"), err = d.querySelector("#pin-err");
     d.querySelector("form").addEventListener("submit", e => {
@@ -127,14 +259,15 @@
 
   // ---------- Fin du questionnaire (vue du candidat, sans résultat) ----------
   function renderDone(rec) {
+    CURRENT = { view: "done", rec };
     setKeys(null); keepAwake(false); status.textContent = "";
     app.innerHTML = `
       <section class="panel start-card done-card">
-        <h1>Questionnaire terminé</h1>
-        <p class="lede">Merci, ${esc(rec.candidat.nom)}. Vos réponses ont été enregistrées${SERVER ? " et transmises au responsable" : ""}.</p>
-        <p>Le résultat vous sera communiqué par le responsable de l'évaluation. ${SERVER ? "" : "Veuillez remettre l'appareil au responsable."}</p>
-        <div class="btn-row no-print"><button class="btn" data-action="home">Retour à l'accueil</button>
-          <button class="btn btn-ghost" data-action="resp-view" data-id="${rec.id}">Espace responsable</button></div>
+        <h1>${esc(T("doneTitle"))}</h1>
+        <p class="lede">${esc(T("doneThanks")(rec.candidat.nom, SERVER))}</p>
+        <p>${esc(T("doneBody")(SERVER))}</p>
+        <div class="btn-row no-print"><button class="btn" data-action="home">${esc(T("homeBtn"))}</button>
+          <button class="btn btn-ghost" data-action="resp-view" data-id="${rec.id}">${esc(T("respBtnLabel"))}</button></div>
       </section>`;
     focusMain();
   }
@@ -156,11 +289,38 @@
     const list = [];
     ids.forEach(id => {
       const t = DATA.find(x => x.id === id);
-      if (t) t.questions.forEach((q, i) => list.push({ ...q, secId: t.id, secNum: t.numero, secTitre: t.titre, numInSec: i + 1 }));
+      if (t) t.questions.forEach((q, i) => list.push({ ...q, question: qt(q.question), choix: qt(q.choix), explication: qt(q.explication),
+        secId: t.id, secNum: t.numero, secTitre: qt(t.titre), numInSec: i + 1 }));
     });
     return list;
   }
-  const titleFor = ids => (ids.length === DATA.length ? "Questionnaire complet" : (DATA.find(t => t.id === ids[0]) || {}).titre || "Questionnaire");
+  const titleFor = ids => (ids.length === DATA.length ? T("completeTitle") : qt((DATA.find(t => t.id === ids[0]) || {}).titre) || "Questionnaire");
+  // Toujours en français : c'est ce titre qui est conservé dans l'historique, les rapports PDF, le CSV et les courriels (voir l'espace responsable).
+  const titleForRecord = ids => (ids.length === DATA.length ? "Questionnaire complet" : ((DATA.find(t => t.id === ids[0]) || {}).titre || {}).fr || "Questionnaire");
+
+  // ---------- Changement de langue ----------
+  function updateStaticChrome() {
+    document.documentElement.lang = LANG === "en" ? "en-CA" : "fr-CA";
+    const sub = document.querySelector(".brand-sub"); if (sub) sub.textContent = T("brandSub");
+    const foot = document.querySelector(".site-footer p"); if (foot) foot.textContent = T("footer");
+    const off = document.getElementById("offline-banner"); if (off) off.textContent = T("offline");
+    const fr = document.getElementById("lang-fr"), en = document.getElementById("lang-en");
+    if (fr && en) { fr.setAttribute("aria-pressed", String(LANG === "fr")); en.setAttribute("aria-pressed", String(LANG === "en")); }
+  }
+  function setLangSilent(l) { if (l === "fr" || l === "en") { LANG = l; store.set(KEY_LANG, l); updateStaticChrome(); } }
+  function setLang(l) {
+    if (l !== "fr" && l !== "en") return;
+    LANG = l; store.set(KEY_LANG, l); updateStaticChrome();
+    if (CURRENT.view === "start") renderStart(CURRENT.ids);
+    else if (CURRENT.view === "quiz" && session) renderQuiz();
+    else if (CURRENT.view === "done" && CURRENT.rec) renderDone(CURRENT.rec);
+    else if (CURRENT.view === "results" && CURRENT.rec) renderResults(CURRENT.rec, CURRENT.opts || {});
+    else renderHome();
+  }
+  document.addEventListener("click", e => {
+    const b = e.target.closest("#lang-fr, #lang-en");
+    if (b) setLang(b.id === "lang-en" ? "en" : "fr");
+  });
 
   function setKeys(fn) {
     if (keyHandler) document.removeEventListener("keydown", keyHandler);
@@ -171,7 +331,7 @@
 
   function confirmDialog(message, okLabel, onOk) {
     const d = document.createElement("dialog");
-    d.innerHTML = `<p>${esc(message)}</p><div class="btn-row"><button class="btn" value="ok">${esc(okLabel)}</button><button class="btn btn-ghost" value="cancel">Annuler</button></div>`;
+    d.innerHTML = `<p>${esc(message)}</p><div class="btn-row"><button class="btn" value="ok">${esc(okLabel)}</button><button class="btn btn-ghost" value="cancel">${esc(T("cancelBtn"))}</button></div>`;
     document.body.appendChild(d);
     d.addEventListener("click", e => {
       const v = e.target.closest("button")?.value;
@@ -213,6 +373,7 @@
 
   // ---------- Accueil ----------
   function renderHome() {
+    CURRENT = { view: "home" };
     setKeys(null);
     keepAwake(false);
     status.textContent = "";
@@ -223,35 +384,35 @@
     app.innerHTML = `
       <section class="hero">
         <div>
-          <h1>Évaluer les connaissances techniques</h1>
-          <p class="lede">Choisissez un questionnaire de 25 questions. À la fin, la note, le pourcentage et le niveau du candidat s'affichent selon la grille d'évaluation Flo-Fab. Les bonnes réponses ne sont pas affichées.</p>
+          <h1>${T("homeTitle")}</h1>
+          <p class="lede">${T("homeLede")}</p>
         </div>
         <div class="hero-gauge" aria-hidden="true">${gaugeSVG(82, { size: 190, label: false })}</div>
       </section>
 
-      ${storageOK ? "" : `<div class="notice" role="alert"><p><strong>Le stockage de ce navigateur est désactivé</strong> (navigation privée ou réglage de sécurité). Les tentatives, l'historique et la reprise d'un questionnaire ne peuvent pas être enregistrés. Utilisez une fenêtre de navigation normale.</p></div>`}
+      ${storageOK ? "" : `<div class="notice" role="alert"><p><strong>${esc(T("storageWarnTitle"))}</strong> ${esc(T("storageWarnBody"))}</p></div>`}
       ${installTip()}
       ${saved ? `<div class="notice no-print" role="status">
-        <p><strong>Un questionnaire est en cours</strong> : ${esc(saved.titre)}, ${esc(saved.candidat.nom)}, ${saved.answers.filter(a => a !== null).length} réponse(s) sur ${saved.answers.length}.</p>
-        <div class="btn-row"><button class="btn" data-action="resume">Reprendre le questionnaire</button><button class="btn btn-ghost" data-action="discard">Abandonner</button></div>
+        <p><strong>${esc(T("savedNoticeTitle"))}</strong> : ${esc(qt(saved.titre))}, ${esc(saved.candidat.nom)}, ${esc(T("answeredOf")(saved.answers.filter(a => a !== null).length, saved.answers.length))}.</p>
+        <div class="btn-row"><button class="btn" data-action="resume">${esc(T("resumeBtn"))}</button><button class="btn btn-ghost" data-action="discard">${esc(T("discardBtn"))}</button></div>
       </div>` : ""}
 
-      <h2 class="section-head">Questionnaires</h2>
+      <h2 class="section-head">${esc(T("questionnairesHeading"))}</h2>
       <div class="panel"><ul class="qlist">
         ${DATA.map(t => `<li><span class="qnum">${t.numero}</span>
-          <div><div class="qtitle">${esc(t.titre)}</div><div class="qmeta">${t.questions.length} questions, environ 20 minutes</div></div>
-          <button class="btn" data-action="choose" data-ids="${t.id}" aria-label="Commencer : ${esc(t.titre)}">Commencer</button></li>`).join("")}
+          <div><div class="qtitle">${esc(qt(t.titre))}</div><div class="qmeta">${esc(T("questionsApprox")(t.questions.length))}</div></div>
+          <button class="btn" data-action="choose" data-ids="${t.id}" aria-label="${esc(T("startAria")(qt(t.titre)))}">${esc(T("startBtn"))}</button></li>`).join("")}
         <li class="complete"><span class="qnum">∑</span>
-          <div><div class="qtitle">Questionnaire complet</div><div class="qmeta">Les ${DATA.length} thèmes, ${DATA.reduce((s, t) => s + t.questions.length, 0)} questions, résultat par section et global</div></div>
-          <button class="btn" data-action="choose" data-ids="${DATA.map(t => t.id).join(",")}">Commencer</button></li>
+          <div><div class="qtitle">${esc(T("completeTitle"))}</div><div class="qmeta">${esc(T("completeMeta")(DATA.length, DATA.reduce((s, t) => s + t.questions.length, 0)))}</div></div>
+          <button class="btn" data-action="choose" data-ids="${DATA.map(t => t.id).join(",")}">${esc(T("startBtn"))}</button></li>
       </ul></div>
 
-      <h2 class="section-head">Grille d'évaluation</h2>
+      <h2 class="section-head">${esc(T("levelsHeading"))}</h2>
       <div class="panel table-wrap"><table class="data levels-table">
-        <thead><tr><th scope="col">Résultat</th><th scope="col">Niveau</th><th scope="col">Description</th><th scope="col">Recommandation</th></tr></thead>
-        <tbody>${LEVELS.map(l => `<tr><td>${l.range}</td><td><span class="level-chip" style="background:${l.color}"></span>${l.name}</td><td>${esc(l.desc)}</td><td>${esc(l.rec)}</td></tr>`).join("")}</tbody>
+        <thead><tr><th scope="col">${esc(T("colResult"))}</th><th scope="col">${esc(T("colLevel"))}</th><th scope="col">${esc(T("colDesc"))}</th><th scope="col">${esc(T("colRec"))}</th></tr></thead>
+        <tbody>${LEVELS.map(l => `<tr><td>${l.range}</td><td><span class="level-chip" style="background:${l.color}"></span>${esc(levelName(l))}</td><td>${esc(levelDesc(l))}</td><td>${esc(levelRec(l))}</td></tr>`).join("")}</tbody>
       </table></div>
-      <p class="small muted" style="margin-top:.6rem">Seuil de réussite suggéré : ${PASS} % (niveau Avancé). Chaque question vaut 1, 2 ou 3 points selon sa complexité (faible, moyenne ou élevée) ; le pourcentage est calculé sur les points obtenus.</p>
+      <p class="small muted" style="margin-top:.6rem">${T("levelNote")(PASS)}</p>
 
       ${unlocked ? `<div class="resp-banner no-print" role="status"><p><strong>Espace responsable ouvert.</strong> Les résultats sont visibles. Verrouillez l'espace avant de remettre l'appareil à un candidat.</p><button class="btn" data-action="lock">Verrouiller</button></div>
       <h2 class="section-head">Évaluation sur papier</h2>
@@ -259,7 +420,7 @@
         <p>Imprimez un questionnaire pour le faire passer sur papier, puis saisissez les réponses du candidat pour obtenir le résultat pondéré, le rapport PDF et l'envoi par courriel.</p>
         <div class="paper-row">
           <div class="field"><label for="paper-select">Questionnaire</label>
-            <select id="paper-select">${DATA.map(t => `<option value="${t.id}">${t.numero}. ${esc(t.titre)}</option>`).join("")}<option value="${DATA.map(t => t.id).join(",")}">Questionnaire complet (${DATA.length} thèmes)</option></select></div>
+            <select id="paper-select">${DATA.map(t => `<option value="${t.id}">${t.numero}. ${esc(t.titre.fr)}</option>`).join("")}<option value="${DATA.map(t => t.id).join(",")}">Questionnaire complet (${DATA.length} thèmes)</option></select></div>
           <div class="btn-row">
             <button class="btn btn-ghost" data-action="print-quiz">Imprimer le questionnaire</button>
             <button class="btn" data-action="paper-entry">Saisir une copie papier</button>
@@ -278,7 +439,7 @@
             return `<tr><td>${esc(new Date(h.date).toLocaleDateString("fr-CA"))}</td><td>${esc(h.candidat.nom)}</td><td>${esc(h.titre)}</td><td class="num">${h.tentative ? h.tentative + " / " + MAX_ATTEMPTS : "-"}${h.mode === "papier" ? ' <span class="tag skip">Papier</span>' : ""}</td><td class="num">${T.points} / ${T.pointsTotal}</td><td class="num">${p} %</td><td><span class="level-chip" style="background:${L.color}"></span>${L.name}</td><td>${h.courriel ? (h.courriel.statut === "envoye" || h.courriel.statut === "partage" ? '<span class="tag ok">Envoyé</span>' : h.courriel.statut === "telecharge" ? '<span class="tag skip">Téléchargé</span>' : h.courriel.statut === "annule" ? '<span class="tag bad">Annulé</span>' : h.courriel.statut === "attente" ? '<span class="tag skip">En attente</span>' : '<span class="tag bad">Échec</span>') : '<span class="tag skip">Non envoyé</span>'}</td><td><button class="btn btn-quiet" data-action="view" data-id="${h.id}">Voir</button></td></tr>`; }).join("")}
         </tbody></table>` : `<p class="empty">Aucun résultat pour l'instant. Les résultats des questionnaires terminés dans ce navigateur apparaîtront ici.</p>`}
       </div>
-      ` : `<div class="panel resp-teaser no-print"><p>Les résultats, les tentatives et l'évaluation sur papier sont réservés au responsable.</p><button class="btn btn-ghost" data-action="unlock">Espace responsable</button></div>`}`;
+      ` : `<div class="panel resp-teaser no-print"><p>${esc(T("respTeaser"))}</p><button class="btn btn-ghost" data-action="unlock">${esc(T("respBtnLabel"))}</button></div>`}`;
     focusMain();
   }
 
@@ -297,33 +458,35 @@
   // ---------- Informations du candidat ----------
   function renderStart(ids) {
     if (unlocked) lock(true);
+    CURRENT = { view: "start", ids };
     setKeys(null);
     keepAwake(false);
-    const titre = titleFor(ids);
+    const titre = titleFor(ids);         // titre localisé, affiché au candidat
+    const titreFr = titleForRecord(ids); // toujours en français, conservé dans l'historique et les rapports
     const n = questionsFor(ids).length;
     status.textContent = "";
     app.innerHTML = `
       <section class="panel start-card">
         <h1>${esc(titre)}</h1>
-        <p class="muted">${n} questions. Les bonnes réponses ne sont pas affichées.</p>
+        <p class="muted">${esc(T("startSubtitle")(n))}</p>
         <form id="start-form" novalidate>
           <div class="form-grid">
-            <div class="field"><label for="f-nom">Nom du candidat</label><input id="f-nom" name="nom" autocomplete="name" required><div class="error" id="err-nom" hidden>Inscrivez le nom du candidat pour commencer.</div><div class="small muted" id="attempt-info" aria-live="polite"></div></div>
-            <div class="field"><label for="f-poste">Poste</label><input id="f-poste" name="poste"></div>
-            <div class="field"><label for="f-date">Date</label><input id="f-date" name="date" type="date" value="${today()}"></div>
+            <div class="field"><label for="f-nom">${esc(T("labelNom"))}</label><input id="f-nom" name="nom" autocomplete="name" required><div class="error" id="err-nom" hidden>${esc(T("errNom"))}</div><div class="small muted" id="attempt-info" aria-live="polite"></div></div>
+            <div class="field"><label for="f-poste">${esc(T("labelPoste"))}</label><input id="f-poste" name="poste"></div>
+            <div class="field"><label for="f-date">${esc(T("labelDate"))}</label><input id="f-date" name="date" type="date" value="${today()}"></div>
           </div>
-          <p class="small muted">Une seule réponse est correcte par question. Vous pouvez naviguer entre les questions et modifier vos réponses jusqu'à la fin. Seul le résultat s'affiche à la fin. Aucune calculatrice n'est nécessaire.</p>
-          <div class="btn-row"><button class="btn" type="submit">Commencer le questionnaire</button><button class="btn btn-ghost" type="button" data-action="home">Retour</button></div>
+          <p class="small muted">${esc(T("instructionsPara"))}</p>
+          <div class="btn-row"><button class="btn" type="submit">${esc(T("startQuizBtn"))}</button><button class="btn btn-ghost" type="button" data-action="home">${esc(T("backBtn"))}</button></div>
         </form>
       </section>`;
     const form = document.getElementById("start-form");
     const nomInput = document.getElementById("f-nom"), info = document.getElementById("attempt-info"), startBtn = form.querySelector('button[type="submit"]');
     const refreshAttempts = () => {
       const nom = nomInput.value.trim();
-      if (!nom) { info.textContent = `Maximum de ${MAX_ATTEMPTS} tentatives par candidat pour ce questionnaire.`; startBtn.disabled = false; return; }
+      if (!nom) { info.textContent = T("attemptInfoMax")(MAX_ATTEMPTS); startBtn.disabled = false; return; }
       const used = attemptsUsed(nom, ids);
-      if (used >= MAX_ATTEMPTS) { info.innerHTML = `<span style="color:var(--bad);font-weight:600">Nombre maximal de tentatives atteint (${used} sur ${MAX_ATTEMPTS}). Un responsable peut réinitialiser les tentatives depuis l'accueil.</span>`; startBtn.disabled = true; }
-      else { info.textContent = `Tentatives utilisées : ${used} sur ${MAX_ATTEMPTS}. Ce sera la tentative ${used + 1}.`; startBtn.disabled = false; }
+      if (used >= MAX_ATTEMPTS) { info.innerHTML = `<span style="color:var(--bad);font-weight:600">${esc(T("attemptInfoMaxReached")(used, MAX_ATTEMPTS))}</span>`; startBtn.disabled = true; }
+      else { info.textContent = T("attemptInfoUsed")(used, MAX_ATTEMPTS, used + 1); startBtn.disabled = false; }
     };
     nomInput.addEventListener("input", refreshAttempts);
     refreshAttempts();
@@ -334,9 +497,9 @@
       const err = document.getElementById("err-nom");
       if (!nom) { err.hidden = false; document.getElementById("f-nom").setAttribute("aria-invalid", "true"); document.getElementById("f-nom").focus(); return; }
       if (attemptsUsed(nom, ids) >= MAX_ATTEMPTS) { refreshAttempts(); return; }
-      const tentative = registerAttempt(nom, ids, titre);
+      const tentative = registerAttempt(nom, ids, titreFr);
       session = {
-        ids, titre, mode: "evaluation", tentative, current: 0, startedAt: Date.now(),
+        ids, titre: titreFr, langue: LANG, mode: "evaluation", tentative, current: 0, startedAt: Date.now(),
         candidat: { nom, poste: (f.get("poste") || "").trim(), date: f.get("date") || today() },
         answers: new Array(n).fill(null),
       };
@@ -348,46 +511,47 @@
 
   // ---------- Questionnaire ----------
   function renderQuiz() {
+    CURRENT = { view: "quiz" };
     const qs = questionsFor(session.ids);
     const i = session.current, q = qs[i];
     const answered = session.answers.filter(a => a !== null).length;
     const multi = session.ids.length > 1;
     const ans = session.answers[i];
-    status.textContent = `${session.candidat.nom}, ${answered} / ${qs.length} répondues`;
+    status.textContent = `${session.candidat.nom}, ${T("answeredOf")(answered, qs.length)}`;
 
     const sections = [...new Set(qs.map(x => x.secId))];
 
     app.innerHTML = `
       <div class="quiz">
         <div class="quiz-head">
-          <h1 style="font-size:1.6rem">${esc(session.titre)}</h1>
-          <div class="progress" role="progressbar" aria-label="Progression" aria-valuemin="0" aria-valuemax="${qs.length}" aria-valuenow="${answered}"><div style="width:${(answered / qs.length) * 100}%"></div></div>
+          <h1 style="font-size:1.6rem">${esc(titleFor(session.ids))}</h1>
+          <div class="progress" role="progressbar" aria-label="${esc(T("progressAria"))}" aria-valuemin="0" aria-valuemax="${qs.length}" aria-valuenow="${answered}"><div style="width:${(answered / qs.length) * 100}%"></div></div>
         </div>
         <section class="panel qcard" aria-live="polite">
-          <div class="qcard-meta">Question ${i + 1} de ${qs.length}${multi ? `, section ${q.secNum} : ${esc(q.secTitre)}` : ""} <span class="cx cx-${ptsOf(q)}" title="Complexité ${COMPLEXITE[ptsOf(q)]}">Complexité ${COMPLEXITE[ptsOf(q)]}, ${ptsOf(q)} point${ptsOf(q) > 1 ? "s" : ""}</span></div>
+          <div class="qcard-meta">${esc(T("questionMeta")(i + 1, qs.length))}${multi ? esc(T("sectionMeta")(q.secNum, q.secTitre)) : ""} <span class="cx cx-${ptsOf(q)}" title="${esc(T("complexityLabel")(T("complexite")[ptsOf(q)], ptsOf(q)))}">${esc(T("complexityLabel")(T("complexite")[ptsOf(q)], ptsOf(q)))}</span></div>
           <h2 id="q-text">${esc(q.question)}</h2>
           <fieldset class="choices" aria-labelledby="q-text">
             ${q.choix.map((c, k) => `<div class="choice">
               <input type="radio" name="choice" id="c${k}" value="${k}" ${ans === k ? "checked" : ""}>
               <label for="c${k}"><span class="key" aria-hidden="true">${LETTERS[k]}</span><span><span class="sr-only">${LETTERS[k]}. </span>${esc(c)}</span></label></div>`).join("")}
           </fieldset>
-          <p class="kbd-hint">Raccourcis : <kbd>A</kbd> à <kbd>D</kbd> pour répondre, <kbd>←</kbd> <kbd>→</kbd> pour changer de question.</p>
-          <p class="touch-hint">Glissez vers la gauche ou la droite pour changer de question.</p>
+          <p class="kbd-hint">${esc(T("kbdHint"))}</p>
+          <p class="touch-hint">${esc(T("touchHint"))}</p>
           <div class="qnav-bar">
-            <button class="btn btn-ghost" data-action="prev" ${i === 0 ? "disabled" : ""}>Question précédente</button>
-            ${i < qs.length - 1 ? `<button class="btn" data-action="next">Question suivante</button>` : `<button class="btn" data-action="finish">Terminer le questionnaire</button>`}
+            <button class="btn btn-ghost" data-action="prev" ${i === 0 ? "disabled" : ""}>${esc(T("prevBtn"))}</button>
+            ${i < qs.length - 1 ? `<button class="btn" data-action="next">${esc(T("nextBtn"))}</button>` : `<button class="btn" data-action="finish">${esc(T("finishBtn"))}</button>`}
           </div>
         </section>
-        <aside class="panel navigator" aria-label="Aller à une question">
-          <h3>Questions</h3>
+        <aside class="panel navigator" aria-label="${esc(T("questionsAside"))}">
+          <h3>${esc(T("questionsAside"))}</h3>
           ${sections.map(sid => {
             const idxs = qs.map((x, k) => (x.secId === sid ? k : -1)).filter(k => k >= 0);
             return `<div class="navsec">${multi ? `<div class="navsec-title">${esc(qs[idxs[0]].secNum + ". " + qs[idxs[0]].secTitre)}</div>` : ""}<div class="navgrid">
               ${idxs.map(k => { const cls = session.answers[k] !== null ? "answered" : "";
-                return `<button class="${cls}${k === i ? " current" : ""}" data-action="goto" data-i="${k}" aria-label="Question ${k + 1}${session.answers[k] !== null ? ", répondue" : ""}" ${k === i ? 'aria-current="true"' : ""}>${qs[k].numInSec}</button>`; }).join("")}
+                return `<button class="${cls}${k === i ? " current" : ""}" data-action="goto" data-i="${k}" aria-label="${esc(T("gotoAria")(k + 1, session.answers[k] !== null))}" ${k === i ? 'aria-current="true"' : ""}>${qs[k].numInSec}</button>`; }).join("")}
             </div></div>`; }).join("")}
-          <p class="nav-legend">${answered} sur ${qs.length} répondues.</p>
-          <button class="btn btn-ghost" style="width:100%;margin-top:.5rem" data-action="finish">Terminer le questionnaire</button>
+          <p class="nav-legend">${esc(T("answeredLegend")(answered, qs.length))}</p>
+          <button class="btn btn-ghost" style="width:100%;margin-top:.5rem" data-action="finish">${esc(T("finishBtn"))}</button>
         </aside>
       </div>`;
 
@@ -421,10 +585,10 @@
   }
   function updateNavState(qs) {
     const answered = session.answers.filter(a => a !== null).length;
-    status.textContent = `${session.candidat.nom}, ${answered} / ${qs.length} répondues`;
+    status.textContent = `${session.candidat.nom}, ${T("answeredOf")(answered, qs.length)}`;
     const bar = app.querySelector(".progress"); if (bar) { bar.setAttribute("aria-valuenow", answered); bar.firstElementChild.style.width = (answered / qs.length) * 100 + "%"; }
-    const btn = app.querySelector(`.navgrid button[data-i="${session.current}"]`); if (btn) { btn.classList.add("answered"); btn.setAttribute("aria-label", `Question ${session.current + 1}, répondue`); }
-    const leg = app.querySelector(".nav-legend"); if (leg) leg.textContent = `${answered} sur ${qs.length} répondues.`;
+    const btn = app.querySelector(`.navgrid button[data-i="${session.current}"]`); if (btn) { btn.classList.add("answered"); btn.setAttribute("aria-label", T("gotoAria")(session.current + 1, true)); }
+    const leg = app.querySelector(".nav-legend"); if (leg) leg.textContent = T("answeredLegend")(answered, qs.length);
   }
   function go(k) {
     const n = session.answers.length;
@@ -441,7 +605,7 @@
         const idx = qs.map((q, k) => (q.secId === sid ? k : -1)).filter(k => k >= 0);
         const t = DATA.find(x => x.id === sid);
         const ok = idx.filter(k => session.answers[k] === qs[k].reponse);
-        return { id: sid, numero: t.numero, titre: t.titre, total: idx.length, correct: ok.length,
+        return { id: sid, numero: t.numero, titre: t.titre.fr, total: idx.length, correct: ok.length,
           points: ok.reduce((a, k) => a + ptsOf(qs[k]), 0), pointsTotal: idx.reduce((a, k) => a + ptsOf(qs[k]), 0) };
       });
       const rec = { id: String(Date.now()), date: new Date().toISOString(), ids: session.ids, titre: session.titre, mode: session.mode, tentative: session.tentative,
@@ -452,13 +616,14 @@
       if (SERVER && MAIL.envoiAutomatique) sendByEmail(rec, { silent: true }); // envoi invisible pour le candidat
       renderDone(rec);
     };
-    if (missing) confirmDialog(`${missing} question(s) sans réponse. Elles seront comptées comme incorrectes.`, "Terminer quand même", doFinish);
+    if (missing) confirmDialog(T("missingMsg")(missing), T("finishAnywayBtn"), doFinish);
     else doFinish();
   }
 
   // ---------- Résultats ----------
   function renderResults(rec, opts = {}) {
     if (!unlocked) { requireResp(() => renderResults(rec, opts)); return; }
+    CURRENT = { view: "results", rec, opts };
     setKeys(null);
     keepAwake(false);
     const T = totalsOf(rec.sections), { correct, total } = T;
@@ -822,7 +987,7 @@
     instr.forEach(t => { const lines = doc.splitTextToSize(pdfText(t), W - 2 * M); doc.text(lines, M, y); y += lines.length * 4.6 + 2; });
     if (ids.length > 1) {
       doc.autoTable({ startY: y + 2, margin: { left: M, right: M }, head: [["Section", pdfText("Thème"), "Questions", "Points"]],
-        body: ids.map(id => { const t = DATA.find(x => x.id === id); return [String(t.numero), pdfText(t.titre), String(t.questions.length), String(t.questions.reduce((a, q) => a + ptsOf(q), 0))]; }).concat([["", "Total", String(qs.length), String(totPts)]]),
+        body: ids.map(id => { const t = DATA.find(x => x.id === id); return [String(t.numero), pdfText(qt(t.titre)), String(t.questions.length), String(t.questions.reduce((a, q) => a + ptsOf(q), 0))]; }).concat([["", "Total", String(qs.length), String(totPts)]]),
         headStyles: { fillColor: INK }, styles: { fontSize: 9.5 }, columnStyles: { 0: { cellWidth: 20, halign: "center" }, 2: { cellWidth: 24, halign: "center" }, 3: { cellWidth: 22, halign: "center" } } });
     }
 
@@ -859,7 +1024,7 @@
       const t = DATA.find(x => x.id === id), n = t.questions.length, rows = Math.ceil(n / 5), colW = (W - 2 * M) / 5, rowH = 7.5;
       if (y + 8 + rows * rowH + 10 > H - 14) { doc.addPage(); y = 20; }
       doc.setFont("helvetica", "bold"); doc.setFontSize(11); doc.setTextColor(46, 117, 182);
-      doc.text(pdfText(ids.length > 1 ? `${t.numero}. ${t.titre}` : t.titre), M, y); y += 3;
+      doc.text(pdfText(ids.length > 1 ? `${t.numero}. ${qt(t.titre)}` : qt(t.titre)), M, y); y += 3;
       doc.setTextColor(...INK);
       for (let r = 0; r < rows; r++) for (let c = 0; c < 5; c++) {
         const num = c * rows + r + 1; if (num > n) continue;
@@ -891,7 +1056,7 @@
   function renderPaperEntry(ids) {
     if (!unlocked) { requireResp(() => renderPaperEntry(ids)); return; }
     setKeys(null); keepAwake(false); status.textContent = "";
-    const titre = titleFor(ids), qs = questionsFor(ids), secsIds = [...new Set(qs.map(q => q.secId))];
+    const titre = titleForRecord(ids), qs = questionsFor(ids), secsIds = [...new Set(qs.map(q => q.secId))];
     app.innerHTML = `
       <section class="panel start-card">
         <h1>Copie papier : ${esc(titre)}</h1>
@@ -926,7 +1091,7 @@
         const tentative = registerAttempt(nom, ids, titre);
         const sections = secsIds.map(sid => {
           const idx = qs.map((q, k) => (q.secId === sid ? k : -1)).filter(k => k >= 0), t = DATA.find(x => x.id === sid), ok = idx.filter(k => answers[k] === qs[k].reponse);
-          return { id: sid, numero: t.numero, titre: t.titre, total: idx.length, correct: ok.length, points: ok.reduce((a, k) => a + ptsOf(qs[k]), 0), pointsTotal: idx.reduce((a, k) => a + ptsOf(qs[k]), 0) };
+          return { id: sid, numero: t.numero, titre: t.titre.fr, total: idx.length, correct: ok.length, points: ok.reduce((a, k) => a + ptsOf(qs[k]), 0), pointsTotal: idx.reduce((a, k) => a + ptsOf(qs[k]), 0) };
         });
         const rec = { id: String(Date.now()), date: new Date().toISOString(), ids, titre, mode: "papier", tentative,
           candidat: { nom, poste: (f.get("poste") || "").trim(), date: f.get("date") || today() },
@@ -967,7 +1132,7 @@
     if (unlocked) armLock();
     if (a === "home") { e.preventDefault(); renderHome(); }
     else if (a === "choose") renderStart(el.dataset.ids.split(","));
-    else if (a === "resume") { session = store.get(KEY_SESSION, null); if (session) { session.mode = "evaluation"; session.current = Math.min(session.current || 0, session.answers.length - 1); renderQuiz(); } }
+    else if (a === "resume") { session = store.get(KEY_SESSION, null); if (session) { session.mode = "evaluation"; session.current = Math.min(session.current || 0, session.answers.length - 1); if (session.langue) setLangSilent(session.langue); renderQuiz(); } }
     else if (a === "discard") confirmDialog("Abandonner le questionnaire en cours ? Les réponses seront perdues" + (store.get(KEY_SESSION, {}).tentative ? " et la tentative restera comptée." : "."), "Abandonner", () => { store.del(KEY_SESSION); session = null; renderHome(); });
     else if (a === "prev") go(session.current - 1);
     else if (a === "next") go(session.current + 1);
@@ -994,6 +1159,7 @@
 
   if (!DATA.length) { app.innerHTML = `<p class="notice">La banque de questions est introuvable. Vérifiez que le fichier data/questionnaires.js est présent.</p>`; return; }
   refreshRespBtn();
+  updateStaticChrome();
   renderHome();
   updateOnline();
   retryPending();

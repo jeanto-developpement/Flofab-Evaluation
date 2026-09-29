@@ -4,6 +4,14 @@ Application web pour faire passer les questionnaires d'évaluation des connaissa
 
 L'application est entièrement statique (HTML, CSS, JavaScript). Elle fonctionne sur GitHub Pages sans serveur ni base de données.
 
+## Langue (français / anglais)
+
+Le candidat choisit sa langue avec les boutons **FR / EN** en haut de l'écran, sur la page d'accueil. Ce choix s'applique à tout ce que le candidat voit : la liste des questionnaires, la grille d'évaluation, le formulaire de départ, les 250 questions (avec leurs 4 choix) et l'écran de confirmation à la fin. Le choix est mémorisé dans le navigateur et reste actif tant que le candidat ne le change pas.
+
+L'espace responsable (résultats, historique, tentatives, évaluation sur papier, rapports PDF, export CSV, courriels, script Google Apps Script) reste **toujours en français**, quelle que soit la langue choisie par le candidat : c'est un choix délibéré, puisque cette partie est utilisée par le personnel de Flo-Fab. Le titre du questionnaire conservé dans l'historique et les rapports est donc toujours en français, même si un candidat a répondu en anglais.
+
+Les 250 questions ont été traduites intégralement (questions, les 4 choix de réponse et l'explication) ; l'ordre des choix et la bonne réponse sont rigoureusement identiques dans les deux langues.
+
 ## Contenu
 
 Toutes les questions sont en unités impériales : pouces, pieds, psi, °F, gpm, lb·pi et HP. Les unités électriques (V, A, Ω, W, kW, Hz) sont les mêmes dans tous les systèmes.
@@ -20,7 +28,8 @@ Toutes les questions sont en unités impériales : pouces, pieds, psi, °F, gpm,
 | 8. Automates programmables (PLC) | 25 |
 | 9. Interfaces opérateur (HMI) | 25 |
 | 10. Régulation PID | 25 |
-| Questionnaire complet | 250 |
+| 11. Soudure : méthode de travail et exécution | 25 |
+| Questionnaire complet | 275 |
 
 L'ordre des questions et des choix de réponse est identique à celui des questionnaires Word. Une version papier peut donc être corrigée avec le même corrigé.
 
@@ -67,7 +76,7 @@ La section « Évaluation sur papier » de la page d'accueil permet de faire pas
 1. **Imprimer le questionnaire** : produit un PDF prêt à imprimer, avec la fiche du candidat, les instructions, les questions (points et complexité indiqués) et une feuille de réponses à cercles A, B, C, D. Il ne contient aucune réponse.
 2. **Saisir une copie papier** : le responsable entre les réponses inscrites par le candidat (A, B, C, D ou « – » pour sans réponse). L'application calcule le résultat pondéré et affiche la même page de résultats qu'en ligne, avec le rapport PDF, l'envoi par courriel et l'enregistrement dans l'historique (marqué « Papier »). La copie compte comme une tentative ; si le candidat a déjà atteint le maximum, un avertissement s'affiche, sans bloquer la saisie.
 
-Le choix du questionnaire se fait dans la liste (les 10 thèmes ou le questionnaire complet). Sur iPad, le PDF s'ouvre : touchez Partager, puis Imprimer. Les questionnaires Word fournis séparément restent utilisables ; ils ont le même ordre de questions et de réponses.
+Le choix du questionnaire se fait dans la liste (les 11 thèmes ou le questionnaire complet). Sur iPad, le PDF s'ouvre : touchez Partager, puis Imprimer. Les questionnaires Word fournis séparément restent utilisables ; ils ont le même ordre de questions et de réponses.
 
 Ne publiez pas les corrigés Word dans le dépôt GitHub : tout fichier du dépôt est accessible en ligne.
 
@@ -124,7 +133,8 @@ Le pourcentage est calculé sur les points obtenus : points obtenus ÷ points po
 | 8. Automates programmables (PLC) | 5 | 14 | 6 | 51 |
 | 9. Interfaces opérateur (HMI) | 12 | 10 | 3 | 41 |
 | 10. Régulation PID | 7 | 9 | 9 | 52 |
-| Questionnaire complet | 91 | 109 | 50 | 459 |
+| 11. Soudure : méthode de travail et exécution | 9 | 13 | 3 | 44 |
+| Questionnaire complet | 100 | 122 | 53 | 503 |
 
 Les résultats affichent les points, le nombre de bonnes réponses et le pourcentage. La complexité de chaque question se trouve dans `data/questionnaires.js` (champ `complexite`). Dans les questionnaires Word, elle est indiquée à côté de chaque question, et le corrigé donne les points de chaque question et les seuils de chaque niveau en points.
 
