@@ -1,6 +1,8 @@
 // Banque de questions Flo-Fab, bilingue (français/anglais) — générée à partir des questionnaires Word (même ordre des choix).
 // reponse = index (0 = A, 1 = B, 2 = C, 3 = D) de la bonne réponse dans « choix » (identique dans les deux langues).
 // complexite = 1 (faible), 2 (moyenne) ou 3 (élevée) ; c'est aussi le nombre de points de la question.
+// questionsAvance / questionsExpert : ensembles dédiés de 25 questions pour ces niveaux, quand ils existent déjà
+// (voir niveaux_index.js) ; sinon l'application filtre les questions Standard par complexité.
 window.QUESTIONNAIRES = [
   {
     "id": "mecanique-sae",
@@ -658,6 +660,1310 @@ window.QUESTIONNAIRES = [
         "explication": {
           "fr": "L'anneau du moteur est conçu pour le moteur seul ; vérifier la charge maximale d'utilisation (WLL) des élingues.",
           "en": "The motor's lifting eye is designed for the motor alone; check the slings' working load limit (WLL)."
+        }
+      }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Un moteur de 10 HP tourne à 1750 tr/min. Quel est son couple approximatif à pleine charge ?",
+          "en": "A 10 HP motor runs at 1750 rpm. What is its approximate full-load torque?"
+        },
+        "choix": {
+          "fr": [
+            "90 lb·pi",
+            "30 lb·pi",
+            "60 lb·pi",
+            "15 lb·pi"
+          ],
+          "en": [
+            "90 lb·ft",
+            "30 lb·ft",
+            "60 lb·ft",
+            "15 lb·ft"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Couple (lb·pi) = HP × 5252 / tr/min = 10 × 5252 / 1750 ≈ 30 lb·pi.",
+          "en": "Torque (lb·ft) = HP × 5252 / rpm = 10 × 5252 / 1750 ≈ 30 lb·ft."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un pignon de 20 dents tournant à 1800 tr/min entraîne un engrenage de 60 dents. Quelle est la vitesse de l'engrenage entraîné ?",
+          "en": "A 20-tooth pinion turning at 1800 rpm drives a 60-tooth gear. What is the speed of the driven gear?"
+        },
+        "choix": {
+          "fr": [
+            "300 tr/min",
+            "5400 tr/min",
+            "1800 tr/min",
+            "600 tr/min"
+          ],
+          "en": [
+            "300 rpm",
+            "5400 rpm",
+            "1800 rpm",
+            "600 rpm"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "Rapport = 60 / 20 = 3:1 ; la vitesse de sortie = 1800 / 3 = 600 tr/min (et le couple est multiplié par environ 3, sans tenir compte des pertes).",
+          "en": "Ratio = 60 / 20 = 3:1; output speed = 1800 / 3 = 600 rpm (and torque is multiplied by about 3, ignoring losses)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une poulie motrice de 4 po de diamètre, entraînée par un moteur à 1750 tr/min, entraîne une poulie de 10 po par courroie. Quelle est la vitesse de la poulie entraînée ?",
+          "en": "A 4 in. diameter driver pulley, driven by a motor at 1750 rpm, drives a 10 in. pulley by belt. What is the speed of the driven pulley?"
+        },
+        "choix": {
+          "fr": [
+            "700 tr/min",
+            "1750 tr/min",
+            "437 tr/min",
+            "4375 tr/min"
+          ],
+          "en": [
+            "700 rpm",
+            "1750 rpm",
+            "437 rpm",
+            "4375 rpm"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Vitesse entraînée = 1750 × (4 / 10) = 700 tr/min : une poulie plus grande tourne plus lentement.",
+          "en": "Driven speed = 1750 × (4 / 10) = 700 rpm: a larger pulley turns more slowly."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un vérin hydraulique a un piston de 4 po de diamètre et fonctionne à 1000 psi. Quelle force développe-t-il approximativement à la sortie ?",
+          "en": "A hydraulic cylinder has a 4 in. diameter piston and operates at 1000 psi. Approximately what force does it develop on extension?"
+        },
+        "choix": {
+          "fr": [
+            "4 000 lb",
+            "8 000 lb",
+            "12 600 lb",
+            "50 000 lb"
+          ],
+          "en": [
+            "4,000 lb",
+            "8,000 lb",
+            "12,600 lb",
+            "50,000 lb"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Aire = π × 4² / 4 ≈ 12,57 po² ; force = pression × aire = 1000 × 12,57 ≈ 12 600 lb.",
+          "en": "Area = π × 4² / 4 ≈ 12.57 in.²; force = pressure × area = 1000 × 12.57 ≈ 12,600 lb."
+        }
+      },
+      {
+        "question": {
+          "fr": "On veut obtenir une précharge de 8 000 lb dans un boulon de 1/2 po avec un facteur de couple K = 0,2. Quel couple de serrage approximatif (T = K × D × F) faut-il appliquer ?",
+          "en": "A preload of 8,000 lb is wanted in a 1/2 in. bolt with a torque coefficient K = 0.2. What approximate tightening torque (T = K × D × F) must be applied?"
+        },
+        "choix": {
+          "fr": [
+            "800 lb·pi",
+            "67 lb·pi",
+            "133 lb·pi",
+            "33 lb·pi"
+          ],
+          "en": [
+            "800 lb·ft",
+            "67 lb·ft",
+            "133 lb·ft",
+            "33 lb·ft"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "T = 0,2 × 0,5 po × 8000 lb = 800 lb·po, soit 800 / 12 ≈ 67 lb·pi.",
+          "en": "T = 0.2 × 0.5 in. × 8000 lb = 800 lb·in., or 800 / 12 ≈ 67 lb·ft."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour un joint boulonné réutilisable, la précharge visée est habituellement d'environ quel pourcentage de la charge d'épreuve du boulon ?",
+          "en": "For a reusable bolted joint, the target preload is usually about what percentage of the bolt's proof load?"
+        },
+        "choix": {
+          "fr": [
+            "100 %",
+            "50 %",
+            "75 %",
+            "25 %"
+          ],
+          "en": [
+            "100%",
+            "50%",
+            "75%",
+            "25%"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une précharge d'environ 75 % de la charge d'épreuve (proof load) est la pratique courante pour les assemblages réutilisables : elle serre fortement sans approcher de la limite d'élasticité.",
+          "en": "A preload of about 75% of proof load is common practice for reusable joints: it clamps firmly without approaching the yield strength."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre la limite d'élasticité et la résistance à la traction d'un acier ?",
+          "en": "What is the difference between a steel's yield strength and its tensile strength?"
+        },
+        "choix": {
+          "fr": [
+            "La limite d'élasticité est toujours supérieure à la résistance à la traction",
+            "La limite d'élasticité marque le début de la déformation permanente ; la résistance à la traction est la contrainte maximale avant la rupture",
+            "La résistance à la traction ne concerne que les boulons",
+            "Aucune, ce sont deux noms pour la même valeur"
+          ],
+          "en": [
+            "Yield strength is always higher than tensile strength",
+            "Yield strength marks the onset of permanent deformation; tensile strength is the maximum stress before fracture",
+            "Tensile strength only applies to bolts",
+            "None, they are two names for the same value"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Sous la limite d'élasticité, le métal revient à sa forme ; au-delà, il se déforme de façon permanente. La résistance à la traction est la contrainte maximale supportée avant la rupture.",
+          "en": "Below the yield strength, the metal returns to its shape; beyond it, it deforms permanently. Tensile strength is the maximum stress sustained before fracture."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pièce a une charge de rupture de 40 000 lb. Avec un facteur de sécurité de 4, quelle est la charge de travail maximale permise ?",
+          "en": "A part has a breaking load of 40,000 lb. With a safety factor of 4, what is the maximum allowable working load?"
+        },
+        "choix": {
+          "fr": [
+            "10 000 lb",
+            "4 000 lb",
+            "40 000 lb",
+            "160 000 lb"
+          ],
+          "en": [
+            "10,000 lb",
+            "4,000 lb",
+            "40,000 lb",
+            "160,000 lb"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Charge de travail = charge de rupture / facteur de sécurité = 40 000 / 4 = 10 000 lb.",
+          "en": "Working load = breaking load / safety factor = 40,000 / 4 = 10,000 lb."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une barre d'acier de 100 po de long est chauffée de 100 °F. Avec un coefficient de dilatation d'environ 6,5 × 10⁻⁶ par °F, de combien s'allonge-t-elle approximativement ?",
+          "en": "A 100 in. long steel bar is heated by 100 °F. With an expansion coefficient of about 6.5 × 10⁻⁶ per °F, approximately how much does it lengthen?"
+        },
+        "choix": {
+          "fr": [
+            "0,065 po",
+            "0,65 po",
+            "0,0065 po",
+            "6,5 po"
+          ],
+          "en": [
+            "0.065 in.",
+            "0.65 in.",
+            "0.0065 in.",
+            "6.5 in."
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "ΔL = α × L × ΔT = 6,5 × 10⁻⁶ × 100 × 100 = 0,065 po.",
+          "en": "ΔL = α × L × ΔT = 6.5 × 10⁻⁶ × 100 × 100 = 0.065 in."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que signifie la « durée de vie L10 » d'un roulement ?",
+          "en": "What does a bearing's \"L10 life\" mean?"
+        },
+        "choix": {
+          "fr": [
+            "La durée de vie garantie par le fabricant à 100 %",
+            "Dix ans de service",
+            "La durée moyenne exacte de tous les roulements",
+            "La durée (en tours ou en heures) que 90 % d'un groupe de roulements identiques atteignent ou dépassent avant l'apparition de fatigue"
+          ],
+          "en": [
+            "The life guaranteed by the manufacturer at 100%",
+            "Ten years of service",
+            "The exact average life of all bearings",
+            "The life (in revolutions or hours) that 90% of a group of identical bearings reach or exceed before fatigue appears"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La vie nominale L10 est celle atteinte ou dépassée par 90 % des roulements identiques, dans les mêmes conditions ; 10 % peuvent donc défaillir plus tôt.",
+          "en": "Rated L10 life is that reached or exceeded by 90% of identical bearings under the same conditions; 10% may therefore fail sooner."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi monte-t-on souvent des roulements à billes à contact oblique par paires (face à face ou dos à dos) ?",
+          "en": "Why are angular contact ball bearings often mounted in pairs (face to face or back to back)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour l'esthétique",
+            "Pour supporter des charges axiales dans les deux sens (un roulement seul n'en supporte qu'un) et contrôler la précharge et la rigidité",
+            "Pour doubler la vitesse",
+            "Pour supprimer la graisse"
+          ],
+          "en": [
+            "For appearance",
+            "To carry axial loads in both directions (a single bearing carries them in only one) and to control preload and stiffness",
+            "To double speed",
+            "To eliminate grease"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un roulement à contact oblique ne reprend une charge axiale que dans un sens ; en paire, les deux sens sont couverts et l'on règle la précharge pour augmenter la rigidité.",
+          "en": "An angular contact bearing takes axial load in one direction only; in a pair, both directions are covered and preload is set to increase stiffness."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un arbre tournant avec une charge qui tourne avec lui, quel ajustement est recommandé pour la bague intérieure d'un roulement ?",
+          "en": "On a rotating shaft with a load that rotates with it, what fit is recommended for a bearing's inner ring?"
+        },
+        "choix": {
+          "fr": [
+            "Un ajustement avec jeu maximal",
+            "Un ajustement serré, pour empêcher la bague de glisser et de s'user sur l'arbre",
+            "Aucun ajustement particulier",
+            "Un ajustement glissant très libre"
+          ],
+          "en": [
+            "A fit with maximum clearance",
+            "A tight (interference) fit, to keep the ring from creeping and wearing on the shaft",
+            "No particular fit",
+            "A very loose sliding fit"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Lorsque la charge tourne par rapport à la bague, celle-ci tend à cheminer ; un ajustement serré l'en empêche et évite l'usure par fretting sur l'arbre.",
+          "en": "When the load rotates relative to the ring, the ring tends to creep; an interference fit prevents this and avoids fretting wear on the shaft."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle d'une clavette entre un arbre et un moyeu (poulie, accouplement) ?",
+          "en": "What is the role of a key between a shaft and a hub (pulley, coupling)?"
+        },
+        "choix": {
+          "fr": [
+            "Étanchéifier l'assemblage",
+            "Transmettre le couple de l'arbre au moyeu et empêcher la rotation relative",
+            "Réduire la vibration",
+            "Lubrifier l'arbre"
+          ],
+          "en": [
+            "To seal the assembly",
+            "To transmit torque from the shaft to the hub and prevent relative rotation",
+            "To reduce vibration",
+            "To lubricate the shaft"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 1,
+        "explication": {
+          "fr": "La clavette, logée dans une rainure de l'arbre et du moyeu, transmet le couple et empêche le moyeu de tourner librement sur l'arbre.",
+          "en": "The key, seated in a keyway in both the shaft and hub, transmits torque and keeps the hub from spinning freely on the shaft."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un joint torique (O-ring) assure principalement l'étanchéité par :",
+          "en": "An O-ring seals mainly by:"
+        },
+        "choix": {
+          "fr": [
+            "Collage sur les surfaces",
+            "Le serrage d'une vis centrale",
+            "La chaleur du fluide",
+            "La compression de l'élastomère dans sa gorge, qui exerce une pression de contact sur les surfaces à étancher"
+          ],
+          "en": [
+            "Bonding to the surfaces",
+            "Tightening a central screw",
+            "The fluid's heat",
+            "Compression of the elastomer in its groove, which exerts contact pressure on the surfaces to be sealed"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le joint torique est légèrement comprimé dans sa gorge ; l'élastomère comprimé exerce une pression de contact sur les surfaces, et la pression du fluide l'applique encore plus fort.",
+          "en": "The O-ring is slightly compressed in its groove; the compressed elastomer exerts contact pressure on the surfaces, and fluid pressure pushes it even harder."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel avantage principal offre un accouplement flexible par rapport à un accouplement rigide entre un moteur et une pompe ?",
+          "en": "What main advantage does a flexible coupling offer over a rigid coupling between a motor and a pump?"
+        },
+        "choix": {
+          "fr": [
+            "Il corrige complètement tout désalignement",
+            "Il supprime le besoin de roulements",
+            "Il augmente la vitesse de l'arbre",
+            "Il tolère un léger désalignement et absorbe une partie des vibrations, sans remplacer un bon alignement"
+          ],
+          "en": [
+            "It completely corrects any misalignment",
+            "It eliminates the need for bearings",
+            "It increases shaft speed",
+            "It tolerates slight misalignment and absorbs some vibration, without replacing good alignment"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "Un accouplement flexible accommode un faible désalignement résiduel et amortit certaines vibrations, mais un bon alignement reste essentiel à la durée de vie des roulements.",
+          "en": "A flexible coupling accommodates small residual misalignment and damps some vibration, but good alignment remains essential to bearing life."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors d'un alignement au comparateur à cadran, on lit un écart total (TIR) de 4 mils sur un tour complet, avec le comparateur appuyé sur un arbre. Quel désalignement parallèle (excentricité) cela représente-t-il ?",
+          "en": "During a dial indicator alignment, a total indicator reading (TIR) of 4 mils is read over one full revolution with the indicator on a shaft. What parallel misalignment (offset) does this represent?"
+        },
+        "choix": {
+          "fr": [
+            "8 mils",
+            "4 mils",
+            "1 mil",
+            "2 mils"
+          ],
+          "en": [
+            "8 mils",
+            "4 mils",
+            "1 mil",
+            "2 mils"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le TIR (total indicator reading) correspond au double de l'excentricité : un écart de 4 mils représente un désalignement parallèle de 2 mils.",
+          "en": "TIR equals twice the offset: a reading of 4 mils represents a parallel misalignment of 2 mils."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment la vitesse de rotation d'une machine influence-t-elle la tolérance d'alignement admissible de son accouplement ?",
+          "en": "How does a machine's rotational speed influence the allowable alignment tolerance of its coupling?"
+        },
+        "choix": {
+          "fr": [
+            "Plus la vitesse est élevée, plus la tolérance d'alignement admissible est serrée (plus faible)",
+            "Plus la vitesse est élevée, plus la tolérance est large",
+            "Seule la couleur de l'accouplement compte",
+            "Elle n'a aucune influence"
+          ],
+          "en": [
+            "The higher the speed, the tighter (smaller) the allowable alignment tolerance",
+            "The higher the speed, the wider the tolerance",
+            "Only the coupling's color matters",
+            "It has no influence"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "À haute vitesse, un même désalignement génère des efforts et des vibrations plus grands : les tolérances d'alignement recommandées diminuent quand la vitesse augmente.",
+          "en": "At high speed, the same misalignment generates larger forces and vibration: recommended alignment tolerances decrease as speed increases."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle graisse de consistance est la plus couramment utilisée pour les roulements de moteurs et de pompes ?",
+          "en": "Which grease consistency is most commonly used for motor and pump bearings?"
+        },
+        "choix": {
+          "fr": [
+            "NLGI no 6 (très dure)",
+            "NLGI no 000 (quasi liquide)",
+            "NLGI no 2",
+            "Aucune consistance particulière"
+          ],
+          "en": [
+            "NLGI No. 6 (very hard)",
+            "NLGI No. 000 (nearly liquid)",
+            "NLGI No. 2",
+            "No particular consistency"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "La graisse NLGI no 2 offre une consistance moyenne, semblable à du beurre d'arachide, adaptée à la plupart des roulements à billes et à rouleaux.",
+          "en": "NLGI No. 2 grease offers a medium consistency, similar to peanut butter, suited to most ball and roller bearings."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi ne faut-il pas mélanger sans précaution deux graisses de types différents dans un même roulement ?",
+          "en": "Why should two different types of grease not be mixed carelessly in the same bearing?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que cela augmente la température d'ébullition",
+            "Parce que le mélange est toujours meilleur",
+            "Parce que cela change leur couleur seulement",
+            "Parce que des épaississants ou huiles incompatibles peuvent ramollir ou durcir le mélange et réduire fortement la lubrification"
+          ],
+          "en": [
+            "Because it raises the boiling point",
+            "Because the mixture is always better",
+            "Because it only changes their color",
+            "Because incompatible thickeners or oils can soften or harden the mixture and greatly reduce lubrication"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Des épaississants incompatibles (par exemple lithium et polyurée) peuvent détruire la structure de la graisse, qui se liquéfie ou durcit, laissant le roulement mal lubrifié.",
+          "en": "Incompatible thickeners (for example lithium and polyurea) can destroy the grease's structure, which liquefies or hardens, leaving the bearing poorly lubricated."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors d'une analyse de vibration, un pic dominant à 1× la vitesse de rotation indique le plus souvent :",
+          "en": "In a vibration analysis, a dominant peak at 1× running speed most often indicates:"
+        },
+        "choix": {
+          "fr": [
+            "Un défaut de roulement à billes",
+            "Un problème électrique du stator",
+            "Un balourd (déséquilibre) de la partie tournante",
+            "Un défaut d'engrenage"
+          ],
+          "en": [
+            "A ball bearing defect",
+            "An electrical stator problem",
+            "An unbalance of the rotating part",
+            "A gear defect"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un pic marqué à 1× la fréquence de rotation est la signature classique du balourd ; un pic à 2× est plutôt associé à un désalignement.",
+          "en": "A strong peak at 1× rotation frequency is the classic signature of unbalance; a peak at 2× is more often associated with misalignment."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans une analyse de vibration, un pic important à 2× la vitesse de rotation est typiquement associé à :",
+          "en": "In a vibration analysis, a large peak at 2× running speed is typically associated with:"
+        },
+        "choix": {
+          "fr": [
+            "Un excès de graisse",
+            "Une cavitation uniquement",
+            "Un désalignement de l'accouplement (ou un jeu mécanique)",
+            "Un balourd simple"
+          ],
+          "en": [
+            "Excess grease",
+            "Cavitation only",
+            "Coupling misalignment (or mechanical looseness)",
+            "Simple unbalance"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le désalignement produit souvent une forte composante à 2× la fréquence de rotation, parfois accompagnée d'une composante axiale marquée.",
+          "en": "Misalignment often produces a strong component at 2× the rotation frequency, sometimes with a marked axial component."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une courroie trop peu tendue risque surtout de :",
+          "en": "A belt that is too loose mainly risks:"
+        },
+        "choix": {
+          "fr": [
+            "Se raccourcir",
+            "Casser immédiatement",
+            "Glisser sur les poulies, chauffer et s'user rapidement ; une tension excessive, elle, surcharge les roulements",
+            "Augmenter le rendement"
+          ],
+          "en": [
+            "Shortening",
+            "Breaking immediately",
+            "Slipping on the pulleys, heating up, and wearing quickly; excessive tension, in turn, overloads the bearings",
+            "Increasing efficiency"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 1,
+        "explication": {
+          "fr": "Une tension insuffisante provoque du glissement, de la chaleur et une usure rapide ; une tension excessive surcharge les roulements et réduit leur durée de vie.",
+          "en": "Insufficient tension causes slip, heat, and rapid wear; excessive tension overloads the bearings and reduces their life."
+        }
+      },
+      {
+        "question": {
+          "fr": "À partir de quel allongement une chaîne à rouleaux est-elle généralement jugée usée et à remplacer ?",
+          "en": "At what elongation is a roller chain generally considered worn and due for replacement?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 3 %",
+            "Aucune limite",
+            "0,1 %",
+            "Environ 30 %"
+          ],
+          "en": [
+            "About 3%",
+            "No limit",
+            "0.1%",
+            "About 30%"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un allongement d'environ 3 % du pas (mesuré sur plusieurs maillons) est le critère courant de remplacement : au-delà, la chaîne ne s'engrène plus correctement avec les pignons.",
+          "en": "An elongation of about 3% of the pitch (measured over several links) is the common replacement criterion: beyond that, the chain no longer meshes properly with the sprockets."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une tige d'acier de 1/2 po de diamètre (aire ≈ 0,196 po²) est tirée par une force de 4 000 lb. Quelle contrainte de traction subit-elle approximativement ?",
+          "en": "A 1/2 in. diameter steel rod (area ≈ 0.196 in.²) is pulled with a force of 4,000 lb. What tensile stress does it experience approximately?"
+        },
+        "choix": {
+          "fr": [
+            "20 400 psi",
+            "8 000 psi",
+            "2 000 psi",
+            "51 000 psi"
+          ],
+          "en": [
+            "20,400 psi",
+            "8,000 psi",
+            "2,000 psi",
+            "51,000 psi"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Contrainte = force / aire = 4000 / 0,196 ≈ 20 400 psi.",
+          "en": "Stress = force / area = 4000 / 0.196 ≈ 20,400 psi."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un palan à 4 brins portants soulève une charge de 800 lb. En négligeant les frottements, quelle force de traction faut-il exercer sur le brin libre ?",
+          "en": "A 4-part block and tackle lifts an 800 lb load. Ignoring friction, what pulling force must be applied to the free line?"
+        },
+        "choix": {
+          "fr": [
+            "200 lb",
+            "400 lb",
+            "100 lb",
+            "800 lb"
+          ],
+          "en": [
+            "200 lb",
+            "400 lb",
+            "100 lb",
+            "800 lb"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'avantage mécanique est égal au nombre de brins portants : 800 / 4 = 200 lb (en pratique un peu plus à cause des frottements).",
+          "en": "Mechanical advantage equals the number of supporting parts: 800 / 4 = 200 lb (in practice a bit more because of friction)."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Une pompe exige 12 HP à l'arbre. Le moteur électrique qui l'entraîne a un rendement de 90 %. Quelle puissance électrique absorbe-t-il approximativement (1 HP = 0,746 kW) ?",
+          "en": "A pump requires 12 HP at the shaft. The electric motor driving it is 90% efficient. Approximately what electrical power does it draw (1 HP = 0.746 kW)?"
+        },
+        "choix": {
+          "fr": [
+            "13 kW",
+            "10 kW",
+            "12 kW",
+            "8 kW"
+          ],
+          "en": [
+            "13 kW",
+            "10 kW",
+            "12 kW",
+            "8 kW"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Puissance mécanique = 12 × 0,746 ≈ 8,95 kW ; puissance électrique absorbée = 8,95 / 0,90 ≈ 9,95 kW, soit environ 10 kW.",
+          "en": "Mechanical power = 12 × 0.746 ≈ 8.95 kW; electrical power drawn = 8.95 / 0.90 ≈ 9.95 kW, or about 10 kW."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un joint boulonné peut-il perdre une partie de sa précharge peu après le serrage, même sans desserrage visible ?",
+          "en": "Why can a bolted joint lose part of its preload shortly after tightening, even with no visible loosening?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le boulon s'allonge de lui-même",
+            "Parce que le couple augmente avec le temps",
+            "Parce que la peinture sèche",
+            "À cause du tassement (embedment) des surfaces en contact et de la relaxation du joint : de minuscules déformations plastiques réduisent la tension du boulon"
+          ],
+          "en": [
+            "Because the bolt lengthens by itself",
+            "Because torque increases over time",
+            "Because paint dries",
+            "Because of embedment of the contacting surfaces and gasket relaxation: tiny plastic deformations reduce the bolt's tension"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les aspérités des surfaces s'écrasent et les joints fluent sous la charge : ces petits tassements raccourcissent légèrement la longueur serrée et réduisent la précharge, d'où l'intérêt d'un resserrage après la mise en service dans certaines applications.",
+          "en": "Surface asperities flatten and gaskets creep under load: these small settlements slightly shorten the clamped length and reduce preload, hence the value of retightening after start-up in some applications."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un boulon fortement précontraint résiste-t-il mieux à la fatigue sous une charge externe cyclique ?",
+          "en": "Why does a highly preloaded bolt resist fatigue better under a cyclic external load?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que la précharge fait que les pièces serrées reprennent la majeure partie de la variation de charge : la tension du boulon varie peu",
+            "Parce qu'il est plus dur",
+            "Parce qu'il est plus long",
+            "Parce que la précharge supprime toute charge sur le boulon"
+          ],
+          "en": [
+            "Because the preload makes the clamped parts carry most of the load variation: the bolt's tension varies little",
+            "Because it is harder",
+            "Because it is longer",
+            "Because the preload removes all load from the bolt"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Dans un joint bien serré, la rigidité des pièces serrées est bien supérieure à celle du boulon ; la charge externe cyclique modifie donc peu la tension du boulon, ce qui réduit l'amplitude de contrainte et améliore la tenue en fatigue.",
+          "en": "In a well-tightened joint, the clamped parts are much stiffer than the bolt; the cyclic external load therefore changes the bolt's tension little, which reduces stress amplitude and improves fatigue performance."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi les boulons serrés jusqu'à leur limite d'élasticité (serrage par angle ou « torque-turn ») ne doivent-ils généralement pas être réutilisés ?",
+          "en": "Why should bolts tightened to their yield point (angle tightening or \"torque-turn\") generally not be reused?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'ils changent de couleur",
+            "Parce qu'ils deviennent plus mous au refroidissement",
+            "Parce qu'ils ont subi une déformation permanente : réutilisés, ils ne garantissent plus la précharge visée et risquent de rompre",
+            "Parce qu'ils rouillent plus vite"
+          ],
+          "en": [
+            "Because they change color",
+            "Because they get softer on cooling",
+            "Because they have undergone permanent deformation: reused, they no longer guarantee the target preload and risk breaking",
+            "Because they rust faster"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un boulon serré jusqu'à sa zone plastique s'est allongé de façon permanente ; un nouveau serrage ne donne plus la même précharge et le boulon a perdu de sa réserve de résistance.",
+          "en": "A bolt tightened into its plastic zone has permanently lengthened; retightening no longer gives the same preload and the bolt has lost some of its strength reserve."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi évite-t-on d'électrozinguer (placage électrolytique) des boulons de très haute dureté, comme ceux de grade 8 ou plus ?",
+          "en": "Why is electroplating (electrolytic plating) of very hard bolts, such as grade 8 or higher, generally avoided?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que les boulons durs ne rouillent jamais",
+            "À cause du risque de fragilisation par l'hydrogène, qui peut provoquer une rupture différée du boulon",
+            "Parce que le zinc réduit leur longueur",
+            "Parce que le zinc est toxique"
+          ],
+          "en": [
+            "Because hard bolts never rust",
+            "Because of the risk of hydrogen embrittlement, which can cause delayed bolt fracture",
+            "Because zinc shortens them",
+            "Because zinc is toxic"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le placage électrolytique peut introduire de l'hydrogène dans l'acier très dur ; sous contrainte, cet hydrogène peut causer une rupture fragile différée. On préfère des revêtements sans risque d'hydrogène ou un traitement thermique de dégazage.",
+          "en": "Electroplating can introduce hydrogen into very hard steel; under stress, this hydrogen can cause delayed brittle fracture. Coatings without hydrogen risk, or a baking (degassing) treatment, are preferred."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un roulement à billes a un rapport de charge C/P = 3 (C = charge dynamique de base, P = charge équivalente). Quelle est sa durée de vie nominale L10, selon L10 = (C/P)³ en millions de tours ?",
+          "en": "A ball bearing has a load ratio C/P = 3 (C = basic dynamic load rating, P = equivalent load). What is its rated L10 life, using L10 = (C/P)³ in millions of revolutions?"
+        },
+        "choix": {
+          "fr": [
+            "81 millions de tours",
+            "9 millions de tours",
+            "27 millions de tours",
+            "3 millions de tours"
+          ],
+          "en": [
+            "81 million revolutions",
+            "9 million revolutions",
+            "27 million revolutions",
+            "3 million revolutions"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "L10 = (C/P)³ = 3³ = 27 millions de tours pour un roulement à billes.",
+          "en": "L10 = (C/P)³ = 3³ = 27 million revolutions for a ball bearing."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un roulement a une durée de vie nominale de 27 millions de tours et tourne à 1800 tr/min. Quelle est sa durée de vie nominale en heures ?",
+          "en": "A bearing has a rated life of 27 million revolutions and runs at 1800 rpm. What is its rated life in hours?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 25 000 h",
+            "Environ 250 h",
+            "Environ 450 h",
+            "Environ 2 500 h"
+          ],
+          "en": [
+            "About 25,000 h",
+            "About 250 h",
+            "About 450 h",
+            "About 2,500 h"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Heures = tours / (tr/min × 60) = 27 000 000 / (1800 × 60) = 250 h.",
+          "en": "Hours = revolutions / (rpm × 60) = 27,000,000 / (1800 × 60) = 250 h."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel phénomène peut causer des cannelures (fluting) sur les chemins de roulement d'un moteur alimenté par un variateur de fréquence ?",
+          "en": "What phenomenon can cause fluting on the raceways of a motor fed by a variable frequency drive?"
+        },
+        "choix": {
+          "fr": [
+            "Des courants de décharge passant par le roulement (tensions d'arbre induites par le variateur)",
+            "Un excès de graisse",
+            "Une température ambiante trop basse",
+            "Un balourd mécanique uniquement"
+          ],
+          "en": [
+            "Discharge currents passing through the bearing (shaft voltages induced by the drive)",
+            "Excess grease",
+            "Too low an ambient temperature",
+            "Mechanical unbalance only"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les tensions de mode commun produites par un variateur peuvent induire une tension d'arbre ; les décharges à travers le film de lubrifiant des roulements érodent les chemins de roulement et créent des cannelures.",
+          "en": "Common-mode voltages produced by a drive can induce a shaft voltage; discharges through the bearing's lubricant film erode the raceways and create fluting."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une analyse de vibration montre un pic à 1× avec une forte composante axiale, accompagné d'un pic à 2×. Quelle cause est la plus probable ?",
+          "en": "A vibration analysis shows a 1× peak with a strong axial component, along with a 2× peak. What cause is most likely?"
+        },
+        "choix": {
+          "fr": [
+            "Un désalignement angulaire entre l'arbre moteur et l'arbre entraîné",
+            "Une cavitation de la pompe",
+            "Un balourd pur",
+            "Un défaut de la bague extérieure d'un roulement"
+          ],
+          "en": [
+            "Angular misalignment between the motor shaft and the driven shaft",
+            "Pump cavitation",
+            "Pure unbalance",
+            "An outer-race bearing defect"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le désalignement angulaire provoque une forte vibration axiale à 1× et souvent un pic à 2× ; un balourd pur donne surtout une vibration radiale à 1×.",
+          "en": "Angular misalignment causes strong axial vibration at 1× and often a 2× peak; pure unbalance mainly gives radial vibration at 1×."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un palier lisse, un pic de vibration à environ 0,4 à 0,48 fois la vitesse de rotation est le plus souvent associé à :",
+          "en": "In a sleeve (journal) bearing, a vibration peak at about 0.4 to 0.48 times running speed is most often associated with:"
+        },
+        "choix": {
+          "fr": [
+            "Un désalignement",
+            "Un jeu de clavette",
+            "Un balourd",
+            "Un tourbillon d'huile (oil whirl), instabilité du film d'huile"
+          ],
+          "en": [
+            "Misalignment",
+            "Key looseness",
+            "Unbalance",
+            "Oil whirl, an instability of the oil film"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le tourbillon d'huile se manifeste par une vibration sous-synchrone, juste sous la moitié de la vitesse de rotation, due à l'instabilité du film d'huile dans le palier.",
+          "en": "Oil whirl appears as a sub-synchronous vibration just below half of running speed, due to instability of the oil film in the bearing."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que se passe-t-il lorsque la vitesse de rotation d'un arbre approche sa vitesse critique (fréquence propre) ?",
+          "en": "What happens when a shaft's rotating speed approaches its critical speed (natural frequency)?"
+        },
+        "choix": {
+          "fr": [
+            "Rien de particulier",
+            "L'amplitude de vibration augmente fortement par résonance, ce qui peut endommager la machine",
+            "Le rendement augmente",
+            "Le couple double"
+          ],
+          "en": [
+            "Nothing in particular",
+            "Vibration amplitude rises sharply through resonance, which can damage the machine",
+            "Efficiency increases",
+            "Torque doubles"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "À la vitesse critique, la fréquence d'excitation coïncide avec la fréquence propre de l'arbre : l'amplitude peut croître fortement ; on évite d'opérer longtemps près de cette vitesse.",
+          "en": "At critical speed, the excitation frequency coincides with the shaft's natural frequency: amplitude can grow sharply; extended operation near this speed is avoided."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une barre d'acier est solidement bloquée entre deux appuis rigides, puis chauffée de 100 °F. Avec un module d'élasticité E ≈ 30 000 000 psi et α ≈ 6,5 × 10⁻⁶ /°F, quelle contrainte de compression approximative apparaît dans la barre (σ = E × α × ΔT) ?",
+          "en": "A steel bar is firmly held between two rigid supports, then heated by 100 °F. With a modulus of elasticity E ≈ 30,000,000 psi and α ≈ 6.5 × 10⁻⁶ /°F, what approximate compressive stress develops in the bar (σ = E × α × ΔT)?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune contrainte",
+            "Environ 19 500 psi",
+            "Environ 195 000 psi",
+            "Environ 1 950 psi"
+          ],
+          "en": [
+            "No stress",
+            "About 19,500 psi",
+            "About 195,000 psi",
+            "About 1,950 psi"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "σ = 30 × 10⁶ × 6,5 × 10⁻⁶ × 100 ≈ 19 500 psi : une pièce empêchée de se dilater subit une contrainte importante, d'où l'importance des joints de dilatation.",
+          "en": "σ = 30 × 10⁶ × 6.5 × 10⁻⁶ × 100 ≈ 19,500 psi: a part prevented from expanding undergoes significant stress, hence the importance of expansion joints."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour monter un roulement par chauffage (montage fretté), quelle précaution s'applique à la température de chauffe ?",
+          "en": "When mounting a bearing by heating (shrink fit), what precaution applies to the heating temperature?"
+        },
+        "choix": {
+          "fr": [
+            "Chauffer à la flamme directe jusqu'au rouge",
+            "Ne pas dépasser environ 250 °F (chauffage uniforme, par induction ou bain d'huile), pour ne pas altérer l'acier ni la lubrification",
+            "Chauffer au-dessus de 600 °F pour plus de sécurité",
+            "Aucune précaution n'est nécessaire"
+          ],
+          "en": [
+            "Heat with a direct flame until red",
+            "Do not exceed about 250 °F (uniform heating, by induction or oil bath), so as not to alter the steel or the lubrication",
+            "Heat above 600 °F for safety",
+            "No precaution is needed"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un chauffage excessif ou localisé modifie la dureté de l'acier du roulement ; on chauffe de façon uniforme à environ 250 °F au maximum (induction ou bain d'huile).",
+          "en": "Excessive or localized heating changes the hardness of the bearing steel; heat uniformly to about 250 °F maximum (induction or oil bath)."
+        }
+      },
+      {
+        "question": {
+          "fr": "La limite d'endurance (limite de fatigue) d'un acier au carbone se situe typiquement à environ quelle fraction de sa résistance à la traction ?",
+          "en": "A carbon steel's endurance limit (fatigue limit) is typically about what fraction of its tensile strength?"
+        },
+        "choix": {
+          "fr": [
+            "10 %",
+            "100 %",
+            "150 %",
+            "Environ 50 %"
+          ],
+          "en": [
+            "10%",
+            "100%",
+            "150%",
+            "About 50%"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Pour de nombreux aciers, la limite d'endurance d'une éprouvette polie est d'environ la moitié de la résistance à la traction ; elle est réduite en pratique par l'état de surface, la taille et les concentrations de contraintes.",
+          "en": "For many steels, the endurance limit of a polished specimen is about half the tensile strength; in practice it is reduced by surface finish, size, and stress concentrations."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi prévoit-on un congé (rayon de raccordement) à l'épaulement d'un arbre plutôt qu'un angle vif ?",
+          "en": "Why is a fillet (blend radius) provided at a shaft shoulder instead of a sharp corner?"
+        },
+        "choix": {
+          "fr": [
+            "Pour l'esthétique",
+            "Pour faciliter la peinture",
+            "Pour alourdir l'arbre",
+            "Pour réduire la concentration de contraintes, point de départ fréquent des fissures de fatigue"
+          ],
+          "en": [
+            "For appearance",
+            "To ease painting",
+            "To make the shaft heavier",
+            "To reduce stress concentration, a frequent starting point for fatigue cracks"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un angle vif concentre fortement les contraintes ; un congé généreux répartit mieux les efforts et retarde l'amorçage de fissures de fatigue.",
+          "en": "A sharp corner strongly concentrates stress; a generous fillet distributes loads better and delays fatigue crack initiation."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un engrenage, que désigne le jeu entre dents (backlash), et que provoque un jeu trop faible ?",
+          "en": "In a gear set, what does backlash refer to, and what does too little backlash cause?"
+        },
+        "choix": {
+          "fr": [
+            "La lubrification ; un bruit léger",
+            "Le nombre de dents ; une rupture",
+            "La rugosité des dents ; aucun effet",
+            "Le jeu entre les flancs des dents en prise ; trop faible, il peut causer du coincement, de l'échauffement et de l'usure"
+          ],
+          "en": [
+            "Lubrication; a slight noise",
+            "The number of teeth; a fracture",
+            "Tooth roughness; no effect",
+            "The clearance between meshing tooth flanks; too little can cause binding, heating, and wear"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le jeu entre dents permet la lubrification et la dilatation ; trop faible, les dents risquent de se coincer et de chauffer, trop grand, il provoque bruit et chocs.",
+          "en": "Backlash allows lubrication and expansion; too little and the teeth risk binding and heating, too much and it causes noise and shock."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la force de rétraction d'un vérin à tige est-elle plus faible que sa force de sortie, à pression égale ?",
+          "en": "Why is the retraction force of a rod-end cylinder lower than its extension force, at equal pressure?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que du côté tige, l'aire utile est réduite de la section de la tige (aire annulaire)",
+            "Parce que le liquide est plus visqueux",
+            "Parce que le vérin est plus lourd",
+            "Parce que la pression est plus basse au retour"
+          ],
+          "en": [
+            "Because on the rod side, the effective area is reduced by the rod's cross-section (annular area)",
+            "Because the fluid is more viscous",
+            "Because the cylinder is heavier",
+            "Because pressure is lower on the return"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "À la sortie, la pression agit sur toute l'aire du piston ; à la rentrée, elle agit sur l'aire annulaire (piston moins tige), plus petite, donc la force est moindre.",
+          "en": "On extension, pressure acts on the full piston area; on retraction, it acts on the annular area (piston minus rod), which is smaller, so the force is lower."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un vérin a un piston de 3 po et une tige de 1,5 po. À 2 000 psi, quelle force développe-t-il approximativement à la rentrée (aire annulaire) ?",
+          "en": "A cylinder has a 3 in. piston and a 1.5 in. rod. At 2,000 psi, what force does it develop approximately on retraction (annular area)?"
+        },
+        "choix": {
+          "fr": [
+            "14 100 lb",
+            "4 700 lb",
+            "10 600 lb",
+            "21 200 lb"
+          ],
+          "en": [
+            "14,100 lb",
+            "4,700 lb",
+            "10,600 lb",
+            "21,200 lb"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Aire annulaire = π/4 × (3² − 1,5²) = π/4 × 6,75 ≈ 5,30 po² ; force = 2000 × 5,30 ≈ 10 600 lb.",
+          "en": "Annular area = π/4 × (3² − 1.5²) = π/4 × 6.75 ≈ 5.30 in.²; force = 2000 × 5.30 ≈ 10,600 lb."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi applique-t-on un facteur de service supérieur à 1 lors du choix d'un accouplement ou d'un réducteur pour une machine soumise à des chocs ?",
+          "en": "Why is a service factor greater than 1 applied when selecting a coupling or gear reducer for a machine subject to shock loads?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que c'est une obligation esthétique",
+            "Pour augmenter la vitesse",
+            "Pour réduire le coût",
+            "Pour tenir compte des surcharges transitoires : on choisit un composant dimensionné pour une charge supérieure à la charge nominale"
+          ],
+          "en": [
+            "Because it is an aesthetic requirement",
+            "To increase speed",
+            "To reduce cost",
+            "To account for transient overloads: a component sized for a load higher than the rated load is chosen"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le facteur de service majore la charge nominale pour tenir compte des chocs et des démarrages ; le composant choisi est ainsi plus robuste que la charge nominale seule ne l'exigerait.",
+          "en": "The service factor increases the rated load to account for shock and starts; the component chosen is thus more robust than the rated load alone would require."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel avantage principal une courroie synchrone (crantée) offre-t-elle par rapport à une courroie trapézoïdale ?",
+          "en": "What main advantage does a synchronous (toothed) belt offer over a V-belt?"
+        },
+        "choix": {
+          "fr": [
+            "Elle glisse davantage",
+            "Elle supporte mieux la poussière uniquement",
+            "Elle ne glisse pas : le rapport de vitesse est constant et précis",
+            "Elle est toujours moins chère"
+          ],
+          "en": [
+            "It slips more",
+            "It only tolerates dust better",
+            "It does not slip: the speed ratio is constant and precise",
+            "It is always cheaper"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les dents de la courroie synchrone s'engrènent avec les poulies ; il n'y a donc pas de glissement et le rapport de vitesse reste constant.",
+          "en": "The synchronous belt's teeth mesh with the pulleys; there is therefore no slip and the speed ratio stays constant."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi choisit-on parfois l'acier inoxydable 316 plutôt que le 304 en milieu chloré (eau salée, piscine) ?",
+          "en": "Why is 316 stainless steel sometimes chosen over 304 in chloride environments (salt water, pools)?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le 316 est non magnétique et le 304 magnétique",
+            "Parce que le 316 ne se soude pas",
+            "Parce que le molybdène du 316 améliore la résistance à la corrosion par piqûres en présence de chlorures",
+            "Parce que le 316 est moins cher"
+          ],
+          "en": [
+            "Because 316 is non-magnetic and 304 is magnetic",
+            "Because 316 cannot be welded",
+            "Because 316's molybdenum improves resistance to pitting corrosion in the presence of chlorides",
+            "Because 316 is cheaper"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le 316 contient du molybdène, qui améliore nettement la résistance à la corrosion par piqûres et par crevasses dans les milieux contenant des chlorures.",
+          "en": "316 contains molybdenum, which notably improves resistance to pitting and crevice corrosion in chloride-containing environments."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un boulon en acier inoxydable fixe une plaque d'aluminium en milieu humide. Quel phénomène est à surveiller ?",
+          "en": "A stainless steel bolt fastens an aluminum plate in a humid environment. What phenomenon should be watched for?"
+        },
+        "choix": {
+          "fr": [
+            "L'aluminium devient magnétique",
+            "Aucun risque",
+            "La corrosion galvanique : l'aluminium, moins noble, se corrode préférentiellement au contact de l'inox en présence d'humidité",
+            "Le boulon fond"
+          ],
+          "en": [
+            "The aluminum becomes magnetic",
+            "No risk",
+            "Galvanic corrosion: aluminum, the less noble metal, corrodes preferentially in contact with stainless in the presence of moisture",
+            "The bolt melts"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Deux métaux dissemblables en contact dans un électrolyte forment une pile galvanique ; le métal le moins noble (ici l'aluminium) se corrode en priorité. On isole les métaux (rondelles, manchons) ou on choisit des matériaux compatibles.",
+          "en": "Two dissimilar metals in contact in an electrolyte form a galvanic cell; the less noble metal (here aluminum) corrodes first. The metals are isolated (washers, sleeves) or compatible materials are chosen."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi ne faut-il jamais frapper la bague extérieure d'un roulement pour monter sa bague intérieure sur l'arbre ?",
+          "en": "Why should you never strike a bearing's outer ring to mount its inner ring onto the shaft?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que l'effort passe par les billes et peut les marquer (brinelling), détruisant les chemins de roulement avant même la mise en service",
+            "Aucun problème n'existe",
+            "Parce que cela fait du bruit",
+            "Parce que la bague extérieure est plus fragile à froid"
+          ],
+          "en": [
+            "Because the force passes through the balls and can mark them (brinelling), destroying the raceways before service even begins",
+            "No problem exists",
+            "Because it makes noise",
+            "Because the outer ring is more brittle when cold"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'effort de montage doit s'appliquer sur la bague qui est ajustée serrée (ici la bague intérieure) ; le transmettre à travers les billes les marque de façon permanente (brinelling).",
+          "en": "The mounting force must be applied to the ring that has the interference fit (here the inner ring); transmitting it through the balls permanently marks them (brinelling)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment reconnaît-on généralement une rupture ductile d'une rupture fragile sur la surface de rupture d'une pièce d'acier ?",
+          "en": "How can a ductile fracture generally be distinguished from a brittle fracture on the fracture surface of a steel part?"
+        },
+        "choix": {
+          "fr": [
+            "Une rupture ductile présente une déformation plastique marquée (étranglement) et un faciès fibreux mat ; une rupture fragile est plane, brillante et sans déformation notable",
+            "Une rupture ductile est brillante et plane, sans déformation",
+            "Il n'y a aucune différence visible",
+            "La rupture fragile est toujours précédée d'un étranglement"
+          ],
+          "en": [
+            "A ductile fracture shows marked plastic deformation (necking) and a dull, fibrous surface; a brittle fracture is flat, shiny, and shows no notable deformation",
+            "A ductile fracture is shiny and flat, with no deformation",
+            "There is no visible difference",
+            "A brittle fracture is always preceded by necking"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La rupture ductile absorbe beaucoup d'énergie et laisse un étranglement et une surface mate, fibreuse ; la rupture fragile survient presque sans déformation, avec une surface brillante et granuleuse ou plane.",
+          "en": "Ductile fracture absorbs a lot of energy and leaves necking and a dull, fibrous surface; brittle fracture occurs almost without deformation, with a shiny, granular or flat surface."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon la règle courante, comment l'intervalle de regraissage d'un roulement varie-t-il lorsque sa température de fonctionnement augmente au-delà d'environ 160 °F ?",
+          "en": "By the common rule, how does a bearing's regreasing interval change when its operating temperature rises above about 160 °F?"
+        },
+        "choix": {
+          "fr": [
+            "Il diminue : l'intervalle est approximativement réduit de moitié pour chaque hausse d'environ 27 °F",
+            "Il reste constant",
+            "Il augmente",
+            "Il n'a aucun lien avec la température"
+          ],
+          "en": [
+            "It decreases: the interval is roughly halved for each rise of about 27 °F",
+            "It stays constant",
+            "It increases",
+            "It has no link to temperature"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La graisse vieillit plus vite à chaud : une règle courante réduit l'intervalle de regraissage de moitié par tranche d'environ 27 °F (15 °C) au-delà d'environ 160 °F.",
+          "en": "Grease ages faster when hot: a common rule halves the regreasing interval for each rise of about 27 °F (15 °C) above about 160 °F."
         }
       }
     ]
@@ -1320,6 +2626,1310 @@ window.QUESTIONNAIRES = [
           "en": "The height gauge slides on the surface plate, and its scriber, set to the desired height, marks a line parallel to the supporting surface."
         }
       }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Pour percer de l'acier doux avec un foret de 1/2 po, la vitesse de coupe recommandée est d'environ 90 pi/min (SFM). Quelle vitesse de rotation approximative faut-il utiliser (RPM = SFM × 3,82 / diamètre) ?",
+          "en": "For drilling mild steel with a 1/2 in. bit, the recommended cutting speed is about 90 ft/min (SFM). What approximate rotational speed should be used (RPM = SFM × 3.82 / diameter)?"
+        },
+        "choix": {
+          "fr": [
+            "2 750 tr/min",
+            "690 tr/min",
+            "1 380 tr/min",
+            "340 tr/min"
+          ],
+          "en": [
+            "2,750 rpm",
+            "690 rpm",
+            "1,380 rpm",
+            "340 rpm"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "RPM = 90 × 3,82 / 0,5 ≈ 688 tr/min, soit environ 690 tr/min.",
+          "en": "RPM = 90 × 3.82 / 0.5 ≈ 688 rpm, or about 690 rpm."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour le même matériau, un foret de 1/4 po doit tourner :",
+          "en": "For the same material, a 1/4 in. drill bit should turn:"
+        },
+        "choix": {
+          "fr": [
+            "Plus lentement qu'un foret de 1/2 po",
+            "À vitesse maximale dans tous les cas",
+            "À la même vitesse qu'un foret de 1/2 po",
+            "Environ deux fois plus vite qu'un foret de 1/2 po"
+          ],
+          "en": [
+            "More slowly than a 1/2 in. bit",
+            "At maximum speed in all cases",
+            "At the same speed as a 1/2 in. bit",
+            "About twice as fast as a 1/2 in. bit"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "La vitesse de rotation est inversement proportionnelle au diamètre : un foret deux fois plus petit tourne environ deux fois plus vite pour garder la même vitesse de coupe en surface.",
+          "en": "Rotational speed is inversely proportional to diameter: a bit half the size turns about twice as fast to keep the same surface cutting speed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi choisit-on un foret en cobalt (HSS-Co) pour percer de l'acier inoxydable ?",
+          "en": "Why is a cobalt (HSS-Co) drill bit chosen for drilling stainless steel?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'il conserve mieux sa dureté à haute température, ce qui convient à un matériau qui chauffe et s'écrouit",
+            "Parce qu'il est moins cher",
+            "Parce qu'il est plus flexible",
+            "Parce qu'il tourne sans lubrifiant"
+          ],
+          "en": [
+            "Because it keeps its hardness better at high temperature, which suits a material that heats up and work-hardens",
+            "Because it is cheaper",
+            "Because it is more flexible",
+            "Because it runs without lubricant"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le cobalt donne au foret une meilleure dureté à chaud, utile pour les matériaux difficiles à usiner comme l'inox, qui chauffent beaucoup en coupe.",
+          "en": "Cobalt gives the bit better hot hardness, useful for hard-to-machine materials like stainless, which heat up a lot during cutting."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'avantage d'un foret à pointe fendue de 135° par rapport à un foret standard de 118° dans un matériau dur ?",
+          "en": "What is the advantage of a 135° split-point drill bit over a standard 118° bit in a hard material?"
+        },
+        "choix": {
+          "fr": [
+            "Il est plus pointu et glisse plus facilement",
+            "Il perce uniquement le bois",
+            "Il se centre seul, sans pointage, et réclame moins de poussée",
+            "Il ne chauffe jamais"
+          ],
+          "en": [
+            "It is sharper and slips more easily",
+            "It only drills wood",
+            "It centers itself without a punch mark and needs less thrust",
+            "It never heats up"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "La pointe fendue à 135° s'auto-centre et réduit l'effort axial, ce qui convient aux métaux durs comme l'inox.",
+          "en": "The 135° split point self-centers and reduces axial force, which suits hard metals such as stainless."
+        }
+      },
+      {
+        "question": {
+          "fr": "On veut aléser un trou à 0,500 po avec un alésoir. De quel diamètre faut-il percer d'abord, approximativement ?",
+          "en": "A hole is to be reamed to 0.500 in. What diameter should be drilled first, approximately?"
+        },
+        "choix": {
+          "fr": [
+            "0,520 po",
+            "0,484 po (31/64 po)",
+            "0,500 po",
+            "0,400 po"
+          ],
+          "en": [
+            "0.520 in.",
+            "0.484 in. (31/64 in.)",
+            "0.500 in.",
+            "0.400 in."
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un alésoir enlève seulement une mince couche (environ 0,010 à 0,015 po) : on perce légèrement sous le diamètre final, ici environ 0,484 po.",
+          "en": "A reamer removes only a thin layer (about 0.010 to 0.015 in.): the hole is drilled slightly under final size, here about 0.484 in."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'angle de la fraisure utilisée pour loger une vis à tête plate (norme SAE) ?",
+          "en": "What is the angle of the countersink used to seat a flat-head screw (SAE standard)?"
+        },
+        "choix": {
+          "fr": [
+            "118°",
+            "60°",
+            "82°",
+            "45°"
+          ],
+          "en": [
+            "118°",
+            "60°",
+            "82°",
+            "45°"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les vis à tête plate de la norme américaine (SAE) ont une tête conique de 82° ; la fraisure doit avoir le même angle.",
+          "en": "Flat-head screws in the American (SAE) standard have an 82° conical head; the countersink must have the same angle."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel foret de taraudage convient pour un filetage 1/4-20 UNC (diamètre moins pas : 0,250 − 1/20 = 0,200 po) ?",
+          "en": "Which tap drill suits a 1/4-20 UNC thread (diameter minus pitch: 0.250 − 1/20 = 0.200 in.)?"
+        },
+        "choix": {
+          "fr": [
+            "N° 21 (0,159 po)",
+            "N° 7 (0,201 po)",
+            "1/4 po (0,250 po)",
+            "N° 3 (0,213 po)"
+          ],
+          "en": [
+            "No. 21 (0.159 in.)",
+            "No. 7 (0.201 in.)",
+            "1/4 in. (0.250 in.)",
+            "No. 3 (0.213 in.)"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le foret n° 7 (0,201 po) est le plus proche de 0,200 po, la valeur calculée pour le trou de taraudage d'un 1/4-20.",
+          "en": "The No. 7 drill (0.201 in.) is closest to 0.200 in., the calculated value for a 1/4-20 tap hole."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la particularité d'un taraud à refouler (forming tap) par rapport à un taraud à couper ?",
+          "en": "What is special about a forming tap compared to a cutting tap?"
+        },
+        "choix": {
+          "fr": [
+            "Il forme le filet par déformation du métal, sans copeaux, et exige un trou de taraudage légèrement plus grand",
+            "Il produit beaucoup de copeaux",
+            "Il ne fonctionne que dans le bois",
+            "Il fonctionne uniquement à la main"
+          ],
+          "en": [
+            "It forms the thread by deforming the metal, with no chips, and needs a slightly larger tap-drill hole",
+            "It produces many chips",
+            "It only works in wood",
+            "It only works by hand"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le taraud à refouler déforme le métal pour créer le filet, sans copeaux ; le trou préparé est un peu plus grand que pour un taraud à couper.",
+          "en": "The forming tap deforms the metal to create the thread, with no chips; the prepared hole is slightly larger than for a cutting tap."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert un insert de filet hélicoïdal (type Heli-Coil) ?",
+          "en": "What is a helical thread insert (Heli-Coil type) used for?"
+        },
+        "choix": {
+          "fr": [
+            "À réparer un filetage endommagé en installant un insert en fil d'acier en spirale qui reforme le filet d'origine",
+            "À lubrifier le filet",
+            "À remplacer la vis",
+            "À serrer plus fort"
+          ],
+          "en": [
+            "Repairing a damaged thread by installing a coiled wire insert that restores the original thread",
+            "Lubricating the thread",
+            "Replacing the screw",
+            "Tightening harder"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "On perce et on retaraude le trou endommagé à une taille plus grande, puis on installe l'insert hélicoïdal, qui restitue un filet de la taille d'origine.",
+          "en": "The damaged hole is drilled and retapped to a larger size, then the helical insert is installed, restoring a thread of the original size."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un micromètre d'extérieur gradué en millièmes de pouce, la douille indique 0,375 po et le tambour 19 divisions (0,019 po). Quelle est la lecture ?",
+          "en": "On an outside micrometer graduated in thousandths of an inch, the sleeve shows 0.375 in. and the thimble 19 divisions (0.019 in.). What is the reading?"
+        },
+        "choix": {
+          "fr": [
+            "0,375 po",
+            "0,419 po",
+            "0,569 po",
+            "0,394 po"
+          ],
+          "en": [
+            "0.375 in.",
+            "0.419 in.",
+            "0.569 in.",
+            "0.394 in."
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Lecture = 0,375 + 0,019 = 0,394 po.",
+          "en": "Reading = 0.375 + 0.019 = 0.394 in."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la résolution typique d'un pied à coulisse à cadran ou numérique en unités impériales ?",
+          "en": "What is the typical resolution of a dial or digital caliper in imperial units?"
+        },
+        "choix": {
+          "fr": [
+            "0,1 po",
+            "0,001 po",
+            "0,00001 po",
+            "1/4 po"
+          ],
+          "en": [
+            "0.1 in.",
+            "0.001 in.",
+            "0.00001 in.",
+            "1/4 in."
+          ]
+        },
+        "reponse": 1,
+        "complexite": 1,
+        "explication": {
+          "fr": "Un pied à coulisse à cadran ou numérique lit habituellement au millième de pouce (0,001 po) ; un micromètre peut aller plus loin.",
+          "en": "A dial or digital caliper usually reads to one thousandth of an inch (0.001 in.); a micrometer can go further."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi les instruments de mesure sont-ils étalonnés périodiquement et leur étalonnage consigné ?",
+          "en": "Why are measuring instruments calibrated periodically and their calibration recorded?"
+        },
+        "choix": {
+          "fr": [
+            "Pour augmenter leur vitesse de lecture",
+            "Pour garantir que leurs lectures restent fiables par rapport à un étalon de référence, avec traçabilité",
+            "Pour les rendre plus lourds",
+            "Pour des raisons esthétiques"
+          ],
+          "en": [
+            "To increase their reading speed",
+            "To ensure their readings remain reliable against a reference standard, with traceability",
+            "To make them heavier",
+            "For aesthetic reasons"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 1,
+        "explication": {
+          "fr": "L'étalonnage compare l'instrument à un étalon de référence ; la consignation assure la traçabilité et la confiance dans les mesures.",
+          "en": "Calibration compares the instrument to a reference standard; recording it ensures traceability and confidence in measurements."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que désigne le « wringing » (adhérence) de cales étalon ?",
+          "en": "What does \"wringing\" of gauge blocks mean?"
+        },
+        "choix": {
+          "fr": [
+            "Le nettoyage à l'eau",
+            "L'assemblage de cales par glissement de leurs faces polies, qui adhèrent entre elles pour former une hauteur précise",
+            "La peinture des cales",
+            "Le serrage au couple"
+          ],
+          "en": [
+            "Washing with water",
+            "Assembling blocks by sliding their polished faces together so they adhere and form a precise height",
+            "Painting the blocks",
+            "Tightening to torque"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les faces très planes de cales étalon, glissées l'une sur l'autre avec une légère pression, adhèrent sans jeu et permettent de composer une hauteur précise.",
+          "en": "The very flat faces of gauge blocks, slid together with light pressure, adhere without any gap and allow a precise height to be built up."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi les mesures de haute précision sont-elles idéalement prises à la température de référence de 68 °F ?",
+          "en": "Why are high-precision measurements ideally taken at the 68 °F reference temperature?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le métal change de couleur",
+            "Parce que les piles durent plus longtemps",
+            "Parce que la lumière est meilleure",
+            "Parce que les pièces et les instruments se dilatent ou se contractent avec la température, ce qui fausse les mesures précises"
+          ],
+          "en": [
+            "Because metal changes color",
+            "Because batteries last longer",
+            "Because the light is better",
+            "Because parts and instruments expand or contract with temperature, which skews precise measurements"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le métal se dilate avec la chaleur ; les dimensions sont définies à 68 °F, et une mesure fine à une autre température doit être corrigée ou évitée.",
+          "en": "Metal expands with heat; dimensions are defined at 68 °F, and a fine measurement at another temperature must be corrected or avoided."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour des résultats précis, dans quelle partie de sa plage une clé dynamométrique à déclic devrait-elle être utilisée ?",
+          "en": "For accurate results, in what part of its range should a click-type torque wrench be used?"
+        },
+        "choix": {
+          "fr": [
+            "Entre 0 et 10 % de sa plage",
+            "Peu importe la plage",
+            "Uniquement à 100 %",
+            "Entre environ 20 % et 100 % de sa plage"
+          ],
+          "en": [
+            "Between 0 and 10% of its range",
+            "The range doesn't matter",
+            "Only at 100%",
+            "Between about 20% and 100% of its range"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les clés dynamométriques sont les plus précises dans la partie supérieure de leur plage ; on évite le bas de l'échelle, où l'erreur relative est plus grande.",
+          "en": "Torque wrenches are most accurate in the upper part of their range; the low end of the scale is avoided, where relative error is larger."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi ne doit-on pas utiliser une clé à chocs (pneumatique) pour serrer au couple spécifié un assemblage critique ?",
+          "en": "Why should an impact wrench (air) not be used to tighten a critical assembly to a specified torque?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'elle fonctionne seulement à gauche",
+            "Parce qu'elle ne serre pas",
+            "Parce qu'elle est trop silencieuse",
+            "Parce que le couple qu'elle délivre est imprécis et variable ; un contrôle final à la clé dynamométrique est requis"
+          ],
+          "en": [
+            "Because it only works counterclockwise",
+            "Because it doesn't tighten",
+            "Because it is too quiet",
+            "Because the torque it delivers is imprecise and variable; a final check with a torque wrench is required"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une clé à chocs délivre un couple variable selon la pression, l'état du boulon et la durée ; pour un couple spécifié, on termine ou on vérifie avec une clé dynamométrique.",
+          "en": "An impact wrench delivers a torque that varies with pressure, bolt condition, and duration; for a specified torque, finish or verify with a torque wrench."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une clé dynamométrique de 18 po est réglée à 100 lb·pi. On y ajoute une rallonge de 6 po dans le prolongement de la clé. Quel couple est réellement appliqué au boulon ?",
+          "en": "An 18 in. torque wrench is set to 100 lb·ft. A 6 in. extension is added in line with the wrench. What torque is actually applied to the bolt?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 133 lb·pi",
+            "100 lb·pi",
+            "200 lb·pi",
+            "75 lb·pi"
+          ],
+          "en": [
+            "About 133 lb·ft",
+            "100 lb·ft",
+            "200 lb·ft",
+            "75 lb·ft"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le bras de levier passe de 18 à 24 po : couple réel = 100 × 24 / 18 ≈ 133 lb·pi. Il faut donc corriger le réglage de la clé.",
+          "en": "The lever arm goes from 18 to 24 in.: actual torque = 100 × 24 / 18 ≈ 133 lb·ft. The wrench setting must therefore be corrected."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel critère guide le choix du nombre de dents par pouce (TPI) d'une lame de scie à métaux ?",
+          "en": "What criterion guides the choice of teeth per inch (TPI) of a hacksaw blade?"
+        },
+        "choix": {
+          "fr": [
+            "Toujours le plus petit nombre de dents",
+            "La couleur de la lame",
+            "Au moins 3 dents en prise dans l'épaisseur coupée : plus de dents (24 à 32) pour la tôle mince, moins pour les sections épaisses",
+            "Le prix de la lame"
+          ],
+          "en": [
+            "Always the smallest number of teeth",
+            "The blade's color",
+            "At least 3 teeth engaged in the thickness being cut: more teeth (24 to 32) for thin sheet, fewer for thick sections",
+            "The blade's price"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Il faut au moins trois dents en contact avec le matériau pour éviter l'accrochage ; la tôle mince exige donc beaucoup de dents par pouce.",
+          "en": "At least three teeth must be in contact with the material to avoid snagging; thin sheet therefore requires many teeth per inch."
+        }
+      },
+      {
+        "question": {
+          "fr": "Avant de monter une meule abrasive, quel contrôle est recommandé ?",
+          "en": "Before mounting an abrasive grinding wheel, what check is recommended?"
+        },
+        "choix": {
+          "fr": [
+            "La monter sans contrôle",
+            "La tremper dans l'eau",
+            "La peindre",
+            "Un essai au son (ring test) pour déceler une fissure, et vérifier que sa vitesse maximale inscrite n'est pas inférieure à celle de la machine"
+          ],
+          "en": [
+            "Mounting it without a check",
+            "Soaking it in water",
+            "Painting it",
+            "A ring test to detect a crack, and verifying that its marked maximum speed is not lower than the machine's"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une meule fissurée peut éclater : on la fait sonner (un son clair indique qu'elle est saine) et on vérifie que sa vitesse maximale admissible dépasse celle de la machine.",
+          "en": "A cracked wheel can burst: it is tapped to make it ring (a clear sound indicates it is sound) and its allowable maximum speed is checked against the machine's."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi le carter de protection d'une meuleuse d'angle doit-il toujours rester en place ?",
+          "en": "Why must the guard of an angle grinder always stay in place?"
+        },
+        "choix": {
+          "fr": [
+            "Pour le style",
+            "Pour augmenter la vitesse",
+            "Pour protéger l'opérateur des étincelles et des fragments en cas d'éclatement du disque",
+            "Pour refroidir le disque"
+          ],
+          "en": [
+            "For style",
+            "To increase speed",
+            "To protect the operator from sparks and fragments if the disc bursts",
+            "To cool the disc"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 1,
+        "explication": {
+          "fr": "Le carter retient les fragments d'un disque qui éclaterait et dévie les étincelles ; on ne le retire jamais.",
+          "en": "The guard retains fragments from a disc that bursts and deflects sparks; it is never removed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lorsqu'on utilise du ruban de PTFE sur un raccord fileté, pourquoi commence-t-on l'enrubannage un ou deux filets en retrait de l'extrémité ?",
+          "en": "When using PTFE tape on a threaded fitting, why is wrapping started one or two threads back from the end?"
+        },
+        "choix": {
+          "fr": [
+            "Pour que le ruban soit plus visible",
+            "Parce que les premiers filets ne sont pas utiles",
+            "Pour éviter que des lambeaux de ruban se détachent à l'engagement du raccord et pénètrent dans le circuit où ils peuvent obstruer des composants",
+            "Pour économiser du ruban"
+          ],
+          "en": [
+            "So the tape is more visible",
+            "Because the first threads are not useful",
+            "To keep shreds of tape from tearing off as the fitting engages and entering the system, where they can clog components",
+            "To save tape"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le ruban qui déborde à l'extrémité peut être cisaillé à l'assemblage et entraîné dans la tuyauterie, où il bouche des filtres, des vannes ou des instruments.",
+          "en": "Tape that overhangs the end can be sheared during assembly and carried into the piping, where it clogs strainers, valves, or instruments."
+        }
+      },
+      {
+        "question": {
+          "fr": "En utilisant une clé à tuyau, comment doit-on orienter l'effort par rapport aux mâchoires ?",
+          "en": "When using a pipe wrench, how should the effort be oriented relative to the jaws?"
+        },
+        "choix": {
+          "fr": [
+            "En tapant sur la clé avec un marteau",
+            "Dans le sens opposé aux mâchoires",
+            "Dans le sens où les mâchoires se resserrent sur le tuyau (la force tire vers l'intérieur de l'ouverture)",
+            "Peu importe"
+          ],
+          "en": [
+            "By striking the wrench with a hammer",
+            "In the direction opposite the jaws",
+            "In the direction in which the jaws tighten on the pipe (the force pulls toward the inside of the opening)",
+            "It doesn't matter"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une clé à tuyau mord de plus en plus fort lorsque l'effort est appliqué dans le sens qui referme les mâchoires ; dans l'autre sens, elle glisse.",
+          "en": "A pipe wrench bites harder and harder when the effort is applied in the direction that closes the jaws; in the other direction, it slips."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi réduit-on la pression sur la perceuse quand le foret s'apprête à traverser la pièce ?",
+          "en": "Why is pressure reduced on the drill when the bit is about to break through the workpiece?"
+        },
+        "choix": {
+          "fr": [
+            "Pour éviter que le foret s'accroche à la sortie du trou et soit tiré dans la pièce ou la fasse tourner",
+            "Pour refroidir le foret",
+            "Pour économiser l'énergie",
+            "Pour que le trou soit plus petit"
+          ],
+          "en": [
+            "To keep the bit from grabbing at the hole's exit and being pulled into the workpiece or spinning it",
+            "To cool the bit",
+            "To save energy",
+            "To make the hole smaller"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "À la sortie, le foret tend à s'accrocher et à s'enfoncer brusquement ; relâcher la pression limite le risque de blocage, de bris du foret et de rotation de la pièce.",
+          "en": "At breakthrough, the bit tends to grab and plunge suddenly; easing pressure limits the risk of jamming, bit breakage, and the workpiece spinning."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on des mordaches douces (en aluminium ou en cuivre) dans un étau pour serrer une pièce usinée ?",
+          "en": "Why are soft jaws (aluminum or copper) used in a vise to hold a machined part?"
+        },
+        "choix": {
+          "fr": [
+            "Pour éviter de marquer ou de déformer les surfaces finies de la pièce",
+            "Pour serrer plus fort",
+            "Pour chauffer la pièce",
+            "Pour que la pièce tourne plus vite"
+          ],
+          "en": [
+            "To avoid marking or deforming the part's finished surfaces",
+            "To clamp harder",
+            "To heat the part",
+            "So the part turns faster"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Les mordaches douces, plus tendres que la pièce, épousent la surface sans la marquer, ce qui protège les surfaces déjà usinées.",
+          "en": "Soft jaws, softer than the part, conform to the surface without marking it, which protects surfaces that are already machined."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un comparateur à cadran gradué en 0,001 po dont une rotation complète de l'aiguille vaut 0,100 po, de combien l'aiguille a-t-elle tourné si le palpeur se déplace de 0,025 po ?",
+          "en": "On a dial indicator graduated in 0.001 in. where one full needle revolution equals 0.100 in., how far does the needle turn if the plunger moves 0.025 in.?"
+        },
+        "choix": {
+          "fr": [
+            "Un quart de tour",
+            "Un demi-tour",
+            "Un dixième de tour",
+            "Un tour complet"
+          ],
+          "en": [
+            "A quarter turn",
+            "A half turn",
+            "A tenth of a turn",
+            "A full turn"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "0,025 po représente 25 divisions sur 100 : un quart de tour.",
+          "en": "0.025 in. represents 25 divisions out of 100: a quarter turn."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Un foret de 1/2 po perce de l'acier à 690 tr/min avec une avance de 0,004 po par tour. Quelle est la vitesse d'avance approximative du foret dans la pièce ?",
+          "en": "A 1/2 in. drill bit cuts steel at 690 rpm with a feed of 0.004 in. per revolution. What is the drill's approximate feed rate into the workpiece?"
+        },
+        "choix": {
+          "fr": [
+            "276 po/min",
+            "2,8 po/min",
+            "28 po/min",
+            "0,28 po/min"
+          ],
+          "en": [
+            "276 in./min",
+            "2.8 in./min",
+            "28 in./min",
+            "0.28 in./min"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Vitesse d'avance = avance par tour × tr/min = 0,004 × 690 ≈ 2,76 po/min.",
+          "en": "Feed rate = feed per revolution × rpm = 0.004 × 690 ≈ 2.76 in./min."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pendant le perçage de l'inox, le foret se met à grincer et ne coupe plus, la pièce chauffe. Quelle est la bonne conduite ?",
+          "en": "While drilling stainless, the bit starts squealing and no longer cuts, and the workpiece heats up. What is the right course of action?"
+        },
+        "choix": {
+          "fr": [
+            "Appuyer plus fort en accélérant",
+            "Percer à sec pour refroidir",
+            "Continuer sans rien changer",
+            "Arrêter, changer ou réaffûter le foret, puis reprendre à vitesse plus lente avec une avance ferme et constante et de l'huile de coupe"
+          ],
+          "en": [
+            "Press harder while speeding up",
+            "Drill dry to cool it",
+            "Continue without changing anything",
+            "Stop, replace or resharpen the bit, then resume at slower speed with firm, steady feed and cutting oil"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un foret qui frotte écrouit l'inox, ce qui le rend encore plus dur : il faut changer d'outil et recommencer avec une vitesse lente, une avance ferme et un lubrifiant.",
+          "en": "A bit that rubs work-hardens stainless, making it even harder: change the tool and start over with slow speed, firm feed, and lubricant."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi vise-t-on environ 75 % de filet plutôt que 100 % lors du taraudage ?",
+          "en": "Why aim for about 75% thread engagement rather than 100% when tapping?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que 75 % offre presque toute la résistance du filet avec beaucoup moins d'effort de taraudage et moins de risque de briser le taraud",
+            "Parce que 100 % est impossible à mesurer",
+            "Parce que le filet à 100 % ne se visse pas",
+            "Parce que 75 % est plus rapide à percer uniquement"
+          ],
+          "en": [
+            "Because 75% provides nearly all the thread's strength with much less tapping effort and less risk of breaking the tap",
+            "Because 100% is impossible to measure",
+            "Because a 100% thread won't screw in",
+            "Because 75% is only faster to drill"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Passer de 75 % à 100 % de filet augmente peu la résistance de l'assemblage, mais accroît beaucoup le couple de taraudage et le risque de bris du taraud.",
+          "en": "Going from 75% to 100% thread engagement adds little joint strength but greatly increases tapping torque and the risk of breaking the tap."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un taraudage 1/2-13 UNC doit offrir 1 po de filet complet dans un trou borgne. Quelle profondeur de perçage minimale est approximativement nécessaire (profondeur utile plus environ 3 à 4 pas pour l'amorce du taraud et les copeaux) ?",
+          "en": "A 1/2-13 UNC tapped hole must provide 1 in. of full thread in a blind hole. What minimum drilling depth is approximately needed (useful depth plus about 3 to 4 pitches for the tap's lead and chips)?"
+        },
+        "choix": {
+          "fr": [
+            "1,00 po",
+            "1,75 po",
+            "Environ 1,27 po",
+            "2,50 po"
+          ],
+          "en": [
+            "1.00 in.",
+            "1.75 in.",
+            "About 1.27 in.",
+            "2.50 in."
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le pas vaut 1/13 po ≈ 0,077 po ; 3,5 pas ≈ 0,27 po. Profondeur ≈ 1,00 + 0,27 ≈ 1,27 po.",
+          "en": "The pitch is 1/13 in. ≈ 0.077 in.; 3.5 pitches ≈ 0.27 in. Depth ≈ 1.00 + 0.27 ≈ 1.27 in."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi le micromètre est-il muni d'un cliquet ou d'un embrayage à friction à l'extrémité du tambour ?",
+          "en": "Why is a micrometer fitted with a ratchet or friction clutch at the end of the thimble?"
+        },
+        "choix": {
+          "fr": [
+            "Pour verrouiller le tambour",
+            "Pour appliquer une force de mesure constante et éviter de serrer plus ou moins fort d'une mesure à l'autre",
+            "Pour accélérer la rotation",
+            "Pour faire du bruit"
+          ],
+          "en": [
+            "To lock the thimble",
+            "To apply a constant measuring force and avoid tightening more or less from one measurement to the next",
+            "To speed up rotation",
+            "To make noise"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une force de contact variable déforme légèrement la pièce et l'instrument : le cliquet limite la force de mesure à une valeur constante et améliore la répétabilité.",
+          "en": "A varying contact force slightly deforms the part and the instrument: the ratchet limits the measuring force to a constant value and improves repeatability."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi doit-on tenir une clé dynamométrique à déclic au centre de sa poignée, à l'endroit prévu ?",
+          "en": "Why must a click-type torque wrench be held at the center of its handle, at the designated spot?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le déclic ne fonctionne qu'au centre",
+            "Parce que la poignée est plus lisse au centre",
+            "Parce que le couple appliqué dépend de la distance entre le point de prise et la tête : tenir la clé ailleurs change le bras de levier réel et fausse le couple",
+            "Pour des raisons esthétiques"
+          ],
+          "en": [
+            "Because the click only works at the center",
+            "Because the handle is smoother at the center",
+            "Because the applied torque depends on the distance between the grip point and the head: holding the wrench elsewhere changes the real lever arm and skews the torque",
+            "For aesthetic reasons"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "La clé est étalonnée pour une force appliquée au centre de la poignée ; tirer plus près ou plus loin de la tête change le bras de levier et donc le couple réellement appliqué.",
+          "en": "The wrench is calibrated for a force applied at the center of the handle; pulling closer to or farther from the head changes the lever arm and therefore the torque actually applied."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une clé dynamométrique a une précision de ±4 %. Réglée à 100 lb·pi, entre quelles valeurs le couple délivré peut-il se situer ?",
+          "en": "A torque wrench has ±4% accuracy. Set to 100 lb·ft, between what values can the delivered torque fall?"
+        },
+        "choix": {
+          "fr": [
+            "90 et 110 lb·pi",
+            "96 et 104 lb·pi",
+            "50 et 150 lb·pi",
+            "99 et 101 lb·pi"
+          ],
+          "en": [
+            "90 and 110 lb·ft",
+            "96 and 104 lb·ft",
+            "50 and 150 lb·ft",
+            "99 and 101 lb·ft"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "±4 % de 100 lb·pi représente ±4 lb·pi : le couple peut aller de 96 à 104 lb·pi.",
+          "en": "±4% of 100 lb·ft is ±4 lb·ft: the torque can range from 96 to 104 lb·ft."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon la règle courante du 10:1, quelle résolution minimale doit avoir un instrument pour vérifier une tolérance totale de 0,010 po (±0,005 po) ?",
+          "en": "Under the common 10:1 rule, what minimum resolution must an instrument have to verify a total tolerance of 0.010 in. (±0.005 in.)?"
+        },
+        "choix": {
+          "fr": [
+            "0,001 po",
+            "0,0001 po",
+            "0,010 po",
+            "0,005 po"
+          ],
+          "en": [
+            "0.001 in.",
+            "0.0001 in.",
+            "0.010 in.",
+            "0.005 in."
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'instrument doit être environ dix fois plus fin que la tolérance à vérifier : 0,010 / 10 = 0,001 po.",
+          "en": "The instrument should be about ten times finer than the tolerance to be checked: 0.010 / 10 = 0.001 in."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel instrument convient pour contrôler précisément un alésage de 2,500 po à ± 0,0005 po ?",
+          "en": "Which instrument suits precisely checking a 2.500 in. bore to ± 0.0005 in.?"
+        },
+        "choix": {
+          "fr": [
+            "Un micromètre d'intérieur ou une jauge à alésage, étalonnés sur une bague étalon",
+            "Une règle graduée au 1/16 po",
+            "Un ruban à mesurer",
+            "Un compas à pointes sèches"
+          ],
+          "en": [
+            "An inside micrometer or a bore gauge, set on a setting ring",
+            "A ruler graduated in 1/16 in.",
+            "A tape measure",
+            "A dry-point compass"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une tolérance de ±0,0005 po exige un micromètre d'intérieur ou une jauge à alésage à cadran, réglés sur une bague étalon de la bonne dimension.",
+          "en": "A ±0.0005 in. tolerance requires an inside micrometer or a dial bore gauge, set on a setting ring of the correct size."
+        }
+      },
+      {
+        "question": {
+          "fr": "À la lecture d'un arbre, un micromètre indique 0,7504 po dans une direction et 0,7497 po dans la direction perpendiculaire au même endroit. Que révèle cet écart ?",
+          "en": "Measuring a shaft, a micrometer reads 0.7504 in. in one direction and 0.7497 in. in the perpendicular direction at the same spot. What does this difference reveal?"
+        },
+        "choix": {
+          "fr": [
+            "Une conicité de l'arbre",
+            "Un défaut de peinture",
+            "Une erreur de lecture seulement",
+            "Un défaut de rondeur (ovalité) d'environ 0,0007 po"
+          ],
+          "en": [
+            "A taper of the shaft",
+            "A paint defect",
+            "A reading error only",
+            "An out-of-round condition of about 0.0007 in."
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Deux diamètres différents mesurés au même endroit révèlent un défaut de rondeur ; une conicité se détecterait plutôt en mesurant en deux endroits sur la longueur.",
+          "en": "Two different diameters measured at the same spot reveal an out-of-round condition; a taper would instead be detected by measuring at two spots along the length."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe chauffe en service et l'arbre du moteur monte d'environ 0,003 po à chaud par rapport à l'arbre de la pompe. Comment règle-t-on l'alignement à froid ?",
+          "en": "A pump heats up in service and the motor shaft rises about 0.003 in. when hot relative to the pump shaft. How is cold alignment set?"
+        },
+        "choix": {
+          "fr": [
+            "Aligner parfaitement à froid, sans tenir compte de la chaleur",
+            "Placer l'arbre du moteur environ 0,003 po plus bas à froid, pour qu'il soit aligné à la température de service",
+            "Placer l'arbre du moteur 0,003 po plus haut à froid",
+            "Ne jamais aligner la pompe"
+          ],
+          "en": [
+            "Align perfectly cold, ignoring heat",
+            "Place the motor shaft about 0.003 in. lower when cold, so it is aligned at operating temperature",
+            "Place the motor shaft 0.003 in. higher when cold",
+            "Never align the pump"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "On compense la dilatation : si le moteur monte de 0,003 po à chaud, on l'installe 0,003 po plus bas à froid, pour atteindre l'alignement à la température de service.",
+          "en": "Thermal growth is compensated for: if the motor rises 0.003 in. when hot, it is installed 0.003 in. lower cold, to reach alignment at operating temperature."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la vitesse de rotation de la meuleuse ne doit-elle jamais dépasser la vitesse maximale inscrite sur la meule ?",
+          "en": "Why must the grinder's rotational speed never exceed the maximum speed marked on the wheel?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que cela fait trop de bruit",
+            "Parce qu'un excès de vitesse peut provoquer l'éclatement de la meule, avec de graves blessures",
+            "Parce que la meule s'use plus lentement",
+            "Pour économiser le courant"
+          ],
+          "en": [
+            "Because it makes too much noise",
+            "Because excess speed can cause the wheel to burst, with serious injury",
+            "Because the wheel wears more slowly",
+            "To save current"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "La force centrifuge croît avec le carré de la vitesse : au-delà de la vitesse maximale, la meule peut se rompre et projeter des fragments.",
+          "en": "Centrifugal force grows with the square of speed: beyond the maximum speed, the wheel can break and throw fragments."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'écart maximal habituellement admis entre l'appui-outil et une meule de touret ?",
+          "en": "What is the maximum gap usually allowed between the tool rest and a bench grinder wheel?"
+        },
+        "choix": {
+          "fr": [
+            "1 po",
+            "Environ 1/8 po",
+            "Aucun écart",
+            "6 po"
+          ],
+          "en": [
+            "1 in.",
+            "About 1/8 in.",
+            "No gap",
+            "6 in."
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'appui-outil se règle à environ 1/8 po de la meule : un écart plus grand risque de coincer la pièce entre la meule et l'appui.",
+          "en": "The tool rest is set about 1/8 in. from the wheel: a larger gap risks jamming the workpiece between the wheel and the rest."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on une vitesse de lame plus lente et un lubrifiant lorsqu'on scie de l'acier inoxydable à la scie à ruban, comparativement à l'acier doux ?",
+          "en": "Why is a slower blade speed and a lubricant used when band-sawing stainless steel, compared to mild steel?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que l'inox est plus tendre",
+            "Parce que la lame est plus courte",
+            "Parce que l'inox ne produit pas de copeaux",
+            "Parce que l'inox s'écrouit et chauffe facilement : une vitesse trop élevée ou une coupe qui frotte durcit le matériau et use la lame"
+          ],
+          "en": [
+            "Because stainless is softer",
+            "Because the blade is shorter",
+            "Because stainless produces no chips",
+            "Because stainless work-hardens and heats up easily: too high a speed or a rubbing cut hardens the material and wears the blade"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'acier inoxydable conduit mal la chaleur et s'écrouit en coupe : une vitesse modérée, une avance ferme et un lubrifiant évitent le durcissement de la surface et prolongent la vie de la lame.",
+          "en": "Stainless steel conducts heat poorly and work-hardens when cut: moderate speed, firm feed, and a lubricant avoid surface hardening and extend blade life."
+        }
+      },
+      {
+        "question": {
+          "fr": "Parmi les limes à dentures « bastard », « second cut » et « smooth », laquelle choisit-on pour la finition d'une surface d'acier ?",
+          "en": "Among \"bastard\", \"second cut\", and \"smooth\" file cuts, which is chosen for finishing a steel surface?"
+        },
+        "choix": {
+          "fr": [
+            "La bastard, qui enlève le plus de matière",
+            "La plus grosse disponible",
+            "Aucune, on utilise un marteau",
+            "La smooth, à denture fine, pour une finition lisse"
+          ],
+          "en": [
+            "The bastard, which removes the most material",
+            "The biggest one available",
+            "None, a hammer is used",
+            "The smooth, with fine teeth, for a smooth finish"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "La denture smooth enlève peu de matière et laisse une surface fine ; la bastard sert à dégrossir.",
+          "en": "The smooth cut removes little material and leaves a fine surface; the bastard is used for roughing."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans quel sens doit-on faire tourner un alésoir, y compris lorsqu'on le retire du trou ?",
+          "en": "In which direction must a reamer be turned, including when withdrawing it from the hole?"
+        },
+        "choix": {
+          "fr": [
+            "À grande vitesse",
+            "Dans le sens que l'on préfère",
+            "Dans le sens inverse en le retirant",
+            "Toujours dans le sens des aiguilles d'une montre, jamais en sens inverse"
+          ],
+          "en": [
+            "At high speed",
+            "In whichever direction you prefer",
+            "In reverse when withdrawing",
+            "Always clockwise, never in reverse"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un alésoir ne doit jamais tourner à l'envers : cela endommage son tranchant et raye le trou ; on le retire en continuant de tourner dans le sens de coupe.",
+          "en": "A reamer must never be turned backward: it damages the cutting edge and scores the hole; it is withdrawn while continuing to turn in the cutting direction."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi, en perçage profond, retire-t-on périodiquement le foret du trou (débourrage) ?",
+          "en": "Why is the drill periodically withdrawn from the hole (pecking) in deep drilling?"
+        },
+        "choix": {
+          "fr": [
+            "Pour évacuer les copeaux, relubrifier et refroidir, évitant le bourrage et la surchauffe",
+            "Pour agrandir le trou",
+            "Pour changer la vitesse",
+            "Pour que le foret refroidisse seulement"
+          ],
+          "en": [
+            "To clear chips, relubricate, and cool, avoiding clogging and overheating",
+            "To enlarge the hole",
+            "To change the speed",
+            "Only so the bit cools down"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Dans un trou profond, les copeaux s'accumulent dans les goujures et le foret chauffe ; le retirer régulièrement dégage les copeaux et permet de relubrifier.",
+          "en": "In a deep hole, chips pile up in the flutes and the bit heats; withdrawing it regularly clears chips and allows relubrication."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'effet d'une avance trop faible pendant le perçage d'un métal qui s'écrouit ?",
+          "en": "What is the effect of too low a feed when drilling a metal that work-hardens?"
+        },
+        "choix": {
+          "fr": [
+            "Le trou devient plus précis",
+            "Aucun effet",
+            "Le foret frotte au lieu de couper, ce qui chauffe et durcit la surface de la pièce, usant rapidement l'outil",
+            "Le foret refroidit"
+          ],
+          "en": [
+            "The hole becomes more accurate",
+            "No effect",
+            "The bit rubs instead of cutting, which heats and hardens the workpiece surface, quickly wearing the tool",
+            "The bit cools"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une avance trop faible fait frotter l'arête sans enlever de copeau : la chaleur et l'écrouissage durcissent la surface et usent le foret.",
+          "en": "Too low a feed makes the edge rub without removing a chip: heat and work hardening harden the surface and wear the bit."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi regarde-t-on le cadran d'un instrument de face, et non de côté, pour faire une lecture précise ?",
+          "en": "Why is an instrument's dial viewed head-on rather than from the side for an accurate reading?"
+        },
+        "choix": {
+          "fr": [
+            "Pour économiser la pile",
+            "Pour que l'instrument tienne droit",
+            "Pour mieux voir les couleurs",
+            "Pour éviter l'erreur de parallaxe causée par un angle de lecture oblique"
+          ],
+          "en": [
+            "To save the battery",
+            "So the instrument stands straight",
+            "To see the colors better",
+            "To avoid the parallax error caused by an oblique viewing angle"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "Une lecture de biais fait paraître l'aiguille décalée par rapport aux graduations (parallaxe) ; on se place face au cadran.",
+          "en": "Reading from an angle makes the needle appear offset from the graduations (parallax); stand facing the dial."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi frappe-t-on légèrement des repères de contrôle (pointages témoins) le long d'un trait de traçage avant l'usinage ou la coupe ?",
+          "en": "Why are witness marks (light punch marks) made along a layout line before machining or cutting?"
+        },
+        "choix": {
+          "fr": [
+            "Pour décorer",
+            "Pour réduire le poids",
+            "Pour que le tracé reste visible et contrôlable même si le trait s'efface en cours de travail",
+            "Pour durcir le métal"
+          ],
+          "en": [
+            "For decoration",
+            "To reduce weight",
+            "So the layout remains visible and checkable even if the line wears off during work",
+            "To harden the metal"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les pointages témoins matérialisent le tracé de façon durable et permettent de vérifier après usinage que le travail suit bien la ligne.",
+          "en": "Witness marks make the layout durable and allow checking after machining that the work follows the line."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi ne porte-t-on pas de gants près d'une perceuse à colonne en rotation ?",
+          "en": "Why are gloves not worn near a rotating drill press?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que les gants sont trop chauds",
+            "Parce que cela ralentit le travail",
+            "Parce qu'un gant peut s'enrouler autour du foret ou du mandrin et entraîner la main",
+            "Pour ne pas les user"
+          ],
+          "en": [
+            "Because gloves are too hot",
+            "Because it slows the work",
+            "Because a glove can wrap around the bit or chuck and drag the hand in",
+            "So they don't wear out"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un vêtement ou un gant qui s'accroche à une pièce tournante peut entraîner la main ; on évite gants, manches amples et bijoux près des machines rotatives.",
+          "en": "A garment or glove that catches on a rotating part can drag the hand; gloves, loose sleeves, and jewelry are avoided near rotating machinery."
+        }
+      },
+      {
+        "question": {
+          "fr": "Avant de retirer le foret d'une perceuse à colonne, que doit-on faire ?",
+          "en": "Before removing the bit from a drill press, what must be done?"
+        },
+        "choix": {
+          "fr": [
+            "Le retirer avec des gants",
+            "Le retirer pendant qu'il tourne",
+            "Arrêter la machine, attendre l'arrêt complet de la broche, puis retirer l'outil (clé de mandrin retirée avant le démarrage)",
+            "Le chauffer"
+          ],
+          "en": [
+            "Remove it with gloves on",
+            "Remove it while it is turning",
+            "Stop the machine, wait for the spindle to stop completely, then remove the tool (chuck key removed before starting)",
+            "Heat it"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 1,
+        "explication": {
+          "fr": "On n'intervient sur l'outil qu'à l'arrêt complet ; la clé du mandrin doit toujours être retirée avant de démarrer.",
+          "en": "Work on the tool only at a complete stop; the chuck key must always be removed before starting."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un technicien constate que le dos de sa clé à cliquet est « mou » et glisse sur les boulons. Quelle est la bonne pratique ?",
+          "en": "A technician finds that the pawl of his ratchet is worn and slips on bolts. What is the right practice?"
+        },
+        "choix": {
+          "fr": [
+            "Remplacer l'outil usé ou défectueux : un outil qui glisse expose à des blessures et arrondit les boulons",
+            "Continuer en serrant plus fort",
+            "Utiliser un tuyau pour allonger la clé",
+            "Frapper la clé avec un marteau"
+          ],
+          "en": [
+            "Replace the worn or defective tool: a tool that slips risks injury and rounds off the bolts",
+            "Keep going, tightening harder",
+            "Use a pipe to lengthen the wrench",
+            "Strike the wrench with a hammer"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un outil défectueux est dangereux et abîme les fixations ; on le remplace au lieu de le forcer ou de le détourner de son usage.",
+          "en": "A defective tool is dangerous and damages fasteners; replace it rather than forcing it or using it for something it was not designed for."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un taraudage est contrôlé avec un calibre entre / n'entre pas (Go / No-Go). Quel résultat indique que le filetage est conforme ?",
+          "en": "A thread is checked with a Go / No-Go gauge. What result indicates the thread is acceptable?"
+        },
+        "choix": {
+          "fr": [
+            "Le côté « entre » se visse librement sur toute la longueur filetée, et le côté « n'entre pas » ne s'engage pas (ou de seulement quelques filets)",
+            "Les deux côtés se vissent complètement",
+            "Aucun des deux côtés ne se visse",
+            "Seul le côté « n'entre pas » se visse complètement"
+          ],
+          "en": [
+            "The \"Go\" end screws in freely over the full threaded length, and the \"No-Go\" end does not engage (or only a few threads)",
+            "Both ends screw in completely",
+            "Neither end screws in",
+            "Only the \"No-Go\" end screws in completely"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le côté « entre » vérifie la limite de matière maximale et doit visser sur toute la longueur ; le côté « n'entre pas » vérifie la limite minimale et ne doit pas s'engager au-delà de quelques filets.",
+          "en": "The \"Go\" end checks the maximum material limit and must screw in over the full length; the \"No-Go\" end checks the minimum limit and must not engage beyond a few threads."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on un lubrifiant lors du perçage ou du taraudage de l'aluminium ?",
+          "en": "Why is a lubricant used when drilling or tapping aluminum?"
+        },
+        "choix": {
+          "fr": [
+            "Pour éviter que le métal mou s'empâte sur l'arête de coupe (arête rapportée) et bouche les goujures",
+            "Pour le rendre plus dur",
+            "Pour le colorer",
+            "Parce que l'aluminium chauffe moins"
+          ],
+          "en": [
+            "To keep the soft metal from clogging onto the cutting edge (built-up edge) and filling the flutes",
+            "To make it harder",
+            "To color it",
+            "Because aluminum heats up less"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'aluminium, mou et collant, tend à se souder sur l'arête de coupe et à bourrer les goujures ; un lubrifiant adapté réduit ce phénomène et améliore l'état de surface.",
+          "en": "Aluminum, soft and sticky, tends to weld onto the cutting edge and clog the flutes; a suitable lubricant reduces this and improves surface finish."
+        }
+      }
     ]
   },
   {
@@ -1978,6 +4588,1310 @@ window.QUESTIONNAIRES = [
         "explication": {
           "fr": "Le puits est vissé dans la tuyauterie et reste en place : on peut retirer ou remplacer le thermomètre sans ouvrir le circuit.",
           "en": "The thermowell is threaded into the piping and stays in place: the thermometer can be removed or replaced without opening the line."
+        }
+      }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Sur un dessin à l'échelle 1:4, une cote mesurée à 3 po sur le papier correspond à quelle dimension réelle ?",
+          "en": "On a drawing at 1:4 scale, a dimension measured at 3 in. on paper corresponds to what actual size?"
+        },
+        "choix": {
+          "fr": [
+            "16 po",
+            "12 po",
+            "7 po",
+            "0,75 po"
+          ],
+          "en": [
+            "16 in.",
+            "12 in.",
+            "7 in.",
+            "0.75 in."
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "À l'échelle 1:4, chaque pouce sur le papier représente 4 po réels : 3 × 4 = 12 po. (Rappel : on respecte toujours les cotes inscrites plutôt que de mesurer sur le papier.)",
+          "en": "At 1:4 scale, each inch on paper represents 4 actual inches: 3 × 4 = 12 in. (Reminder: always rely on the stated dimensions rather than measuring on the paper.)"
+        }
+      },
+      {
+        "question": {
+          "fr": "En projection du 3e dièdre (convention nord-américaine), où est placée la vue de droite par rapport à la vue de face ?",
+          "en": "In third-angle projection (North American convention), where is the right-side view placed relative to the front view?"
+        },
+        "choix": {
+          "fr": [
+            "À gauche de la vue de face",
+            "Au-dessus de la vue de face",
+            "Sous la vue de face",
+            "À droite de la vue de face"
+          ],
+          "en": [
+            "To the left of the front view",
+            "Above the front view",
+            "Below the front view",
+            "To the right of the front view"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "En projection du 3e dièdre, chaque vue est placée du côté de l'objet qu'elle représente : la vue de droite se trouve à droite de la vue de face, la vue de dessus au-dessus.",
+          "en": "In third-angle projection, each view is placed on the side of the object that it represents: the right view sits to the right of the front view, the top view above it."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un cadre de tolérance de position indique Ø0.010 par rapport aux références A et B. Que représente la valeur 0.010 ?",
+          "en": "A position tolerance frame shows Ø0.010 with respect to datums A and B. What does the 0.010 value represent?"
+        },
+        "choix": {
+          "fr": [
+            "Le diamètre de la zone cylindrique de tolérance à l'intérieur de laquelle l'axe de l'élément doit se trouver, par rapport aux références A et B",
+            "Le diamètre du trou à percer",
+            "La rugosité maximale de la surface",
+            "L'épaisseur de la pièce"
+          ],
+          "en": [
+            "The diameter of the cylindrical tolerance zone within which the feature's axis must lie, relative to datums A and B",
+            "The diameter of the hole to be drilled",
+            "The maximum surface roughness",
+            "The thickness of the part"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La tolérance de position définit une zone (ici un cylindre de 0,010 po de diamètre) centrée sur la position théorique exacte, mesurée à partir des références indiquées, dans laquelle l'axe de l'élément doit se trouver.",
+          "en": "The position tolerance defines a zone (here a cylinder 0.010 in. in diameter) centered on the exact theoretical position, measured from the stated datums, within which the feature's axis must lie."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'une référence (datum) dans la cotation géométrique d'un dessin ?",
+          "en": "What is a datum in the geometric dimensioning of a drawing?"
+        },
+        "choix": {
+          "fr": [
+            "Une note décorative sur le dessin",
+            "Le nom du dessinateur",
+            "Un élément théoriquement exact (plan, axe, point) qui sert d'origine pour mesurer et contrôler d'autres éléments de la pièce",
+            "Une cote de référence entre parenthèses"
+          ],
+          "en": [
+            "A decorative note on the drawing",
+            "The drafter's name",
+            "A theoretically exact feature (plane, axis, point) that serves as an origin for measuring and controlling other features of the part",
+            "A reference dimension in parentheses"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une référence (datum) est un plan, un axe ou un point théoriquement exact, identifié par une lettre (A, B, C), à partir duquel on mesure et on contrôle la position et l'orientation des autres éléments.",
+          "en": "A datum is a theoretically exact plane, axis, or point, identified by a letter (A, B, C), from which the position and orientation of other features are measured and controlled."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un symbole de soudage, un petit drapeau placé au coude de la ligne de flèche indique :",
+          "en": "On a welding symbol, a small flag placed at the bend of the arrow line indicates:"
+        },
+        "choix": {
+          "fr": [
+            "Une soudure en position verticale",
+            "Une soudure à effectuer sur le chantier (soudure sur site)",
+            "Une soudure à inspecter par radiographie",
+            "Une soudure faite uniquement en atelier"
+          ],
+          "en": [
+            "A weld in the vertical position",
+            "A weld to be made on the job site (field weld)",
+            "A weld to be inspected by radiography",
+            "A weld made only in the shop"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le drapeau indique une soudure sur site (field weld), c'est-à-dire exécutée à l'installation plutôt qu'en atelier de fabrication.",
+          "en": "The flag indicates a field weld, that is, one made at installation rather than in the fabrication shop."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un symbole de soudure d'angle porte « 1/4 » à gauche du triangle. Que représente cette valeur ?",
+          "en": "A fillet weld symbol shows \"1/4\" to the left of the triangle. What does this value represent?"
+        },
+        "choix": {
+          "fr": [
+            "L'espacement entre deux soudures",
+            "Le nombre de passes",
+            "La dimension de la jambe (leg size) de la soudure d'angle, soit 1/4 po",
+            "La longueur de la soudure"
+          ],
+          "en": [
+            "The spacing between two welds",
+            "The number of passes",
+            "The leg size of the fillet weld, i.e. 1/4 in.",
+            "The length of the weld"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "La valeur placée à gauche du symbole de soudure d'angle représente la dimension de la jambe de la soudure (ici 1/4 po).",
+          "en": "The value placed to the left of the fillet weld symbol represents the weld's leg size (here 1/4 in.)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un symbole de soudage, le symbole placé SOUS la ligne de référence signifie que la soudure est exécutée :",
+          "en": "On a welding symbol, the symbol placed BELOW the reference line means the weld is made:"
+        },
+        "choix": {
+          "fr": [
+            "Sur les deux côtés obligatoirement",
+            "Du côté de la flèche (arrow side)",
+            "À l'intérieur de la pièce seulement",
+            "Du côté opposé à la flèche"
+          ],
+          "en": [
+            "On both sides necessarily",
+            "On the arrow side",
+            "Inside the part only",
+            "On the side opposite the arrow"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Selon la convention AWS A2.4, un symbole placé sous la ligne de référence s'applique au côté de la flèche ; au-dessus, il s'applique au côté opposé.",
+          "en": "Per AWS A2.4 convention, a symbol placed below the reference line applies to the arrow side; above, it applies to the other side."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un dessin isométrique de tuyauterie, la mention « EL 105'-6\" » indique :",
+          "en": "On an isometric piping drawing, the notation \"EL 105'-6\"\" indicates:"
+        },
+        "choix": {
+          "fr": [
+            "L'élévation (la hauteur) du point par rapport à la référence d'élévation du site, soit 105 pi 6 po",
+            "La longueur du tuyau",
+            "Le diamètre du tuyau",
+            "L'épaisseur de la paroi"
+          ],
+          "en": [
+            "The elevation (height) of the point relative to the site elevation datum, i.e. 105 ft 6 in.",
+            "The length of the pipe",
+            "The pipe's diameter",
+            "The wall thickness"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "EL signifie élévation : 105'-6\" est la hauteur du point par rapport à la référence d'élévation (datum) du projet.",
+          "en": "EL means elevation: 105'-6\" is the height of the point relative to the project's elevation datum."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un plan de tuyauterie, l'abréviation « BOP » signifie :",
+          "en": "On a piping plan, the abbreviation \"BOP\" means:"
+        },
+        "choix": {
+          "fr": [
+            "Bottom Of Pipe (dessous du tuyau)",
+            "Base Of Plate",
+            "Bolt On Pipe",
+            "Bypass Of Pump"
+          ],
+          "en": [
+            "Bottom Of Pipe",
+            "Base Of Plate",
+            "Bolt On Pipe",
+            "Bypass Of Pump"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "BOP désigne le dessous (la génératrice inférieure) du tuyau ; on le distingue de CL (axe, centerline) et TOP (dessus du tuyau) pour fixer une élévation.",
+          "en": "BOP designates the bottom of the pipe; it is distinguished from CL (centerline) and TOP (top of pipe) when setting an elevation."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un schéma P&ID (selon ISA 5.1), une bulle d'instrument traversée par une ligne horizontale pleine indique généralement :",
+          "en": "On a P&ID (per ISA 5.1), an instrument bubble crossed by a solid horizontal line generally indicates:"
+        },
+        "choix": {
+          "fr": [
+            "Un instrument hors service",
+            "Un instrument seulement prévu pour plus tard",
+            "Un instrument monté sur le terrain, près du procédé",
+            "Un instrument accessible à l'opérateur dans la salle de contrôle ou sur un panneau principal"
+          ],
+          "en": [
+            "An out-of-service instrument",
+            "An instrument planned only for later",
+            "A field-mounted instrument, near the process",
+            "An instrument accessible to the operator in the control room or on a main panel"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Selon ISA 5.1, une bulle sans ligne représente un instrument monté sur le terrain ; une ligne horizontale pleine indique un emplacement principal accessible à l'opérateur (salle de contrôle, panneau).",
+          "en": "Per ISA 5.1, a bubble with no line represents a field-mounted instrument; a solid horizontal line indicates a primary location accessible to the operator (control room, panel)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un P&ID, une ligne en tirets reliant un transmetteur à un contrôleur représente généralement :",
+          "en": "On a P&ID, a dashed line connecting a transmitter to a controller generally represents:"
+        },
+        "choix": {
+          "fr": [
+            "Une conduite de procédé",
+            "Un signal électrique",
+            "Un tube capillaire",
+            "Un signal hydraulique"
+          ],
+          "en": [
+            "A process line",
+            "An electrical signal",
+            "A capillary tube",
+            "A hydraulic signal"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Selon ISA 5.1, une ligne en tirets représente un signal électrique ; une ligne avec de petites barres croisées représente un signal pneumatique, et une ligne pleine, la conduite de procédé.",
+          "en": "Per ISA 5.1, a dashed line represents an electrical signal; a line with small crossbars represents a pneumatic signal, and a solid line, the process line."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un P&ID, le symbole formé de deux triangles pointe à pointe (nœud papillon) sur une conduite représente le plus souvent :",
+          "en": "On a P&ID, the symbol made of two triangles joined tip to tip (bow-tie) on a line most often represents:"
+        },
+        "choix": {
+          "fr": [
+            "Un échangeur de chaleur",
+            "Une vanne à opercule (gate valve)",
+            "Un filtre",
+            "Un clapet anti-retour"
+          ],
+          "en": [
+            "A heat exchanger",
+            "A gate valve",
+            "A strainer",
+            "A check valve"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le nœud papillon (deux triangles opposés par la pointe) est le symbole de base d'une vanne à opercule (gate valve) ; d'autres types de vannes en sont des variantes.",
+          "en": "The bow-tie (two triangles opposed tip to tip) is the basic symbol for a gate valve; other valve types are variations of it."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur une nomenclature, l'abréviation « RF » pour une bride signifie :",
+          "en": "On a bill of materials, the abbreviation \"RF\" for a flange means:"
+        },
+        "choix": {
+          "fr": [
+            "Rated Flange",
+            "Raised Face (face surélevée)",
+            "Reinforced Flange",
+            "Rounded Flange"
+          ],
+          "en": [
+            "Rated Flange",
+            "Raised Face",
+            "Reinforced Flange",
+            "Rounded Flange"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "RF signifie Raised Face : la face d'étanchéité de la bride est légèrement surélevée par rapport au pourtour des boulons ; FF désigne une face plane (flat face).",
+          "en": "RF means Raised Face: the flange's sealing face is slightly raised above the bolt-circle area; FF designates a flat face."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle différence y a-t-il entre une bride à collerette à souder (weld neck) et une bride à glissement (slip-on) ?",
+          "en": "What is the difference between a weld neck flange and a slip-on flange?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune",
+            "La bride à glissement est toujours filetée",
+            "La bride à collerette est en plastique",
+            "La bride à collerette se soude bout à bout au tuyau et convient mieux aux hautes pressions et aux charges cycliques ; la bride à glissement s'enfile sur le tuyau et se soude en angle, plus économique mais moins résistante"
+          ],
+          "en": [
+            "None",
+            "The slip-on flange is always threaded",
+            "The weld neck flange is plastic",
+            "The weld neck flange is butt-welded to the pipe and suits high pressure and cyclic loads better; the slip-on flange slides over the pipe and is fillet-welded, cheaper but less strong"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "La collerette (hub) de la bride à souder répartit les contraintes et permet une soudure bout à bout de bonne qualité ; la bride à glissement, soudée en angle des deux côtés, coûte moins cher mais résiste moins bien à la fatigue et à la pression.",
+          "en": "The weld neck's hub distributes stress and allows a good-quality butt weld; the slip-on flange, fillet-welded on both sides, costs less but withstands fatigue and pressure less well."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un tuyau de 6 po NPS (diamètre nominal) a un diamètre extérieur réel d'environ :",
+          "en": "A 6 in. NPS (nominal) pipe has an actual outside diameter of about:"
+        },
+        "choix": {
+          "fr": [
+            "6,000 po",
+            "7,000 po",
+            "6,065 po",
+            "6,625 po"
+          ],
+          "en": [
+            "6.000 in.",
+            "7.000 in.",
+            "6.065 in.",
+            "6.625 in."
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour les tuyaux de 6 po NPS, le diamètre extérieur normalisé est de 6,625 po, quel que soit le schedule ; seul le diamètre intérieur varie avec l'épaisseur de paroi.",
+          "en": "For 6 in. NPS pipe, the standardized outside diameter is 6.625 in. regardless of schedule; only the inside diameter varies with wall thickness."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un dessin, la mention « CHAMFER .06 × 45° » (ou 0,06 × 45°) indique :",
+          "en": "On a drawing, the note \"CHAMFER .06 × 45°\" (or 0.06 × 45°) indicates:"
+        },
+        "choix": {
+          "fr": [
+            "Une tolérance de 45°",
+            "Un filetage de 45 filets",
+            "Un rayon de 0,06 po",
+            "Un chanfrein dont la dimension mesurée le long de chaque face est de 0,06 po, à un angle de 45°"
+          ],
+          "en": [
+            "A tolerance of 45°",
+            "A thread with 45 threads",
+            "A 0.06 in. radius",
+            "A chamfer measuring 0.06 in. along each face, at a 45° angle"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un chanfrein « 0,06 × 45° » est une coupe d'arête dont la longueur sur chacune des faces est de 0,06 po, à 45° : on casse ainsi les arêtes vives pour la sécurité et l'assemblage.",
+          "en": "A \"0.06 × 45°\" chamfer is an edge cut whose length on each face is 0.06 in., at 45°: sharp edges are broken for safety and assembly."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un dessin, la mention « Ra 63 » associée à un symbole de fini de surface indique :",
+          "en": "On a drawing, the note \"Ra 63\" associated with a surface-finish symbol indicates:"
+        },
+        "choix": {
+          "fr": [
+            "Une rugosité moyenne maximale de 63 microinches",
+            "Un revêtement de 63 mils",
+            "Une dureté de 63 HRC",
+            "Une rugosité moyenne maximale de 63 microns"
+          ],
+          "en": [
+            "A maximum average roughness of 63 microinches",
+            "A 63 mil coating",
+            "A hardness of 63 HRC",
+            "A maximum average roughness of 63 microns"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Ra est la rugosité moyenne arithmétique ; en unités impériales, elle est exprimée en microinches (µpo). Ra 63 correspond à une surface usinée de finition courante.",
+          "en": "Ra is the arithmetic average roughness; in imperial units it is expressed in microinches (µin.). Ra 63 corresponds to a common machined finish."
+        }
+      },
+      {
+        "question": {
+          "fr": "Trois pièces de 2,000 ± 0,005 po sont alignées bout à bout. Quelle est la longueur totale maximale possible de l'assemblage (pire cas) ?",
+          "en": "Three parts of 2.000 ± 0.005 in. are lined up end to end. What is the maximum possible overall length of the assembly (worst case)?"
+        },
+        "choix": {
+          "fr": [
+            "6,010 po",
+            "6,005 po",
+            "6,015 po",
+            "6,030 po"
+          ],
+          "en": [
+            "6.010 in.",
+            "6.005 in.",
+            "6.015 in.",
+            "6.030 in."
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Au pire cas, chaque pièce fait 2,005 po : 3 × 2,005 = 6,015 po. Les tolérances s'additionnent lorsqu'on empile des pièces.",
+          "en": "In the worst case, each part measures 2.005 in.: 3 × 2.005 = 6.015 in. Tolerances add up when parts are stacked."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un dessin, l'abréviation « TYP » placée à côté d'une cote signifie :",
+          "en": "On a drawing, the abbreviation \"TYP\" placed next to a dimension means:"
+        },
+        "choix": {
+          "fr": [
+            "Type de peinture",
+            "Température",
+            "Typographie",
+            "Typique : la cote s'applique à tous les éléments semblables du dessin"
+          ],
+          "en": [
+            "Type of paint",
+            "Temperature",
+            "Typography",
+            "Typical: the dimension applies to all similar features on the drawing"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "TYP (typique) indique que la cote ou la note s'applique à tous les éléments identiques ou semblables, sans qu'il soit nécessaire de la répéter.",
+          "en": "TYP (typical) indicates that the dimension or note applies to all identical or similar features, without having to repeat it."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que représente la mention « C'BORE » (counterbore) associée à un trou ?",
+          "en": "What does the notation \"C'BORE\" (counterbore) associated with a hole represent?"
+        },
+        "choix": {
+          "fr": [
+            "Un trou taraudé",
+            "Un trou borgne",
+            "Un lamage cylindrique à fond plat autour du trou, permettant de loger une tête de vis ou de boulon",
+            "Un chanfrein à 45°"
+          ],
+          "en": [
+            "A tapped hole",
+            "A blind hole",
+            "A flat-bottomed cylindrical enlargement around the hole, allowing a screw or bolt head to sit below the surface",
+            "A 45° chamfer"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un lamage cylindrique (counterbore) est un agrandissement à fond plat de l'entrée du trou, qui permet à la tête d'une vis à six pans creux de se loger sous la surface.",
+          "en": "A counterbore is a flat-bottomed enlargement of the hole's entry that lets the head of a socket-head cap screw sit below the surface."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un support exige 4 pièces de cornière de 15,5 po et 2 pièces de 22 po. Quelle longueur totale de cornière faut-il prévoir, sans compter les traits de scie ?",
+          "en": "A support requires 4 pieces of angle at 15.5 in. and 2 pieces at 22 in. What total length of angle must be planned for, not counting saw kerf?"
+        },
+        "choix": {
+          "fr": [
+            "84 po",
+            "128 po",
+            "106 po",
+            "37,5 po"
+          ],
+          "en": [
+            "84 in.",
+            "128 in.",
+            "106 in.",
+            "37.5 in."
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "4 × 15,5 = 62 po ; 2 × 22 = 44 po ; total = 106 po, auquel on ajoute en pratique la perte due au trait de scie.",
+          "en": "4 × 15.5 = 62 in.; 2 × 22 = 44 in.; total = 106 in., to which saw-kerf loss is added in practice."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un dessin révisé, un nuage de révision (revision cloud) tracé autour d'une zone indique :",
+          "en": "On a revised drawing, a revision cloud drawn around an area indicates:"
+        },
+        "choix": {
+          "fr": [
+            "Une zone à ne pas fabriquer",
+            "Une zone à peindre",
+            "Que cette zone a été modifiée dans la révision courante",
+            "Une zone confidentielle"
+          ],
+          "en": [
+            "An area not to be fabricated",
+            "An area to be painted",
+            "That this area was changed in the current revision",
+            "A confidential area"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 1,
+        "explication": {
+          "fr": "Le nuage de révision repère les modifications apportées dans la dernière révision, afin que l'atelier voie rapidement ce qui a changé.",
+          "en": "The revision cloud flags the changes made in the latest revision, so the shop can quickly see what changed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur une vue en coupe, les flèches placées aux extrémités de la ligne de coupe indiquent :",
+          "en": "On a section view, the arrows placed at the ends of the cutting-plane line indicate:"
+        },
+        "choix": {
+          "fr": [
+            "Le sens dans lequel on regarde la coupe",
+            "L'ordre de soudage",
+            "Le sens de l'écoulement du fluide",
+            "Les points de levage"
+          ],
+          "en": [
+            "The direction in which the section is viewed",
+            "The welding sequence",
+            "The direction of fluid flow",
+            "The lifting points"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les flèches aux extrémités du plan de coupe précisent la direction de regard : la vue en coupe représente ce qu'on voit en regardant dans ce sens.",
+          "en": "The arrows at the ends of the cutting plane specify the viewing direction: the section view shows what is seen when looking in that direction."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un chanfrein en V pour soudure bout à bout a un angle total de 60°. Quel est l'angle de chanfreinage de chaque pièce, si les deux pièces sont préparées de façon identique ?",
+          "en": "A V-groove for a butt weld has a total included angle of 60°. What is the bevel angle on each piece, if both pieces are prepared identically?"
+        },
+        "choix": {
+          "fr": [
+            "30°",
+            "15°",
+            "45°",
+            "60°"
+          ],
+          "en": [
+            "30°",
+            "15°",
+            "45°",
+            "60°"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'angle total du V se partage également entre les deux pièces : 60° / 2 = 30° par pièce.",
+          "en": "The total V angle is split equally between the two pieces: 60° / 2 = 30° per piece."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une bride à 8 trous de boulons est répartie uniformément sur un cercle. Quel est l'angle entre deux trous consécutifs ?",
+          "en": "A flange has 8 bolt holes spaced evenly on a circle. What is the angle between two consecutive holes?"
+        },
+        "choix": {
+          "fr": [
+            "45°",
+            "36°",
+            "30°",
+            "60°"
+          ],
+          "en": [
+            "45°",
+            "36°",
+            "30°",
+            "60°"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Un cercle complet fait 360° ; réparti entre 8 trous : 360 / 8 = 45° entre deux trous consécutifs.",
+          "en": "A full circle is 360°; divided among 8 holes: 360 / 8 = 45° between consecutive holes."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Une tolérance de planéité de 0,005 po est indiquée pour une surface. Que contrôle-t-elle ?",
+          "en": "A flatness tolerance of 0.005 in. is specified for a surface. What does it control?"
+        },
+        "choix": {
+          "fr": [
+            "La rugosité de la surface",
+            "Que tous les points de la surface doivent se trouver entre deux plans parallèles distants de 0,005 po, sans référence à un autre élément",
+            "Le diamètre de la surface",
+            "L'orientation de la surface par rapport à une référence A"
+          ],
+          "en": [
+            "The roughness of the surface",
+            "That all points of the surface must lie between two parallel planes 0.005 in. apart, with no reference to another feature",
+            "The diameter of the surface",
+            "The orientation of the surface relative to a datum A"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "La planéité est une tolérance de forme : elle n'utilise aucune référence et exige que la surface soit contenue entre deux plans parallèles séparés de la valeur indiquée.",
+          "en": "Flatness is a form tolerance: it uses no datum and requires the surface to be contained between two parallel planes separated by the stated value."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un cadre de tolérance de position, le modificateur M (condition de matière maximale, MMC) placé après la valeur de tolérance signifie que :",
+          "en": "In a position tolerance frame, the M modifier (maximum material condition, MMC) placed after the tolerance value means that:"
+        },
+        "choix": {
+          "fr": [
+            "La tolérance est toujours fixe, quelle que soit la dimension réelle de l'élément",
+            "La pièce doit être fabriquée en métal",
+            "L'élément doit être mesuré uniquement en millimètres",
+            "Une tolérance supplémentaire (bonus) est accordée à mesure que l'élément s'éloigne de sa condition de matière maximale"
+          ],
+          "en": [
+            "The tolerance is always fixed, regardless of the feature's actual size",
+            "The part must be made of metal",
+            "The part must be measured in millimeters only",
+            "Additional tolerance (bonus) is granted as the feature departs from its maximum material condition"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "À MMC, la tolérance de position augmente d'un bonus égal à l'écart entre la dimension réelle de l'élément et sa condition de matière maximale (par exemple, un trou plus grand que son diamètre minimal permet davantage de déviation de position).",
+          "en": "At MMC, the position tolerance increases by a bonus equal to the difference between the feature's actual size and its maximum material condition (for example, a hole larger than its minimum diameter allows more positional deviation)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un trou est coté Ø0.500 +0.010 / −0.000, avec une tolérance de position de Ø0.005 à MMC. Le trou mesuré fait Ø0.508. Quelle est la tolérance de position totale permise pour ce trou ?",
+          "en": "A hole is dimensioned Ø0.500 +0.010 / −0.000, with a position tolerance of Ø0.005 at MMC. The measured hole is Ø0.508. What is the total position tolerance allowed for this hole?"
+        },
+        "choix": {
+          "fr": [
+            "0.013 po",
+            "0.005 po",
+            "0.018 po",
+            "0.008 po"
+          ],
+          "en": [
+            "0.013 in.",
+            "0.005 in.",
+            "0.018 in.",
+            "0.008 in."
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Pour un trou, la MMC correspond au plus petit diamètre (0.500). Le bonus = 0.508 − 0.500 = 0.008. Tolérance totale = 0.005 + 0.008 = 0.013 po.",
+          "en": "For a hole, MMC is the smallest diameter (0.500). Bonus = 0.508 − 0.500 = 0.008. Total tolerance = 0.005 + 0.008 = 0.013 in."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un arbre est coté Ø1.000 −0.001 / −0.002 et s'insère dans un alésage coté Ø1.000 +0.001 / −0.000. Quel type d'ajustement obtient-on, et quel est son jeu minimal ?",
+          "en": "A shaft is dimensioned Ø1.000 −0.001 / −0.002 and fits into a bore dimensioned Ø1.000 +0.001 / −0.000. What type of fit results, and what is its minimum clearance?"
+        },
+        "choix": {
+          "fr": [
+            "Ajustement serré, interférence minimale de 0.001 po",
+            "Ajustement avec jeu, jeu minimal de 0.003 po",
+            "Ajustement avec jeu, jeu minimal de 0.001 po",
+            "Ajustement incertain, impossible à déterminer"
+          ],
+          "en": [
+            "Interference fit, minimum interference of 0.001 in.",
+            "Clearance fit, minimum clearance of 0.003 in.",
+            "Clearance fit, minimum clearance of 0.001 in.",
+            "Uncertain fit, impossible to determine"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Arbre : 0.998 à 0.999 po. Alésage : 1.000 à 1.001 po. Jeu minimal = 1.000 − 0.999 = 0.001 po ; jeu maximal = 1.001 − 0.998 = 0.003 po. Il y a toujours un jeu : c'est un ajustement avec jeu.",
+          "en": "Shaft: 0.998 to 0.999 in. Bore: 1.000 to 1.001 in. Minimum clearance = 1.000 − 0.999 = 0.001 in.; maximum clearance = 1.001 − 0.998 = 0.003 in. There is always clearance: it is a clearance fit."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un arbre fait entre 0.5005 et 0.5008 po de diamètre, et l'alésage entre 0.5000 et 0.5003 po. Quel type d'ajustement obtient-on ?",
+          "en": "A shaft measures between 0.5005 and 0.5008 in. in diameter, and the bore between 0.5000 and 0.5003 in. What type of fit results?"
+        },
+        "choix": {
+          "fr": [
+            "Impossible à déterminer",
+            "Ajustement serré (interférence) : l'arbre est toujours plus gros que l'alésage",
+            "Ajustement incertain (transition)",
+            "Ajustement avec jeu"
+          ],
+          "en": [
+            "Impossible to determine",
+            "Interference fit: the shaft is always larger than the bore",
+            "Transition (uncertain) fit",
+            "Clearance fit"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le plus petit arbre (0.5005) est plus gros que le plus grand alésage (0.5003) : il y a toujours une interférence, de 0.0002 à 0.0008 po. L'assemblage exige un pressage ou un chauffage/refroidissement.",
+          "en": "The smallest shaft (0.5005) is larger than the largest bore (0.5003): there is always interference, from 0.0002 to 0.0008 in. The assembly requires pressing or heating/cooling."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un plan de tuyauterie, un décalage (offset) à 45° doit monter de 12 po. Quelle est approximativement la longueur du tuyau diagonale entre les deux coudes ?",
+          "en": "On a piping plan, a 45° offset must rise 12 in. Approximately what is the length of the diagonal pipe between the two elbows?"
+        },
+        "choix": {
+          "fr": [
+            "24 po",
+            "15 po",
+            "17 po",
+            "12 po"
+          ],
+          "en": [
+            "24 in.",
+            "15 in.",
+            "17 in.",
+            "12 in."
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "À 45°, la diagonale = hauteur × √2 ≈ 12 × 1,414 ≈ 17 po. Le facteur 1,414 est le multiplicateur courant pour un décalage à 45°.",
+          "en": "At 45°, the diagonal = rise × √2 ≈ 12 × 1.414 ≈ 17 in. The factor 1.414 is the common multiplier for a 45° offset."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour un coude à 90° à rayon long (LR) de 6 po NPS, la dimension centre-à-face (take-out) normalisée est de :",
+          "en": "For a 6 in. NPS long-radius (LR) 90° elbow, the standard center-to-face (take-out) dimension is:"
+        },
+        "choix": {
+          "fr": [
+            "7,5 po",
+            "9 po",
+            "12 po",
+            "6 po"
+          ],
+          "en": [
+            "7.5 in.",
+            "9 in.",
+            "12 in.",
+            "6 in."
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Pour un coude à rayon long, le rayon de courbure vaut 1,5 fois le diamètre nominal : 1,5 × 6 = 9 po, ce qui correspond à la dimension centre-à-face.",
+          "en": "For a long-radius elbow, the bend radius equals 1.5 times the nominal diameter: 1.5 × 6 = 9 in., which corresponds to the center-to-face dimension."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une ligne de drainage horizontale de 24 pi doit avoir une pente de 1/8 po par pied. Quelle est la chute totale entre ses deux extrémités ?",
+          "en": "A 24 ft horizontal drain line must slope 1/8 in. per foot. What is the total drop between its two ends?"
+        },
+        "choix": {
+          "fr": [
+            "3 po",
+            "1,5 po",
+            "6 po",
+            "12 po"
+          ],
+          "en": [
+            "3 in.",
+            "1.5 in.",
+            "6 in.",
+            "12 in."
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "24 pi × 1/8 po/pi = 3 po de chute totale entre l'extrémité haute et l'extrémité basse.",
+          "en": "24 ft × 1/8 in./ft = 3 in. total drop between the high end and the low end."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un plan de tuyauterie, la mention « bolt holes straddle centerline » (trous de boulons à cheval sur l'axe) signifie que :",
+          "en": "On a piping plan, the note \"bolt holes straddle centerline\" means that:"
+        },
+        "choix": {
+          "fr": [
+            "Aucun trou de boulon n'est placé sur l'axe : les trous se répartissent de part et d'autre de la ligne d'axe",
+            "Les boulons doivent être serrés en croix",
+            "Un trou de boulon est centré sur l'axe vertical de la bride",
+            "Les trous sont filetés"
+          ],
+          "en": [
+            "No bolt hole is placed on the axis: the holes are distributed on either side of the centerline",
+            "The bolts must be tightened in a crisscross pattern",
+            "A bolt hole is centered on the flange's vertical axis",
+            "The holes are threaded"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "C'est la convention d'orientation standard des brides : les trous encadrent les axes vertical et horizontal, sans en placer aucun sur la ligne d'axe, ce qui permet d'aligner correctement la tuyauterie sur le chantier.",
+          "en": "This is the standard flange orientation convention: the holes straddle the vertical and horizontal axes, with none placed on the centerline, which allows the piping to be properly aligned on site."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un symbole de soudure d'angle porte « 1/4 – 3 (6) » à droite du triangle. Que signifie « 3 (6) » ?",
+          "en": "A fillet weld symbol shows \"1/4 – 3 (6)\" to the right of the triangle. What does \"3 (6)\" mean?"
+        },
+        "choix": {
+          "fr": [
+            "Soudure de 3 po d'épaisseur sur 6 po de largeur",
+            "Trois passes sur six pièces",
+            "Trois soudures de 6 po chacune",
+            "Soudure intermittente : longueur de chaque segment 3 po, entraxe (pas) de 6 po"
+          ],
+          "en": [
+            "A weld 3 in. thick by 6 in. wide",
+            "Three passes on six pieces",
+            "Three welds of 6 in. each",
+            "Intermittent weld: each segment 3 in. long, 6 in. center-to-center pitch"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Pour une soudure intermittente, la première valeur indique la longueur de chaque segment (3 po) et la valeur entre parenthèses, l'entraxe (pas) entre deux segments (6 po).",
+          "en": "For an intermittent weld, the first value gives the length of each segment (3 in.) and the value in parentheses gives the pitch (center-to-center spacing) between segments (6 in.)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un symbole de soudure bout à bout en V avec « 60° » et « 1/8 », que représente la valeur 1/8 le plus probablement ?",
+          "en": "On a V-groove butt weld symbol with \"60°\" and \"1/8\", what does the 1/8 value most likely represent?"
+        },
+        "choix": {
+          "fr": [
+            "La profondeur du cordon",
+            "L'ouverture de racine (root opening) de 1/8 po",
+            "Le diamètre de l'électrode",
+            "La longueur de la soudure"
+          ],
+          "en": [
+            "The bead depth",
+            "The root opening of 1/8 in.",
+            "The electrode diameter",
+            "The weld length"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour une soudure en V, la valeur placée dans le symbole indique en général l'ouverture de racine (l'espace entre les deux pièces à la base du joint), ici 1/8 po, avec l'angle total du chanfrein de 60°.",
+          "en": "For a V-groove weld, the value placed in the symbol generally indicates the root opening (the gap between the two pieces at the base of the joint), here 1/8 in., with the total groove angle of 60°."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur une ligne de tuyauterie identifiée « 6\"-CW-1001-A1A », que désigne le plus probablement « A1A » ?",
+          "en": "On a piping line identified \"6\"-CW-1001-A1A\", what does \"A1A\" most likely designate?"
+        },
+        "choix": {
+          "fr": [
+            "La température de service exacte",
+            "La spécification (classe) de tuyauterie, qui définit le matériau, l'épaisseur, la classe de brides, les types de vannes et d'autres exigences",
+            "Le numéro du soudeur",
+            "Le diamètre du tuyau"
+          ],
+          "en": [
+            "The exact service temperature",
+            "The piping specification (class), which defines the material, thickness, flange class, valve types, and other requirements",
+            "The welder's number",
+            "The pipe's diameter"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Dans un numéro de ligne, le code de classe (ici A1A) renvoie à la spécification de tuyauterie du projet, qui regroupe matériau, schedule, classe de brides, vannes et raccords admissibles. CW désigne le service (eau de refroidissement).",
+          "en": "In a line number, the class code (here A1A) refers to the project's piping specification, which groups material, schedule, flange class, and permitted valves and fittings. CW designates the service (cooling water)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans l'identification d'un instrument TIC-101, que signifie la lettre « C » ?",
+          "en": "In the identification of an instrument TIC-101, what does the letter \"C\" mean?"
+        },
+        "choix": {
+          "fr": [
+            "Capteur",
+            "Contrôleur (Controller)",
+            "Calibré",
+            "Câble"
+          ],
+          "en": [
+            "Sensor",
+            "Controller",
+            "Calibrated",
+            "Cable"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Selon ISA 5.1 : T = température, I = indication, C = contrôleur. TIC-101 est donc un contrôleur-indicateur de température.",
+          "en": "Per ISA 5.1: T = temperature, I = indicating, C = controller. TIC-101 is therefore a temperature indicating controller."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans l'identification FQI-205, que représente le plus probablement la combinaison « FQI » ?",
+          "en": "In the identification FQI-205, what does the combination \"FQI\" most likely represent?"
+        },
+        "choix": {
+          "fr": [
+            "Un filtre à qualité industrielle",
+            "Un indicateur de fuite",
+            "Un interrupteur de fin de course",
+            "Un indicateur de quantité de débit (totalisateur de débit)"
+          ],
+          "en": [
+            "An industrial-quality filter",
+            "A leak indicator",
+            "A limit switch",
+            "A flow quantity indicator (flow totalizer)"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "F = débit (flow), Q = quantité (totalisation), I = indication : FQI est un indicateur de quantité totalisée de débit, c'est-à-dire un totalisateur.",
+          "en": "F = flow, Q = quantity (totalization), I = indicating: FQI is a totalized-flow quantity indicator, that is, a flow totalizer."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans l'identification LAHH-310, que signifie « LAHH » ?",
+          "en": "In the identification LAHH-310, what does \"LAHH\" mean?"
+        },
+        "choix": {
+          "fr": [
+            "Ligne d'alimentation haute pression",
+            "Liquide à haute hauteur",
+            "Lumière d'alarme à haute humidité",
+            "Niveau, alarme, haute-haute (Level Alarm High-High)"
+          ],
+          "en": [
+            "High-pressure supply line",
+            "Liquid at high height",
+            "High-humidity alarm light",
+            "Level Alarm High-High"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "L = niveau (level), A = alarme, HH = très haut (high-high). Une alarme LAHH signale un niveau extrêmement élevé, souvent associé à un arrêt de sécurité.",
+          "en": "L = level, A = alarm, HH = high-high. An LAHH alarm signals an extremely high level, often associated with a safety shutdown."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une vanne de régulation est annotée « FC » sur un P&ID. Que signifie cette annotation ?",
+          "en": "A control valve is annotated \"FC\" on a P&ID. What does this annotation mean?"
+        },
+        "choix": {
+          "fr": [
+            "Flange Connection",
+            "Fully Closed en permanence",
+            "Flow Control",
+            "Fail Closed : à la perte de l'air ou du signal, la vanne se ferme"
+          ],
+          "en": [
+            "Flange Connection",
+            "Permanently Fully Closed",
+            "Flow Control",
+            "Fail Closed: on loss of air or signal, the valve closes"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "FC (fail closed) indique la position de sécurité de la vanne en cas de perte d'alimentation ou de signal : elle se ferme. FO (fail open) signifie qu'elle s'ouvre.",
+          "en": "FC (fail closed) indicates the valve's safe position on loss of power or signal: it closes. FO (fail open) means it opens."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur une nomenclature, la désignation « HSS 2.5 × 2.5 × 0.1875 » décrit :",
+          "en": "On a bill of materials, the designation \"HSS 2.5 × 2.5 × 0.1875\" describes:"
+        },
+        "choix": {
+          "fr": [
+            "Un tube structural carré de 2,5 po de côté et de 3/16 po (0,1875 po) d'épaisseur de paroi",
+            "Une plaque de 2,5 po",
+            "Une tige filetée",
+            "Un boulon de 2,5 po"
+          ],
+          "en": [
+            "A square structural tube 2.5 in. on a side with a 3/16 in. (0.1875 in.) wall thickness",
+            "A 2.5 in. plate",
+            "A threaded rod",
+            "A 2.5 in. bolt"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "HSS (Hollow Structural Section) désigne un tube structural ; 2,5 × 2,5 est la section extérieure et 0,1875 po (3/16 po) l'épaisseur de paroi.",
+          "en": "HSS (Hollow Structural Section) designates a structural tube; 2.5 × 2.5 is the outside section and 0.1875 in. (3/16 in.) the wall thickness."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans la désignation d'un profilé « C 3 × 3.5 » (channel standard), que représente 3.5 ?",
+          "en": "In the designation of a standard channel \"C 3 × 3.5\", what does 3.5 represent?"
+        },
+        "choix": {
+          "fr": [
+            "La largeur de l'aile en pouces",
+            "La longueur en pieds",
+            "Le poids en lb par pied linéaire",
+            "L'épaisseur de l'âme en pouces"
+          ],
+          "en": [
+            "The flange width in inches",
+            "The length in feet",
+            "The weight in lb per linear foot",
+            "The web thickness in inches"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Pour un profilé en C standard, le premier nombre indique la hauteur (3 po) et le second le poids linéique (3,5 lb/pi).",
+          "en": "For a standard C-shape, the first number gives the depth (3 in.) and the second the weight per foot (3.5 lb/ft)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le poids approximatif d'une plaque d'acier de 12 po × 20 po × 1/8 po d'épaisseur (masse volumique de l'acier ≈ 0,284 lb/po³) ?",
+          "en": "What is the approximate weight of a steel plate 12 in. × 20 in. × 1/8 in. thick (steel density ≈ 0.284 lb/in.³)?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 34 lb",
+            "Environ 17 lb",
+            "Environ 4,3 lb",
+            "Environ 8,5 lb"
+          ],
+          "en": [
+            "About 34 lb",
+            "About 17 lb",
+            "About 4.3 lb",
+            "About 8.5 lb"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Volume = 12 × 20 × 0,125 = 30 po³ ; poids = 30 × 0,284 ≈ 8,5 lb.",
+          "en": "Volume = 12 × 20 × 0.125 = 30 in.³; weight = 30 × 0.284 ≈ 8.5 lb."
+        }
+      },
+      {
+        "question": {
+          "fr": "L'atelier reçoit un dessin révisé « REV C » alors que des pièces ont déjà été coupées selon la « REV B ». Quelle est la meilleure première action ?",
+          "en": "The shop receives a revised drawing \"REV C\" while parts have already been cut per \"REV B\". What is the best first action?"
+        },
+        "choix": {
+          "fr": [
+            "Continuer la fabrication selon la REV B pour ne pas perdre de temps",
+            "Appliquer la REV C sans en informer personne",
+            "Arrêter, comparer les deux révisions, déterminer l'impact sur les pièces déjà coupées, et en informer le superviseur ou l'ingénierie avant de poursuivre",
+            "Jeter toutes les pièces déjà coupées sans vérification"
+          ],
+          "en": [
+            "Continue fabrication per REV B to avoid wasting time",
+            "Apply REV C without telling anyone",
+            "Stop, compare the two revisions, determine the impact on parts already cut, and inform the supervisor or engineering before continuing",
+            "Scrap all already-cut parts without checking"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Il faut d'abord comprendre ce qui a changé et ce que cela implique pour le travail déjà fait, puis informer les responsables : continuer sans vérifier ou jeter sans analyse peut coûter cher ou produire des pièces non conformes.",
+          "en": "First understand what changed and what it implies for the work already done, then inform the responsible people: continuing without checking or scrapping without analysis can be costly or produce nonconforming parts."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un dessin, une cote soulignée d'un trait épais (par exemple 4.25 avec un soulignement) indique généralement :",
+          "en": "On a drawing, a dimension underlined with a heavy line (for example 4.25 with an underline) generally indicates:"
+        },
+        "choix": {
+          "fr": [
+            "Une cote en millimètres",
+            "Une cote de référence",
+            "Que cette cote n'est pas à l'échelle du dessin (not to scale), car la vue n'a pas été redessinée après une modification",
+            "Une cote obligatoire à contrôler à 100 %"
+          ],
+          "en": [
+            "A dimension in millimeters",
+            "A reference dimension",
+            "That this dimension is not to scale for the view (not to scale), since the view was not redrawn after a change",
+            "A mandatory dimension to be inspected 100%"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un soulignement indique traditionnellement qu'une cote n'est pas à l'échelle de la vue (modification ultérieure sans redessiner) ; on se fie à la valeur inscrite, pas à la mesure sur le papier.",
+          "en": "An underline traditionally indicates that a dimension is not to the view's scale (later change without redrawing); rely on the stated value, not on measuring the paper."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une note indique « 4X Ø1/2 THRU ON Ø8.000 B.C. ». Que signifie « B.C. » ?",
+          "en": "A note states \"4X Ø1/2 THRU ON Ø8.000 B.C.\". What does \"B.C.\" mean?"
+        },
+        "choix": {
+          "fr": [
+            "Bar Clamp",
+            "Base Circle",
+            "Bolt Circle : les 4 trous sont répartis sur un cercle de boulons de 8 po de diamètre",
+            "Bevel Corner"
+          ],
+          "en": [
+            "Bar Clamp",
+            "Base Circle",
+            "Bolt Circle: the 4 holes are distributed on an 8 in. diameter bolt circle",
+            "Bevel Corner"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "B.C. signifie bolt circle (cercle de perçage) : quatre trous de Ø1/2 po traversants, répartis sur un cercle de 8 po de diamètre.",
+          "en": "B.C. means bolt circle: four through holes of Ø1/2 in., distributed on a circle 8 in. in diameter."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un dessin d'ensemble, un élément porte la mention « BY CBR » dans sa bulle de nomenclature. Que faut-il en comprendre ?",
+          "en": "On an assembly drawing, an item shows the note \"BY CBR\" in its parts-list balloon. What should be understood?"
+        },
+        "choix": {
+          "fr": [
+            "Que l'élément est fabriqué ou fourni par un tiers désigné (ici l'atelier ou le fournisseur identifié par CBR), et non par l'atelier qui lit le dessin",
+            "Que l'élément est déjà installé",
+            "Que l'élément est fabriqué par l'atelier de dessin",
+            "Que l'élément est facultatif"
+          ],
+          "en": [
+            "That the item is made or supplied by a designated third party (here the shop or supplier identified by CBR), and not by the shop reading the drawing",
+            "That the item is already installed",
+            "That the item is made by the drafting shop",
+            "That the item is optional"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "La mention « BY » suivie d'un code indique l'entité responsable de la fabrication ou de la fourniture de la pièce ; l'atelier ne doit pas la fabriquer lui-même mais prévoir son interface.",
+          "en": "The note \"BY\" followed by a code indicates the entity responsible for making or supplying the part; the shop must not fabricate it itself but must plan for its interface."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi vérifie-t-on, avant la découpe, que la somme des cotes partielles d'un détail est égale à la cote globale indiquée ?",
+          "en": "Why do you check, before cutting, that the sum of a detail's partial dimensions equals the stated overall dimension?"
+        },
+        "choix": {
+          "fr": [
+            "Pour détecter une erreur ou une incohérence du dessin avant de gaspiller de la matière : les cotes partielles doivent s'additionner à la cote totale, aux tolérances près",
+            "Pour des raisons esthétiques seulement",
+            "Parce que le dessin est toujours faux",
+            "Parce que cela accélère la découpe"
+          ],
+          "en": [
+            "To detect a drawing error or inconsistency before wasting material: partial dimensions must add up to the total dimension, within tolerances",
+            "For aesthetic reasons only",
+            "Because the drawing is always wrong",
+            "Because it speeds up cutting"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un contrôle de cohérence des cotes partielles et totales permet de repérer une erreur de cotation (ou une révision mal reportée) avant de couper, ce qui évite le rebut et les reprises.",
+          "en": "A consistency check of partial and overall dimensions catches a dimensioning error (or a poorly carried revision) before cutting, which avoids scrap and rework."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un dessin, une cote encadrée (cote théoriquement exacte, « basic dimension ») placée dans un cadre de tolérance géométrique signifie que :",
+          "en": "On a drawing, a boxed dimension (a theoretically exact \"basic dimension\") used with a geometric tolerance frame means that:"
+        },
+        "choix": {
+          "fr": [
+            "Elle n'a pas de tolérance propre : la tolérance qui s'y applique est donnée par le cadre de tolérance géométrique (par exemple une tolérance de position)",
+            "Elle est exprimée en millimètres",
+            "Elle est facultative",
+            "Elle est une cote de référence entre parenthèses"
+          ],
+          "en": [
+            "It has no tolerance of its own: the tolerance that applies is given by the geometric tolerance frame (for example a position tolerance)",
+            "It is expressed in millimeters",
+            "It is optional",
+            "It is a reference dimension in parentheses"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une cote encadrée définit la position ou la dimension théorique exacte ; l'écart admissible vient entièrement du cadre de tolérance géométrique associé, et non d'une tolérance plus-moins.",
+          "en": "A boxed dimension defines the exact theoretical position or size; the permitted deviation comes entirely from the associated geometric tolerance frame, not from a plus-minus tolerance."
         }
       }
     ]
@@ -2640,6 +6554,1310 @@ window.QUESTIONNAIRES = [
           "en": "A self-priming pump's casing retains a reserve of liquid that lets it draw air out of the suction line. It must still be filled before the first start."
         }
       }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Une pompe fournit 300 gpm à 80 pi de TDH à 1750 tr/min, avec un rendement de 70 %. Quelle puissance (en HP) le moteur doit-il fournir au minimum ?",
+          "en": "A pump delivers 300 gpm at 80 ft of TDH at 1750 rpm, with 70% efficiency. What is the minimum power (in HP) the motor must supply?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 15,4 HP",
+            "Environ 8,6 HP",
+            "Environ 10,8 HP",
+            "Environ 5,4 HP"
+          ],
+          "en": [
+            "About 15.4 HP",
+            "About 8.6 HP",
+            "About 10.8 HP",
+            "About 5.4 HP"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "HP hydraulique = (gpm × TDH) / 3960 = (300 × 80) / 3960 ≈ 6,06 HP. En divisant par le rendement de 70 % : 6,06 / 0,70 ≈ 8,66 HP au frein (brake horsepower).",
+          "en": "Hydraulic HP = (gpm × TDH) / 3960 = (300 × 80) / 3960 ≈ 6.06 HP. Dividing by the 70% efficiency: 6.06 / 0.70 ≈ 8.66 brake horsepower."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe a un NPSH requis de 12 pi à son débit nominal. L'installation offre un NPSH disponible de 14 pi. Quelle est la marge de sécurité, et est-elle généralement jugée suffisante ?",
+          "en": "A pump has a required NPSH of 12 ft at its rated flow. The installation provides an available NPSH of 14 ft. What is the safety margin, and is it generally considered adequate?"
+        },
+        "choix": {
+          "fr": [
+            "2 pi ; insuffisante, il faut au moins 10 pi de marge",
+            "26 pi ; marge excessive, signe d'une erreur de calcul",
+            "Aucune marge, la pompe cavitera certainement",
+            "2 pi ; généralement jugée acceptable (marge d'au moins 2 à 3 pi recommandée)"
+          ],
+          "en": [
+            "2 ft; inadequate, at least 10 ft of margin is needed",
+            "26 ft; excessive margin, a sign of a calculation error",
+            "No margin at all, the pump will certainly cavitate",
+            "2 ft; generally considered acceptable (a margin of at least 2 to 3 ft is recommended)"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Marge = NPSHa − NPSHr = 14 − 12 = 2 pi. Une marge d'au moins 2 à 3 pi (ou 10 % du NPSHr, selon la plus grande valeur) est une pratique courante pour absorber les incertitudes de calcul et le vieillissement de l'installation.",
+          "en": "Margin = NPSHa − NPSHr = 14 − 12 = 2 ft. A margin of at least 2 to 3 ft (or 10% of NPSHr, whichever is greater) is common practice to absorb calculation uncertainty and installation aging."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe à 1750 tr/min fournit 400 gpm à 60 pi de TDH. On veut obtenir 500 gpm avec une pompe géométriquement semblable. Selon les lois de similitude, à quelle vitesse approximative faut-il la faire tourner (même roue) ?",
+          "en": "A pump at 1750 rpm delivers 400 gpm at 60 ft of TDH. We want 500 gpm from a geometrically similar pump. Per the affinity laws, at what approximate speed must it run (same impeller)?"
+        },
+        "choix": {
+          "fr": [
+            "1960 tr/min",
+            "1750 tr/min",
+            "2500 tr/min",
+            "2188 tr/min"
+          ],
+          "en": [
+            "1960 rpm",
+            "1750 rpm",
+            "2500 rpm",
+            "2188 rpm"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le débit varie proportionnellement à la vitesse : n2 = n1 × (Q2/Q1) = 1750 × (500/400) = 2188 tr/min.",
+          "en": "Flow varies proportionally with speed: n2 = n1 × (Q2/Q1) = 1750 × (500/400) = 2188 rpm."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans la situation précédente (pompe accélérée à environ 2188 tr/min pour passer de 400 à 500 gpm), quelle est la nouvelle TDH approximative ?",
+          "en": "In the previous situation (pump sped up to about 2188 rpm to go from 400 to 500 gpm), what is the new approximate TDH?"
+        },
+        "choix": {
+          "fr": [
+            "60 pi",
+            "94 pi",
+            "75 pi",
+            "120 pi"
+          ],
+          "en": [
+            "60 ft",
+            "94 ft",
+            "75 ft",
+            "120 ft"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "La TDH varie avec le carré du rapport de vitesse : TDH2 = 60 × (2188/1750)² ≈ 60 × 1,565 ≈ 94 pi.",
+          "en": "TDH varies with the square of the speed ratio: TDH2 = 60 × (2188/1750)² ≈ 60 × 1.565 ≈ 94 ft."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la pression de conception de la tuyauterie de refoulement doit-elle tenir compte de la TDH à débit nul (shutoff) de la pompe ?",
+          "en": "Why must the design pressure of the discharge piping take into account the pump's shutoff (zero-flow) TDH?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que la tuyauterie n'a pas de limite de pression",
+            "Parce que la pompe peut fonctionner vanne fermée : la pression au refoulement atteint alors la pression d'aspiration plus la TDH de shutoff, la plus élevée de la courbe",
+            "Parce que la TDH à débit nul est toujours la plus basse",
+            "Parce que la pompe ne fonctionne jamais à débit nul"
+          ],
+          "en": [
+            "Because the piping has no pressure limit",
+            "Because the pump can run against a closed valve: discharge pressure then reaches suction pressure plus the shutoff TDH, the highest on the curve",
+            "Because zero-flow TDH is always the lowest",
+            "Because the pump never runs at zero flow"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "À débit nul, la TDH de la pompe est maximale ; ajoutée à la pression d'aspiration, elle détermine la pression maximale que peut subir la tuyauterie de refoulement.",
+          "en": "At zero flow, the pump's TDH is at its maximum; added to the suction pressure, it determines the maximum pressure the discharge piping can see."
+        }
+      },
+      {
+        "question": {
+          "fr": "Deux pompes identiques, chacune capable de 200 gpm à 100 pi de TDH à leur point de fonctionnement individuel, sont installées en parallèle sur un réseau dont la courbe de résistance est relativement raide (pertes de charge élevées). Par rapport à une installation à faibles pertes de charge, le gain de débit total par rapport à une seule pompe sera :",
+          "en": "Two identical pumps, each capable of 200 gpm at 100 ft of TDH at their individual operating point, are installed in parallel on a system whose resistance curve is relatively steep (high friction losses). Compared to a low-friction-loss installation, the total flow gain over a single pump will be:"
+        },
+        "choix": {
+          "fr": [
+            "Impossible à déterminer sans connaître le NPSH",
+            "Plus grand, car une courbe raide favorise le fonctionnement en parallèle",
+            "Plus petit, car l'intersection avec une courbe de réseau raide limite le gain de débit obtenu en ajoutant une deuxième pompe",
+            "Le même : toujours un gain de +100 %"
+          ],
+          "en": [
+            "Impossible to determine without knowing the NPSH",
+            "Larger, because a steep curve favors parallel operation",
+            "Smaller, because the intersection with a steep system curve limits the flow gain from adding a second pump",
+            "The same: always a +100% gain"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Plus la courbe du réseau est raide (pertes de charge dominantes), plus l'ajout d'une pompe en parallèle déplace peu le point de fonctionnement vers la droite : le gain de débit réel est alors nettement inférieur à un doublement.",
+          "en": "The steeper the system curve (friction-dominated losses), the less a parallel pump shifts the operating point to the right: the actual flow gain is then noticeably less than a doubling."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe multicellulaire à 3 étages utilise des roues identiques, chacune développant 50 pi de TDH à son débit nominal. En ignorant les pertes entre étages, quelle TDH totale la pompe développe-t-elle à ce débit ?",
+          "en": "A 3-stage multistage pump uses identical impellers, each developing 50 ft of TDH at its rated flow. Ignoring inter-stage losses, what total TDH does the pump develop at that flow?"
+        },
+        "choix": {
+          "fr": [
+            "100 pi",
+            "150 pi",
+            "450 pi",
+            "50 pi"
+          ],
+          "en": [
+            "100 ft",
+            "150 ft",
+            "450 ft",
+            "50 ft"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 1,
+        "explication": {
+          "fr": "En série (étages successifs), les TDH s'additionnent à débit égal : 3 × 50 = 150 pi.",
+          "en": "In series (successive stages), TDH values add up at equal flow: 3 × 50 = 150 ft."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur une courbe de pompe, le point où la TDH devient maximale correspond généralement :",
+          "en": "On a pump curve, the point where TDH is maximum generally corresponds to:"
+        },
+        "choix": {
+          "fr": [
+            "Au débit nul (shutoff), à l'extrême gauche de la courbe",
+            "Au débit nominal (BEP)",
+            "Au débit maximal, à l'extrême droite de la courbe",
+            "Il n'y a pas de relation entre la TDH et le débit"
+          ],
+          "en": [
+            "Zero flow (shutoff), at the far left of the curve",
+            "The rated flow (BEP)",
+            "Maximum flow, at the far right of the curve",
+            "There is no relationship between TDH and flow"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour une pompe centrifuge classique, la TDH est maximale à débit nul (point de shutoff) et diminue généralement à mesure que le débit augmente.",
+          "en": "For a typical centrifugal pump, TDH is maximum at zero flow (shutoff point) and generally decreases as flow increases."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un ingénieur trace la courbe du réseau et trouve deux intersections possibles avec la courbe de la pompe (une courbe de réseau instable qui redescend avant de remonter, typique de certains systèmes à forte composante statique variable). Lequel des deux points d'intersection est généralement stable ?",
+          "en": "An engineer plots the system curve and finds two possible intersections with the pump curve (an unstable system curve that dips before rising again, typical of some systems with a variable static component). Which of the two intersection points is generally stable?"
+        },
+        "choix": {
+          "fr": [
+            "Celui où la pente de la courbe de la pompe est plus raide (plus négative) que celle du réseau à ce point",
+            "Peu importe, les deux points sont toujours stables",
+            "Celui où les deux courbes ont exactement la même pente",
+            "Celui situé le plus près du BEP, peu importe les pentes"
+          ],
+          "en": [
+            "The one where the pump curve's slope is steeper (more negative) than the system curve's at that point",
+            "It doesn't matter, both points are always stable",
+            "The one where both curves have exactly the same slope",
+            "The one closest to the BEP, regardless of slopes"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un point de fonctionnement est stable si une petite perturbation du débit ramène le système vers ce point ; cela exige que la pente de la courbe de la pompe (TDH en fonction du débit) soit plus négative que celle du réseau à cet endroit.",
+          "en": "An operating point is stable if a small flow disturbance pulls the system back toward that point; this requires the pump curve's slope (TDH versus flow) to be more negative than the system curve's slope at that point."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle d'un clapet de pied (foot valve) installé au bas d'une conduite d'aspiration ?",
+          "en": "What is the role of a foot valve installed at the bottom of a suction line?"
+        },
+        "choix": {
+          "fr": [
+            "Filtrer l'air",
+            "Réguler la pression au refoulement",
+            "Augmenter le débit",
+            "Retenir le liquide dans la conduite d'aspiration pour garder la pompe amorcée à l'arrêt, au prix d'une perte de charge supplémentaire à l'aspiration"
+          ],
+          "en": [
+            "Filtering air",
+            "Regulating discharge pressure",
+            "Increasing flow",
+            "Holding liquid in the suction line to keep the pump primed when stopped, at the cost of additional suction pressure loss"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le clapet de pied empêche le liquide de redescendre à l'arrêt, ce qui conserve l'amorçage ; il ajoute toutefois une perte de charge qui réduit le NPSH disponible.",
+          "en": "The foot valve keeps liquid from draining back when stopped, which preserves priming; it does, however, add a pressure loss that reduces available NPSH."
+        }
+      },
+      {
+        "question": {
+          "fr": "On souhaite sélectionner une pompe pour un point de fonctionnement précis de 350 gpm à 120 pi de TDH. Le catalogue propose une pompe dont le BEP est à 380 gpm, 115 pi. Quelle est la meilleure pratique de sélection ?",
+          "en": "A pump must be selected for a precise operating point of 350 gpm at 120 ft of TDH. The catalog offers a pump whose BEP is at 380 gpm, 115 ft. What is the best selection practice?"
+        },
+        "choix": {
+          "fr": [
+            "Toujours choisir la pompe avec la plus grande TDH disponible, par sécurité",
+            "Choisir systématiquement la pompe dont le BEP est le plus proche possible du point de fonctionnement requis, en vérifiant la marge de NPSH à ce débit précis",
+            "La position du BEP n'a pas d'importance tant que le point de fonctionnement est sur la courbe",
+            "Choisir uniquement selon le prix, la position du BEP étant secondaire"
+          ],
+          "en": [
+            "Always choose the pump with the greatest available TDH, for safety",
+            "Systematically choose the pump whose BEP is as close as possible to the required operating point, while verifying the NPSH margin at that exact flow",
+            "The BEP's position doesn't matter as long as the operating point is on the curve",
+            "Choose based on price only, the BEP's position being secondary"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Opérer près du BEP minimise les vibrations, l'usure et la consommation d'énergie sur la durée de vie de l'équipement ; il faut aussi confirmer que le NPSH disponible dépasse le NPSH requis au débit réel d'opération.",
+          "en": "Operating near the BEP minimizes vibration, wear, and energy consumption over the equipment's life; it must also be confirmed that the available NPSH exceeds the required NPSH at the actual operating flow."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe fonctionne à 60 % de son débit au BEP, sur la portion gauche de la courbe. Quel risque est le plus associé à ce mode de fonctionnement prolongé ?",
+          "en": "A pump runs at 60% of its BEP flow, on the left portion of the curve. What risk is most associated with prolonged operation in this mode?"
+        },
+        "choix": {
+          "fr": [
+            "Une diminution de la température du liquide pompé",
+            "Recirculation interne à l'aspiration et au refoulement, vibrations et usure prématurée des roulements et de la garniture",
+            "Aucun risque particulier, c'est le mode de fonctionnement le plus sécuritaire",
+            "Cavitation par vaporisation à l'aspiration seulement"
+          ],
+          "en": [
+            "A decrease in the temperature of the pumped liquid",
+            "Internal recirculation at suction and discharge, vibration, and premature wear of bearings and the seal",
+            "No particular risk, this is the safest operating mode",
+            "Cavitation from vaporization at the suction only"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "À faible débit (loin à gauche du BEP), la recirculation interne à l'aspiration et au refoulement génère des zones de basse pression locale, des vibrations et une usure accélérée des roulements et de la garniture.",
+          "en": "At low flow (far left of the BEP), internal recirculation at both suction and discharge generates localized low-pressure zones, vibration, and accelerated wear of bearings and the seal."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe doit fonctionner occasionnellement à très faible débit (proche de zéro) pendant de courtes périodes. Quelle solution est couramment utilisée pour protéger la pompe dans cette situation ?",
+          "en": "A pump must occasionally run at very low flow (near zero) for short periods. What solution is commonly used to protect the pump in this situation?"
+        },
+        "choix": {
+          "fr": [
+            "Augmenter la vitesse du moteur",
+            "Installer une ligne de recirculation (bypass) avec une vanne ou un orifice calibré vers le réservoir d'aspiration",
+            "Fermer complètement la vanne d'aspiration pendant ces périodes",
+            "Retirer temporairement la garniture mécanique"
+          ],
+          "en": [
+            "Increase the motor speed",
+            "Install a minimum-flow recirculation (bypass) line with a valve or calibrated orifice back to the suction tank",
+            "Fully close the suction valve during these periods",
+            "Temporarily remove the mechanical seal"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une ligne de recirculation minimale maintient un débit continu à travers la pompe, même si la demande du procédé tombe à zéro, évitant la surchauffe et les dommages associés au fonctionnement à débit nul.",
+          "en": "A minimum-flow recirculation line maintains continuous flow through the pump even if process demand drops to zero, preventing overheating and the damage associated with running at zero flow."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe verticale en puits sec (vertical turbine, type \"can\") est choisie plutôt qu'une pompe horizontale pour une application précise. Quelle raison technique justifie le plus souvent ce choix ?",
+          "en": "A vertical can-type (vertical turbine) pump is chosen over a horizontal pump for a specific application. What technical reason most often justifies this choice?"
+        },
+        "choix": {
+          "fr": [
+            "Elle coûte toujours moins cher à l'achat",
+            "Elle élimine le besoin d'un moteur électrique",
+            "Elle n'a jamais besoin d'amorçage",
+            "Elle permet d'obtenir un NPSH disponible suffisant lorsque le liquide arrive avec très peu de marge au-dessus de sa pression de vapeur, en plaçant la première roue plus bas que le niveau du plancher"
+          ],
+          "en": [
+            "It always costs less to purchase",
+            "It eliminates the need for an electric motor",
+            "It never needs priming",
+            "It allows achieving sufficient available NPSH when the liquid arrives with very little margin above its vapor pressure, by placing the first impeller lower than floor level"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "En plaçant la pompe (ou au moins son premier étage) plus bas, sous le niveau du liquide ou du plancher, on augmente la hauteur statique disponible à l'aspiration, ce qui aide à satisfaire un NPSH requis élevé ou un NPSH disponible limité.",
+          "en": "By placing the pump (or at least its first stage) lower, below the liquid level or floor level, available static head at suction is increased, which helps satisfy a high required NPSH or a limited available NPSH."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors d'un essai de performance en usine (test de réception), la pompe testée fournit une TDH environ 8 % supérieure à la valeur garantie, au même débit. Comment cela est-il généralement interprété ?",
+          "en": "During a factory performance test (acceptance test), the tested pump delivers a TDH about 8% higher than the guaranteed value, at the same flow. How is this generally interpreted?"
+        },
+        "choix": {
+          "fr": [
+            "C'est toujours un échec du test, la pompe doit être rejetée",
+            "Cela indique nécessairement un problème de cavitation",
+            "Cela signifie que le débit mesuré est faux",
+            "C'est généralement acceptable : les normes d'essai (comme l'Hydraulic Institute) tolèrent une marge de dépassement positive sur la TDH"
+          ],
+          "en": [
+            "This is always a test failure; the pump must be rejected",
+            "This necessarily indicates a cavitation problem",
+            "This means the measured flow is wrong",
+            "This is generally acceptable: test standards (such as the Hydraulic Institute) tolerate a positive margin on TDH"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les normes d'essai de performance tolèrent généralement une certaine marge positive sur la TDH (dépassement), tant que le rendement et la puissance absorbée restent conformes ; un écart négatif est généralement plus critique.",
+          "en": "Performance test standards generally tolerate some positive margin (overshoot) on TDH, as long as efficiency and absorbed power remain compliant; a negative deviation is generally more critical."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un système avec une forte composante de hauteur statique (par exemple, pomper vers un réservoir élevé) et une faible composante de pertes de charge par friction, quel est l'effet d'une variation de vitesse (VFD) sur le débit, comparé à un système purement à friction ?",
+          "en": "In a system with a strong static head component (such as pumping to an elevated tank) and a small friction-loss component, what is the effect of a speed change (VFD) on flow, compared to a purely frictional system?"
+        },
+        "choix": {
+          "fr": [
+            "Le VFD n'a aucun effet si la hauteur statique est présente",
+            "Une même variation de vitesse produit toujours un débit nul",
+            "Identique dans les deux cas",
+            "Une même variation de vitesse produit une variation de débit proportionnellement plus faible lorsque la composante statique domine"
+          ],
+          "en": [
+            "The VFD has no effect if static head is present",
+            "The same speed change always produces zero flow",
+            "Identical in both cases",
+            "The same speed change produces a proportionally smaller flow change when the static component dominates"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Lorsque la hauteur statique domine la courbe du réseau, celle-ci est plus plate dans la zone utile : une même réduction de vitesse déplace moins le débit que dans un système purement résistif (à friction dominante), où la courbe du réseau est plus pentue.",
+          "en": "When static head dominates the system curve, it is flatter in the useful zone: the same speed reduction shifts flow less than in a purely resistive (friction-dominated) system, where the system curve is steeper."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe doit être arrêtée et redémarrée fréquemment dans un procédé. Quel est l'effet cumulatif le plus préoccupant pour la durée de vie de la pompe ?",
+          "en": "A pump must be started and stopped frequently in a process. What is the most concerning cumulative effect on the pump's service life?"
+        },
+        "choix": {
+          "fr": [
+            "L'usure accélérée du moteur, des roulements et de la garniture, en plus des cycles thermiques et des coups de bélier possibles à chaque démarrage/arrêt",
+            "Une amélioration du rendement global",
+            "Une réduction du NPSH requis",
+            "Aucun effet, les démarrages fréquents n'affectent pas la pompe"
+          ],
+          "en": [
+            "Accelerated wear of the motor, bearings, and seal, plus thermal cycling and possible water hammer at each start/stop",
+            "An improvement in overall efficiency",
+            "A reduction in required NPSH",
+            "No effect, frequent starts don't affect the pump"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Chaque démarrage impose un courant d'appel au moteur, une sollicitation mécanique aux roulements et à la garniture, et peut générer un coup de bélier transitoire ; des cycles fréquents réduisent la durée de vie de l'ensemble.",
+          "en": "Each start imposes inrush current on the motor, mechanical stress on bearings and the seal, and can generate transient water hammer; frequent cycles reduce the service life of the whole assembly."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour une pompe fonctionnant avec un liquide proche de son point d'ébullition (température élevée, pression de vapeur élevée), quel paramètre devient particulièrement critique à vérifier ?",
+          "en": "For a pump handling a liquid near its boiling point (high temperature, high vapor pressure), which parameter becomes particularly critical to check?"
+        },
+        "choix": {
+          "fr": [
+            "Le diamètre du moteur uniquement",
+            "Le code de couleur de la peinture",
+            "La marge de NPSH, puisque la pression de vapeur élevée réduit fortement le NPSH disponible",
+            "La couleur du liquide"
+          ],
+          "en": [
+            "The motor diameter only",
+            "The paint color code",
+            "The NPSH margin, since high vapor pressure sharply reduces available NPSH",
+            "The liquid's color"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une pression de vapeur élevée (liquide chaud, proche de l'ébullition) réduit directement le NPSH disponible (NPSHa = pression à l'aspiration − pression de vapeur, en hauteur équivalente) ; la marge de NPSH devient le paramètre le plus critique à valider.",
+          "en": "High vapor pressure (hot liquid, near boiling) directly reduces available NPSH (NPSHa = suction pressure − vapor pressure, in equivalent head); the NPSH margin becomes the most critical parameter to validate."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle d'un réservoir à vessie (accumulateur) installé sur un poste de surpression à pompe ?",
+          "en": "What is the role of a bladder tank (accumulator) installed on a pump booster system?"
+        },
+        "choix": {
+          "fr": [
+            "Filtrer l'eau",
+            "Remplacer la pompe",
+            "Augmenter la température",
+            "Maintenir la pression et fournir de petits volumes d'eau pendant que la pompe est arrêtée, ce qui réduit le nombre de démarrages et d'arrêts"
+          ],
+          "en": [
+            "Filtering the water",
+            "Replacing the pump",
+            "Raising temperature",
+            "Maintaining pressure and supplying small volumes of water while the pump is stopped, which reduces the number of starts and stops"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le réservoir à vessie emmagasine un peu d'eau sous pression : les petites consommations n'obligent plus la pompe à démarrer, ce qui limite les cycles et l'usure.",
+          "en": "The bladder tank stores some pressurized water: small demands no longer force the pump to start, which limits cycling and wear."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe fonctionne normalement, mais un relevé de vibration montre un pic dominant exactement à la fréquence de passage des aubes de la roue (nombre d'aubes × vitesse de rotation). Quelle cause est la plus probable ?",
+          "en": "A pump operates normally, but a vibration reading shows a dominant peak exactly at the vane passing frequency (number of vanes × rotational speed). What cause is most likely?"
+        },
+        "choix": {
+          "fr": [
+            "Un déséquilibre de la roue",
+            "Un mauvais choix de couleur de peinture",
+            "Une interaction hydraulique entre les aubes de la roue et la volute (jeu de recouvrement insuffisant, ou usure)",
+            "Un problème purement électrique du moteur"
+          ],
+          "en": [
+            "An impeller imbalance",
+            "A poor choice of paint color",
+            "A hydraulic interaction between the impeller vanes and the volute (insufficient overlap clearance, or wear)",
+            "A purely electrical motor problem"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "La fréquence de passage des aubes (vane passing frequency) est caractéristique de l'interaction hydraulique entre les aubes de la roue et les becs de la volute ou du diffuseur ; un jeu de recouvrement insuffisant ou une usure peut l'amplifier.",
+          "en": "Vane passing frequency is characteristic of the hydraulic interaction between the impeller vanes and the volute or diffuser tongues; insufficient overlap clearance or wear can amplify it."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors du calage (réglage axial) d'une pompe à roue semi-ouverte, pourquoi le jeu entre la roue et la plaque d'usure doit-il être réglé précisément selon les spécifications du fabricant ?",
+          "en": "When setting the axial clearance of a semi-open impeller pump, why must the gap between the impeller and the wear plate be set precisely per the manufacturer's specifications?"
+        },
+        "choix": {
+          "fr": [
+            "Plus le jeu est grand, meilleur est le rendement",
+            "Le jeu ne concerne que l'apparence esthétique de la pompe",
+            "Un jeu trop grand réduit le rendement par recirculation accrue ; un jeu trop petit risque un frottement et une usure prématurée ou un grippage",
+            "Le jeu n'a aucun effet sur la performance d'une roue semi-ouverte"
+          ],
+          "en": [
+            "The larger the gap, the better the efficiency",
+            "The gap only concerns the pump's aesthetic appearance",
+            "Too large a gap reduces efficiency through increased recirculation; too small a gap risks rubbing and premature wear or seizure",
+            "The gap has no effect on a semi-open impeller's performance"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour une roue semi-ouverte, le jeu axial influence directement le rendement (un jeu excessif augmente les fuites internes) et la fiabilité (un jeu insuffisant risque le contact et la surchauffe) ; le fabricant spécifie une plage précise à respecter.",
+          "en": "For a semi-open impeller, axial clearance directly influences efficiency (excessive clearance increases internal leakage) and reliability (insufficient clearance risks contact and overheating); the manufacturer specifies a precise range to maintain."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe doit être sélectionnée pour un liquide chargé de particules abrasives. En plus du choix d'une roue ouverte ou semi-ouverte, quelle autre caractéristique de conception est généralement privilégiée pour prolonger la durée de vie ?",
+          "en": "A pump must be selected for a liquid loaded with abrasive particles. Besides choosing an open or semi-open impeller, what other design feature is generally favored to extend service life?"
+        },
+        "choix": {
+          "fr": [
+            "L'élimination complète de la garniture mécanique",
+            "Le choix d'une peinture plus foncée",
+            "Des matériaux et revêtements résistants à l'abrasion (comme des alliages durcis) aux points d'usure critiques (roue, volute, bagues)",
+            "Une vitesse de rotation la plus élevée possible"
+          ],
+          "en": [
+            "Completely eliminating the mechanical seal",
+            "Choosing a darker paint color",
+            "Wear-resistant materials and coatings (such as hardened alloys) at critical wear points (impeller, volute, wear rings)",
+            "The highest possible rotational speed"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour les applications abrasives, on choisit des matériaux et des revêtements résistants à l'usure aux points les plus sollicités (roue, volute, bagues d'usure), en plus d'une géométrie de roue adaptée (ouverte ou à vortex) et souvent une vitesse réduite pour limiter l'érosion.",
+          "en": "For abrasive applications, wear-resistant materials and coatings are chosen at the most stressed points (impeller, volute, wear rings), along with a suitable impeller geometry (open or vortex type) and often a reduced speed to limit erosion."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe fonctionne avec un système de contrôle de pression à vitesse variable. Lors d'une analyse de la stabilité de la boucle PID, on remarque des oscillations de vitesse qui s'accentuent avec le temps près d'un point de fonctionnement précis sur la courbe du réseau. Quelle caractéristique du système est la plus susceptible d'en être la cause, indépendamment du réglage PID ?",
+          "en": "A pump operates with a variable-speed pressure control system. A stability analysis of the PID loop shows speed oscillations that grow over time near a specific operating point on the system curve. What system characteristic is most likely to cause this, independent of PID tuning?"
+        },
+        "choix": {
+          "fr": [
+            "Une pompe surdimensionnée fonctionnant loin de son BEP, où la pente de la courbe TDH-débit est très plate, rendant le système très sensible aux petites variations de débit",
+            "La couleur du câble du capteur de pression",
+            "Un mauvais choix de couleur pour l'interface HMI",
+            "Le type de matériau de la roue"
+          ],
+          "en": [
+            "An oversized pump operating far from its BEP, where the TDH-flow curve's slope is very flat, making the system very sensitive to small flow changes",
+            "The pressure sensor cable's color",
+            "A poor color choice for the HMI interface",
+            "The impeller material type"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Lorsque la courbe de la pompe est très plate dans la zone d'opération (souvent le cas d'une pompe surdimensionnée fonctionnant loin de son BEP), une petite variation de débit cause une grande variation de pression, ce qui peut rendre la boucle de régulation difficile à stabiliser peu importe le réglage du PID.",
+          "en": "When the pump curve is very flat in the operating zone (often the case for an oversized pump running far from its BEP), a small flow change causes a large pressure change, which can make the control loop difficult to stabilize regardless of PID tuning."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans le cadre d'une analyse de fiabilité, un rapport de défaillances de pompes identifie que la majorité des pannes sont liées à la garniture mécanique et aux roulements, plutôt qu'à l'hydraulique de la pompe elle-même. Quelle conclusion pratique en tire-t-on habituellement pour un programme de maintenance préventive ?",
+          "en": "A reliability analysis report finds that most pump failures are related to the mechanical seal and bearings, rather than the pump's hydraulics itself. What practical conclusion is usually drawn for a preventive maintenance program?"
+        },
+        "choix": {
+          "fr": [
+            "Concentrer les inspections et le suivi (vibration, température, fuites) sur la garniture et les roulements, puisqu'ils sont statistiquement les points de défaillance les plus fréquents",
+            "Ignorer complètement l'entretien des roulements et de la garniture",
+            "Remplacer la pompe au complet dès le premier signe de bruit",
+            "Cela ne change rien au programme de maintenance"
+          ],
+          "en": [
+            "Concentrate inspections and monitoring (vibration, temperature, leaks) on the seal and bearings, since they are statistically the most frequent failure points",
+            "Completely ignore bearing and seal maintenance",
+            "Replace the entire pump at the first sign of noise",
+            "This changes nothing about the maintenance program"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Les statistiques de fiabilité des pompes centrifuges montrent couramment que la garniture mécanique et les roulements sont les composants les plus souvent en cause dans les défaillances ; un programme de maintenance préventive efficace concentre donc la surveillance (vibration, température, fuites) sur ces éléments.",
+          "en": "Centrifugal pump reliability statistics commonly show that the mechanical seal and bearings are the components most often responsible for failures; an effective preventive maintenance program therefore concentrates monitoring (vibration, temperature, leaks) on these components."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur la courbe d'une pompe, la valeur de NPSH requis indiquée par le fabricant (souvent notée NPSH3) correspond généralement à :",
+          "en": "What does a pump's published required NPSH value (often noted NPSH3) generally represent?"
+        },
+        "choix": {
+          "fr": [
+            "Le NPSH auquel la TDH de la pompe chute d'environ 3 % par rapport à sa valeur sans cavitation, à ce débit",
+            "Le NPSH auquel la cavitation détruit immédiatement la roue",
+            "Le NPSH au-delà duquel aucune bulle de vapeur ne peut jamais se former",
+            "Le NPSH minimal pour que le moteur démarre"
+          ],
+          "en": [
+            "The NPSH at which the pump's TDH drops by about 3% compared to its cavitation-free value, at that flow",
+            "The NPSH at which cavitation immediately destroys the impeller",
+            "The NPSH beyond which no vapor bubble can ever form",
+            "The minimum NPSH for the motor to start"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le NPSH3, défini par des normes comme celles de l'Hydraulic Institute, correspond au point où une cavitation naissante fait chuter la TDH d'environ 3 % ; une certaine cavitation légère peut donc déjà être présente au NPSH requis publié, d'où l'importance d'une marge de sécurité additionnelle.",
+          "en": "NPSH3, as defined by standards such as those from the Hydraulic Institute, corresponds to the point where incipient cavitation causes TDH to drop by about 3%; some mild cavitation may therefore already be present at the published required NPSH, hence the importance of an additional safety margin."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Une pompe fonctionne à 1750 tr/min, 500 gpm, 100 pi de TDH, avec un rendement de 75 %. On augmente sa vitesse de 20 % (2100 tr/min, même roue). Quelle sera la puissance absorbée approximative à ce nouveau point, en supposant un rendement similaire ?",
+          "en": "A pump runs at 1750 rpm, 500 gpm, 100 ft of TDH, at 75% efficiency. Its speed is increased by 20% (2100 rpm, same impeller). What is the approximate absorbed power at this new point, assuming similar efficiency?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 50 HP",
+            "Environ 29 HP",
+            "Environ 35 HP",
+            "Environ 20 HP"
+          ],
+          "en": [
+            "About 50 HP",
+            "About 29 HP",
+            "About 35 HP",
+            "About 20 HP"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "HP initial = (500 × 100) / (3960 × 0,75) ≈ 16,8 HP. La puissance varie avec le cube de la vitesse : 16,8 × 1,2³ = 16,8 × 1,728 ≈ 29 HP : une hausse de vitesse de 20 % augmente la puissance d'environ 73 %.",
+          "en": "Initial HP = (500 × 100) / (3960 × 0.75) ≈ 16.8 HP. Power varies with the cube of speed: 16.8 × 1.2³ = 16.8 × 1.728 ≈ 29 HP: a 20% speed increase raises power by about 73%."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un système a une hauteur statique de 40 pi et des pertes de charge de 60 pi au débit de design de 400 gpm (pertes proportionnelles au carré du débit). Quelle est la TDH totale demandée par le réseau à 300 gpm ?",
+          "en": "A system has 40 ft of static head and 60 ft of friction losses at the design flow of 400 gpm (losses proportional to the square of flow). What total TDH does the system demand at 300 gpm?"
+        },
+        "choix": {
+          "fr": [
+            "60 pi",
+            "100 pi",
+            "85 pi",
+            "74 pi"
+          ],
+          "en": [
+            "60 ft",
+            "100 ft",
+            "85 ft",
+            "74 ft"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les pertes varient avec le carré du débit : à 300 gpm, pertes = 60 × (300/400)² = 60 × 0,5625 ≈ 33,75 pi. TDH totale = 40 (statique, inchangée) + 33,75 ≈ 74 pi ; l'essentiel est de comprendre que seule la portion friction varie avec le carré du débit, pas la hauteur statique.",
+          "en": "Losses vary with the square of flow: at 300 gpm, losses = 60 × (300/400)² = 60 × 0.5625 ≈ 33.75 ft. Total TDH = 40 (static, unchanged) + 33.75 ≈ 74 ft; the key point is that only the friction portion varies with the square of flow, not the static head."
+        }
+      },
+      {
+        "question": {
+          "fr": "Deux pompes différentes (courbes distinctes, non identiques) sont installées en parallèle sur le même réseau. Pompe A seule développe 80 pi à 300 gpm ; pompe B seule développe 60 pi à 300 gpm. Que peut-on affirmer sur leur fonctionnement combiné en parallèle ?",
+          "en": "Two different pumps (distinct curves, not identical) are installed in parallel on the same system. Pump A alone develops 80 ft at 300 gpm; pump B alone develops 60 ft at 300 gpm. What can be said about their combined operation in parallel?"
+        },
+        "choix": {
+          "fr": [
+            "La pompe la plus \"forte\" (A) peut faire fonctionner B près de son point de shutoff ou même la faire reculer si l'écart de TDH est trop grand par rapport à la courbe de B",
+            "Elles se partagent toujours également le débit total, peu importe leurs courbes",
+            "Le fonctionnement en parallèle de pompes non identiques est toujours interdit",
+            "La pompe B domine toujours, car elle est plus économique"
+          ],
+          "en": [
+            "The \"stronger\" pump (A) can push B close to its shutoff point, or even push it backward if the TDH gap is too large relative to B's curve",
+            "They always share the total flow equally, regardless of their curves",
+            "Parallel operation of non-identical pumps is always prohibited",
+            "Pump B always dominates, since it is more economical"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec des pompes non identiques, elles doivent développer la MÊME TDH au point de fonctionnement combiné. Si la courbe de B chute rapidement et que le réseau exige une TDH que B ne peut fournir qu'à très faible débit (ou pas du tout), B peut être poussée vers son shutoff, voire vers un débit inverse si mal appariée.",
+          "en": "With non-identical pumps, they must develop the SAME TDH at the combined operating point. If pump B's curve drops quickly and the system demands a TDH that B can only deliver at very low flow (or not at all), B can be pushed toward its shutoff, or even toward reverse flow if poorly matched."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe fonctionne avec un NPSH disponible qui varie dans le temps (par exemple, le niveau du réservoir d'aspiration baisse). Lequel des phénomènes suivants est le signe ACOUSTIQUE classique d'une cavitation en cours ?",
+          "en": "A pump operates with an available NPSH that varies over time (for example, the suction tank level is dropping). Which of the following is the classic ACOUSTIC sign of cavitation in progress?"
+        },
+        "choix": {
+          "fr": [
+            "Un son grave et continu, stable dans le temps",
+            "Un silence anormal de la pompe",
+            "Un bruit semblable à des gravillons ou du sable circulant dans la pompe, souvent irrégulier",
+            "Une odeur de brûlé sans aucun bruit"
+          ],
+          "en": [
+            "A low, continuous, steady sound",
+            "An abnormal silence from the pump",
+            "A noise resembling gravel or sand flowing through the pump, often irregular",
+            "A burning smell with no noise at all"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "La cavitation produit classiquement un bruit comparé à des gravillons ou du gravier circulant dans la pompe, causé par l'implosion de nombreuses bulles de vapeur ; ce bruit est souvent irrégulier et peut s'accompagner de vibrations accrues.",
+          "en": "Cavitation classically produces a noise compared to gravel or sand circulating through the pump, caused by the implosion of many vapor bubbles; this noise is often irregular and may be accompanied by increased vibration."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un ingénieur compare deux pompes candidates ayant le même point de fonctionnement cible, mais une vitesse spécifique (specific speed, Ns) très différente. En général, une pompe à FAIBLE vitesse spécifique (Ns faible) aura tendance à avoir :",
+          "en": "An engineer compares two candidate pumps with the same target operating point, but very different specific speed (Ns). In general, a pump with LOW specific speed (low Ns) will tend to have:"
+        },
+        "choix": {
+          "fr": [
+            "Aucune différence de géométrie de roue",
+            "Une roue radiale plus étroite, mieux adaptée à une TDH élevée et un débit plus faible",
+            "Toujours un meilleur rendement qu'une pompe à Ns élevé, sans exception",
+            "Une roue de type hélicoïde (axiale), adaptée aux très grands débits à faible TDH"
+          ],
+          "en": [
+            "No difference in impeller geometry",
+            "A narrower radial impeller, better suited to high TDH and lower flow",
+            "Always better efficiency than a high-Ns pump, without exception",
+            "An axial (propeller-type) impeller, suited to very high flows at low TDH"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une faible vitesse spécifique est associée aux pompes radiales (TDH élevée, débit plus faible) ; une vitesse spécifique élevée est associée aux roues plus larges voire axiales/hélicoïdales (grand débit, faible TDH). C'est un outil clé de présélection du type de roue.",
+          "en": "Low specific speed is associated with radial impellers (high TDH, lower flow); high specific speed is associated with wider impellers, even axial/propeller types (high flow, low TDH). This is a key tool for preliminary impeller-type selection."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe en service présente un rendement mesuré nettement inférieur à sa courbe de catalogue, à un débit proche du BEP. Le NPSH disponible est largement suffisant et aucune vibration anormale n'est notée. Quelle cause est la plus probable à vérifier en premier ?",
+          "en": "A pump in service shows a measured efficiency notably below its catalog curve, at a flow near the BEP. Available NPSH is well in excess and no abnormal vibration is noted. What cause is most likely to check first?"
+        },
+        "choix": {
+          "fr": [
+            "Un mauvais réglage de l'horloge du PLC",
+            "Un problème de couleur de la peinture",
+            "Une usure interne (bagues d'usure, jeu de roue) ou un mauvais diamètre de roue installé par rapport à la sélection d'origine",
+            "Une cavitation sévère"
+          ],
+          "en": [
+            "A PLC clock misconfiguration",
+            "A paint color problem",
+            "Internal wear (wear rings, impeller clearance) or a wrong impeller diameter installed compared to the original selection",
+            "Severe cavitation"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "En l'absence de cavitation ou de vibration anormale, un rendement sous les attentes au BEP pointe le plus souvent vers une usure interne (jeu accru aux bagues d'usure) ou une divergence entre la roue réellement installée (diamètre, type) et celle prévue à la sélection.",
+          "en": "Absent cavitation or abnormal vibration, below-expected efficiency at the BEP most often points to internal wear (increased wear-ring clearance) or a mismatch between the impeller actually installed (diameter, type) and the one assumed at selection."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un système à hauteur statique dominante avec deux pompes identiques en parallèle, si l'une des deux pompes tombe en panne, quel est l'effet le plus probable sur le débit fourni par la pompe restante, comparé à son débit en fonctionnement combiné ?",
+          "en": "In a static-head-dominated system with two identical pumps in parallel, if one pump fails, what is the most likely effect on the flow delivered by the remaining pump, compared to its flow in combined operation?"
+        },
+        "choix": {
+          "fr": [
+            "Le débit de la pompe restante tombe à zéro",
+            "Le débit de la pompe restante AUGMENTE, se rapprochant de son débit en fonctionnement seul sur le réseau",
+            "Le débit double automatiquement",
+            "Le débit de la pompe restante reste exactement le même"
+          ],
+          "en": [
+            "The remaining pump's flow drops to zero",
+            "The remaining pump's flow INCREASES, approaching its flow when running alone on the system",
+            "The flow automatically doubles",
+            "The remaining pump's flow stays exactly the same"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Lorsqu'une pompe tombe en panne dans un montage parallèle, l'autre pompe se déplace vers un nouveau point d'intersection avec la courbe du réseau, à un débit plus élevé que celui qu'elle fournissait en fonctionnement combiné (bien que inférieur au débit total initial des deux pompes).",
+          "en": "When a pump fails in a parallel setup, the other pump moves to a new intersection point with the system curve, at a higher flow than it delivered in combined operation (though lower than the initial combined flow of both pumps)."
+        }
+      },
+      {
+        "question": {
+          "fr": "On observe qu'une pompe à vitesse fixe, initialement bien sélectionnée, voit sa consommation électrique augmenter progressivement sur plusieurs mois, sans changement de débit ni de TDH mesurés au même point. Quelle est l'explication la plus probable ?",
+          "en": "A fixed-speed pump, initially well selected, shows gradually increasing electrical consumption over several months, with no change in measured flow or TDH at the same point. What is the most likely explanation?"
+        },
+        "choix": {
+          "fr": [
+            "Une dégradation progressive du rendement (usure interne, défaut d'alignement croissant, détérioration des roulements)",
+            "Une augmentation naturelle et bénigne de la tension du réseau électrique",
+            "Le vieillissement du moteur n'a jamais d'effet sur la consommation",
+            "Une erreur systématique du wattmètre qui se corrige d'elle-même"
+          ],
+          "en": [
+            "A gradual degradation of efficiency (internal wear, growing misalignment, bearing deterioration)",
+            "A natural and harmless increase in grid voltage",
+            "Motor aging never affects power consumption",
+            "A systematic wattmeter error that self-corrects"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Si le débit et la TDH mesurés restent identiques mais que la puissance absorbée augmente, le rendement global (pompe + transmission + moteur) s'est dégradé : usure interne, désalignement progressif, ou dégradation des roulements/garniture sont les causes les plus courantes à investiguer.",
+          "en": "If measured flow and TDH stay the same but absorbed power increases, overall efficiency (pump + transmission + motor) has degraded: internal wear, progressive misalignment, or bearing/seal deterioration are the most common causes to investigate."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe fonctionnant à vitesse variable (VFD) voit sa fréquence réduite sous un certain seuil (par exemple 20 Hz sur une base de 60 Hz) pour un procédé à forte composante statique. Quel risque particulier doit être vérifié à très basse vitesse ?",
+          "en": "A variable-speed (VFD) pump has its frequency reduced below a certain threshold (for example 20 Hz on a 60 Hz base) for a process with a strong static component. What particular risk must be checked at very low speed?"
+        },
+        "choix": {
+          "fr": [
+            "Le débit peut devenir insuffisant pour franchir la hauteur statique du réseau (la pompe ne peut pas développer assez de TDH), ou le refroidissement du moteur peut devenir inadéquat",
+            "La cavitation devient impossible à basse vitesse",
+            "Le NPSH requis devient toujours nul à basse vitesse, aucune vérification n'est nécessaire",
+            "Le moteur consomme toujours plus de courant à basse vitesse qu'à vitesse nominale"
+          ],
+          "en": [
+            "Flow may become insufficient to overcome the system's static head (the pump cannot develop enough TDH), or motor cooling may become inadequate",
+            "Cavitation becomes impossible at low speed",
+            "Required NPSH always becomes zero at low speed; no check is needed",
+            "The motor always draws more current at low speed than at rated speed"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "À très basse vitesse, la TDH disponible (qui chute avec le carré de la vitesse) peut devenir insuffisante pour vaincre la hauteur statique du réseau, menant à un débit nul malgré une pompe qui tourne ; de plus, un moteur autoventilé refroidit moins bien à basse vitesse.",
+          "en": "At very low speed, available TDH (which drops with the square of speed) may become insufficient to overcome the system's static head, leading to zero flow despite a running pump; also, a self-cooled motor cools less effectively at low speed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors de la mise en service d'une nouvelle installation, la pompe développe beaucoup moins de TDH que prévu, mais le sens de rotation est confirmé correct et l'amorçage semble complet. Quelle vérification avancée devrait suivre ?",
+          "en": "During commissioning of a new installation, the pump develops much less TDH than expected, but direction of rotation is confirmed correct and priming appears complete. What advanced check should follow?"
+        },
+        "choix": {
+          "fr": [
+            "Repeindre la pompe d'une autre couleur",
+            "Augmenter immédiatement la vitesse du moteur sans investiguer",
+            "Vérifier si la pompe est bien couplée en triphasé plutôt qu'en continu",
+            "Vérifier la présence d'air emprisonné résiduel dans la volute (purge d'air incomplète) ou un mauvais diamètre de roue installé par erreur"
+          ],
+          "en": [
+            "Repaint the pump a different color",
+            "Immediately increase motor speed without investigating",
+            "Check whether the pump is wired three-phase rather than DC",
+            "Check for residual trapped air in the volute (incomplete air purge) or a wrong impeller diameter installed by mistake"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Même avec un bon sens de rotation et un amorçage apparent, de l'air résiduel emprisonné dans la volute ou un diamètre de roue différent de celui prévu à la sélection sont des causes fréquentes de sous-performance significative à la mise en service.",
+          "en": "Even with correct rotation and apparent priming, residual air trapped in the volute or an impeller diameter different from the one assumed at selection are frequent causes of significant underperformance at commissioning."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe fonctionne normalement pendant des mois, puis commence à montrer des signes de cavitation intermittente uniquement aux heures les plus chaudes de la journée. Quelle explication est la plus plausible ?",
+          "en": "A pump runs normally for months, then starts showing intermittent cavitation signs only during the hottest hours of the day. What explanation is most plausible?"
+        },
+        "choix": {
+          "fr": [
+            "Une coïncidence sans rapport avec la température",
+            "Une augmentation de la température ambiante qui réchauffe le liquide pompé (ou réduit le refroidissement d'un échangeur en amont), augmentant la pression de vapeur et réduisant le NPSH disponible",
+            "Un changement de couleur du liquide dû à la chaleur",
+            "Une augmentation du NPSH requis causée par la chaleur ambiante sur le moteur"
+          ],
+          "en": [
+            "A coincidence unrelated to temperature",
+            "An increase in ambient temperature that warms the pumped liquid (or reduces the cooling of an upstream heat exchanger), raising vapor pressure and reducing available NPSH",
+            "A change in the liquid's color due to heat",
+            "An increase in required NPSH caused by ambient heat on the motor"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une hausse de température du liquide pompé (ou une perte d'efficacité d'un refroidisseur en amont par forte chaleur ambiante) augmente sa pression de vapeur, ce qui réduit directement le NPSH disponible et peut provoquer une cavitation qui n'apparaît qu'aux heures les plus chaudes.",
+          "en": "A rise in the pumped liquid's temperature (or reduced effectiveness of an upstream cooler during hot weather) increases its vapor pressure, which directly reduces available NPSH and can cause cavitation that only appears during the hottest hours."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans une analyse de défaillance, une garniture mécanique tombe en panne prématurément de façon répétée sur une pompe donnée, malgré un bon alignement et un liquide propre. Quelle cause systémique, propre à l'application, devrait être investiguée en priorité ?",
+          "en": "In a failure analysis, a mechanical seal repeatedly fails prematurely on a given pump, despite good alignment and a clean liquid. What systemic cause, specific to the application, should be investigated first?"
+        },
+        "choix": {
+          "fr": [
+            "Le fournisseur de l'électricité du site",
+            "Le choix des matériaux de faces de la garniture et du plan de refroidissement/lubrification (flush plan), qui doivent être adaptés au liquide, à la température et à la pression spécifiques",
+            "Le nombre de boulons sur le couvercle",
+            "La couleur de l'arbre de la pompe"
+          ],
+          "en": [
+            "The site's electricity supplier",
+            "The choice of seal face materials and the cooling/lubrication (flush) plan, which must be matched to the specific liquid, temperature, and pressure",
+            "The number of bolts on the cover",
+            "The color of the pump shaft"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Si l'alignement et la propreté du liquide sont confirmés bons, une défaillance répétée de garniture pointe souvent vers un mauvais choix de matériaux de faces ou de plan de refroidissement/lubrification (flush plan) mal adapté aux conditions réelles (température, pression, compatibilité chimique).",
+          "en": "If alignment and liquid cleanliness are confirmed good, repeated seal failure often points to a poor choice of face materials or a flush plan poorly matched to the actual conditions (temperature, pressure, chemical compatibility)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe multicellulaire (plusieurs étages) présente une poussée axiale nette importante vers l'aspiration. Quel dispositif est couramment utilisé dans la conception pour équilibrer cette poussée ?",
+          "en": "A multistage pump (several stages) shows significant net axial thrust toward the suction. What device is commonly used in the design to balance this thrust?"
+        },
+        "choix": {
+          "fr": [
+            "Une peinture spéciale anti-poussée",
+            "Un disque d'équilibrage (balancing disk) ou un piston d'équilibrage, ou une disposition des roues en opposition (back-to-back)",
+            "Une augmentation du nombre de boulons de la volute",
+            "Une réduction du nombre d'étages à un seul"
+          ],
+          "en": [
+            "A special anti-thrust paint",
+            "A balancing disk or balancing piston, or an impeller arrangement in opposition (back-to-back)",
+            "An increased number of volute bolts",
+            "A reduction to a single stage"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les pompes multicellulaires utilisent couramment un tambour ou disque d'équilibrage, ou disposent les roues en opposition (certaines pompant dans un sens, d'autres dans l'autre), pour contrebalancer la poussée axiale cumulative générée par chaque étage.",
+          "en": "Multistage pumps commonly use a balancing drum or disk, or arrange impellers in opposition (some pumping one way, others the other way), to counterbalance the cumulative axial thrust generated by each stage."
+        }
+      },
+      {
+        "question": {
+          "fr": "On souhaite comparer deux pompes sur la base de leur vitesse spécifique d'aspiration (suction specific speed, Nss), un indicateur avancé de risque de cavitation et de plage d'opération sécuritaire. Une valeur de Nss très élevée (pompe \"agressive\" à l'aspiration) est généralement associée à :",
+          "en": "One wants to compare two pumps based on their suction specific speed (Nss), an advanced indicator of cavitation risk and safe operating range. A very high Nss value (an aggressive suction-side pump) is generally associated with:"
+        },
+        "choix": {
+          "fr": [
+            "Une plage d'opération sécuritaire plus large, sans risque accru",
+            "Une TDH toujours plus élevée, peu importe le débit",
+            "Aucune conséquence pratique",
+            "Un risque accru de recirculation à l'aspiration et de cavitation en dehors d'une plage de débit restreinte autour du BEP"
+          ],
+          "en": [
+            "A wider safe operating range, with no added risk",
+            "Always higher TDH, regardless of flow",
+            "No practical consequence",
+            "An increased risk of suction recirculation and cavitation outside a narrow flow range around the BEP"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une vitesse spécifique d'aspiration élevée indique une roue \"agressive\" à l'aspiration, souvent plus sensible à la recirculation et à la cavitation en dehors d'une plage restreinte de débit autour du BEP ; les normes de l'Hydraulic Institute recommandent de limiter le Nss pour cette raison.",
+          "en": "A high suction specific speed indicates an \"aggressive\" suction-side impeller, often more prone to recirculation and cavitation outside a narrow flow band around the BEP; Hydraulic Institute standards recommend limiting Nss for this reason."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe est sélectionnée pour un service continu, mais l'analyse de fiabilité révèle qu'elle devra fonctionner occasionnellement à un débit représentant seulement 40 % de son BEP pendant de longues périodes. Quelle est la meilleure stratégie de conception à long terme ?",
+          "en": "A pump is selected for continuous service, but reliability analysis reveals it will occasionally run at only 40% of its BEP flow for extended periods. What is the best long-term design strategy?"
+        },
+        "choix": {
+          "fr": [
+            "Accepter cette condition sans aucune modification, car elle n'a aucun effet",
+            "Changer la couleur de la peinture pour mieux dissiper la chaleur",
+            "Augmenter uniquement le diamètre de la tuyauterie de refoulement",
+            "Envisager un variateur de fréquence, une pompe de plus petite capacité en complément, ou une sélection différente dont le BEP correspond mieux à la plage d'opération réelle"
+          ],
+          "en": [
+            "Accept this condition with no modification, since it has no effect",
+            "Change the paint color to better dissipate heat",
+            "Only increase the discharge piping diameter",
+            "Consider a variable frequency drive, a smaller auxiliary pump, or a different selection whose BEP better matches the actual operating range"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un fonctionnement prolongé loin du BEP (ici 40 %) cause une usure accélérée et une consommation énergétique sous-optimale ; les solutions courantes incluent un variateur de fréquence, une pompe d'appoint de plus petite capacité pour les périodes de faible demande, ou une resélection complète.",
+          "en": "Prolonged operation far from the BEP (here 40%) causes accelerated wear and suboptimal energy use; common solutions include a VFD, a smaller auxiliary pump for low-demand periods, or a complete reselection."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors d'une étude de coup de bélier (water hammer) sur un réseau de refoulement de pompe, quel paramètre de la pompe (ou de son installation) a le plus d'influence sur l'amplitude de la surpression générée par un arrêt brusque ?",
+          "en": "During a water hammer study on a pump discharge system, which pump (or installation) parameter has the most influence on the surge amplitude generated by a sudden stop?"
+        },
+        "choix": {
+          "fr": [
+            "Le type de peinture extérieure de la tuyauterie",
+            "Le nombre de boulons sur la bride de refoulement",
+            "La couleur du moteur",
+            "Le temps d'arrêt effectif du débit (influencé par l'inertie des parties tournantes, un volant d'inertie, ou une fermeture progressive de vanne) par rapport au temps de propagation de l'onde dans la conduite"
+          ],
+          "en": [
+            "The type of exterior paint on the piping",
+            "The number of bolts on the discharge flange",
+            "The motor's color",
+            "The effective flow stopping time (influenced by the inertia of rotating parts, a flywheel, or a gradual valve closure) relative to the wave propagation time in the pipe"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'amplitude du coup de bélier dépend fortement du rapport entre le temps d'arrêt réel du débit et le temps de propagation de l'onde de pression dans la conduite ; un arrêt plus lent (inertie accrue, volant d'inertie, clapet à fermeture contrôlée) réduit la sévérité du phénomène.",
+          "en": "Water hammer amplitude depends heavily on the ratio between the actual flow-stopping time and the pressure wave's propagation time in the pipe; a slower stop (added inertia, a flywheel, or a controlled-closure check valve) reduces the severity of the phenomenon."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe doit transporter un liquide non newtonien (viscosité apparente qui varie avec le taux de cisaillement). Pourquoi la sélection d'une pompe centrifuge standard est-elle généralement risquée dans ce cas sans étude spécifique ?",
+          "en": "A pump must handle a non-Newtonian liquid (apparent viscosity that varies with shear rate). Why is selecting a standard centrifugal pump generally risky in this case without a specific study?"
+        },
+        "choix": {
+          "fr": [
+            "Les courbes de catalogue standard sont basées sur des liquides newtoniens ; le comportement réel (viscosité apparente variable selon le débit et la vitesse) peut rendre la performance très différente de celle prévue",
+            "Toutes les pompes centrifuges fonctionnent de façon identique peu importe le liquide",
+            "Le NPSH requis devient automatiquement nul",
+            "Les liquides non newtoniens n'existent pas dans l'industrie"
+          ],
+          "en": [
+            "Standard catalog curves are based on Newtonian liquids; the real behavior (apparent viscosity varying with flow and speed) can make actual performance very different from predicted",
+            "All centrifugal pumps perform identically regardless of the liquid",
+            "Required NPSH automatically becomes zero",
+            "Non-Newtonian liquids do not exist in industry"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les courbes de performance standard supposent un comportement newtonien ; pour un liquide non newtonien, la viscosité apparente varie avec les conditions d'écoulement à l'intérieur de la pompe, rendant les prévisions de catalogue peu fiables sans essais ou modèles spécifiques.",
+          "en": "Standard performance curves assume Newtonian behavior; for a non-Newtonian liquid, apparent viscosity varies with flow conditions inside the pump, making catalog predictions unreliable without specific testing or models."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans le choix entre une pompe à vitesse fixe avec vanne de régulation et une pompe à vitesse variable (VFD) pour un procédé à débit très variable, quel est l'argument énergétique central en faveur du VFD ?",
+          "en": "When choosing between a fixed-speed pump with a control valve and a variable-speed (VFD) pump for a process with highly variable flow, what is the central energy argument in favor of the VFD?"
+        },
+        "choix": {
+          "fr": [
+            "Une vanne de régulation consomme toujours moins d'énergie qu'un VFD",
+            "Le VFD élimine complètement le besoin de maintenance de la pompe",
+            "Étrangler une vanne dissipe de l'énergie en pure perte de charge, alors qu'un VFD réduit la vitesse (et donc la puissance, selon le cube de la vitesse) pour atteindre le même débit réduit",
+            "Le choix n'a aucun effet sur la consommation énergétique"
+          ],
+          "en": [
+            "A control valve always consumes less energy than a VFD",
+            "The VFD completely eliminates the pump's maintenance needs",
+            "Throttling a valve dissipates energy as pure friction loss, whereas a VFD reduces speed (and thus power, per the cube of speed) to reach the same reduced flow",
+            "The choice has no effect on energy consumption"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 1,
+        "explication": {
+          "fr": "Étrangler le débit avec une vanne maintient la pompe à pleine vitesse et dissipe l'excès d'énergie en perte de charge à travers la vanne ; un VFD réduit plutôt la vitesse de la pompe, ce qui réduit la puissance absorbée avec le cube de la vitesse pour un débit réduit donné, offrant généralement des économies substantielles.",
+          "en": "Throttling flow with a valve keeps the pump at full speed and dissipates the excess energy as friction loss through the valve; a VFD instead reduces the pump's speed, which cuts absorbed power with the cube of speed for a given reduced flow, generally offering substantial savings."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un audit énergétique révèle qu'une pompe fonctionne en permanence avec sa vanne de refoulement étranglée à environ 50 % d'ouverture pour atteindre le débit voulu. Quelle est la conclusion la plus probable sur la sélection initiale de la pompe ?",
+          "en": "An energy audit reveals that a pump permanently runs with its discharge valve throttled to about 50% open to reach the desired flow. What is the most likely conclusion about the pump's original selection?"
+        },
+        "choix": {
+          "fr": [
+            "Le NPSH requis est trop faible",
+            "La pompe est sous-dimensionnée",
+            "La pompe est bien sélectionnée, l'étranglement est normal",
+            "La pompe est probablement surdimensionnée (TDH excédentaire) par rapport aux besoins réels du réseau"
+          ],
+          "en": [
+            "Required NPSH is too low",
+            "The pump is undersized",
+            "The pump is well selected; throttling is normal",
+            "The pump is probably oversized (excess TDH) relative to the system's actual needs"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un étranglement important et permanent de la vanne de refoulement pour atteindre le débit voulu indique généralement que la pompe développe plus de TDH que nécessaire : elle est probablement surdimensionnée, et un rognage de roue, une pompe plus petite ou un VFD pourraient réduire la consommation énergétique.",
+          "en": "Significant, permanent discharge-valve throttling to reach the desired flow generally indicates the pump develops more TDH than needed: it is probably oversized, and impeller trimming, a smaller pump, or a VFD could reduce energy consumption."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour une pompe fonctionnant avec un liquide contenant un pourcentage significatif de gaz dissous ou entraîné (non seulement de la vapeur du liquide lui-même), quel est l'effet généralement observé sur la performance, par rapport à une cavitation classique par vapeur ?",
+          "en": "For a pump handling a liquid containing a significant percentage of dissolved or entrained gas (not just the liquid's own vapor), what effect is generally observed on performance, compared to classic vapor cavitation?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune différence, les deux phénomènes sont identiques",
+            "Le gaz dissous élimine le besoin de NPSH",
+            "La présence de gaz libre peut dégrader la performance (chute de TDH, bruit, vibrations) à un NPSH disponible même supérieur au NPSH requis théorique basé sur la seule vapeur du liquide",
+            "Le gaz dissous améliore toujours le rendement"
+          ],
+          "en": [
+            "No difference, the two phenomena are identical",
+            "Dissolved gas eliminates the need for NPSH",
+            "Free gas presence can degrade performance (TDH drop, noise, vibration) at an available NPSH even above the theoretical required NPSH based on the liquid's vapor alone",
+            "Dissolved gas always improves efficiency"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le gaz libre ou dissous en quantité significative peut dégrader la performance de façon similaire à la cavitation (bruit, vibrations, chute de TDH), même si le NPSH disponible, calculé seulement à partir de la pression de vapeur du liquide, semble suffisant ; une analyse spécifique de la teneur en gaz est alors nécessaire.",
+          "en": "Significant free or dissolved gas can degrade performance similarly to cavitation (noise, vibration, TDH drop), even if available NPSH, calculated only from the liquid's vapor pressure, appears sufficient; a specific gas-content analysis is then needed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors de la conception d'un poste de pompage avec plusieurs pompes identiques en parallèle, pourquoi évite-t-on généralement de concevoir le système pour que TOUTES les pompes fonctionnent en permanence très près de leur point de shutoff individuel ?",
+          "en": "When designing a pumping station with several identical pumps in parallel, why is it generally avoided to design the system so that ALL pumps permanently run very close to their individual shutoff point?"
+        },
+        "choix": {
+          "fr": [
+            "Cela n'a aucune conséquence pratique",
+            "Le shutoff est requis par le code électrique",
+            "Fonctionner près du shutoff prolongé cause une accumulation de chaleur dans chaque pompe et un risque accru de dommages, même si le débit total du système semble adéquat",
+            "Le shutoff est toujours le point le plus économique en énergie"
+          ],
+          "en": [
+            "This has no practical consequence",
+            "Shutoff is required by electrical code",
+            "Prolonged operation near shutoff causes heat buildup in each pump and increased risk of damage, even if the system's total flow seems adequate",
+            "Shutoff is always the most energy-efficient point"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Faire fonctionner une pompe près de son point de shutoff pendant des périodes prolongées concentre toute l'énergie absorbée en chaleur dans un faible volume de liquide recirculé, risquant la surchauffe et des dommages, même si le débit combiné du système semble correct en apparence.",
+          "en": "Running a pump near its shutoff point for extended periods concentrates all absorbed energy as heat in a small volume of recirculated liquid, risking overheating and damage, even if the combined system flow appears correct on the surface."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un ingénieur doit comparer deux solutions pour un même point de fonctionnement : une seule grosse pompe, ou deux pompes plus petites en parallèle (dont une de secours). Quel avantage principal, en matière de fiabilité opérationnelle, favorise généralement la solution à deux pompes ?",
+          "en": "An engineer must compare two solutions for the same operating point: one large pump, or two smaller pumps in parallel (one as standby). What main advantage, in terms of operational reliability, generally favors the two-pump solution?"
+        },
+        "choix": {
+          "fr": [
+            "Un espace au sol toujours réduit",
+            "Un coût d'achat toujours inférieur",
+            "La redondance : si une pompe tombe en panne ou nécessite un entretien, l'autre peut maintenir une partie du débit, réduisant le risque d'arrêt complet du procédé",
+            "Une consommation électrique toujours plus faible"
+          ],
+          "en": [
+            "Always reduced floor space",
+            "Always lower purchase cost",
+            "Redundancy: if one pump fails or needs maintenance, the other can maintain part of the flow, reducing the risk of a complete process shutdown",
+            "Always lower electrical consumption"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 1,
+        "explication": {
+          "fr": "La redondance offerte par deux pompes plus petites (dont éventuellement une de secours) permet de maintenir au moins une partie de la capacité en cas de panne ou d'entretien d'une des pompes, ce qu'une seule grosse pompe ne peut pas offrir sans arrêt complet.",
+          "en": "The redundancy offered by two smaller pumps (possibly including a standby) allows maintaining at least part of the capacity during a failure or maintenance of one pump, which a single large pump cannot offer without a complete shutdown."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un contexte d'amélioration continue, une usine souhaite réduire la consommation énergétique globale de son parc de pompes. Parmi les mesures suivantes, laquelle offre généralement le plus grand potentiel d'économie pour des pompes historiquement surdimensionnées et fonctionnant à vitesse fixe avec vannes étranglées ?",
+          "en": "As part of continuous improvement, a plant wants to reduce the overall energy consumption of its pump fleet. Among the following measures, which generally offers the greatest savings potential for historically oversized pumps running at fixed speed with throttled valves?"
+        },
+        "choix": {
+          "fr": [
+            "Installer des variateurs de fréquence et/ou rogner les roues pour mieux apparier la pompe au point de fonctionnement réel du réseau",
+            "Remplacer uniquement les câbles d'alimentation électrique",
+            "Repeindre les pompes dans une couleur plus claire",
+            "Augmenter la fréquence des changements d'huile des roulements"
+          ],
+          "en": [
+            "Installing variable frequency drives and/or trimming impellers to better match the pump to the system's actual operating point",
+            "Replacing only the electrical supply cables",
+            "Repainting the pumps a lighter color",
+            "Increasing the frequency of bearing oil changes"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour des pompes surdimensionnées fonctionnant à vitesse fixe avec un étranglement important, l'installation de variateurs de fréquence et/ou le rognage des roues pour mieux apparier la pompe au besoin réel du réseau offrent généralement les économies d'énergie les plus importantes, en évitant la dissipation d'énergie en pure perte de charge à travers les vannes.",
+          "en": "For oversized pumps running at fixed speed with significant throttling, installing variable frequency drives and/or trimming impellers to better match the pump to the system's actual need generally offers the greatest energy savings, by avoiding energy dissipation as pure friction loss through valves."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe API 610 (typique en raffinage et pétrochimie) utilise une garniture mécanique avec un plan de circulation API Plan 11 (recirculation du refoulement vers la chambre de garniture via un orifice calibré). Quel est l'objectif principal de ce plan ?",
+          "en": "An API 610 pump (typical in refining and petrochemicals) uses a mechanical seal with an API Plan 11 flush plan (discharge recirculation to the seal chamber through a calibrated orifice). What is this plan's main purpose?"
+        },
+        "choix": {
+          "fr": [
+            "Fournir un liquide de refroidissement et de lubrification propre et à pression suffisante à la garniture, prélevé directement du refoulement de la pompe",
+            "Augmenter le débit total de la pompe",
+            "Remplacer complètement le besoin d'une garniture mécanique",
+            "Réduire la vitesse de rotation de la pompe"
+          ],
+          "en": [
+            "Supply clean liquid at sufficient pressure to cool and lubricate the seal, drawn directly from the pump's discharge",
+            "Increase the pump's total flow",
+            "Completely replace the need for a mechanical seal",
+            "Reduce the pump's rotational speed"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le Plan 11 prélève du liquide propre au refoulement de la pompe, le fait passer par un orifice calibré pour réduire la pression, puis l'achemine vers la chambre de garniture afin de la refroidir et de la lubrifier ; c'est l'un des plans API 682 les plus simples et les plus courants.",
+          "en": "Plan 11 draws clean liquid from the pump's discharge, passes it through a calibrated orifice to reduce pressure, then routes it to the seal chamber to cool and lubricate it; it is one of the simplest and most common API 682 plans."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe fonctionne à 1800 tr/min avec un débit de 1000 gpm et une TDH de 150 pi. En utilisant la formule usuelle Ns = (N × √Q) / TDH^0,75 (N en tr/min, Q en gpm, TDH en pi, forme américaine courante), quelle est approximativement sa vitesse spécifique ?",
+          "en": "A pump runs at 1800 rpm with a flow of 1000 gpm and a TDH of 150 ft. Using the common formula Ns = (N × √Q) / TDH^0.75 (N in rpm, Q in gpm, TDH in ft, common US form), what is its approximate specific speed?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 1330",
+            "Environ 650",
+            "Environ 180",
+            "Environ 5200"
+          ],
+          "en": [
+            "About 1330",
+            "About 650",
+            "About 180",
+            "About 5200"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Ns = (1800 × √1000) / 150^0,75 ≈ (1800 × 31,6) / 42,9 ≈ 56 900 / 42,9 ≈ 1330. Cette valeur, de l'ordre de 1000 à 2000, est typique d'une roue radiale classique à usage général ; une valeur beaucoup plus basse indiquerait une roue étroite à haute TDH, et une valeur beaucoup plus haute, une roue de type axial à très grand débit.",
+          "en": "Ns = (1800 × √1000) / 150^0.75 ≈ (1800 × 31.6) / 42.9 ≈ 56,900 / 42.9 ≈ 1330. This value, in the 1000-to-2000 range, is typical of a general-purpose radial impeller; a much lower value would indicate a narrow, high-TDH impeller, and a much higher value, an axial-type impeller for very high flow."
+        }
+      }
     ]
   },
   {
@@ -3298,6 +8516,1310 @@ window.QUESTIONNAIRES = [
         "explication": {
           "fr": "Chaque travailleur pose son propre cadenas et garde sa clé.",
           "en": "Each worker applies their own lock and keeps their own key."
+        }
+      }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Une charge triphasée sous 600 V absorbe 50 A avec un facteur de puissance de 0,85. Quelle est sa puissance active approximative ?",
+          "en": "A three-phase load at 600 V draws 50 A with a power factor of 0.85. What is its approximate active power?"
+        },
+        "choix": {
+          "fr": [
+            "76 kW",
+            "44 kW",
+            "52 kW",
+            "26 kW"
+          ],
+          "en": [
+            "76 kW",
+            "44 kW",
+            "52 kW",
+            "26 kW"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "P = √3 × U × I × cos φ = 1,732 × 600 × 50 × 0,85 ≈ 44 170 W, soit environ 44 kW.",
+          "en": "P = √3 × U × I × cos φ = 1.732 × 600 × 50 × 0.85 ≈ 44,170 W, or about 44 kW."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le courant de pleine charge approximatif d'un moteur triphasé de 25 HP sous 600 V, de rendement 92 % et de facteur de puissance 0,85 (1 HP = 746 W) ?",
+          "en": "What is the approximate full-load current of a 25 HP three-phase motor at 600 V, 92% efficiency, and 0.85 power factor (1 HP = 746 W)?"
+        },
+        "choix": {
+          "fr": [
+            "12 A",
+            "60 A",
+            "40 A",
+            "23 A"
+          ],
+          "en": [
+            "12 A",
+            "60 A",
+            "40 A",
+            "23 A"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "I = (HP × 746) / (√3 × U × rendement × cos φ) = 18 650 / (1,732 × 600 × 0,92 × 0,85) ≈ 23 A.",
+          "en": "I = (HP × 746) / (√3 × U × efficiency × cos φ) = 18,650 / (1.732 × 600 × 0.92 × 0.85) ≈ 23 A."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un circuit monophasé de 120 V alimente une charge de 20 A à 100 pi du panneau (distance aller). Le conducteur en cuivre de calibre 12 AWG a une résistance d'environ 1,98 Ω par 1000 pi. Quelle est la chute de tension approximative (aller et retour) ?",
+          "en": "A 120 V single-phase circuit feeds a 20 A load 100 ft from the panel (one-way distance). The 12 AWG copper conductor has a resistance of about 1.98 Ω per 1000 ft. What is the approximate voltage drop (round trip)?"
+        },
+        "choix": {
+          "fr": [
+            "7,9 V",
+            "2,4 V",
+            "0,8 V",
+            "15,8 V"
+          ],
+          "en": [
+            "7.9 V",
+            "2.4 V",
+            "0.8 V",
+            "15.8 V"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Longueur totale = 2 × 100 = 200 pi ; R = 1,98 × 200 / 1000 ≈ 0,40 Ω ; chute = 20 × 0,40 ≈ 7,9 V, soit environ 6,6 % de 120 V : trop élevé.",
+          "en": "Total length = 2 × 100 = 200 ft; R = 1.98 × 200 / 1000 ≈ 0.40 Ω; drop = 20 × 0.40 ≈ 7.9 V, or about 6.6% of 120 V: too high."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle chute de tension maximale est généralement recommandée sur un circuit de dérivation, selon la pratique courante (Code canadien de l'électricité) ?",
+          "en": "What maximum voltage drop is generally recommended on a branch circuit, according to common practice (Canadian Electrical Code)?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 15 %",
+            "Environ 25 %",
+            "Environ 3 %",
+            "Aucune limite"
+          ],
+          "en": [
+            "About 15%",
+            "About 25%",
+            "About 3%",
+            "No limit"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "La pratique courante recommande de limiter la chute de tension à environ 3 % sur un circuit de dérivation (et 5 % au total, alimentation et dérivation), pour assurer un bon fonctionnement des charges.",
+          "en": "Common practice recommends limiting voltage drop to about 3% on a branch circuit (and 5% overall, feeder plus branch), to ensure proper operation of loads."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une charge de 100 kVA fonctionne avec un facteur de puissance de 0,8. Quelle est sa puissance active ?",
+          "en": "A 100 kVA load operates at a power factor of 0.8. What is its active power?"
+        },
+        "choix": {
+          "fr": [
+            "125 kW",
+            "80 kW",
+            "100 kW",
+            "64 kW"
+          ],
+          "en": [
+            "125 kW",
+            "80 kW",
+            "100 kW",
+            "64 kW"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "P = S × cos φ = 100 × 0,8 = 80 kW.",
+          "en": "P = S × cos φ = 100 × 0.8 = 80 kW."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour la même charge de 100 kVA à facteur de puissance 0,8, quelle est la puissance réactive approximative ?",
+          "en": "For the same 100 kVA load at 0.8 power factor, what is the approximate reactive power?"
+        },
+        "choix": {
+          "fr": [
+            "100 kvar",
+            "80 kvar",
+            "60 kvar",
+            "20 kvar"
+          ],
+          "en": [
+            "100 kvar",
+            "80 kvar",
+            "60 kvar",
+            "20 kvar"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Q = √(S² − P²) = √(100² − 80²) = 60 kvar.",
+          "en": "Q = √(S² − P²) = √(100² − 80²) = 60 kvar."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une résistance de 10 Ω est branchée en série avec deux résistances de 20 Ω branchées en parallèle entre elles. Quelle est la résistance équivalente de l'ensemble ?",
+          "en": "A 10 Ω resistor is connected in series with two 20 Ω resistors connected in parallel with each other. What is the equivalent resistance of the whole?"
+        },
+        "choix": {
+          "fr": [
+            "30 Ω",
+            "20 Ω",
+            "50 Ω",
+            "10 Ω"
+          ],
+          "en": [
+            "30 Ω",
+            "20 Ω",
+            "50 Ω",
+            "10 Ω"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les deux résistances de 20 Ω en parallèle valent 10 Ω ; en série avec 10 Ω, le total est 20 Ω.",
+          "en": "The two 20 Ω resistors in parallel equal 10 Ω; in series with 10 Ω, the total is 20 Ω."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un courant de 20 A traverse une résistance de 0,5 Ω (par exemple une mauvaise connexion). Quelle puissance est dissipée en chaleur ?",
+          "en": "A current of 20 A flows through a 0.5 Ω resistance (for example, a poor connection). What power is dissipated as heat?"
+        },
+        "choix": {
+          "fr": [
+            "200 W",
+            "10 W",
+            "50 W",
+            "400 W"
+          ],
+          "en": [
+            "200 W",
+            "10 W",
+            "50 W",
+            "400 W"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "P = I² × R = 20² × 0,5 = 200 W : une mauvaise connexion peut donc chauffer beaucoup.",
+          "en": "P = I² × R = 20² × 0.5 = 200 W: a poor connection can therefore get very hot."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un moteur à charge constante est alimenté sous une tension inférieure d'environ 10 % à sa tension nominale. Que se passe-t-il généralement à son courant ?",
+          "en": "A constant-load motor is supplied with a voltage about 10% below its rated voltage. What generally happens to its current?"
+        },
+        "choix": {
+          "fr": [
+            "Il augmente, car le moteur doit absorber plus de courant pour fournir la même puissance, ce qui accroît l'échauffement",
+            "Il reste exactement le même",
+            "Il diminue de 10 %",
+            "Il devient nul"
+          ],
+          "en": [
+            "It increases, since the motor must draw more current to deliver the same power, which raises heating",
+            "It stays exactly the same",
+            "It decreases by 10%",
+            "It becomes zero"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "À puissance mécanique constante, une tension plus basse exige un courant plus élevé (P ≈ √3 × U × I × cos φ) : le moteur chauffe davantage et sa durée de vie diminue.",
+          "en": "At constant mechanical power, a lower voltage requires a higher current (P ≈ √3 × U × I × cos φ): the motor heats more and its life shortens."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un montage triphasé en triangle (delta), quelle relation existe entre le courant de ligne et le courant dans chaque enroulement (phase) ?",
+          "en": "In a three-phase delta connection, what is the relationship between line current and the current in each winding (phase)?"
+        },
+        "choix": {
+          "fr": [
+            "Le courant de ligne vaut le tiers du courant de phase",
+            "Le courant de phase vaut √3 fois le courant de ligne",
+            "Ils sont égaux",
+            "Le courant de ligne vaut √3 fois le courant de phase"
+          ],
+          "en": [
+            "Line current equals one third of the phase current",
+            "Phase current equals √3 times line current",
+            "They are equal",
+            "Line current equals √3 times the phase current"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "En triangle, la tension de phase égale la tension de ligne, mais le courant de ligne vaut √3 fois le courant de phase (environ 1,73 ×).",
+          "en": "In delta, phase voltage equals line voltage, but line current equals √3 times the phase current (about 1.73 ×)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un transformateur monophasé de 10 kVA a un secondaire de 120 V. Quel courant maximal peut-il fournir ?",
+          "en": "A 10 kVA single-phase transformer has a 120 V secondary. What maximum current can it supply?"
+        },
+        "choix": {
+          "fr": [
+            "16,7 A",
+            "83,3 A",
+            "10 A",
+            "50 A"
+          ],
+          "en": [
+            "16.7 A",
+            "83.3 A",
+            "10 A",
+            "50 A"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "I = S / U = 10 000 / 120 ≈ 83,3 A.",
+          "en": "I = S / U = 10,000 / 120 ≈ 83.3 A."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que représente le pouvoir de coupure (interrupting rating) d'un disjoncteur, et quelle condition doit-il satisfaire ?",
+          "en": "What does a circuit breaker's interrupting rating represent, and what condition must it meet?"
+        },
+        "choix": {
+          "fr": [
+            "La température maximale de l'armoire",
+            "Le courant de court-circuit maximal qu'il peut interrompre sans danger ; il doit être supérieur ou égal au courant de court-circuit disponible à son point d'installation",
+            "Le courant de service maximal en continu",
+            "La tension maximale du réseau uniquement"
+          ],
+          "en": [
+            "The cabinet's maximum temperature",
+            "The maximum short-circuit current it can safely interrupt; it must be greater than or equal to the available short-circuit current at its installation point",
+            "The maximum continuous service current",
+            "The network's maximum voltage only"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si le courant de court-circuit disponible dépasse le pouvoir de coupure du disjoncteur, celui-ci peut ne pas réussir à interrompre le défaut et risque d'exploser.",
+          "en": "If the available short-circuit current exceeds the breaker's interrupting rating, it may fail to interrupt the fault and may explode."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que signifie la coordination sélective de dispositifs de protection ?",
+          "en": "What does selective coordination of protective devices mean?"
+        },
+        "choix": {
+          "fr": [
+            "Tous les disjoncteurs déclenchent en même temps",
+            "Seul le dispositif de protection le plus proche en amont du défaut déclenche, laissant le reste de l'installation sous tension",
+            "Seul le disjoncteur principal déclenche toujours",
+            "Aucun dispositif ne déclenche"
+          ],
+          "en": [
+            "All breakers trip at the same time",
+            "Only the protective device closest upstream of the fault trips, leaving the rest of the installation energized",
+            "Only the main breaker always trips",
+            "No device trips"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une bonne sélectivité limite la coupure à la partie en défaut : le dispositif juste en amont du défaut ouvre, sans faire déclencher les protections plus en amont.",
+          "en": "Good selectivity limits the outage to the faulted part: the device just upstream of the fault opens, without tripping the protection further upstream."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre la mise à la terre et la liaison équipotentielle (bonding) ?",
+          "en": "What is the difference between grounding and bonding?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune, ce sont deux noms identiques",
+            "La liaison équipotentielle ne concerne que la peinture",
+            "La mise à la terre ne sert que pour la foudre",
+            "La mise à la terre relie le système à la terre (le sol) ; la liaison équipotentielle relie entre elles les parties métalliques pour les maintenir au même potentiel et assurer un chemin de retour de défaut"
+          ],
+          "en": [
+            "None, they are identical names",
+            "Bonding only concerns paint",
+            "Grounding is only for lightning",
+            "Grounding connects the system to earth; bonding connects metallic parts together to keep them at the same potential and provide a fault return path"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "La mise à la terre relie l'installation à la terre ; la liaison équipotentielle relie les masses entre elles, ce qui limite les différences de potentiel et facilite le déclenchement des protections.",
+          "en": "Grounding connects the installation to earth; bonding connects exposed metal parts together, which limits potential differences and helps protective devices trip."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans l'évaluation d'un risque d'arc électrique, l'énergie incidente est exprimée en :",
+          "en": "In evaluating an arc flash hazard, incident energy is expressed in:"
+        },
+        "choix": {
+          "fr": [
+            "Volts",
+            "Ohms",
+            "Ampères",
+            "cal/cm²"
+          ],
+          "en": [
+            "Volts",
+            "Ohms",
+            "Amps",
+            "cal/cm²"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'énergie incidente d'un arc électrique se mesure en cal/cm² (ou en J/cm²) ; l'équipement de protection individuelle est choisi selon cette valeur.",
+          "en": "Arc flash incident energy is measured in cal/cm² (or J/cm²); personal protective equipment is chosen according to this value."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un vêtement de protection est classé ATPV 8 cal/cm². Que signifie cette valeur ?",
+          "en": "A protective garment is rated ATPV 8 cal/cm². What does this value mean?"
+        },
+        "choix": {
+          "fr": [
+            "Il est valable 8 ans",
+            "Il pèse 8 onces",
+            "Il résiste à 8 volts",
+            "Il protège contre une énergie incidente d'arc pouvant atteindre environ 8 cal/cm² avant l'apparition d'une brûlure au second degré"
+          ],
+          "en": [
+            "It is valid for 8 years",
+            "It weighs 8 ounces",
+            "It withstands 8 volts",
+            "It protects against an arc incident energy of up to about 8 cal/cm² before a second-degree burn would occur"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "ATPV (arc thermal performance value) est l'énergie incidente que le tissu peut supporter avant qu'une brûlure du second degré ne soit probable.",
+          "en": "ATPV (arc thermal performance value) is the incident energy the fabric can withstand before a second-degree burn is likely."
+        }
+      },
+      {
+        "question": {
+          "fr": "Avant de toucher des conducteurs après un cadenassage, la vérification d'absence de tension suit quelle séquence recommandée (« test-vérification-test ») ?",
+          "en": "Before touching conductors after lockout, the verification of absence of voltage follows which recommended sequence (\"test-verify-test\")?"
+        },
+        "choix": {
+          "fr": [
+            "Vérifier le détecteur sur une source connue sous tension, tester l'équipement, puis revérifier le détecteur sur la source connue",
+            "Toucher le conducteur du bout des doigts",
+            "Se fier uniquement aux voyants de l'armoire",
+            "Mesurer une seule fois sans autre vérification"
+          ],
+          "en": [
+            "Verify the detector on a known live source, test the equipment, then re-verify the detector on the known live source",
+            "Touch the conductor with fingertips",
+            "Rely only on the cabinet's indicator lights",
+            "Measure only once with no other check"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "On confirme que le détecteur fonctionne avant et après la mesure (live-dead-live) afin de ne pas conclure à l'absence de tension à cause d'un instrument défectueux.",
+          "en": "Confirm the detector works before and after the measurement (live-dead-live), so as not to conclude there is no voltage because of a faulty instrument."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un moteur à 4 pôles, 60 Hz, tourne à 1750 tr/min à pleine charge (vitesse synchrone 1800 tr/min). Quel est son glissement ?",
+          "en": "A 4-pole, 60 Hz motor runs at 1750 rpm at full load (synchronous speed 1800 rpm). What is its slip?"
+        },
+        "choix": {
+          "fr": [
+            "5,6 %",
+            "0,28 %",
+            "Environ 2,8 %",
+            "28 %"
+          ],
+          "en": [
+            "5.6%",
+            "0.28%",
+            "About 2.8%",
+            "28%"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Glissement = (1800 − 1750) / 1800 ≈ 0,028, soit environ 2,8 %.",
+          "en": "Slip = (1800 − 1750) / 1800 ≈ 0.028, or about 2.8%."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que signifie un facteur de service de 1,15 sur la plaque signalétique d'un moteur ?",
+          "en": "What does a service factor of 1.15 on a motor nameplate mean?"
+        },
+        "choix": {
+          "fr": [
+            "Le moteur tourne 15 % plus vite",
+            "Le moteur consomme 15 % de moins",
+            "Le moteur dure 1,15 an",
+            "Le moteur peut fournir ponctuellement jusqu'à 15 % de plus que sa puissance nominale, dans les conditions prévues, avec une durée de vie réduite"
+          ],
+          "en": [
+            "The motor runs 15% faster",
+            "The motor uses 15% less",
+            "The motor lasts 1.15 years",
+            "The motor can occasionally deliver up to 15% more than its rated power, under the intended conditions, with a reduced service life"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le facteur de service indique la surcharge permise en service continu occasionnel ; elle sollicite davantage le moteur et réduit sa durée de vie.",
+          "en": "The service factor indicates the permitted overload in occasional continuous service; it stresses the motor more and shortens its life."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le principe d'un démarreur progressif (soft starter) ?",
+          "en": "What is the principle of a soft starter?"
+        },
+        "choix": {
+          "fr": [
+            "Il double la fréquence",
+            "Il remplace le disjoncteur",
+            "Il augmente progressivement la tension appliquée au moteur pendant le démarrage, réduisant l'appel de courant et le choc mécanique",
+            "Il inverse deux phases"
+          ],
+          "en": [
+            "It doubles the frequency",
+            "It replaces the circuit breaker",
+            "It gradually increases the voltage applied to the motor during start-up, reducing inrush current and mechanical shock",
+            "It reverses two phases"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le démarreur progressif augmente la tension de façon graduelle au démarrage (par exemple avec des thyristors), ce qui limite le courant d'appel et adoucit l'accélération.",
+          "en": "The soft starter gradually raises the voltage at start-up (for example with thyristors), which limits inrush current and smooths acceleration."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur quelle valeur règle-t-on généralement un relais de surcharge de moteur ?",
+          "en": "What value is a motor overload relay generally set to?"
+        },
+        "choix": {
+          "fr": [
+            "Sur zéro",
+            "Sur la tension du réseau",
+            "Sur le courant de pleine charge (FLA) indiqué sur la plaque signalétique du moteur, selon le code applicable",
+            "Sur le double du courant de la plaque"
+          ],
+          "en": [
+            "Zero",
+            "The network voltage",
+            "The full-load current (FLA) on the motor nameplate, per the applicable code",
+            "Double the nameplate current"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le relais de surcharge est réglé selon le courant de pleine charge de la plaque signalétique (avec les facteurs permis par le code) pour protéger le moteur sans déclencher inutilement.",
+          "en": "The overload relay is set according to the nameplate full-load current (with the factors allowed by code) to protect the motor without nuisance tripping."
+        }
+      },
+      {
+        "question": {
+          "fr": "Si le courant dans un conducteur double, comment varie la chaleur dégagée par effet Joule (P = I² × R) ?",
+          "en": "If the current in a conductor doubles, how does the heat generated by the Joule effect (P = I² × R) change?"
+        },
+        "choix": {
+          "fr": [
+            "Elle est divisée par 2",
+            "Elle double",
+            "Elle est multipliée par 4",
+            "Elle reste la même"
+          ],
+          "en": [
+            "It is divided by 2",
+            "It doubles",
+            "It is multiplied by 4",
+            "It stays the same"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 1,
+        "explication": {
+          "fr": "La puissance dissipée varie avec le carré du courant : doubler le courant multiplie la chaleur par 4.",
+          "en": "Dissipated power varies with the square of the current: doubling the current multiplies heat by 4."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle valeur minimale de résistance d'isolement vise-t-on, selon la règle courante « 1 MΩ par kV plus 1 MΩ », pour un moteur de 600 V ?",
+          "en": "What minimum insulation resistance is targeted, per the common rule \"1 MΩ per kV plus 1 MΩ\", for a 600 V motor?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 1,6 MΩ",
+            "160 MΩ",
+            "0,1 MΩ",
+            "16 MΩ"
+          ],
+          "en": [
+            "About 1.6 MΩ",
+            "160 MΩ",
+            "0.1 MΩ",
+            "16 MΩ"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La règle « kV nominal + 1 MΩ » donne 0,6 + 1 = 1,6 MΩ au minimum ; les moteurs en bon état mesurent généralement bien plus.",
+          "en": "The \"rated kV + 1 MΩ\" rule gives 0.6 + 1 = 1.6 MΩ minimum; motors in good condition generally measure far higher."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle précaution s'applique juste après un essai d'isolement au mégohmmètre sur un moteur ou un câble ?",
+          "en": "What precaution applies right after a megohmmeter insulation test on a motor or cable?"
+        },
+        "choix": {
+          "fr": [
+            "Décharger l'énergie emmagasinée en reliant les conducteurs à la terre pendant un certain temps avant de les manipuler",
+            "Aucune, on peut toucher tout de suite",
+            "Chauffer l'enroulement",
+            "Ouvrir le disjoncteur seulement"
+          ],
+          "en": [
+            "Discharge the stored energy by connecting the conductors to ground for a period before handling them",
+            "None, you can touch it right away",
+            "Heat the winding",
+            "Only open the breaker"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le test charge la capacité de l'isolation ; il faut décharger les conducteurs (les mettre à la terre) avant de les toucher, sous peine de choc électrique.",
+          "en": "The test charges the insulation's capacitance; conductors must be discharged (grounded) before touching them, or an electric shock may result."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle du conducteur de mise à la terre d'équipement dans un circuit de dérivation ?",
+          "en": "What is the role of the equipment grounding conductor in a branch circuit?"
+        },
+        "choix": {
+          "fr": [
+            "Offrir un chemin de faible impédance au courant de défaut pour que la protection déclenche rapidement et que les masses restent à un potentiel sûr",
+            "Mesurer la tension",
+            "Transporter le courant de service normal",
+            "Réduire la consommation"
+          ],
+          "en": [
+            "Provide a low-impedance path for fault current so protection trips quickly and exposed metal stays at a safe potential",
+            "Measure voltage",
+            "Carry normal service current",
+            "Reduce consumption"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "En cas de défaut sur la carcasse, le courant circule par le conducteur de terre de l'équipement : sa faible impédance fait déclencher la protection et limite la tension de contact.",
+          "en": "In a fault to the frame, current flows through the equipment ground conductor: its low impedance makes the protection trip and limits touch voltage."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Un transformateur triphasé de 500 kVA, 600 V, a une impédance de 5 %. En supposant un réseau amont infiniment puissant, quel est approximativement le courant de court-circuit triphasé à ses bornes secondaires ?",
+          "en": "A 500 kVA, 600 V three-phase transformer has a 5% impedance. Assuming an infinitely strong upstream source, what is approximately the three-phase short-circuit current at its secondary terminals?"
+        },
+        "choix": {
+          "fr": [
+            "48 000 A",
+            "9 600 A",
+            "24 000 A",
+            "4 800 A"
+          ],
+          "en": [
+            "48,000 A",
+            "9,600 A",
+            "24,000 A",
+            "4,800 A"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Courant nominal = 500 000 / (1,732 × 600) ≈ 481 A ; courant de court-circuit = 481 / 0,05 ≈ 9 620 A.",
+          "en": "Rated current = 500,000 / (1.732 × 600) ≈ 481 A; short-circuit current = 481 / 0.05 ≈ 9,620 A."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une charge de 100 kW fonctionne à un facteur de puissance de 0,80. Quelle puissance de condensateurs (kvar) faut-il ajouter pour relever le facteur de puissance à 0,95 ?",
+          "en": "A 100 kW load runs at a power factor of 0.80. How much capacitor power (kvar) must be added to raise the power factor to 0.95?"
+        },
+        "choix": {
+          "fr": [
+            "20 kvar",
+            "100 kvar",
+            "75 kvar",
+            "Environ 42 kvar"
+          ],
+          "en": [
+            "20 kvar",
+            "100 kvar",
+            "75 kvar",
+            "About 42 kvar"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "kvar = P × (tan φ1 − tan φ2) = 100 × (0,75 − 0,329) ≈ 42 kvar.",
+          "en": "kvar = P × (tan φ1 − tan φ2) = 100 × (0.75 − 0.329) ≈ 42 kvar."
+        }
+      },
+      {
+        "question": {
+          "fr": "Au démarrage direct d'un moteur à induction, quel est le glissement au tout premier instant, rotor à l'arrêt ?",
+          "en": "At direct-on-line starting of an induction motor, what is the slip at the very first instant, with the rotor stationary?"
+        },
+        "choix": {
+          "fr": [
+            "100 %",
+            "0 %",
+            "10 %",
+            "50 %"
+          ],
+          "en": [
+            "100%",
+            "0%",
+            "10%",
+            "50%"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Rotor immobile, la vitesse est nulle : le glissement vaut 100 %, ce qui explique le courant d'appel élevé (environ 6 à 8 fois le courant nominal).",
+          "en": "With the rotor at rest, speed is zero: slip is 100%, which explains the high inrush current (about 6 to 8 times rated current)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un système triphasé à 4 fils alimentant surtout des alimentations à découpage (ordinateurs, éclairage DEL), quelle harmonique s'additionne dans le conducteur neutre et peut le surcharger même si les phases sont équilibrées ?",
+          "en": "In a four-wire three-phase system feeding mostly switch-mode power supplies (computers, LED lighting), which harmonic adds up in the neutral conductor and can overload it even if the phases are balanced?"
+        },
+        "choix": {
+          "fr": [
+            "La 2e harmonique",
+            "La 5e harmonique seulement",
+            "La 3e harmonique (et ses multiples)",
+            "Aucune harmonique ne circule dans le neutre"
+          ],
+          "en": [
+            "The 2nd harmonic",
+            "The 5th harmonic only",
+            "The 3rd harmonic (and its multiples)",
+            "No harmonic flows in the neutral"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les harmoniques de rang multiple de 3 (3e, 9e, ...) sont en phase dans les trois conducteurs : elles s'additionnent dans le neutre au lieu de s'annuler, d'où le risque de surcharge.",
+          "en": "Harmonics that are multiples of 3 (3rd, 9th, ...) are in phase in all three conductors: they add up in the neutral instead of canceling, hence the overload risk."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre les déclencheurs thermique et magnétique d'un disjoncteur ?",
+          "en": "What is the difference between the thermal and magnetic trip elements of a circuit breaker?"
+        },
+        "choix": {
+          "fr": [
+            "Le magnétique ne fonctionne qu'en courant continu",
+            "Le déclencheur thermique réagit aux surcharges prolongées (avec délai) ; le déclencheur magnétique réagit instantanément aux courts-circuits",
+            "Le thermique protège contre les courts-circuits, le magnétique contre les surcharges",
+            "Aucune, ils font la même chose"
+          ],
+          "en": [
+            "Magnetic only works on direct current",
+            "The thermal element responds to prolonged overloads (with delay); the magnetic element responds instantly to short circuits",
+            "Thermal protects against short circuits, magnetic against overloads",
+            "None, they do the same thing"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le bilame thermique déclenche après une surcharge prolongée ; l'élément magnétique ouvre presque instantanément au-delà d'un seuil de courant élevé, typique d'un court-circuit.",
+          "en": "The thermal bimetal trips after a prolonged overload; the magnetic element opens almost instantly above a high current threshold, typical of a short circuit."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence de protection entre un disjoncteur de fuite à la terre pour personnes (GFCI) et un disjoncteur de protection d'équipement (GFPE) ?",
+          "en": "What is the difference in protection between a ground fault circuit interrupter for people (GFCI) and a ground fault equipment protector (GFPE)?"
+        },
+        "choix": {
+          "fr": [
+            "Le GFCI ne protège que l'équipement",
+            "Le GFPE protège davantage les personnes",
+            "Le GFCI déclenche autour de 5 mA pour protéger les personnes ; le GFPE déclenche à un seuil plus élevé (environ 30 mA) pour protéger l'équipement contre l'incendie",
+            "Aucune"
+          ],
+          "en": [
+            "A GFCI only protects equipment",
+            "A GFPE protects people more",
+            "A GFCI trips around 5 mA to protect people; a GFPE trips at a higher threshold (about 30 mA) to protect equipment against fire",
+            "None"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un GFCI (classe A) déclenche à environ 5 mA, seuil de protection des personnes ; un GFPE déclenche à environ 30 mA, pour limiter les dommages et le risque d'incendie sur l'équipement.",
+          "en": "A Class A GFCI trips at about 5 mA, the people-protection threshold; a GFPE trips at about 30 mA, to limit damage and fire risk on equipment."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quand plus de trois conducteurs actifs passent dans un même conduit, que doit-on faire à l'ampacité de chaque conducteur ?",
+          "en": "When more than three current-carrying conductors run in the same conduit, what must be done to each conductor's ampacity?"
+        },
+        "choix": {
+          "fr": [
+            "L'augmenter",
+            "La réduire selon les facteurs de correction du code, car la chaleur dégagée par les conducteurs voisins s'accumule",
+            "La doubler",
+            "Rien"
+          ],
+          "en": [
+            "Increase it",
+            "Reduce it per the code's correction factors, since heat from neighboring conductors accumulates",
+            "Double it",
+            "Nothing"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Plus il y a de conducteurs chargés dans un même conduit, moins la chaleur s'évacue : le code impose un facteur de déclassement de l'ampacité.",
+          "en": "The more loaded conductors in a conduit, the less heat can escape: the code imposes an ampacity derating factor."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment une température ambiante élevée affecte-t-elle l'ampacité permise d'un conducteur ?",
+          "en": "How does a high ambient temperature affect a conductor's permitted ampacity?"
+        },
+        "choix": {
+          "fr": [
+            "Elle la réduit, car le conducteur a moins de marge thermique avant d'atteindre sa température maximale",
+            "Elle l'augmente",
+            "Elle n'a aucun effet",
+            "Elle la double"
+          ],
+          "en": [
+            "It reduces it, since the conductor has less thermal margin before reaching its maximum temperature",
+            "It increases it",
+            "It has no effect",
+            "It doubles it"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'ampacité tabulée suppose une température ambiante donnée ; au-delà, on applique un facteur de correction qui réduit le courant permis.",
+          "en": "Tabulated ampacity assumes a given ambient temperature; above that, a correction factor reduces the permitted current."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel avantage principal offre la mise à la terre du neutre par résistance, souvent utilisée dans l'industrie à 600 V ?",
+          "en": "What is the main advantage of resistance grounding of the neutral, often used in industry at 600 V?"
+        },
+        "choix": {
+          "fr": [
+            "Elle limite le courant de défaut à la terre à une faible valeur, ce qui réduit les dommages et permet d'éviter un arrêt immédiat au premier défaut",
+            "Elle supprime tout besoin de protection",
+            "Elle augmente le courant de défaut",
+            "Elle double la tension"
+          ],
+          "en": [
+            "It limits ground fault current to a low value, which reduces damage and allows avoiding an immediate shutdown at the first fault",
+            "It eliminates any need for protection",
+            "It increases fault current",
+            "It doubles the voltage"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une résistance entre le neutre et la terre limite le courant du premier défaut à la terre (quelques ampères), diminuant les dégâts et l'énergie d'arc ; une alarme signale le défaut pour correction planifiée.",
+          "en": "A resistor between neutral and ground limits the first ground fault current (a few amps), reducing damage and arc energy; an alarm flags the fault for planned correction."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que risque-t-on en installant des condensateurs de correction du facteur de puissance dans un réseau riche en harmoniques ?",
+          "en": "What risk comes with installing power factor correction capacitors in a harmonic-rich network?"
+        },
+        "choix": {
+          "fr": [
+            "Une baisse de tension",
+            "Un meilleur facteur de puissance sans conséquence",
+            "Rien du tout",
+            "Une résonance parallèle avec l'inductance du réseau, qui peut amplifier les harmoniques et surcharger les condensateurs"
+          ],
+          "en": [
+            "A voltage drop",
+            "A better power factor with no consequence",
+            "Nothing at all",
+            "A parallel resonance with the network's inductance, which can amplify harmonics and overload the capacitors"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les condensateurs et l'inductance du réseau forment un circuit résonant ; si sa fréquence tombe près d'une harmonique présente, les courants harmoniques peuvent être fortement amplifiés. On utilise alors des filtres ou des réactances de désaccord.",
+          "en": "Capacitors and network inductance form a resonant circuit; if its frequency falls near a present harmonic, harmonic currents can be strongly amplified. Filters or detuning reactors are then used."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi réduire le temps de déclenchement d'une protection réduit-il le risque d'arc électrique ?",
+          "en": "Why does reducing a protective device's clearing time reduce arc flash risk?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le courant augmente",
+            "Parce que l'énergie incidente est proportionnelle à la durée de l'arc",
+            "Parce que la tension baisse",
+            "Cela n'a aucun effet"
+          ],
+          "en": [
+            "Because current increases",
+            "Because incident energy is proportional to the arc's duration",
+            "Because voltage drops",
+            "It has no effect"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'énergie incidente est approximativement proportionnelle au courant d'arc et à sa durée : une protection plus rapide (par exemple en mode maintenance) réduit directement l'énergie à laquelle le travailleur serait exposé.",
+          "en": "Incident energy is approximately proportional to arc current and duration: faster protection (for example in maintenance mode) directly reduces the energy to which the worker would be exposed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment l'énergie incidente d'un arc varie-t-elle approximativement avec la distance de travail ?",
+          "en": "How does arc incident energy vary approximately with working distance?"
+        },
+        "choix": {
+          "fr": [
+            "Elle est proportionnelle à la distance",
+            "Elle diminue approximativement avec le carré de la distance",
+            "Elle augmente avec la distance",
+            "Elle ne dépend pas de la distance"
+          ],
+          "en": [
+            "It is proportional to distance",
+            "It decreases approximately with the square of the distance",
+            "It increases with distance",
+            "It doesn't depend on distance"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "À mesure qu'on s'éloigne de l'arc, l'énergie se répartit sur une surface plus grande : elle décroît approximativement avec le carré de la distance de travail.",
+          "en": "As you move away from the arc, the energy spreads over a larger surface: it decreases approximately with the square of the working distance."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un moteur est alimenté avec un déséquilibre de tension de 3 % entre phases. Selon la règle courante (élévation de température ≈ 2 × (% de déséquilibre)²), de combien l'échauffement augmente-t-il approximativement ?",
+          "en": "A motor is supplied with a 3% voltage unbalance between phases. By the common rule (temperature rise ≈ 2 × (% unbalance)²), by how much does heating increase approximately?"
+        },
+        "choix": {
+          "fr": [
+            "3 %",
+            "18 %",
+            "9 %",
+            "36 %"
+          ],
+          "en": [
+            "3%",
+            "18%",
+            "9%",
+            "36%"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Élévation ≈ 2 × 3² = 18 % : un faible déséquilibre de tension provoque un échauffement nettement plus important, qui abrège la vie de l'isolation.",
+          "en": "Rise ≈ 2 × 3² = 18%: a small voltage unbalance causes notably greater heating, which shortens insulation life."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que mesure l'indice de polarisation (PI) lors d'un essai d'isolement d'un moteur, et quelle valeur est généralement jugée satisfaisante ?",
+          "en": "What does the polarization index (PI) measure in a motor insulation test, and what value is generally considered satisfactory?"
+        },
+        "choix": {
+          "fr": [
+            "La tension nominale ; 600 V",
+            "Le courant de démarrage",
+            "La température de l'enroulement",
+            "Le rapport de la résistance d'isolement à 10 minutes sur celle à 1 minute ; une valeur d'au moins 2 est généralement jugée satisfaisante"
+          ],
+          "en": [
+            "Rated voltage; 600 V",
+            "Starting current",
+            "Winding temperature",
+            "The ratio of insulation resistance at 10 minutes to that at 1 minute; a value of at least 2 is generally considered satisfactory"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "PI = R(10 min) / R(1 min) : une isolation propre et sèche voit sa résistance augmenter avec le temps (PI ≥ 2), alors qu'une isolation humide ou contaminée donne un PI proche de 1.",
+          "en": "PI = R(10 min) / R(1 min): clean, dry insulation sees its resistance rise over time (PI ≥ 2), whereas damp or contaminated insulation gives a PI close to 1."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert la thermographie infrarouge dans la maintenance électrique ?",
+          "en": "What is infrared thermography used for in electrical maintenance?"
+        },
+        "choix": {
+          "fr": [
+            "À mesurer la tension",
+            "À remplacer le mégohmmètre",
+            "À mesurer la résistance d'isolement",
+            "À repérer les points chauds (connexions desserrées, surcharge) sur des installations sous tension, sans contact"
+          ],
+          "en": [
+            "Measuring voltage",
+            "Replacing the megohmmeter",
+            "Measuring insulation resistance",
+            "Spotting hot spots (loose connections, overload) on energized installations, without contact"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une connexion à haute résistance chauffe sous charge ; la caméra infrarouge la révèle à distance, sans contact, ce qui permet de planifier la correction.",
+          "en": "A high-resistance connection heats up under load; the infrared camera reveals it from a distance, without contact, which allows planning the repair."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une inspection thermographique d'un panneau doit-elle se faire avec les charges en service (idéalement à au moins 40 % de leur charge) ?",
+          "en": "Why must a thermographic inspection of a panel be done with loads in service (ideally at least 40% of their load)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour économiser du temps",
+            "Parce que la caméra ne fonctionne qu'avec du courant",
+            "Pour avoir plus de lumière",
+            "Parce que l'échauffement d'un mauvais contact dépend du courant (P = I²R) : à faible charge, un défaut peut passer inaperçu"
+          ],
+          "en": [
+            "To save time",
+            "Because the camera only works with current",
+            "To have more light",
+            "Because the heating of a poor contact depends on current (P = I²R): at low load, a fault may go unnoticed"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La chaleur dégagée varie avec le carré du courant : un contact défectueux peut sembler normal à vide ou à faible charge, ce qui fausserait l'inspection.",
+          "en": "Heat generated varies with the square of current: a faulty contact may look normal at no load or low load, which would skew the inspection."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle intensité de courant traversant le cœur, pendant environ une seconde, peut provoquer une fibrillation ventriculaire chez l'humain ?",
+          "en": "What current through the heart, for about one second, can cause ventricular fibrillation in humans?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 100 mA",
+            "Environ 10 mA",
+            "Aucun courant n'est dangereux sous 1 A",
+            "Environ 1 mA"
+          ],
+          "en": [
+            "About 100 mA",
+            "About 10 mA",
+            "No current is dangerous below 1 A",
+            "About 1 mA"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Quelques dizaines à une centaine de milliampères à travers le cœur peuvent suffire à provoquer une fibrillation ventriculaire : c'est le courant, plus que la tension, qui est dangereux.",
+          "en": "A few tens to about a hundred milliamps through the heart can be enough to cause ventricular fibrillation: it is current, more than voltage, that is dangerous."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce que le seuil de « lâcher prise » (let-go) en matière de choc électrique ?",
+          "en": "What is the \"let-go\" threshold in electric shock?"
+        },
+        "choix": {
+          "fr": [
+            "Le temps nécessaire pour déclencher un disjoncteur",
+            "La tension à partir de laquelle on sent du courant",
+            "Le courant au-delà duquel la personne ne peut plus lâcher le conducteur à cause de la contraction involontaire des muscles (environ 10 à 16 mA)",
+            "La résistance de la peau"
+          ],
+          "en": [
+            "The time needed to trip a breaker",
+            "The voltage at which current is felt",
+            "The current above which a person cannot release the conductor due to involuntary muscle contraction (about 10 to 16 mA)",
+            "Skin resistance"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Au-delà de 10 à 16 mA environ, les muscles se contractent involontairement et la personne ne peut plus se libérer, ce qui prolonge l'exposition et aggrave le risque.",
+          "en": "Above about 10 to 16 mA, muscles contract involuntarily and the person cannot let go, which prolongs exposure and worsens the risk."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert un relais de surveillance de phase installé en amont d'un moteur ?",
+          "en": "What is a phase monitoring relay installed upstream of a motor used for?"
+        },
+        "choix": {
+          "fr": [
+            "À régler le facteur de puissance",
+            "À mesurer la température",
+            "À augmenter la vitesse",
+            "À protéger contre la perte d'une phase, l'inversion de séquence et le déséquilibre ou la sous-tension, en coupant l'alimentation"
+          ],
+          "en": [
+            "Adjusting power factor",
+            "Measuring temperature",
+            "Increasing speed",
+            "Protecting against loss of a phase, phase reversal, and unbalance or undervoltage by cutting the supply"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le relais de surveillance détecte les anomalies d'alimentation triphasée (perte de phase, inversion, déséquilibre) et ouvre le circuit avant que le moteur ne soit endommagé.",
+          "en": "The monitoring relay detects three-phase supply anomalies (phase loss, reversal, unbalance) and opens the circuit before the motor is damaged."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon le Code canadien de l'électricité, pour une charge continue (3 heures ou plus), de combien ne doit pas dépasser le courant de la charge par rapport au courant nominal du dispositif de protection ?",
+          "en": "Under the Canadian Electrical Code, for a continuous load (3 hours or more), what must the load current not exceed, relative to the protective device's rating?"
+        },
+        "choix": {
+          "fr": [
+            "100 %",
+            "50 %",
+            "80 %",
+            "125 %"
+          ],
+          "en": [
+            "100%",
+            "50%",
+            "80%",
+            "125%"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une charge continue ne doit pas dépasser 80 % du courant nominal du dispositif de protection ; autrement dit, ce dernier doit être dimensionné à au moins 125 % de la charge continue.",
+          "en": "A continuous load must not exceed 80% of the protective device's rated current; in other words, the device must be sized at least 125% of the continuous load."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'avantage d'un fusible limiteur de courant (comme un fusible de classe J ou CC) ?",
+          "en": "What is the advantage of a current-limiting fuse (such as a Class J or CC fuse)?"
+        },
+        "choix": {
+          "fr": [
+            "Il augmente le courant de court-circuit",
+            "Il remplace la mise à la terre",
+            "Il interrompt le courant avant que le pic de court-circuit soit atteint, réduisant l'énergie traversante (let-through) et les contraintes sur l'équipement",
+            "Il ne coupe jamais"
+          ],
+          "en": [
+            "It increases short-circuit current",
+            "It replaces grounding",
+            "It interrupts the current before the short-circuit peak is reached, reducing let-through energy and stress on equipment",
+            "It never interrupts"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un fusible limiteur coupe en un temps très court, avant le premier pic de courant : l'énergie laissée passer est bien inférieure à celle d'un défaut non limité.",
+          "en": "A current-limiting fuse clears in a very short time, before the first current peak: the energy let through is far below that of an unlimited fault."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelles conditions doivent être respectées pour mettre deux transformateurs en parallèle ?",
+          "en": "What conditions must be met to connect two transformers in parallel?"
+        },
+        "choix": {
+          "fr": [
+            "Des tensions secondaires différentes",
+            "Aucune condition particulière",
+            "Même rapport de transformation, mêmes déphasages (groupe de couplage) et impédances en pourcentage proches, pour répartir correctement la charge",
+            "Des puissances très différentes"
+          ],
+          "en": [
+            "Different secondary voltages",
+            "No particular condition",
+            "Same turns ratio, same phase shift (vector group), and similar percent impedances, to share the load properly",
+            "Very different ratings"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Des transformateurs en parallèle doivent avoir le même rapport, la même polarité/déphasage et des impédances voisines, sinon des courants de circulation apparaissent et la charge se répartit mal.",
+          "en": "Transformers in parallel must have the same ratio, the same polarity/phase shift, and similar impedances; otherwise circulating currents appear and the load shares poorly."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on un transformateur à facteur K pour alimenter des charges non linéaires ?",
+          "en": "Why is a K-factor transformer used to supply nonlinear loads?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'il est conçu pour supporter l'échauffement supplémentaire causé par les courants harmoniques",
+            "Parce qu'il n'a pas de noyau",
+            "Pour augmenter la tension",
+            "Parce qu'il est moins cher"
+          ],
+          "en": [
+            "Because it is designed to withstand the additional heating caused by harmonic currents",
+            "Because it has no core",
+            "To increase voltage",
+            "Because it is cheaper"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les courants harmoniques causent des pertes supplémentaires dans les enroulements et le noyau ; un transformateur à facteur K est dimensionné pour résister à cet échauffement.",
+          "en": "Harmonic currents cause additional losses in the windings and core; a K-factor transformer is built to withstand this heating."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une impédance de boucle de défaut élevée est-elle problématique pour la protection d'un circuit ?",
+          "en": "Why is a high fault-loop impedance a problem for a circuit's protection?"
+        },
+        "choix": {
+          "fr": [
+            "Elle limite le courant de défaut, qui peut alors rester sous le seuil de déclenchement rapide : la protection tarde à agir ou ne déclenche pas",
+            "Elle n'a aucun effet",
+            "Elle augmente le courant de défaut",
+            "Elle réduit la tension du réseau"
+          ],
+          "en": [
+            "It limits fault current, which may then stay under the fast-trip threshold: protection is slow to act or does not trip",
+            "It has no effect",
+            "It increases fault current",
+            "It reduces network voltage"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un courant de défaut trop faible à cause d'une impédance élevée (conducteurs longs ou trop fins, mauvaises connexions) peut ne pas atteindre le seuil magnétique du disjoncteur ; la mise hors tension se fait trop lentement.",
+          "en": "A fault current too low because of high impedance (long or undersized conductors, poor connections) may not reach the breaker's magnetic threshold; de-energizing happens too slowly."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lorsqu'on met plusieurs conducteurs en parallèle par phase, pourquoi doivent-ils avoir la même longueur, le même calibre et le même matériau ?",
+          "en": "When several conductors are paralleled per phase, why must they have the same length, size, and material?"
+        },
+        "choix": {
+          "fr": [
+            "Pour que le courant se répartisse également entre eux : une impédance différente surchargerait certains conducteurs",
+            "Pour réduire le prix",
+            "Pour l'esthétique",
+            "Pour diminuer la tension"
+          ],
+          "en": [
+            "So current divides equally among them: a different impedance would overload some conductors",
+            "To reduce price",
+            "For appearance",
+            "To lower voltage"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le courant se partage selon l'impédance de chaque branche : si les conducteurs diffèrent, certains reçoivent plus que leur part et surchauffent.",
+          "en": "Current shares according to each branch's impedance: if conductors differ, some carry more than their share and overheat."
         }
       }
     ]
@@ -3960,6 +10482,1310 @@ window.QUESTIONNAIRES = [
           "en": "It keeps the process running at fixed speed if the VFD fails."
         }
       }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Une rampe d'accélération est réglée de 0 à 60 Hz en 30 secondes. Combien de temps faut-il pour atteindre 45 Hz, à vitesse de rampe constante ?",
+          "en": "An acceleration ramp is set from 0 to 60 Hz in 30 seconds. How long does it take to reach 45 Hz, at a constant ramp rate?"
+        },
+        "choix": {
+          "fr": [
+            "45 s",
+            "22,5 s",
+            "30 s",
+            "15 s"
+          ],
+          "en": [
+            "45 s",
+            "22.5 s",
+            "30 s",
+            "15 s"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "La rampe vaut 60 Hz / 30 s = 2 Hz par seconde ; pour atteindre 45 Hz : 45 / 2 = 22,5 s.",
+          "en": "The ramp is 60 Hz / 30 s = 2 Hz per second; to reach 45 Hz: 45 / 2 = 22.5 s."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un variateur est alimenté en triphasé 600 V. Quelle est approximativement la tension continue du bus CC après redressement (valeur de crête, sans charge) ?",
+          "en": "A drive is supplied with three-phase 600 V. Approximately what is the DC bus voltage after rectification (peak value, no load)?"
+        },
+        "choix": {
+          "fr": [
+            "600 V",
+            "300 V",
+            "1 200 V",
+            "Environ 850 V"
+          ],
+          "en": [
+            "600 V",
+            "300 V",
+            "1,200 V",
+            "About 850 V"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La tension du bus CC vaut environ la tension de ligne × √2 : 600 × 1,414 ≈ 850 V.",
+          "en": "DC bus voltage is about line voltage × √2: 600 × 1.414 ≈ 850 V."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un moteur de 600 V / 60 Hz est commandé avec un rapport V/Hz constant. Quelle tension le variateur applique-t-il à 30 Hz ?",
+          "en": "A 600 V / 60 Hz motor is controlled with a constant V/Hz ratio. What voltage does the drive apply at 30 Hz?"
+        },
+        "choix": {
+          "fr": [
+            "300 V",
+            "150 V",
+            "600 V",
+            "450 V"
+          ],
+          "en": [
+            "300 V",
+            "150 V",
+            "600 V",
+            "450 V"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le rapport V/Hz est de 600 / 60 = 10 V/Hz ; à 30 Hz, la tension vaut 10 × 30 = 300 V.",
+          "en": "The V/Hz ratio is 600 / 60 = 10 V/Hz; at 30 Hz, the voltage is 10 × 30 = 300 V."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe centrifuge de 20 HP à 60 Hz est ralentie à 45 Hz. Quelle est approximativement la puissance absorbée, selon les lois de similitude ?",
+          "en": "A 20 HP centrifugal pump at 60 Hz is slowed to 45 Hz. What is approximately the absorbed power, per the affinity laws?"
+        },
+        "choix": {
+          "fr": [
+            "5 HP",
+            "15 HP",
+            "Environ 8,4 HP",
+            "20 HP"
+          ],
+          "en": [
+            "5 HP",
+            "15 HP",
+            "About 8.4 HP",
+            "20 HP"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "La puissance varie avec le cube de la vitesse : 20 × (45/60)³ = 20 × 0,42 ≈ 8,4 HP.",
+          "en": "Power varies with the cube of speed: 20 × (45/60)³ = 20 × 0.42 ≈ 8.4 HP."
+        }
+      },
+      {
+        "question": {
+          "fr": "Cette même pompe fournit 400 gpm à 60 Hz. Quel est approximativement son débit à 45 Hz ?",
+          "en": "That same pump delivers 400 gpm at 60 Hz. What is its approximate flow at 45 Hz?"
+        },
+        "choix": {
+          "fr": [
+            "400 gpm",
+            "300 gpm",
+            "350 gpm",
+            "200 gpm"
+          ],
+          "en": [
+            "400 gpm",
+            "300 gpm",
+            "350 gpm",
+            "200 gpm"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 1,
+        "explication": {
+          "fr": "Le débit est proportionnel à la vitesse : 400 × 45/60 = 300 gpm.",
+          "en": "Flow is proportional to speed: 400 × 45/60 = 300 gpm."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert le freinage par injection de courant continu sur un variateur ?",
+          "en": "What is DC injection braking on a drive used for?"
+        },
+        "choix": {
+          "fr": [
+            "À réduire le bruit",
+            "À mesurer la tension",
+            "À immobiliser rapidement le moteur en injectant du courant continu dans le stator, créant un couple de freinage à basse vitesse",
+            "À accélérer le moteur"
+          ],
+          "en": [
+            "Reducing noise",
+            "Measuring voltage",
+            "Quickly stopping the motor by injecting DC current into the stator, creating a braking torque at low speed",
+            "Accelerating the motor"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'injection CC crée un champ fixe dans le stator qui freine le rotor ; elle est utile pour arrêter ou maintenir un moteur à faible vitesse sans résistance de freinage.",
+          "en": "DC injection creates a fixed field in the stator that brakes the rotor; it is useful for stopping or holding a motor at low speed without a braking resistor."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'avantage du contrôle vectoriel en boucle fermée (avec codeur) par rapport au contrôle V/Hz ?",
+          "en": "What is the advantage of closed-loop vector control (with an encoder) over V/Hz control?"
+        },
+        "choix": {
+          "fr": [
+            "Il ne demande aucun réglage",
+            "Un contrôle précis de la vitesse et du couple, y compris à vitesse nulle ou très basse, et une meilleure réponse dynamique",
+            "Il fonctionne sans moteur",
+            "Aucun avantage"
+          ],
+          "en": [
+            "It requires no setup",
+            "Precise speed and torque control, including at zero or very low speed, and better dynamic response",
+            "It works without a motor",
+            "No advantage"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec un retour de vitesse par codeur, le variateur contrôle précisément le couple et la vitesse, même à l'arrêt, ce qui convient aux grues, convoyeurs et machines exigeantes.",
+          "en": "With encoder speed feedback, the drive precisely controls torque and speed, even at standstill, which suits cranes, conveyors, and demanding machines."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que fait la procédure d'auto-réglage (autotune) d'un variateur ?",
+          "en": "What does a drive's autotune procedure do?"
+        },
+        "choix": {
+          "fr": [
+            "Elle mesure les paramètres électriques du moteur (résistance, inductance) pour optimiser la commande",
+            "Elle règle l'horloge",
+            "Elle efface les défauts",
+            "Elle augmente la vitesse maximale"
+          ],
+          "en": [
+            "It measures the motor's electrical parameters (resistance, inductance) to optimize control",
+            "It sets the clock",
+            "It clears faults",
+            "It increases maximum speed"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'auto-réglage fait passer de courts signaux d'essai dans le moteur pour en mesurer les paramètres, que le variateur utilise ensuite pour mieux contrôler le moteur.",
+          "en": "Autotune passes short test signals through the motor to measure its parameters, which the drive then uses to control the motor better."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un signal de référence de vitesse 4-20 mA est perdu (fil coupé). Quel paramètre du variateur détermine la réaction ?",
+          "en": "A 4-20 mA speed reference signal is lost (broken wire). Which drive parameter determines the reaction?"
+        },
+        "choix": {
+          "fr": [
+            "Le réglage de comportement sur perte de signal (défaut, maintien de la dernière vitesse ou vitesse prédéfinie)",
+            "La couleur de l'afficheur",
+            "Aucun, le variateur s'arrête toujours",
+            "La fréquence porteuse"
+          ],
+          "en": [
+            "The signal-loss behavior setting (fault, hold last speed, or preset speed)",
+            "The display color",
+            "None, the drive always stops",
+            "The carrier frequency"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "On choisit si le variateur déclenche, garde la dernière vitesse ou passe à une vitesse de repli ; le choix dépend de la sécurité du procédé.",
+          "en": "You choose whether the drive trips, holds the last speed, or goes to a fallback speed; the choice depends on process safety."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur un réseau de communication RS-485 (Modbus RTU), où place-t-on les résistances de terminaison de 120 Ω ?",
+          "en": "On an RS-485 (Modbus RTU) communication network, where are the 120 Ω termination resistors placed?"
+        },
+        "choix": {
+          "fr": [
+            "Nulle part",
+            "Au milieu du bus",
+            "Sur chaque appareil",
+            "Aux deux extrémités du bus seulement"
+          ],
+          "en": [
+            "Nowhere",
+            "In the middle of the bus",
+            "On every device",
+            "At both ends of the bus only"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le bus RS-485 se termine aux deux extrémités par une résistance de 120 Ω pour éviter les réflexions de signal ; les appareils intermédiaires n'en ont pas.",
+          "en": "The RS-485 bus is terminated at both ends with a 120 Ω resistor to avoid signal reflections; intermediate devices have none."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi règle-t-on une fréquence minimale de fonctionnement sur un variateur de pompe ?",
+          "en": "Why is a minimum operating frequency set on a pump drive?"
+        },
+        "choix": {
+          "fr": [
+            "Pour économiser de l'énergie à zéro tour",
+            "Pour garantir un refroidissement et une lubrification suffisants du moteur et de la pompe, et un débit minimal",
+            "Pour augmenter la vitesse maximale",
+            "Pour supprimer le besoin d'un moteur"
+          ],
+          "en": [
+            "To save energy at zero speed",
+            "To ensure sufficient cooling and lubrication of the motor and pump, and a minimum flow",
+            "To increase maximum speed",
+            "To eliminate the need for a motor"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "À très basse vitesse, le refroidissement du moteur diminue et la pompe peut manquer de lubrification ou de débit ; on fixe donc un minimum (souvent 20 à 30 Hz).",
+          "en": "At very low speed, motor cooling decreases and the pump may lack lubrication or flow; a minimum is therefore set (often 20 to 30 Hz)."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi servent les fréquences d'évitement (skip frequencies) d'un variateur ?",
+          "en": "What are a drive's skip frequencies used for?"
+        },
+        "choix": {
+          "fr": [
+            "À filtrer les harmoniques du réseau",
+            "À sauter les plages de vitesse où la machine entre en résonance mécanique et vibre fortement",
+            "À augmenter la vitesse",
+            "À éviter les pannes de courant"
+          ],
+          "en": [
+            "Filtering network harmonics",
+            "Skipping speed ranges where the machine enters mechanical resonance and vibrates strongly",
+            "Increasing speed",
+            "Avoiding power outages"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si une plage de vitesse excite une résonance de la machine, on programme le variateur pour la franchir rapidement sans y stationner.",
+          "en": "If a speed range excites a machine resonance, the drive is programmed to pass through it quickly without dwelling there."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle bonne pratique s'applique au cheminement des câbles entre le variateur, le moteur et les signaux ?",
+          "en": "What good practice applies to the routing of cables between the drive, the motor, and signals?"
+        },
+        "choix": {
+          "fr": [
+            "Tout passer dans le même conduit",
+            "Séparer le câble moteur des câbles de signal et de commande, avec croisement à 90° si nécessaire",
+            "Torsader les câbles de puissance avec les signaux",
+            "Aucune règle"
+          ],
+          "en": [
+            "Run everything in the same conduit",
+            "Separate the motor cable from signal and control cables, crossing at 90° if necessary",
+            "Twist power cables with signals",
+            "No rule"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le câble moteur génère beaucoup de bruit électromagnétique : on le sépare des signaux analogiques et de communication pour éviter les perturbations.",
+          "en": "The motor cable generates a lot of electromagnetic noise: it is separated from analog and communication signals to avoid disturbances."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi le filtre RFI intégré d'un variateur peut-il causer le déclenchement d'un disjoncteur différentiel (GFCI) ?",
+          "en": "Why can a drive's built-in RFI filter cause a ground fault interrupter (GFCI) to trip?"
+        },
+        "choix": {
+          "fr": [
+            "Il n'a aucun effet",
+            "Il augmente la tension",
+            "Il ouvre le circuit de commande",
+            "Il génère un courant de fuite à la terre plus élevé, qui peut dépasser le seuil du dispositif différentiel"
+          ],
+          "en": [
+            "It has no effect",
+            "It increases voltage",
+            "It opens the control circuit",
+            "It generates a higher ground leakage current, which can exceed the interrupter's threshold"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les condensateurs du filtre RFI laissent passer un courant de fuite vers la terre ; sur plusieurs variateurs, la somme peut faire déclencher un différentiel sensible.",
+          "en": "The RFI filter's capacitors let leakage current flow to ground; with several drives, the sum can trip a sensitive interrupter."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment choisit-on la taille d'un variateur pour un moteur donné ?",
+          "en": "How is a drive sized for a given motor?"
+        },
+        "choix": {
+          "fr": [
+            "Selon la puissance en HP uniquement",
+            "Selon le poids du moteur",
+            "Selon la couleur",
+            "Selon le courant nominal du moteur (et le type de charge), pas seulement selon les HP"
+          ],
+          "en": [
+            "By horsepower alone",
+            "By the motor's weight",
+            "By color",
+            "By the motor's rated current (and the load type), not only by HP"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le variateur doit pouvoir fournir le courant du moteur (surtout pour les moteurs à courant élevé ou à plusieurs vitesses), en tenant compte de la surcharge exigée par la charge.",
+          "en": "The drive must be able to supply the motor's current (especially for high-current or multi-speed motors), taking into account the overload the load requires."
+        }
+      },
+      {
+        "question": {
+          "fr": "À partir de quelle altitude doit-on généralement déclasser un variateur, et de combien approximativement ?",
+          "en": "Above what altitude must a drive generally be derated, and by approximately how much?"
+        },
+        "choix": {
+          "fr": [
+            "Seulement sous le niveau de la mer",
+            "Jamais",
+            "Dès le niveau de la mer, 50 %",
+            "Au-delà d'environ 3 300 pi, environ 1 % par 330 pi supplémentaires"
+          ],
+          "en": [
+            "Only below sea level",
+            "Never",
+            "From sea level, 50%",
+            "Above about 3,300 ft, about 1% per additional 330 ft"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'air plus mince refroidit moins bien : au-delà d'environ 3 300 pi, les fabricants demandent de réduire le courant permis d'environ 1 % par 330 pi.",
+          "en": "Thinner air cools less well: above about 3,300 ft, manufacturers ask to reduce allowable current by about 1% per 330 ft."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'un moteur « inverter duty » (adapté aux variateurs) ?",
+          "en": "What is an \"inverter duty\" motor?"
+        },
+        "choix": {
+          "fr": [
+            "Un moteur dont l'isolation et la construction sont prévues pour résister aux pics de tension et au dV/dt des variateurs, et souvent à basse vitesse",
+            "Un moteur monophasé",
+            "Un moteur qui fonctionne sans variateur uniquement",
+            "Un moteur sans bobinage"
+          ],
+          "en": [
+            "A motor whose insulation and construction are designed to withstand drive voltage spikes and dV/dt, and often low speed",
+            "A single-phase motor",
+            "A motor that only runs without a drive",
+            "A motor with no winding"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les moteurs conçus pour variateurs (par exemple selon NEMA MG1 Part 31) ont une isolation renforcée contre les impulsions rapides de tension, qui usent prématurément un moteur standard.",
+          "en": "Motors designed for drives (for example per NEMA MG1 Part 31) have insulation reinforced against fast voltage pulses, which prematurely wear a standard motor."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un variateur doit alimenter un moteur éloigné par un très long câble. Quelles mesures sont courantes ?",
+          "en": "A drive must supply a motor located far away via a very long cable. What measures are common?"
+        },
+        "choix": {
+          "fr": [
+            "Augmenter la fréquence de découpage au maximum",
+            "Aucune, la longueur n'a pas d'effet",
+            "Réduire la fréquence de découpage et/ou installer une réactance ou un filtre de sortie (dV/dt ou sinus)",
+            "Retirer le blindage"
+          ],
+          "en": [
+            "Raise the switching frequency to the maximum",
+            "None, length has no effect",
+            "Reduce the switching frequency and/or install an output reactor or filter (dV/dt or sine wave)",
+            "Remove the shield"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Sur un long câble, les ondes réfléchies créent des surtensions aux bornes du moteur ; on réduit la fréquence de découpage ou on ajoute un filtre de sortie.",
+          "en": "On a long cable, reflected waves create overvoltages at the motor terminals; the switching frequency is reduced or an output filter is added."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle d'une réactance de sortie (load reactor) entre le variateur et le moteur ?",
+          "en": "What is the role of an output reactor (load reactor) between the drive and the motor?"
+        },
+        "choix": {
+          "fr": [
+            "Mesurer le courant",
+            "Remplacer le variateur",
+            "Augmenter la tension",
+            "Atténuer le dV/dt et les pointes de courant, protégeant l'isolation du moteur sur des câbles de longueur moyenne"
+          ],
+          "en": [
+            "Measure current",
+            "Replace the drive",
+            "Increase voltage",
+            "Dampen dV/dt and current spikes, protecting the motor's insulation on cables of moderate length"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "La réactance de sortie lisse les fronts de tension du variateur, ce qui réduit les contraintes sur l'isolation du moteur.",
+          "en": "The output reactor smooths the drive's voltage edges, which reduces stress on the motor's insulation."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi l'activation du redémarrage automatique après une coupure d'alimentation doit-elle être évaluée avec soin ?",
+          "en": "Why must enabling automatic restart after a power interruption be evaluated carefully?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'elle est toujours interdite",
+            "Parce qu'elle double le courant",
+            "Parce qu'un redémarrage inattendu de la machine peut mettre en danger les personnes ; il faut vérifier que c'est sécuritaire pour le procédé",
+            "Parce qu'elle ralentit le moteur"
+          ],
+          "en": [
+            "Because it is always prohibited",
+            "Because it doubles current",
+            "Because an unexpected restart of the machine can endanger people; you must verify that it is safe for the process",
+            "Because it slows the motor"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une machine qui repart seule après une coupure peut blesser quelqu'un qui intervient ; on n'active cette fonction qu'après analyse de risques.",
+          "en": "A machine that restarts by itself after an outage can injure someone working on it; this function is enabled only after a risk analysis."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que fait la fonction de sécurité STO (Safe Torque Off) d'un variateur ?",
+          "en": "What does a drive's STO (Safe Torque Off) safety function do?"
+        },
+        "choix": {
+          "fr": [
+            "Elle règle la vitesse",
+            "Elle mesure la température",
+            "Elle empêche le variateur de produire du couple au moteur, au moyen de circuits de sécurité certifiés, sans passer par un contacteur de puissance",
+            "Elle augmente le couple"
+          ],
+          "en": [
+            "It sets speed",
+            "It measures temperature",
+            "It prevents the drive from producing torque at the motor, using certified safety circuits, without going through a power contactor",
+            "It increases torque"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "STO coupe l'alimentation des signaux de commande des transistors de puissance via des circuits redondants certifiés : le moteur ne peut plus produire de couple, ce qui permet un arrêt sûr.",
+          "en": "STO cuts the supply of the power transistors' gate signals via certified redundant circuits: the motor can no longer produce torque, allowing a safe stop."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on parfois le régulateur PID intégré du variateur plutôt qu'un PLC ?",
+          "en": "Why is the drive's built-in PID controller sometimes used instead of a PLC?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'il n'a pas besoin de capteur",
+            "Parce qu'il est interdit de les combiner",
+            "Parce que, pour une boucle simple (pression, débit), le variateur peut lire le capteur 4-20 mA et réguler seul, sans PLC",
+            "Parce qu'il est plus rapide qu'un PLC pour tout"
+          ],
+          "en": [
+            "Because it needs no sensor",
+            "Because combining them is prohibited",
+            "Because for a simple loop (pressure, flow), the drive can read the 4-20 mA sensor and regulate on its own, without a PLC",
+            "Because it is faster than a PLC for everything"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "De nombreux variateurs intègrent un PID : un capteur 4-20 mA relié à une entrée analogique permet de réguler la pression ou le débit sans automate.",
+          "en": "Many drives include a PID: a 4-20 mA sensor wired to an analog input allows pressure or flow control without a controller."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la poussière accumulée sur le dissipateur et les ventilateurs d'un variateur est-elle un problème ?",
+          "en": "Why is dust accumulated on a drive's heatsink and fans a problem?"
+        },
+        "choix": {
+          "fr": [
+            "Elle réduit le refroidissement et provoque des surchauffes et des défauts, voire une défaillance prématurée",
+            "Elle améliore la mise à la terre",
+            "Elle n'en est pas un",
+            "Elle augmente la puissance"
+          ],
+          "en": [
+            "It reduces cooling and causes overheating and faults, even premature failure",
+            "It improves grounding",
+            "It isn't one",
+            "It increases power"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Un dissipateur encrassé évacue mal la chaleur ; un entretien régulier (nettoyage, remplacement des ventilateurs) évite les défauts de température et prolonge la vie du variateur.",
+          "en": "A clogged heatsink dissipates heat poorly; regular maintenance (cleaning, fan replacement) avoids temperature faults and extends drive life."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert le « boost » de tension à basse fréquence en commande V/Hz ?",
+          "en": "What is the voltage \"boost\" at low frequency used for in V/Hz control?"
+        },
+        "choix": {
+          "fr": [
+            "À compenser la chute de tension résistive du stator à basse fréquence, pour conserver un couple de démarrage suffisant",
+            "À augmenter la vitesse maximale",
+            "À réduire le bruit",
+            "À augmenter la fréquence porteuse"
+          ],
+          "en": [
+            "Compensating the stator's resistive voltage drop at low frequency, to keep sufficient starting torque",
+            "Increasing maximum speed",
+            "Reducing noise",
+            "Increasing carrier frequency"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "À basse fréquence, la tension appliquée est faible et la chute dans la résistance du stator devient importante : un petit boost de tension maintient le flux et le couple.",
+          "en": "At low frequency, the applied voltage is small and the voltage drop in the stator resistance becomes significant: a small voltage boost maintains flux and torque."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la plage de vitesse à couple constant d'un moteur standard autoventilé (TEFC) est-elle limitée en variation de vitesse ?",
+          "en": "Why is the constant-torque speed range of a standard self-cooled (TEFC) motor limited in variable-speed use?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que son ventilateur est entraîné par l'arbre : à basse vitesse, le refroidissement diminue, ce qui limite le couple permis en continu",
+            "Parce qu'il tourne trop vite",
+            "Parce qu'il n'a pas de rotor",
+            "Parce qu'il n'a pas de bobinage"
+          ],
+          "en": [
+            "Because its fan is driven by the shaft: at low speed, cooling decreases, which limits the torque allowed continuously",
+            "Because it runs too fast",
+            "Because it has no rotor",
+            "Because it has no winding"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "À basse vitesse, le ventilateur monté sur l'arbre refroidit moins ; pour un couple élevé en continu, il faut un ventilateur indépendant ou déclasser le couple.",
+          "en": "At low speed, the shaft-mounted fan cools less; for high continuous torque, an independent fan is needed or torque must be derated."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Avec un rapport V/Hz constant sous la fréquence de base, comment le couple disponible du moteur évolue-t-il approximativement avec la fréquence ?",
+          "en": "With a constant V/Hz ratio below base frequency, how does the motor's available torque change approximately with frequency?"
+        },
+        "choix": {
+          "fr": [
+            "Il augmente avec le carré de la fréquence",
+            "Il reste à peu près constant (flux constant), dans la limite du refroidissement et de la tension",
+            "Il devient nul à 30 Hz",
+            "Il double quand la fréquence diminue de moitié"
+          ],
+          "en": [
+            "It increases with the square of frequency",
+            "It stays roughly constant (constant flux), within the limits of cooling and voltage",
+            "It becomes zero at 30 Hz",
+            "It doubles when frequency is halved"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un rapport V/Hz constant maintient un flux magnétique constant, donc un couple maximal à peu près constant sous la fréquence de base.",
+          "en": "A constant V/Hz ratio maintains constant magnetic flux, hence a roughly constant maximum torque below base frequency."
+        }
+      },
+      {
+        "question": {
+          "fr": "Au-dessus de la fréquence de base (zone d'affaiblissement de champ), qu'arrive-t-il au couple disponible et à la puissance ?",
+          "en": "Above base frequency (field-weakening region), what happens to available torque and power?"
+        },
+        "choix": {
+          "fr": [
+            "Le couple augmente, la puissance diminue",
+            "Le moteur s'arrête",
+            "Le couple reste constant, la puissance double",
+            "La tension reste constante, le flux diminue : le couple disponible décroît environ comme 1/f et la puissance reste à peu près constante"
+          ],
+          "en": [
+            "Torque increases, power decreases",
+            "The motor stops",
+            "Torque stays constant, power doubles",
+            "Voltage stays constant, flux decreases: available torque falls roughly as 1/f and power stays roughly constant"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le variateur ne peut pas dépasser la tension nominale : au-delà de la fréquence de base, le flux diminue, le couple disponible baisse en 1/f et la puissance maximale reste à peu près constante.",
+          "en": "The drive cannot exceed rated voltage: above base frequency, flux decreases, available torque drops as 1/f, and maximum power stays roughly constant."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une pompe centrifuge dimensionnée pour 60 Hz est accélérée à 75 Hz. Par quel facteur approximatif sa puissance absorbée est-elle multipliée ?",
+          "en": "A centrifugal pump sized for 60 Hz is sped up to 75 Hz. By what approximate factor is its absorbed power multiplied?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 1,95",
+            "Environ 1,25",
+            "Environ 2,5",
+            "Environ 1,56"
+          ],
+          "en": [
+            "About 1.95",
+            "About 1.25",
+            "About 2.5",
+            "About 1.56"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La puissance varie avec le cube de la vitesse : (75/60)³ = 1,25³ ≈ 1,95 ; le moteur et la pompe risquent donc d'être surchargés.",
+          "en": "Power varies with the cube of speed: (75/60)³ = 1.25³ ≈ 1.95; the motor and pump therefore risk being overloaded."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une bague de mise à la terre d'arbre est-elle parfois installée sur un moteur alimenté par variateur ?",
+          "en": "Why is a shaft grounding ring sometimes installed on a motor fed by a drive?"
+        },
+        "choix": {
+          "fr": [
+            "Pour l'esthétique",
+            "Pour refroidir le moteur",
+            "Pour dériver les courants de décharge de l'arbre vers la terre et protéger les roulements des cannelures",
+            "Pour augmenter la vitesse"
+          ],
+          "en": [
+            "For appearance",
+            "To cool the motor",
+            "To divert shaft discharge currents to ground and protect bearings from fluting",
+            "To increase speed"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les tensions de mode commun du variateur induisent une tension d'arbre ; une bague conductrice (ou des balais) offre un chemin vers la terre qui évite les décharges à travers les roulements.",
+          "en": "The drive's common-mode voltages induce a shaft voltage; a conductive ring (or brushes) provides a path to ground that avoids discharges through the bearings."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que sont les ondes réfléchies sur un long câble entre variateur et moteur, et quel est leur effet ?",
+          "en": "What are reflected waves on a long cable between drive and motor, and what is their effect?"
+        },
+        "choix": {
+          "fr": [
+            "Un effet sans conséquence",
+            "Une réflexion des fronts de tension rapides à l'extrémité du câble, pouvant presque doubler la tension aux bornes du moteur et user son isolation",
+            "Une baisse de tension",
+            "Un bruit audible seulement"
+          ],
+          "en": [
+            "An effect with no consequence",
+            "A reflection of fast voltage edges at the cable's end, which can nearly double the voltage at the motor terminals and wear its insulation",
+            "A voltage drop",
+            "Audible noise only"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les fronts raides des variateurs se réfléchissent sur l'impédance différente du moteur : au-delà d'une longueur critique, la tension aux bornes peut approcher le double de la tension du bus CC.",
+          "en": "The drives' steep edges reflect on the motor's different impedance: beyond a critical length, terminal voltage can approach twice the DC bus voltage."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel avantage principal offre un variateur à redresseur actif (AFE, active front end) par rapport à un redresseur à diodes ?",
+          "en": "What main advantage does an active front end (AFE) drive offer over a diode rectifier?"
+        },
+        "choix": {
+          "fr": [
+            "Il augmente les harmoniques",
+            "Il fonctionne sans moteur",
+            "Il réduit fortement les harmoniques de courant et peut renvoyer l'énergie de freinage vers le réseau (régénération)",
+            "Il est toujours moins cher"
+          ],
+          "en": [
+            "It increases harmonics",
+            "It works without a motor",
+            "It strongly reduces current harmonics and can send braking energy back to the network (regeneration)",
+            "It is always cheaper"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un redresseur actif à IGBT produit un courant presque sinusoïdal et permet la régénération ; il est utilisé quand les harmoniques ou l'énergie régénérée posent problème.",
+          "en": "An active IGBT rectifier draws an almost sinusoidal current and allows regeneration; it is used when harmonics or regenerated energy are a problem."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon la norme IEEE 519, où évalue-t-on les limites de distorsion harmonique ?",
+          "en": "Under IEEE 519, where are harmonic distortion limits evaluated?"
+        },
+        "choix": {
+          "fr": [
+            "Au niveau du moteur",
+            "Au point de couplage commun (PCC), là où l'installation se raccorde au réseau de distribution",
+            "Dans la salle de contrôle",
+            "Aux bornes du variateur uniquement"
+          ],
+          "en": [
+            "At the motor",
+            "At the point of common coupling (PCC), where the installation connects to the distribution network",
+            "In the control room",
+            "At the drive terminals only"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "IEEE 519 fixe les limites de distorsion harmonique au point de couplage commun, qui protège les autres usagers du réseau, plutôt que sur chaque appareil.",
+          "en": "IEEE 519 sets harmonic distortion limits at the point of common coupling, which protects other users of the network, rather than on each device."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un variateur déclenche sur « défaut de mise à la terre » (ground fault) dès l'accélération. Quelles causes sont les plus plausibles ?",
+          "en": "A drive trips on a \"ground fault\" as soon as it accelerates. What causes are most plausible?"
+        },
+        "choix": {
+          "fr": [
+            "Un câble moteur endommagé, une isolation du moteur défaillante, ou une capacité excessive d'un très long câble",
+            "Une peinture défectueuse",
+            "Un excès de graisse",
+            "Une mauvaise couleur du câble"
+          ],
+          "en": [
+            "A damaged motor cable, failing motor insulation, or excessive capacitance of a very long cable",
+            "Defective paint",
+            "Excess grease",
+            "A wrong cable color"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un défaut d'isolement du câble ou du moteur, ou une grande capacité à la terre d'un long câble, produit un courant de fuite qui fait déclencher la protection de défaut à la terre du variateur.",
+          "en": "An insulation fault in the cable or motor, or a large capacitance to ground in a long cable, produces a leakage current that trips the drive's ground fault protection."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un variateur déclenche sur surchauffe uniquement pendant l'été. Quelle est la première vérification ?",
+          "en": "A drive trips on overtemperature only during summer. What is the first check?"
+        },
+        "choix": {
+          "fr": [
+            "La ventilation de l'armoire et la propreté du dissipateur et des ventilateurs, ainsi que le déclassement requis pour la température ambiante",
+            "La longueur du câble de commande",
+            "Changer la couleur du boîtier",
+            "Le nom du programme"
+          ],
+          "en": [
+            "Cabinet ventilation and cleanliness of the heatsink and fans, as well as the derating required for ambient temperature",
+            "The length of the control cable",
+            "Change the enclosure color",
+            "The program's name"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une température ambiante élevée combinée à un refroidissement insuffisant (filtres colmatés, ventilateurs usés) pousse le variateur à sa limite thermique.",
+          "en": "A high ambient temperature combined with insufficient cooling (clogged filters, worn fans) pushes the drive to its thermal limit."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un multimètre ordinaire donne-t-il une lecture peu fiable de la tension de sortie d'un variateur ?",
+          "en": "Why does an ordinary multimeter give an unreliable reading of a drive's output voltage?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le variateur n'a pas de sortie",
+            "Parce que la fréquence est trop basse",
+            "Parce que la tension est continue",
+            "Parce que la forme d'onde MLI (PWM) n'est pas sinusoïdale : seuls des instruments conçus pour cela (valeur efficace vraie avec filtre passe-bas) donnent une mesure fiable"
+          ],
+          "en": [
+            "Because the drive has no output",
+            "Because the frequency is too low",
+            "Because the voltage is DC",
+            "Because the PWM waveform is not sinusoidal: only instruments designed for it (true RMS with low-pass filter) give a reliable measurement"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La sortie d'un variateur est une suite d'impulsions : un multimètre standard en lit mal la valeur efficace fondamentale ; on utilise un instrument adapté ou la lecture du variateur.",
+          "en": "A drive's output is a train of pulses: a standard multimeter reads its fundamental RMS value poorly; a suitable instrument or the drive's own reading is used."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un variateur est resté entreposé plus d'un an hors tension. Quelle précaution s'applique avant sa mise en service ?",
+          "en": "A drive has been stored more than a year without power. What precaution applies before commissioning?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune",
+            "Reformer les condensateurs électrolytiques en alimentant le variateur progressivement (tension réduite, puis nominale) selon les instructions du fabricant",
+            "Le chauffer à 300 °F",
+            "Le démarrer immédiatement à pleine charge"
+          ],
+          "en": [
+            "None",
+            "Reform the electrolytic capacitors by supplying the drive gradually (reduced voltage, then rated) per the manufacturer's instructions",
+            "Heat it to 300 °F",
+            "Start it immediately at full load"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Après un long stockage, la couche d'oxyde diélectrique des condensateurs électrolytiques se dégrade ; un reformage par montée progressive de tension évite une défaillance à la mise sous tension.",
+          "en": "After long storage, the dielectric oxide layer of electrolytic capacitors degrades; reforming by gradual voltage ramp-up avoids a failure at power-up."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon la règle courante, de combien doit baisser la température de fonctionnement des condensateurs électrolytiques du bus CC pour doubler approximativement leur durée de vie ?",
+          "en": "Per the common rule, by how much must the operating temperature of the DC bus electrolytic capacitors drop to approximately double their life?"
+        },
+        "choix": {
+          "fr": [
+            "Elle n'a aucun effet",
+            "D'environ 18 °F",
+            "D'environ 180 °F",
+            "D'environ 2 °F"
+          ],
+          "en": [
+            "It has no effect",
+            "About 18 °F",
+            "About 180 °F",
+            "About 2 °F"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "La règle des 10 °C (soit environ 18 °F) indique que chaque baisse de cette ampleur double à peu près la durée de vie des condensateurs électrolytiques.",
+          "en": "The 10 °C rule (about 18 °F) states that each drop of this size roughly doubles the life of electrolytic capacitors."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre les caractéristiques « couple variable » (VT) et « couple constant » (CT) d'un variateur ?",
+          "en": "What is the difference between a drive's \"variable torque\" (VT) and \"constant torque\" (CT) ratings?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune",
+            "Un variateur VT supporte une surcharge plus faible (par exemple 110 % pendant 1 minute) qu'un variateur CT (par exemple 150 %), parce qu'une pompe ou un ventilateur n'exige pas de forte surcharge",
+            "Le VT ne fonctionne que sur les pompes de plus de 100 HP",
+            "Le CT est toujours moins cher"
+          ],
+          "en": [
+            "None",
+            "A VT drive supports a lower overload (for example 110% for 1 minute) than a CT drive (for example 150%), because a pump or fan does not require a strong overload",
+            "VT only works on pumps over 100 HP",
+            "CT is always cheaper"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les charges à couple variable (pompes, ventilateurs) demandent peu de surcharge ; les charges à couple constant (convoyeurs, compresseurs) exigent un variateur capable d'une surcharge plus élevée, donc dimensionné plus grand.",
+          "en": "Variable-torque loads (pumps, fans) need little overload; constant-torque loads (conveyors, compressors) require a drive able to handle higher overload, hence sized larger."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi faut-il dimensionner le variateur selon la classe de surcharge CT pour un convoyeur à bande chargé ?",
+          "en": "Why must the drive be sized to the CT overload class for a loaded belt conveyor?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que les convoyeurs consomment moins",
+            "Parce que la bande est lourde seulement",
+            "Pour des raisons esthétiques",
+            "Parce que le convoyeur exige un couple élevé au démarrage et en charge, nécessitant une capacité de surcharge supérieure à celle d'une pompe"
+          ],
+          "en": [
+            "Because conveyors consume less",
+            "Because the belt is only heavy",
+            "For aesthetic reasons",
+            "Because the conveyor demands high torque at start-up and under load, requiring a higher overload capacity than a pump"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un convoyeur chargé demande un couple important dès le démarrage ; le variateur doit pouvoir fournir une surcharge de 150 % ou plus, contrairement à une pompe centrifuge.",
+          "en": "A loaded conveyor needs significant torque from start-up; the drive must supply 150% overload or more, unlike a centrifugal pump."
+        }
+      },
+      {
+        "question": {
+          "fr": "Plusieurs moteurs sont alimentés par un seul variateur. Quelle protection est indispensable ?",
+          "en": "Several motors are supplied by a single drive. What protection is essential?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune, le variateur protège tout",
+            "Un fusible plus gros",
+            "Un seul relais pour l'ensemble",
+            "Une protection de surcharge individuelle pour chaque moteur, car le variateur ne voit que le courant total"
+          ],
+          "en": [
+            "None, the drive protects everything",
+            "A larger fuse",
+            "A single relay for the whole group",
+            "Individual overload protection for each motor, since the drive only sees the total current"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le variateur mesure le courant total ; il ne peut pas détecter la surcharge d'un seul moteur. Chaque moteur doit avoir sa propre protection thermique ou son relais de surcharge.",
+          "en": "The drive measures total current; it cannot detect the overload of a single motor. Each motor must have its own thermal protection or overload relay."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert la compensation de glissement d'un variateur ?",
+          "en": "What is a drive's slip compensation used for?"
+        },
+        "choix": {
+          "fr": [
+            "À synchroniser deux variateurs",
+            "À supprimer le bruit",
+            "À réduire la fréquence de découpage",
+            "À augmenter légèrement la fréquence de sortie quand la charge croît, pour maintenir la vitesse réelle du moteur malgré le glissement"
+          ],
+          "en": [
+            "Synchronizing two drives",
+            "Eliminating noise",
+            "Reducing switching frequency",
+            "Slightly increasing output frequency as load grows, to maintain the motor's actual speed despite slip"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Sous charge, la vitesse d'un moteur à induction baisse (glissement) ; la compensation ajoute un peu de fréquence pour maintenir la vitesse visée.",
+          "en": "Under load, an induction motor's speed drops (slip); compensation adds a little frequency to maintain the target speed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi prévoit-on une hystérésis (un écart de pression) pour réveiller une pompe en mode sommeil ?",
+          "en": "Why is hysteresis (a pressure gap) provided to wake a pump from sleep mode?"
+        },
+        "choix": {
+          "fr": [
+            "Pour éviter des cycles de démarrage et d'arrêt trop rapprochés qui useraient la pompe et le variateur",
+            "Pour augmenter la pression maximale",
+            "Pour supprimer le capteur",
+            "Pour économiser le papier"
+          ],
+          "en": [
+            "To avoid start and stop cycles too close together that would wear the pump and drive",
+            "To increase maximum pressure",
+            "To eliminate the sensor",
+            "To save paper"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un écart entre le seuil d'endormissement et le seuil de réveil évite le cyclage rapide qui fatigue le moteur, le contacteur et le variateur.",
+          "en": "A gap between the sleep threshold and the wake threshold avoids rapid cycling that fatigues the motor, contactor, and drive."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un moteur à aimants permanents tourne entraîné par la charge pendant que le variateur est hors tension. Quel danger existe-t-il ?",
+          "en": "A permanent magnet motor spins, driven by the load, while the drive is de-energized. What hazard exists?"
+        },
+        "choix": {
+          "fr": [
+            "Le moteur s'arrête aussitôt",
+            "Aucun",
+            "Le moteur génère une tension aux bornes (force contre-électromotrice), qui peut être dangereuse pour qui touche les conducteurs même si le variateur est coupé",
+            "Le variateur démarre seul"
+          ],
+          "en": [
+            "The motor stops immediately",
+            "None",
+            "The motor generates a voltage at its terminals (back-EMF), which can be dangerous to anyone touching the conductors even if the drive is off",
+            "The drive starts by itself"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un moteur à aimants permanents se comporte en générateur quand son arbre tourne : ses bornes sont sous tension tant que l'arbre tourne, indépendamment de l'état du variateur.",
+          "en": "A permanent magnet motor acts as a generator when its shaft turns: its terminals are live as long as the shaft rotates, regardless of the drive's state."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi relie-t-on le blindage du câble moteur à la terre sur 360° à ses deux extrémités avec des presse-étoupes CEM ?",
+          "en": "Why is the motor cable shield connected to ground 360° at both ends with EMC glands?"
+        },
+        "choix": {
+          "fr": [
+            "Pour supprimer la terre",
+            "Pour augmenter la tension",
+            "Pour l'apparence",
+            "Pour offrir un chemin de retour à basse impédance aux courants haute fréquence et limiter les perturbations rayonnées ; une queue de cochon (pigtail) réduit l'efficacité"
+          ],
+          "en": [
+            "To eliminate ground",
+            "To increase voltage",
+            "For appearance",
+            "To provide a low-impedance return path for high-frequency currents and limit radiated interference; a pigtail reduces effectiveness"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "À haute fréquence, un fil de liaison long (pigtail) a une impédance élevée ; une liaison à 360° maintient le blindage efficace et réduit le bruit émis.",
+          "en": "At high frequency, a long bonding wire (pigtail) has high impedance; a 360° connection keeps the shield effective and reduces emitted noise."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un variateur est installé sur un compresseur à vis (couple constant) fonctionnant en permanence à faible vitesse. Quel risque doit-on évaluer pour le moteur ?",
+          "en": "A drive is installed on a screw compressor (constant torque) running continuously at low speed. What risk must be evaluated for the motor?"
+        },
+        "choix": {
+          "fr": [
+            "Aucun",
+            "Un excès de vitesse",
+            "L'échauffement dû à la réduction du refroidissement à basse vitesse, nécessitant un moteur à ventilation forcée ou un déclassement",
+            "Une surtension du réseau"
+          ],
+          "en": [
+            "None",
+            "Overspeed",
+            "Heating from reduced cooling at low speed, requiring a force-ventilated motor or derating",
+            "A network overvoltage"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "À couple élevé et basse vitesse, le ventilateur d'arbre refroidit mal ; on utilise une ventilation forcée indépendante ou on limite le couple.",
+          "en": "At high torque and low speed, the shaft-mounted fan cools poorly; independent forced ventilation is used or torque is limited."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi les rampes d'accélération et de décélération doivent-elles tenir compte de l'inertie de la charge ?",
+          "en": "Why must acceleration and deceleration ramps take load inertia into account?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que les rampes sont décoratives",
+            "Parce que l'inertie réduit la tension",
+            "Parce qu'une rampe trop courte sur une grande inertie demande un courant excessif (accélération) ou génère une forte énergie régénérée qui peut faire déclencher le bus CC (décélération)",
+            "Parce que l'inertie ne compte pas"
+          ],
+          "en": [
+            "Because ramps are decorative",
+            "Because inertia reduces voltage",
+            "Because too short a ramp on a large inertia demands excessive current (acceleration) or generates large regenerated energy that can trip the DC bus (deceleration)",
+            "Because inertia doesn't matter"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Accélérer ou freiner une forte inertie en peu de temps exige beaucoup de couple : surintensité à l'accélération, surtension du bus CC à la décélération.",
+          "en": "Accelerating or braking a large inertia in a short time demands a lot of torque: overcurrent on acceleration, DC bus overvoltage on deceleration."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un variateur est commandé par un PLC à l'aide d'un réseau industriel. Que doit prévoir la programmation en cas de perte de communication ?",
+          "en": "A drive is controlled by a PLC over an industrial network. What must programming provide for in case of communication loss?"
+        },
+        "choix": {
+          "fr": [
+            "Un doublement de la vitesse",
+            "Rien, tout continue",
+            "Une réaction définie (arrêt contrôlé, vitesse de repli ou maintien), configurée dans le variateur grâce à un délai de surveillance (watchdog)",
+            "Un redémarrage automatique"
+          ],
+          "en": [
+            "A doubling of speed",
+            "Nothing, everything continues",
+            "A defined reaction (controlled stop, fallback speed, or hold), configured in the drive through a monitoring timeout (watchdog)",
+            "An automatic restart"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le variateur doit surveiller le lien de communication et réagir de façon sûre à sa perte : arrêt, vitesse prédéfinie ou dernière valeur, selon le procédé.",
+          "en": "The drive must monitor the communication link and react safely to its loss: stop, preset speed, or last value, depending on the process."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi l'ajout d'un contacteur de bypass nécessite-t-il un verrouillage mécanique et électrique entre les contacteurs « variateur » et « ligne » ?",
+          "en": "Why does adding a bypass contactor require mechanical and electrical interlocking between the \"drive\" and \"line\" contactors?"
+        },
+        "choix": {
+          "fr": [
+            "Pour empêcher que le moteur soit alimenté en même temps par le variateur et par le réseau, ce qui détruirait le variateur",
+            "Pour réduire le courant",
+            "Pour la décoration",
+            "Pour augmenter la vitesse"
+          ],
+          "en": [
+            "To prevent the motor from being supplied by both the drive and the network at once, which would destroy the drive",
+            "To reduce current",
+            "For decoration",
+            "To increase speed"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si les deux contacteurs se fermaient ensemble, le réseau serait relié à la sortie du variateur, qui serait détruit ; un verrouillage empêche cette combinaison.",
+          "en": "If both contactors closed together, the network would be connected to the drive's output, which would be destroyed; an interlock prevents this combination."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un variateur déclenche instantanément sur surintensité (désaturation IGBT) dès l'ordre de marche, avant même que le moteur ne tourne. Quelle démarche de diagnostic est la plus sûre ?",
+          "en": "A drive trips instantly on overcurrent (IGBT desaturation) as soon as the run command is given, before the motor even turns. What diagnostic approach is safest?"
+        },
+        "choix": {
+          "fr": [
+            "Mettre hors tension, déconnecter le câble moteur du variateur, puis tester l'isolement et les courts-circuits entre phases et à la terre du câble et du moteur avant de tenter un nouveau démarrage",
+            "Réarmer et redémarrer plusieurs fois de suite",
+            "Augmenter la fréquence de découpage",
+            "Remplacer le variateur sans autre vérification"
+          ],
+          "en": [
+            "De-energize, disconnect the motor cable from the drive, then test insulation and phase-to-phase and phase-to-ground shorts of the cable and motor before attempting another start",
+            "Reset and restart several times in a row",
+            "Increase the switching frequency",
+            "Replace the drive with no other check"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un déclenchement immédiat indique souvent un court-circuit en sortie (câble ou moteur) ; redémarrer à répétition peut détruire les transistors de puissance. On teste d'abord l'isolement avec le variateur déconnecté.",
+          "en": "An immediate trip often indicates a short circuit at the output (cable or motor); restarting repeatedly can destroy the power transistors. Insulation is tested first with the drive disconnected."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert une inductance (réactance) dans le bus CC d'un variateur ?",
+          "en": "What is an inductor (reactor) in a drive's DC bus used for?"
+        },
+        "choix": {
+          "fr": [
+            "À lisser le courant du redresseur et à réduire les harmoniques de courant absorbés sur le réseau",
+            "À mesurer la vitesse",
+            "À augmenter la tension de sortie",
+            "À remplacer le condensateur"
+          ],
+          "en": [
+            "Smoothing the rectifier's current and reducing the current harmonics drawn from the network",
+            "Measuring speed",
+            "Increasing output voltage",
+            "Replacing the capacitor"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'inductance du bus CC (ou une réactance de ligne) étale les pointes de courant du redresseur, ce qui réduit les harmoniques et la contrainte sur les condensateurs.",
+          "en": "The DC bus inductor (or a line reactor) spreads out the rectifier's current peaks, which reduces harmonics and stress on the capacitors."
+        }
+      }
     ]
   },
   {
@@ -4618,6 +12444,1310 @@ window.QUESTIONNAIRES = [
         "explication": {
           "fr": "Raccordements, serrage, terres, isolement (VFD débranché), débris ; puis schémas tels que construits.",
           "en": "Connections, tightness, grounds, insulation (VFD disconnected), debris; then as-built drawings."
+        }
+      }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Selon la pratique du Code canadien de l'électricité, quel est approximativement le taux de remplissage maximal d'un conduit contenant plus de deux conducteurs ?",
+          "en": "Under Canadian Electrical Code practice, approximately what is the maximum fill ratio of a conduit containing more than two conductors?"
+        },
+        "choix": {
+          "fr": [
+            "100 %",
+            "Environ 40 %",
+            "Environ 80 %",
+            "Environ 10 %"
+          ],
+          "en": [
+            "100%",
+            "About 40%",
+            "About 80%",
+            "About 10%"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour plus de deux conducteurs, le remplissage maximal permis d'un conduit est d'environ 40 % de sa section : cela facilite le tirage et l'évacuation de la chaleur.",
+          "en": "For more than two conductors, the maximum permitted fill of a conduit is about 40% of its cross-section: this eases pulling and heat dissipation."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon la règle générale du code pour un moteur à service continu, à quel pourcentage du courant de pleine charge doit-on dimensionner les conducteurs d'alimentation du moteur ?",
+          "en": "Under the code's general rule for a continuous-duty motor, at what percentage of full-load current must the motor's supply conductors be sized?"
+        },
+        "choix": {
+          "fr": [
+            "80 %",
+            "200 %",
+            "100 %",
+            "125 %"
+          ],
+          "en": [
+            "80%",
+            "200%",
+            "100%",
+            "125%"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les conducteurs d'un moteur seul sont généralement dimensionnés à au moins 125 % de son courant de pleine charge, pour tenir compte des surcharges et de la chaleur.",
+          "en": "The conductors of a single motor are generally sized at no less than 125% of its full-load current, to account for overloads and heat."
+        }
+      },
+      {
+        "question": {
+          "fr": "De quelle couleur est habituellement la gaine des câbles et des borniers à sécurité intrinsèque ?",
+          "en": "What color is the jacket of intrinsically safe cables and terminal blocks usually?"
+        },
+        "choix": {
+          "fr": [
+            "Bleu clair",
+            "Rouge",
+            "Noir",
+            "Vert"
+          ],
+          "en": [
+            "Light blue",
+            "Red",
+            "Black",
+            "Green"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le bleu clair est la couleur conventionnelle des circuits à sécurité intrinsèque, ce qui permet de les distinguer des autres circuits.",
+          "en": "Light blue is the conventional color of intrinsically safe circuits, which makes it possible to tell them apart from other circuits."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi sépare-t-on les câblages à sécurité intrinsèque des autres câblages dans une zone dangereuse ?",
+          "en": "Why are intrinsically safe wiring circuits kept separate from other wiring in a hazardous area?"
+        },
+        "choix": {
+          "fr": [
+            "Pour l'esthétique",
+            "Pour réduire le coût",
+            "Pour éviter qu'un circuit non protégé n'induise ou ne transmette une énergie capable d'enflammer l'atmosphère, ce qui annulerait la sécurité intrinsèque",
+            "Parce que le bleu est plus visible seulement"
+          ],
+          "en": [
+            "For appearance",
+            "To reduce cost",
+            "To prevent an unprotected circuit from inducing or transferring energy capable of igniting the atmosphere, which would defeat intrinsic safety",
+            "Because blue is more visible only"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un circuit à sécurité intrinsèque limite l'énergie à un niveau incapable d'enflammer l'atmosphère ; le mélanger avec un câblage de puissance risquerait d'y introduire une énergie dangereuse.",
+          "en": "An intrinsically safe circuit limits energy to a level incapable of igniting the atmosphere; mixing it with power wiring could introduce dangerous energy."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon le système de classification, que désigne un emplacement de Classe I, Division 1 ?",
+          "en": "Under the classification system, what does a Class I, Division 1 location designate?"
+        },
+        "choix": {
+          "fr": [
+            "Un bureau",
+            "Un endroit où des gaz ou vapeurs inflammables peuvent être présents en concentration dangereuse dans les conditions normales d'exploitation",
+            "Un endroit où seule de la poussière est présente",
+            "Un endroit sans aucun danger"
+          ],
+          "en": [
+            "An office",
+            "A place where flammable gases or vapors may be present in dangerous concentrations under normal operating conditions",
+            "A place where only dust is present",
+            "A place with no hazard at all"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Classe I concerne les gaz et vapeurs inflammables ; Division 1 signifie que l'atmosphère dangereuse peut exister en fonctionnement normal.",
+          "en": "Class I concerns flammable gases and vapors; Division 1 means the hazardous atmosphere can exist during normal operation."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle d'un raccord d'étanchéité (seal-off) dans un conduit d'une zone dangereuse ?",
+          "en": "What is the role of a seal-off fitting in a conduit in a hazardous area?"
+        },
+        "choix": {
+          "fr": [
+            "Refroidir les conducteurs",
+            "Augmenter la capacité du conduit",
+            "Empêcher le passage des gaz, vapeurs et flammes d'une partie du conduit à l'autre, notamment à l'entrée d'une enceinte antidéflagrante",
+            "Décorer le conduit"
+          ],
+          "en": [
+            "Cooling the conductors",
+            "Increasing the conduit's capacity",
+            "Preventing the passage of gases, vapors, and flames from one part of the conduit to the other, notably at the entrance to an explosion-proof enclosure",
+            "Decorating the conduit"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le raccord d'étanchéité, rempli de composé scellant, évite la propagation d'une explosion le long du conduit et la migration de gaz vers un autre endroit.",
+          "en": "The seal-off fitting, filled with sealing compound, prevents an explosion from propagating along the conduit and gas from migrating to another location."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que signifie la désignation d'un conducteur « RW90 » ?",
+          "en": "What does the designation of a \"RW90\" conductor mean?"
+        },
+        "choix": {
+          "fr": [
+            "Conducteur rouge, 90 volts",
+            "Conducteur résistant à l'humidité, avec isolant évalué pour une température de conducteur de 90 °C",
+            "Un conducteur réservé au courant continu",
+            "Résistant à l'eau, température maximale de 90 °F"
+          ],
+          "en": [
+            "A red conductor, 90 volts",
+            "A moisture-resistant conductor, with insulation rated for a conductor temperature of 90 °C",
+            "A conductor reserved for direct current",
+            "Water-resistant, maximum temperature 90 °F"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "RW90 désigne un conducteur résistant à l'humidité (et à la chaleur) dont l'isolant supporte une température de 90 °C ; le calcul de l'ampacité dépend aussi de la température des bornes.",
+          "en": "RW90 designates a moisture- (and heat-) resistant conductor whose insulation withstands a temperature of 90 °C; ampacity calculation also depends on the terminal temperature."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment la température nominale des bornes de raccordement limite-t-elle l'ampacité utilisable d'un conducteur de 90 °C ?",
+          "en": "How does the rated temperature of connection terminals limit the usable ampacity of a 90 °C conductor?"
+        },
+        "choix": {
+          "fr": [
+            "L'ampacité utilisée ne doit pas dépasser celle qui correspond à la température la plus basse de l'ensemble (conducteur, bornes, dispositif), souvent 60 ou 75 °C",
+            "Elle ne la limite pas",
+            "Elle la double",
+            "Elle ne s'applique qu'au courant continu"
+          ],
+          "en": [
+            "The ampacity used must not exceed that corresponding to the lowest temperature in the assembly (conductor, terminals, device), often 60 or 75 °C",
+            "It doesn't limit it",
+            "It doubles it",
+            "It only applies to direct current"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Même avec un conducteur de 90 °C, si les bornes de l'appareil sont évaluées pour 75 °C, on utilise l'ampacité à 75 °C, sous peine de surchauffer les connexions.",
+          "en": "Even with a 90 °C conductor, if the equipment's terminals are rated 75 °C, the 75 °C ampacity is used, or the connections will overheat."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'aspect distinctif d'un câble de prolongement de thermocouple de type K ?",
+          "en": "What is distinctive about a type K thermocouple extension cable?"
+        },
+        "choix": {
+          "fr": [
+            "Des conducteurs de même alliage (ou compatible) que le thermocouple, avec un code couleur normalisé (gaine jaune pour le type K) et une polarité à respecter",
+            "Un câble coaxial",
+            "Du fil de cuivre ordinaire",
+            "Un câble sans polarité"
+          ],
+          "en": [
+            "Conductors of the same (or compatible) alloy as the thermocouple, with a standardized color code (yellow jacket for type K) and a polarity to respect",
+            "A coaxial cable",
+            "Ordinary copper wire",
+            "A cable with no polarity"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "On prolonge un thermocouple avec un câble de même nature (ou compensé), repéré par la couleur (jaune pour le type K) ; inverser la polarité ou utiliser du cuivre fausse la mesure.",
+          "en": "A thermocouple is extended with a cable of the same kind (or compensating), identified by color (yellow for type K); reversing polarity or using copper skews the measurement."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on souvent une sonde à résistance (RTD) à 3 fils plutôt qu'à 2 fils ?",
+          "en": "Why is a 3-wire resistance temperature detector (RTD) often used instead of a 2-wire?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'elle n'a pas besoin de transmetteur",
+            "Parce qu'elle mesure la tension",
+            "Parce qu'elle est plus petite",
+            "Parce que le troisième fil permet de compenser la résistance des fils de liaison et d'améliorer la précision de la mesure"
+          ],
+          "en": [
+            "Because it needs no transmitter",
+            "Because it measures voltage",
+            "Because it is smaller",
+            "Because the third wire allows compensating for lead wire resistance and improves measurement accuracy"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec 2 fils, la résistance des fils s'ajoute à celle de la sonde et fausse la mesure ; un troisième fil permet de la mesurer et de la compenser.",
+          "en": "With 2 wires, the lead resistance adds to the sensor's and skews the measurement; a third wire allows measuring and compensating for it."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment un transmetteur 2 fils de 4-20 mA reçoit-il son alimentation ?",
+          "en": "How does a 2-wire 4-20 mA transmitter receive its power?"
+        },
+        "choix": {
+          "fr": [
+            "Par une pile intégrée",
+            "Par la boucle de courant elle-même : le même couple de fils transporte l'alimentation et le signal",
+            "Par un câble réseau",
+            "Par le blindage"
+          ],
+          "en": [
+            "From a built-in battery",
+            "From the current loop itself: the same pair of wires carries both power and signal",
+            "From a network cable",
+            "From the shield"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un transmetteur 2 fils est alimenté par la boucle : il consomme au minimum 4 mA et module le courant entre 4 et 20 mA selon la mesure.",
+          "en": "A 2-wire transmitter is powered by the loop: it draws at least 4 mA and modulates current between 4 and 20 mA according to the measurement."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une résistance de 250 Ω est placée en série dans une boucle 4-20 mA. Quelle tension lit-on à ses bornes quand le courant est de 20 mA ?",
+          "en": "A 250 Ω resistor is placed in series in a 4-20 mA loop. What voltage is read across it when the current is 20 mA?"
+        },
+        "choix": {
+          "fr": [
+            "250 V",
+            "5 V",
+            "10 V",
+            "1 V"
+          ],
+          "en": [
+            "250 V",
+            "5 V",
+            "10 V",
+            "1 V"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "U = R × I = 250 × 0,020 = 5 V ; à 4 mA, la tension est de 1 V : la plage 4-20 mA devient 1-5 V.",
+          "en": "U = R × I = 250 × 0.020 = 5 V; at 4 mA, the voltage is 1 V: the 4-20 mA range becomes 1-5 V."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une boucle 4-20 mA est alimentée en 24 V. Le transmetteur exige au moins 12 V à ses bornes. Quelle est approximativement la résistance maximale de boucle (câble + récepteurs) à 20 mA ?",
+          "en": "A 4-20 mA loop is powered at 24 V. The transmitter needs at least 12 V at its terminals. Approximately what is the maximum loop resistance (cable + receivers) at 20 mA?"
+        },
+        "choix": {
+          "fr": [
+            "300 Ω",
+            "600 Ω",
+            "1 200 Ω",
+            "2 400 Ω"
+          ],
+          "en": [
+            "300 Ω",
+            "600 Ω",
+            "1,200 Ω",
+            "2,400 Ω"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Tension disponible pour la boucle = 24 − 12 = 12 V ; résistance maximale = 12 V / 0,020 A = 600 Ω.",
+          "en": "Voltage available for the loop = 24 − 12 = 12 V; maximum resistance = 12 V / 0.020 A = 600 Ω."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la longueur maximale habituelle d'un segment de câble Ethernet à paires torsadées (Cat 5e ou 6) ?",
+          "en": "What is the usual maximum length of a twisted-pair Ethernet cable segment (Cat 5e or 6)?"
+        },
+        "choix": {
+          "fr": [
+            "50 pi",
+            "1 000 pi",
+            "5 000 pi",
+            "Environ 328 pi"
+          ],
+          "en": [
+            "50 ft",
+            "1,000 ft",
+            "5,000 ft",
+            "About 328 ft"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "La norme limite un segment de câble cuivre Ethernet à 100 m, soit environ 328 pi, entre deux équipements actifs.",
+          "en": "The standard limits a copper Ethernet cable segment to 100 m, or about 328 ft, between two active devices."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on des paires torsadées blindées pour les signaux analogiques ?",
+          "en": "Why are shielded twisted pairs used for analog signals?"
+        },
+        "choix": {
+          "fr": [
+            "Pour l'esthétique",
+            "Pour réduire la longueur",
+            "Pour augmenter la tension",
+            "La torsade annule les perturbations magnétiques induites, et le blindage réduit les perturbations électriques"
+          ],
+          "en": [
+            "For appearance",
+            "To reduce length",
+            "To increase voltage",
+            "The twist cancels induced magnetic interference, and the shield reduces electrical interference"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "La torsade fait en sorte que les perturbations induites s'annulent dans les deux conducteurs ; le blindage protège des champs électriques.",
+          "en": "The twist makes induced disturbances cancel in the two conductors; the shield protects against electric fields."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi forme-t-on une boucle d'égouttement (drip loop) sur un câble entrant dans une boîte de raccordement extérieure ?",
+          "en": "Why is a drip loop formed on a cable entering an outdoor junction box?"
+        },
+        "choix": {
+          "fr": [
+            "Pour augmenter la tension",
+            "Pour allonger le câble",
+            "Pour l'esthétique",
+            "Pour que l'eau qui ruisselle le long du câble s'égoutte avant d'atteindre l'entrée de la boîte"
+          ],
+          "en": [
+            "To increase voltage",
+            "To lengthen the cable",
+            "For appearance",
+            "So water running down the cable drips off before reaching the box entry"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "La boucle fait descendre le câble sous l'entrée : l'eau suit la courbe et tombe au point bas au lieu d'entrer dans la boîte.",
+          "en": "The loop brings the cable below the entry: water follows the curve and falls at the low point instead of entering the box."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que garantit un coffret classé NEMA 4X ?",
+          "en": "What does a NEMA 4X rated enclosure guarantee?"
+        },
+        "choix": {
+          "fr": [
+            "Qu'il protège contre la poussière, la pluie, les projections d'eau et la corrosion",
+            "Qu'il convient seulement à l'intérieur",
+            "Qu'il isole thermiquement",
+            "Qu'il est antidéflagrant"
+          ],
+          "en": [
+            "That it protects against dust, rain, splashing water, and corrosion",
+            "That it is suitable only indoors",
+            "That it thermally insulates",
+            "That it is explosion-proof"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "NEMA 4X : étanche à la poussière et aux jets d'eau, avec résistance à la corrosion ; il convient pour l'extérieur et les lieux de lavage.",
+          "en": "NEMA 4X: dust-tight and hose-directed-water-tight, with corrosion resistance; it suits outdoor and wash-down locations."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle information doit figurer sur l'étiquette d'un tableau de commande industriel, en plus de la tension et du courant ?",
+          "en": "What information must appear on an industrial control panel's nameplate, in addition to voltage and current?"
+        },
+        "choix": {
+          "fr": [
+            "Le nom du peintre",
+            "La couleur de la peinture",
+            "Le courant de court-circuit assigné (SCCR) du tableau",
+            "Le poids du client"
+          ],
+          "en": [
+            "The painter's name",
+            "The paint color",
+            "The panel's short-circuit current rating (SCCR)",
+            "The customer's weight"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le SCCR indique le courant de court-circuit maximal que le tableau peut supporter ; il doit être supérieur au courant de défaut disponible à l'endroit où il est installé.",
+          "en": "The SCCR indicates the maximum short-circuit current the panel can withstand; it must exceed the available fault current where it is installed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Après le raccordement d'un moteur triphasé, comment vérifie-t-on le sens de rotation ?",
+          "en": "After connecting a three-phase motor, how is the direction of rotation checked?"
+        },
+        "choix": {
+          "fr": [
+            "En changeant la peinture",
+            "En mesurant la tension seulement",
+            "On ne le vérifie jamais",
+            "Par un bref démarrage à vide (ou découplé si le sens de rotation est critique), en inversant deux phases si le sens est mauvais"
+          ],
+          "en": [
+            "By changing the paint",
+            "By measuring voltage only",
+            "It is never checked",
+            "By a brief no-load start (or uncoupled if direction is critical), swapping two phases if the direction is wrong"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un bref essai montre le sens de rotation ; pour inverser, on permute deux des trois phases (ou on change le paramètre du variateur), jamais le neutre ni la terre.",
+          "en": "A brief test shows the direction of rotation; to reverse it, swap two of the three phases (or change the drive's parameter), never the neutral or ground."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi sépare-t-on les câbles de niveaux de tension différents dans un chemin de câbles ?",
+          "en": "Why are cables of different voltage levels separated in a cable tray?"
+        },
+        "choix": {
+          "fr": [
+            "Pour l'esthétique",
+            "Il n'y a aucune raison",
+            "Pour éviter l'induction, protéger les câbles de signal et respecter les exigences d'isolation du code",
+            "Pour augmenter la longueur"
+          ],
+          "en": [
+            "For appearance",
+            "There is no reason",
+            "To avoid induction, protect signal cables, and meet the code's insulation requirements",
+            "To increase length"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les câbles de puissance induisent des perturbations dans les câbles de signal ; le code exige aussi des séparations ou des câbles homologués pour les tensions les plus élevées.",
+          "en": "Power cables induce disturbances into signal cables; the code also requires separations or cables rated for the highest voltages."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle précaution s'applique lors du tirage d'un câble dans un conduit ?",
+          "en": "What precaution applies when pulling a cable through a conduit?"
+        },
+        "choix": {
+          "fr": [
+            "Utiliser de l'huile moteur",
+            "Tirer sans lubrifiant",
+            "Respecter la tension de tirage maximale et le rayon de courbure du câble, et utiliser un lubrifiant de tirage compatible",
+            "Tirer le plus fort possible"
+          ],
+          "en": [
+            "Use motor oil",
+            "Pull without lubricant",
+            "Respect the cable's maximum pulling tension and bend radius, and use a compatible pulling lubricant",
+            "Pull as hard as possible"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une traction excessive ou un rayon trop serré endommage l'isolant ou les brins ; un lubrifiant compatible réduit le frottement.",
+          "en": "Excessive pulling or too tight a radius damages the insulation or strands; a compatible lubricant reduces friction."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi ne doit-on pas se fier uniquement à un conduit flexible comme conducteur de liaison à la terre sur une longue distance ?",
+          "en": "Why shouldn't flexible conduit be relied on alone as a bonding conductor over a long distance?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'il conduit trop bien",
+            "Parce qu'il est trop beau",
+            "Parce que sa continuité et son impédance ne sont pas fiables sur de longues longueurs ; on ajoute un conducteur de liaison conforme au code",
+            "Parce qu'il est trop court"
+          ],
+          "en": [
+            "Because it conducts too well",
+            "Because it is too pretty",
+            "Because its continuity and impedance are not reliable over long lengths; a code-compliant bonding conductor is added",
+            "Because it is too short"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le conduit flexible n'a pas une continuité aussi fiable qu'un conduit rigide ; au-delà d'une courte longueur, on ajoute un conducteur de liaison, surtout pour les équipements qui vibrent.",
+          "en": "Flexible conduit does not have the same reliable continuity as rigid conduit; beyond a short length, a bonding conductor is added, especially for equipment that vibrates."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert de marquer d'un trait de peinture (torque stripe) un boulon ou une borne après le serrage au couple ?",
+          "en": "What is the purpose of marking a bolt or terminal with a paint stripe (torque stripe) after torquing?"
+        },
+        "choix": {
+          "fr": [
+            "À repérer visuellement tout desserrage ultérieur lors des inspections",
+            "À le rendre étanche",
+            "À décorer",
+            "À augmenter le couple"
+          ],
+          "en": [
+            "To visually spot any later loosening during inspections",
+            "To make it waterproof",
+            "To decorate",
+            "To increase torque"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Le trait de peinture traverse le boulon et la pièce : s'il se décale, c'est que la fixation a bougé.",
+          "en": "The paint stripe crosses the bolt and the part: if it shifts, the fastener has moved."
+        }
+      },
+      {
+        "question": {
+          "fr": "Avant de mettre sous tension un câble neuf, pourquoi mesure-t-on sa résistance d'isolement avec les deux extrémités déconnectées ?",
+          "en": "Before energizing a new cable, why is its insulation resistance measured with both ends disconnected?"
+        },
+        "choix": {
+          "fr": [
+            "Pour s'assurer que la mesure ne porte que sur le câble et non sur les équipements raccordés, et éviter d'endommager les composants électroniques",
+            "Pour économiser du temps",
+            "Pour chauffer le câble",
+            "Pour augmenter la tension"
+          ],
+          "en": [
+            "To make sure the measurement only covers the cable and not the connected equipment, and to avoid damaging electronic components",
+            "To save time",
+            "To heat the cable",
+            "To increase voltage"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un essai au mégohmmètre applique une haute tension : on déconnecte le câble des équipements pour ne mesurer que son isolation et protéger l'électronique.",
+          "en": "A megohmmeter test applies high voltage: the cable is disconnected from equipment to measure only its insulation and protect the electronics."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi met-on à jour les schémas électriques (plans tels que construits) après des modifications sur le chantier ?",
+          "en": "Why are electrical drawings (as-built plans) updated after field modifications?"
+        },
+        "choix": {
+          "fr": [
+            "Pour que le dépannage et les modifications futures s'appuient sur des plans fidèles à l'installation réelle",
+            "Parce que cela réduit la tension",
+            "Pour l'esthétique",
+            "Ce n'est pas nécessaire"
+          ],
+          "en": [
+            "So that future troubleshooting and modifications rely on drawings that match the actual installation",
+            "Because it reduces voltage",
+            "For appearance",
+            "It is not necessary"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Des plans à jour réduisent les erreurs de dépannage et les risques lors de futurs travaux : ils doivent refléter l'état réel de l'installation.",
+          "en": "Up-to-date drawings reduce troubleshooting errors and risks during future work: they must reflect the installation's actual condition."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Selon la règle pratique de l'ordre de grandeur, de combien de numéros AWG doit-on descendre pour doubler la section d'un conducteur (et donc diviser sa résistance par deux environ) ?",
+          "en": "By the rule of thumb, by how many AWG gauge numbers must you go down to double a conductor's cross-section (and thus roughly halve its resistance)?"
+        },
+        "choix": {
+          "fr": [
+            "Aucun changement",
+            "De trois numéros (par exemple de 10 AWG à 7 AWG)",
+            "De dix numéros",
+            "D'un numéro"
+          ],
+          "en": [
+            "No change",
+            "Three numbers (for example from 10 AWG to 7 AWG)",
+            "Ten numbers",
+            "One number"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Chaque baisse de trois numéros AWG double approximativement la section : on divise ainsi la résistance (et la chute de tension) par deux, ce qui est utile pour corriger une chute de tension excessive.",
+          "en": "Each drop of three AWG numbers approximately doubles the cross-section: resistance (and voltage drop) is thus halved, which is useful to correct an excessive voltage drop."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle méthode utilise-t-on couramment pour mesurer la résistance d'une prise de terre ?",
+          "en": "What method is commonly used to measure the resistance of a ground electrode?"
+        },
+        "choix": {
+          "fr": [
+            "Un multimètre ordinaire entre la prise et le neutre",
+            "Un thermomètre",
+            "Un mégohmmètre entre la terre et le neutre",
+            "La méthode de la chute de potentiel (fall-of-potential), avec des piquets auxiliaires de courant et de potentiel enfoncés à des distances précises"
+          ],
+          "en": [
+            "An ordinary multimeter between the electrode and the neutral",
+            "A thermometer",
+            "A megohmmeter between ground and neutral",
+            "The fall-of-potential method, with auxiliary current and potential stakes driven at precise distances"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La méthode de la chute de potentiel injecte un courant entre la prise de terre et un piquet auxiliaire éloigné, et mesure la tension à l'aide d'un second piquet : le rapport donne la résistance.",
+          "en": "The fall-of-potential method injects a current between the ground electrode and a distant auxiliary stake, and measures voltage with a second stake: the ratio gives the resistance."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi relie-t-on parfois le blindage d'un câble de signal à la terre à une extrémité directement et à l'autre par un condensateur (blindage hybride) ?",
+          "en": "Why is a signal cable's shield sometimes connected directly to ground at one end and through a capacitor at the other (hybrid shielding)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour éviter les courants de boucle de terre à basse fréquence tout en offrant une mise à la terre à haute fréquence qui améliore le blindage contre les perturbations rapides",
+            "Pour économiser du cuivre",
+            "Pour supprimer le blindage",
+            "Pour augmenter la tension du signal"
+          ],
+          "en": [
+            "To avoid low-frequency ground loop currents while providing high-frequency grounding that improves shielding against fast interference",
+            "To save copper",
+            "To eliminate the shield",
+            "To increase signal voltage"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le condensateur bloque les courants de boucle à basse fréquence (50-60 Hz) mais laisse passer les perturbations haute fréquence vers la terre, combinant les avantages des deux méthodes.",
+          "en": "The capacitor blocks low-frequency ground-loop currents (50-60 Hz) but lets high-frequency interference pass to ground, combining the advantages of both methods."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle de la compensation de soudure froide dans la mesure d'un thermocouple ?",
+          "en": "What is the role of cold-junction compensation in thermocouple measurement?"
+        },
+        "choix": {
+          "fr": [
+            "Refroidir le thermocouple",
+            "Augmenter la tension de sortie",
+            "Tenir compte de la température du point de raccordement (borne) où les fils de cuivre rejoignent le thermocouple, afin d'obtenir la vraie température mesurée",
+            "Calibrer le courant"
+          ],
+          "en": [
+            "Cooling the thermocouple",
+            "Increasing output voltage",
+            "Accounting for the temperature of the connection point (terminal) where the copper wires join the thermocouple, to obtain the true measured temperature",
+            "Calibrating current"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un thermocouple mesure une différence de température entre la jonction chaude et le point de raccordement ; le transmetteur mesure la température de ce point et l'ajoute pour obtenir la température absolue.",
+          "en": "A thermocouple measures a temperature difference between the hot junction and the connection point; the transmitter measures that point's temperature and adds it to obtain absolute temperature."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle erreur survient si l'on prolonge un thermocouple avec du fil de cuivre ordinaire ?",
+          "en": "What error occurs if a thermocouple is extended with ordinary copper wire?"
+        },
+        "choix": {
+          "fr": [
+            "Le thermocouple devient une RTD",
+            "Les jonctions cuivre/alliage créent de nouveaux thermocouples parasites qui faussent la mesure, selon la température des points de raccordement",
+            "Le signal double",
+            "Aucune"
+          ],
+          "en": [
+            "The thermocouple becomes an RTD",
+            "Copper/alloy junctions create parasitic thermocouples that skew the measurement, depending on the temperature of the connection points",
+            "The signal doubles",
+            "None"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Chaque jonction entre deux métaux différents produit une tension thermoélectrique ; des raccords en cuivre ajoutent des termes d'erreur qui dépendent des températures aux raccordements.",
+          "en": "Each junction between two different metals produces a thermoelectric voltage; copper splices add error terms that depend on temperatures at the connections."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la résistance approximative d'une sonde RTD Pt100 à 32 °F (0 °C) ?",
+          "en": "What is the approximate resistance of a Pt100 RTD at 32 °F (0 °C)?"
+        },
+        "choix": {
+          "fr": [
+            "10 000 Ω",
+            "1 000 Ω",
+            "100 Ω",
+            "10 Ω"
+          ],
+          "en": [
+            "10,000 Ω",
+            "1,000 Ω",
+            "100 Ω",
+            "10 Ω"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pt100 signifie platine de 100 Ω à 0 °C (32 °F) ; la résistance augmente avec la température.",
+          "en": "Pt100 means platinum with 100 Ω at 0 °C (32 °F); resistance increases with temperature."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel avantage a une RTD à 4 fils sur une à 3 fils ?",
+          "en": "What advantage does a 4-wire RTD have over a 3-wire?"
+        },
+        "choix": {
+          "fr": [
+            "Elle fonctionne sans courant",
+            "Elle élimine l'effet de la résistance des fils de liaison en séparant les fils de courant et de mesure de tension, pour la plus grande précision",
+            "Elle mesure plus de températures",
+            "Elle est moins chère"
+          ],
+          "en": [
+            "It works without current",
+            "It eliminates the effect of lead resistance by separating the current and voltage-sense wires, for the highest accuracy",
+            "It measures more temperatures",
+            "It is cheaper"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec 4 fils, la tension est mesurée directement sur la sonde sans passer par la résistance des conducteurs, ce qui supprime l'erreur de ligne.",
+          "en": "With 4 wires, voltage is measured directly across the sensor without passing through the conductors' resistance, which eliminates line error."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre un emplacement de Zone 1 et de Zone 2 pour les atmosphères explosives gazeuses ?",
+          "en": "What is the difference between a Zone 1 and a Zone 2 location for explosive gas atmospheres?"
+        },
+        "choix": {
+          "fr": [
+            "En Zone 1, l'atmosphère explosive est susceptible d'apparaître occasionnellement en fonctionnement normal ; en Zone 2, elle est peu probable en fonctionnement normal et ne dure que brièvement si elle apparaît",
+            "Aucune",
+            "La Zone 2 est plus dangereuse",
+            "La Zone 1 est toujours sans danger"
+          ],
+          "en": [
+            "In Zone 1, an explosive atmosphere is likely to occur occasionally in normal operation; in Zone 2, it is unlikely in normal operation and lasts only briefly if it occurs",
+            "None",
+            "Zone 2 is more dangerous",
+            "Zone 1 is always safe"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Zone 0 : présente en permanence ou longtemps ; Zone 1 : susceptible d'apparaître en fonctionnement normal ; Zone 2 : peu probable et de courte durée.",
+          "en": "Zone 0: present continuously or for long periods; Zone 1: likely to occur in normal operation; Zone 2: unlikely and of short duration."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que représente la classe de température T4 d'un équipement homologué pour atmosphères explosives ?",
+          "en": "What does temperature class T4 of equipment approved for explosive atmospheres represent?"
+        },
+        "choix": {
+          "fr": [
+            "Une température de surface maximale de l'équipement ne dépassant pas environ 275 °F (135 °C), pour qu'elle reste sous la température d'inflammation du gaz",
+            "Un équipement à quatre bornes",
+            "Une température ambiante minimale de 4 °F",
+            "Quatre fois la tension nominale"
+          ],
+          "en": [
+            "A maximum surface temperature of the equipment not exceeding about 275 °F (135 °C), so it stays below the gas's ignition temperature",
+            "Equipment with four terminals",
+            "A minimum ambient temperature of 4 °F",
+            "Four times the rated voltage"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le code T indique la température de surface maximale de l'équipement : T4 correspond à 135 °C, soit environ 275 °F ; elle doit rester inférieure à la température d'auto-inflammation du gaz présent.",
+          "en": "The T code indicates the equipment's maximum surface temperature: T4 corresponds to 135 °C, or about 275 °F; it must remain below the auto-ignition temperature of the gas present."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle exigence particulière s'applique à la mise à la terre d'une barrière à diodes Zener (sécurité intrinsèque) ?",
+          "en": "What particular requirement applies to the grounding of a Zener diode barrier (intrinsic safety)?"
+        },
+        "choix": {
+          "fr": [
+            "Elle ne doit jamais être reliée à la terre",
+            "Elle doit passer par un fusible",
+            "Aucune",
+            "Une liaison à la terre dédiée de très faible impédance (typiquement moins de 1 Ω), indispensable au fonctionnement de la protection"
+          ],
+          "en": [
+            "It must never be grounded",
+            "It must go through a fuse",
+            "None",
+            "A dedicated, very-low-impedance ground connection (typically less than 1 Ω), essential for the protection to work"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La barrière Zener dérive vers la terre l'énergie excédentaire : sa liaison de terre doit être de très faible impédance et fiable, sinon la protection ne remplit pas son rôle.",
+          "en": "The Zener barrier diverts excess energy to ground: its ground connection must be very low impedance and reliable, or the protection will not do its job."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour quelles distances ou applications choisit-on généralement la fibre optique monomode plutôt que multimode ?",
+          "en": "For what distances or applications is single-mode fiber generally chosen over multimode?"
+        },
+        "choix": {
+          "fr": [
+            "Pour de très courtes distances seulement",
+            "Pour de longues distances et de grandes bandes passantes, car le signal subit moins de dispersion",
+            "Parce qu'elle est moins chère",
+            "Parce qu'elle est plus épaisse"
+          ],
+          "en": [
+            "Very short distances only",
+            "Long distances and high bandwidths, since the signal suffers less dispersion",
+            "Because it is cheaper",
+            "Because it is thicker"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "La fibre monomode, au cœur très fin, évite la dispersion modale et convient aux longues liaisons ; la multimode sert aux distances plus courtes à l'intérieur d'un bâtiment.",
+          "en": "Single-mode fiber, with a very fine core, avoids modal dispersion and suits long links; multimode is used for shorter distances inside a building."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment câble-t-on les contacts de plusieurs arrêts d'urgence dans un circuit de sécurité typique ?",
+          "en": "How are the contacts of several emergency stops wired in a typical safety circuit?"
+        },
+        "choix": {
+          "fr": [
+            "En mélangeant avec les circuits de commande ordinaires",
+            "En série, souvent sur deux canaux redondants, de sorte que l'ouverture de n'importe lequel coupe le circuit",
+            "Un seul fil pour tous",
+            "En parallèle"
+          ],
+          "en": [
+            "Mixed in with ordinary control circuits",
+            "In series, often on two redundant channels, so that opening any one cuts the circuit",
+            "One wire for all",
+            "In parallel"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Des contacts normalement fermés en série garantissent que l'ouverture d'un seul arrête la machine ; la redondance à deux canaux et la surveillance détectent les défauts.",
+          "en": "Normally closed contacts in series guarantee that opening any one stops the machine; two-channel redundancy and monitoring detect faults."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel calibre minimal de conducteur de liaison à la terre s'applique approximativement pour un dispositif de protection de 100 A (Code canadien de l'électricité, cuivre) ?",
+          "en": "What approximate minimum bonding conductor size applies for a 100 A protective device (Canadian Electrical Code, copper)?"
+        },
+        "choix": {
+          "fr": [
+            "14 AWG",
+            "Environ 8 AWG",
+            "10 AWG",
+            "2 AWG"
+          ],
+          "en": [
+            "14 AWG",
+            "About 8 AWG",
+            "10 AWG",
+            "2 AWG"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le tableau du code pour les conducteurs de liaison indique, pour un dispositif de 100 A, un conducteur en cuivre d'environ 8 AWG ; il faut toujours consulter la table en vigueur.",
+          "en": "The code's table for bonding conductors indicates, for a 100 A device, a copper conductor of about 8 AWG; the current table must always be consulted."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi mesure-t-on parfois la résistance de boucle de continuité d'un conduit métallique ?",
+          "en": "Why is the loop continuity resistance of a metal conduit sometimes measured?"
+        },
+        "choix": {
+          "fr": [
+            "Pour mesurer la tension",
+            "Pour le peindre",
+            "Pour augmenter son poids",
+            "Pour vérifier que le conduit offre un chemin de retour de défaut à faible impédance et que les raccords sont bien serrés"
+          ],
+          "en": [
+            "To measure voltage",
+            "To paint it",
+            "To increase its weight",
+            "To verify that the conduit provides a low-impedance fault return path and that the fittings are tight"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si le conduit sert de chemin de liaison, sa continuité doit être fiable : une résistance élevée aux raccords ralentirait ou empêcherait le déclenchement de la protection en cas de défaut.",
+          "en": "If the conduit serves as a bonding path, its continuity must be reliable: high resistance at the fittings would slow or prevent protection from tripping during a fault."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel instrument permet de vérifier la séquence des phases (A-B-C) avant de raccorder un moteur ?",
+          "en": "What instrument allows checking the phase sequence (A-B-C) before connecting a motor?"
+        },
+        "choix": {
+          "fr": [
+            "Un thermomètre",
+            "Un niveau à bulle",
+            "Un manomètre",
+            "Un testeur de rotation de phase"
+          ],
+          "en": [
+            "A thermometer",
+            "A spirit level",
+            "A pressure gauge",
+            "A phase rotation tester"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un testeur de séquence de phases indique l'ordre des phases ; on s'assure ainsi du sens de rotation attendu d'un moteur ou d'une pompe avant de le raccorder.",
+          "en": "A phase sequence tester indicates the order of the phases; this confirms the expected direction of rotation of a motor or pump before connecting it."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi installe-t-on un respirateur (breather) ou un bouchon de drainage dans un coffret extérieur ?",
+          "en": "Why is a breather or drain plug installed in an outdoor enclosure?"
+        },
+        "choix": {
+          "fr": [
+            "Pour refroidir le moteur",
+            "Pour augmenter la tension",
+            "Pour le style",
+            "Pour évacuer la condensation causée par les variations de température et d'humidité, sans laisser entrer d'eau de pluie"
+          ],
+          "en": [
+            "To cool the motor",
+            "To increase voltage",
+            "For style",
+            "To release condensation caused by temperature and humidity variations, without letting rainwater in"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les variations de température font respirer le coffret, qui aspire de l'air humide ; un drain ou un respirateur évite l'accumulation de condensation à l'intérieur.",
+          "en": "Temperature swings make the enclosure \"breathe\", drawing in humid air; a drain or breather prevents condensation from accumulating inside."
+        }
+      },
+      {
+        "question": {
+          "fr": "Sur de très longs câbles de commande en 120 V c.a., quel phénomène peut maintenir un relais enclenché malgré l'ouverture du contact de commande ?",
+          "en": "On very long 120 VAC control cables, what phenomenon can keep a relay energized even after the control contact opens?"
+        },
+        "choix": {
+          "fr": [
+            "La capacité entre conducteurs du long câble, qui laisse passer un courant de fuite suffisant pour retenir la bobine d'un relais sensible",
+            "Un court-circuit à la terre",
+            "Le blindage",
+            "La gravité"
+          ],
+          "en": [
+            "The capacitance between conductors of the long cable, which lets enough leakage current through to hold a sensitive relay coil",
+            "A ground short",
+            "The shield",
+            "Gravity"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La capacité répartie d'un long câble forme un petit condensateur qui laisse passer un faible courant de fuite : une bobine très sensible peut y rester enclenchée ; on ajoute une résistance de décharge.",
+          "en": "The distributed capacitance of a long cable forms a small capacitor that passes a weak leakage current: a very sensitive coil may stay energized; a bleed resistor is added."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi réalise-t-on un essai de rigidité diélectrique (hipot) sur un câble de puissance neuf, et quelle précaution est essentielle ?",
+          "en": "Why is a dielectric withstand (hipot) test performed on a new power cable, and what precaution is essential?"
+        },
+        "choix": {
+          "fr": [
+            "Pour chauffer le câble ; on le laisse branché",
+            "Pour l'esthétique ; aucune",
+            "Pour vérifier que l'isolation supporte une tension supérieure à la tension de service ; on déconnecte le câble des équipements, surtout électroniques, avant l'essai",
+            "Pour mesurer le courant ; on court-circuite le câble"
+          ],
+          "en": [
+            "To heat the cable; leave it connected",
+            "For appearance; none",
+            "To verify the insulation withstands a voltage higher than the service voltage; disconnect the cable from equipment, especially electronic, before the test",
+            "To measure current; short-circuit the cable"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'essai hipot applique une tension bien supérieure à la tension de service : il ne doit jamais être effectué avec le câble raccordé à des équipements sensibles.",
+          "en": "The hipot test applies a voltage well above the service voltage: it must never be performed with the cable connected to sensitive equipment."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi emploie-t-on un kit d'épissure homologué pour réparer un câble de 600 V ?",
+          "en": "Why is an approved splice kit used to repair a 600 V cable?"
+        },
+        "choix": {
+          "fr": [
+            "Pour réduire la tension",
+            "Pour augmenter la longueur",
+            "Parce que le ruban adhésif ordinaire est trop beau",
+            "Parce que l'épissure doit offrir l'isolation, l'étanchéité et la tenue mécanique du câble d'origine, ce qu'un bricolage ne garantit pas"
+          ],
+          "en": [
+            "To reduce voltage",
+            "To increase length",
+            "Because ordinary tape is too pretty",
+            "Because the splice must provide the insulation, sealing, and mechanical strength of the original cable, which a makeshift job does not guarantee"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une épissure doit au moins égaler la tenue du câble d'origine : un kit homologué garantit l'isolation, l'étanchéité et la sécurité.",
+          "en": "A splice must at least match the original cable's withstand: an approved kit guarantees insulation, sealing, and safety."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle précaution s'applique au raccordement d'un câble TECK90 avec un connecteur ?",
+          "en": "What precaution applies when terminating a TECK90 cable with a connector?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune",
+            "Tordre l'armure autour du câble",
+            "Retirer correctement la gaine extérieure, bien serrer l'armure dans le connecteur (pour la continuité de liaison) et protéger l'extrémité de la gaine intérieure par un capuchon isolant (shroud)",
+            "Couper l'armure au ras"
+          ],
+          "en": [
+            "None",
+            "Twist the armor around the cable",
+            "Strip the outer jacket correctly, clamp the armor firmly in the connector (for bonding continuity), and protect the end of the inner jacket with an insulating shroud",
+            "Cut the armor flush"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'armure du câble doit être fermement serrée dans le connecteur, pour assurer la liaison et l'étanchéité, et la gaine intérieure protégée par un capuchon contre les arêtes vives.",
+          "en": "The cable's armor must be firmly clamped in the connector, for bonding and sealing, and the inner jacket protected by a shroud against sharp edges."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un conduit de PVC de 100 pi installé à l'extérieur subit une variation de température de 50 °F. Avec un coefficient de dilatation d'environ 3,4 × 10⁻⁵ par °F, de combien s'allonge-t-il approximativement ?",
+          "en": "A 100 ft PVC conduit installed outdoors undergoes a 50 °F temperature change. With an expansion coefficient of about 3.4 × 10⁻⁵ per °F, approximately how much does it lengthen?"
+        },
+        "choix": {
+          "fr": [
+            "0,5 po",
+            "6 po",
+            "Environ 2 po",
+            "0,2 po"
+          ],
+          "en": [
+            "0.5 in.",
+            "6 in.",
+            "About 2 in.",
+            "0.2 in."
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "ΔL = 3,4 × 10⁻⁵ × (100 × 12 po) × 50 ≈ 2 po : on prévoit des joints de dilatation sur les longs parcours extérieurs.",
+          "en": "ΔL = 3.4 × 10⁻⁵ × (100 × 12 in.) × 50 ≈ 2 in.: expansion fittings are provided on long outdoor runs."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un conducteur neutre commun à plusieurs circuits (multifilaire) peut-il être surchargé même si les phases semblent équilibrées ?",
+          "en": "Why can a neutral conductor shared by several circuits (multiwire) be overloaded even if the phases appear balanced?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'il est trop propre",
+            "Il ne peut pas l'être",
+            "Parce que les courants harmoniques de rang multiple de 3 s'additionnent dans le neutre au lieu de s'annuler",
+            "Parce qu'il est trop long"
+          ],
+          "en": [
+            "Because it is too clean",
+            "It can't be",
+            "Because triplen harmonic currents add up in the neutral instead of canceling",
+            "Because it is too long"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec des charges non linéaires, les harmoniques triples s'additionnent dans le neutre : celui-ci peut être traversé par un courant supérieur à celui des phases.",
+          "en": "With nonlinear loads, triplen harmonics add up in the neutral: it may carry more current than the phases."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert la détection de rupture (burnout) d'un thermocouple sur un transmetteur ?",
+          "en": "What is thermocouple burnout detection on a transmitter used for?"
+        },
+        "choix": {
+          "fr": [
+            "À forcer la lecture vers le haut ou vers le bas de l'échelle lorsque le thermocouple est ouvert, pour signaler clairement la panne plutôt qu'une valeur plausible",
+            "À augmenter la précision",
+            "À mesurer le courant",
+            "À chauffer le thermocouple"
+          ],
+          "en": [
+            "Forcing the reading to the high or low end of the scale when the thermocouple is open, to clearly signal the failure rather than a plausible value",
+            "Increasing accuracy",
+            "Measuring current",
+            "Heating the thermocouple"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un thermocouple coupé donnerait une lecture instable ; le burnout impose une valeur extrême (haute ou basse) qui avertit de la rupture.",
+          "en": "A broken thermocouple would give an unstable reading; burnout forces an extreme value (high or low) that warns of the break."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi respecte-t-on la tension de tirage maximale et le rayon de courbure d'un câble lors de l'installation, au-delà du risque visible ?",
+          "en": "Why are a cable's maximum pulling tension and bend radius respected during installation, beyond the visible risk?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'un dommage invisible à l'isolant ou au blindage peut causer une défaillance prématurée après la mise sous tension",
+            "Pour l'esthétique",
+            "Parce que le câble devient plus lourd",
+            "Aucune raison"
+          ],
+          "en": [
+            "Because invisible damage to the insulation or shield can cause premature failure after energizing",
+            "For appearance",
+            "Because the cable gets heavier",
+            "No reason"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une contrainte excessive peut fissurer l'isolant ou le blindage sans signe visible : le défaut apparaît plus tard, sous tension.",
+          "en": "Excessive stress can crack insulation or the shield without visible sign: the defect appears later, under voltage."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment la résistance d'isolement mesurée d'un long câble varie-t-elle avec sa longueur et sa température ?",
+          "en": "How does the measured insulation resistance of a long cable vary with its length and temperature?"
+        },
+        "choix": {
+          "fr": [
+            "Elle diminue quand la longueur augmente (chaque tronçon agit comme une résistance en parallèle) et quand la température augmente",
+            "Elle ne dépend d'aucun des deux",
+            "Elle augmente avec la longueur",
+            "Elle double avec la température"
+          ],
+          "en": [
+            "It decreases as length increases (each section acts as a parallel resistance) and as temperature increases",
+            "It depends on neither",
+            "It increases with length",
+            "It doubles with temperature"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les résistances de fuite de tronçons successifs s'ajoutent en parallèle : un câble plus long mesure moins ; la chaleur réduit aussi la résistance d'isolement, d'où la correction à une température de référence.",
+          "en": "The leakage resistances of successive sections add in parallel: a longer cable measures lower; heat also reduces insulation resistance, hence correction to a reference temperature."
         }
       }
     ]
@@ -5280,6 +14410,1310 @@ window.QUESTIONNAIRES = [
           "en": "Wear distribution and automatic backup."
         }
       }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Une entrée analogique 0-20 mA est convertie sur 12 bits (valeurs brutes de 0 à 4095). Quelle valeur brute correspond à 12 mA ?",
+          "en": "A 0-20 mA analog input is converted on 12 bits (raw values 0 to 4095). What raw value corresponds to 12 mA?"
+        },
+        "choix": {
+          "fr": [
+            "4 095",
+            "2 457",
+            "3 276",
+            "1 228"
+          ],
+          "en": [
+            "4,095",
+            "2,457",
+            "3,276",
+            "1,228"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Valeur = 4095 × 12 / 20 = 2 457 : la valeur brute est proportionnelle au courant sur la plage 0-20 mA.",
+          "en": "Value = 4095 × 12 / 20 = 2,457: the raw value is proportional to current over the 0-20 mA range."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi préfère-t-on généralement un signal 4-20 mA à un signal 0-10 V pour un capteur éloigné de l'automate ?",
+          "en": "Why is a 4-20 mA signal generally preferred over a 0-10 V signal for a sensor far from the controller?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'il est plus cher",
+            "Parce qu'il n'a pas besoin de câble",
+            "Parce qu'il consomme moins",
+            "Parce qu'une boucle de courant n'est pas affectée par la chute de tension dans le câble et résiste mieux aux perturbations électriques"
+          ],
+          "en": [
+            "Because it is more expensive",
+            "Because it needs no cable",
+            "Because it consumes less",
+            "Because a current loop is not affected by voltage drop in the cable and resists electrical noise better"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un signal en tension subit la chute de tension du câble et capte facilement le bruit ; en courant, la même intensité circule dans toute la boucle, ce qui rend le signal plus fiable sur de longues distances.",
+          "en": "A voltage signal suffers the cable's voltage drop and easily picks up noise; with current, the same intensity flows through the whole loop, which makes the signal more reliable over long distances."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un convertisseur analogique-numérique de 12 bits mesure une plage de 0 à 200 psi. Quelle est approximativement sa résolution ?",
+          "en": "A 12-bit analog-to-digital converter measures a range of 0 to 200 psi. What is its approximate resolution?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 0,05 psi",
+            "0,5 psi",
+            "0,005 psi",
+            "5 psi"
+          ],
+          "en": [
+            "About 0.05 psi",
+            "0.5 psi",
+            "0.005 psi",
+            "5 psi"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "12 bits donnent 4096 valeurs : 200 / 4096 ≈ 0,049 psi par échelon.",
+          "en": "12 bits give 4096 values: 200 / 4096 ≈ 0.049 psi per step."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle plage de valeurs un entier signé de 16 bits (INT) peut-il représenter ?",
+          "en": "What range of values can a 16-bit signed integer (INT) represent?"
+        },
+        "choix": {
+          "fr": [
+            "0 à 255",
+            "0 à 1 000",
+            "−32 768 à 32 767",
+            "−128 à 127"
+          ],
+          "en": [
+            "0 to 255",
+            "0 to 1,000",
+            "−32,768 to 32,767",
+            "−128 to 127"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un entier signé de 16 bits couvre 65 536 valeurs, de −32 768 à 32 767.",
+          "en": "A 16-bit signed integer covers 65,536 values, from −32,768 to 32,767."
+        }
+      },
+      {
+        "question": {
+          "fr": "Combien de bits occupe une variable REAL (virgule flottante, IEEE 754 simple précision) dans un automate ?",
+          "en": "How many bits does a REAL variable (floating point, IEEE 754 single precision) occupy in a controller?"
+        },
+        "choix": {
+          "fr": [
+            "64 bits",
+            "32 bits",
+            "16 bits",
+            "8 bits"
+          ],
+          "en": [
+            "64 bits",
+            "32 bits",
+            "16 bits",
+            "8 bits"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un REAL simple précision occupe 32 bits ; un LREAL, 64 bits.",
+          "en": "A single-precision REAL occupies 32 bits; an LREAL, 64 bits."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi place-t-on souvent un délai de quelques secondes (temporisateur) sur une alarme de niveau bas avant de l'activer ?",
+          "en": "Why is a delay of a few seconds (timer) often placed on a low-level alarm before activating it?"
+        },
+        "choix": {
+          "fr": [
+            "Pour accélérer l'alarme",
+            "Pour supprimer le capteur",
+            "Pour éviter les fausses alarmes causées par des variations momentanées de la mesure (vagues, turbulence) : l'alarme ne se déclenche que si la condition persiste",
+            "Pour augmenter le bruit"
+          ],
+          "en": [
+            "To speed up the alarm",
+            "To remove the sensor",
+            "To avoid false alarms caused by momentary variations in the measurement (waves, turbulence): the alarm only triggers if the condition persists",
+            "To increase noise"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un temporisateur à l'enclenchement exige que la condition reste vraie pendant la durée réglée : une variation brève n'active pas l'alarme.",
+          "en": "An on-delay timer requires the condition to remain true for the set duration: a brief variation does not activate the alarm."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que fait un compteur réversible (CTUD) ?",
+          "en": "What does an up/down counter (CTUD) do?"
+        },
+        "choix": {
+          "fr": [
+            "Il mesure le temps",
+            "Il peut compter vers le haut et vers le bas selon deux entrées de comptage, avec des sorties de dépassement haut et bas",
+            "Il convertit un signal analogique",
+            "Il compte seulement vers le haut"
+          ],
+          "en": [
+            "It measures time",
+            "It can count up and down based on two counting inputs, with high and low overflow outputs",
+            "It converts an analog signal",
+            "It only counts up"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un CTUD incrémente sur une entrée et décrémente sur l'autre : utile pour compter des pièces entrant et sortant d'une zone.",
+          "en": "A CTUD increments on one input and decrements on the other: useful for counting parts entering and leaving an area."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une impulsion d'entrée dure 5 ms alors que le temps de scrutation de l'automate est de 20 ms. Quel est le risque, et que peut-on utiliser ?",
+          "en": "An input pulse lasts 5 ms while the controller's scan time is 20 ms. What is the risk, and what can be used?"
+        },
+        "choix": {
+          "fr": [
+            "L'impulsion peut passer inaperçue entre deux lectures ; on utilise une entrée à interruption ou un compteur rapide",
+            "Aucun risque",
+            "L'automate s'arrête",
+            "L'impulsion est allongée automatiquement"
+          ],
+          "en": [
+            "The pulse may go unnoticed between two reads; an interrupt input or a high-speed counter is used",
+            "No risk",
+            "The controller stops",
+            "The pulse is automatically stretched"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les entrées sont lues une seule fois par scrutation : une impulsion plus courte peut tomber entre deux lectures. Les entrées rapides ou à interruption captent ces événements.",
+          "en": "Inputs are read only once per scan: a shorter pulse may fall between two reads. Fast or interrupt inputs capture such events."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert un compteur rapide (HSC) d'un automate ?",
+          "en": "What is a controller's high-speed counter (HSC) used for?"
+        },
+        "choix": {
+          "fr": [
+            "À compter des impulsions très rapides (codeur, débitmètre à impulsions) indépendamment du temps de scrutation",
+            "À mesurer la température",
+            "À compter les cycles de scrutation",
+            "À remplacer le programme"
+          ],
+          "en": [
+            "Counting very fast pulses (encoder, pulse flowmeter) independently of the scan time",
+            "Measuring temperature",
+            "Counting scan cycles",
+            "Replacing the program"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le compteur rapide est géré par le matériel : il capte des fréquences de plusieurs kHz, bien plus vite que le programme ne peut scruter les entrées.",
+          "en": "The high-speed counter is handled by hardware: it captures frequencies of several kHz, far faster than the program can scan the inputs."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une entrée discrète a un filtre de 10 ms. Que se passe-t-il avec une impulsion de 3 ms ?",
+          "en": "A discrete input has a 10 ms filter. What happens with a 3 ms pulse?"
+        },
+        "choix": {
+          "fr": [
+            "Elle est allongée à 10 ms",
+            "Elle fait déclencher l'automate",
+            "Elle est détectée",
+            "Elle est ignorée, car plus courte que le temps de filtrage (anti-rebond)"
+          ],
+          "en": [
+            "It is stretched to 10 ms",
+            "It makes the controller fault",
+            "It is detected",
+            "It is ignored, since it is shorter than the filter time (debounce)"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le filtre d'entrée rejette les changements d'état plus courts que sa durée, ce qui élimine les rebonds mais ignore aussi les impulsions très brèves.",
+          "en": "The input filter rejects state changes shorter than its duration, which eliminates bounce but also ignores very brief pulses."
+        }
+      },
+      {
+        "question": {
+          "fr": "En Structured Text, que fait la ligne « IF Pression > 10.0 THEN Alarme := TRUE; END_IF; » ?",
+          "en": "In Structured Text, what does the line \"IF Pressure > 10.0 THEN Alarm := TRUE; END_IF;\" do?"
+        },
+        "choix": {
+          "fr": [
+            "Elle remet l'alarme à zéro",
+            "Elle active l'alarme (bit à TRUE) lorsque la pression dépasse 10",
+            "Elle compare deux alarmes",
+            "Elle déclare une variable"
+          ],
+          "en": [
+            "It resets the alarm",
+            "It activates the alarm (bit set to TRUE) when pressure exceeds 10",
+            "It compares two alarms",
+            "It declares a variable"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'instruction teste la condition ; si elle est vraie, elle affecte TRUE à la variable Alarme (l'opérateur := est l'affectation).",
+          "en": "The statement tests the condition; if true, it assigns TRUE to the Alarm variable (the := operator is assignment)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre une fonction (FC) et un bloc fonctionnel (FB) en programmation d'automate ?",
+          "en": "What is the difference between a function (FC) and a function block (FB) in controller programming?"
+        },
+        "choix": {
+          "fr": [
+            "Un bloc fonctionnel ne peut avoir d'entrées",
+            "Un bloc fonctionnel conserve son état entre les cycles (instance avec mémoire), alors qu'une fonction n'a pas de mémoire propre",
+            "Une fonction est plus lente",
+            "Aucune"
+          ],
+          "en": [
+            "A function block cannot have inputs",
+            "A function block retains its state between cycles (an instance with memory), whereas a function has no memory of its own",
+            "A function is slower",
+            "None"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un FB possède une instance dont les variables internes persistent (temporisateurs, mémoires) ; une fonction calcule un résultat sans mémoire entre appels.",
+          "en": "An FB has an instance whose internal variables persist (timers, memories); a function computes a result with no memory between calls."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'intérêt d'un type de données défini par l'utilisateur (UDT) ?",
+          "en": "What is the benefit of a user-defined data type (UDT)?"
+        },
+        "choix": {
+          "fr": [
+            "Il réduit le nombre de bits",
+            "Il regroupe plusieurs données liées (par exemple marche, défaut, vitesse d'un moteur) en une seule structure réutilisable",
+            "Il accélère le processeur",
+            "Il remplace les entrées"
+          ],
+          "en": [
+            "It reduces the number of bits",
+            "It groups several related data items (for example a motor's run, fault, and speed) into one reusable structure",
+            "It speeds up the processor",
+            "It replaces inputs"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un UDT décrit une structure (ex. « Moteur ») que l'on instancie pour chaque équipement : cela uniformise les tags et simplifie la maintenance.",
+          "en": "A UDT describes a structure (for example \"Motor\") that is instantiated for each piece of equipment: this standardizes tags and simplifies maintenance."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on des tableaux (arrays) avec des boucles FOR dans un programme d'automate ?",
+          "en": "Why are arrays used with FOR loops in a controller program?"
+        },
+        "choix": {
+          "fr": [
+            "Pour économiser de l'énergie",
+            "Pour augmenter la tension",
+            "Pour remplacer la mémoire",
+            "Pour traiter de façon compacte plusieurs éléments semblables (par exemple 20 capteurs) avec la même logique"
+          ],
+          "en": [
+            "To save energy",
+            "To increase voltage",
+            "To replace memory",
+            "To process several similar items (for example 20 sensors) compactly with the same logic"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un tableau et une boucle évitent de dupliquer la même logique pour chaque élément et facilitent les modifications.",
+          "en": "An array and a loop avoid duplicating the same logic for each item and make changes easier."
+        }
+      },
+      {
+        "question": {
+          "fr": "Deux appareils doivent communiquer directement sur un réseau Ethernet sans routeur. Quelle condition est nécessaire ?",
+          "en": "Two devices must communicate directly on an Ethernet network with no router. What condition is needed?"
+        },
+        "choix": {
+          "fr": [
+            "Avoir la même couleur de câble",
+            "Utiliser deux masques différents",
+            "Avoir la même adresse IP",
+            "Être sur le même sous-réseau : mêmes adresses de réseau selon le masque et des adresses IP différentes"
+          ],
+          "en": [
+            "Having the same cable color",
+            "Using two different masks",
+            "Having the same IP address",
+            "Being on the same subnet: the same network addresses per the mask, and different IP addresses"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Sans routeur, les adresses doivent appartenir au même sous-réseau (selon le masque) tout en étant uniques.",
+          "en": "Without a router, the addresses must belong to the same subnet (per the mask) while being unique."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel numéro de port TCP utilise normalement Modbus TCP ?",
+          "en": "What TCP port number does Modbus TCP normally use?"
+        },
+        "choix": {
+          "fr": [
+            "44818",
+            "80",
+            "21",
+            "502"
+          ],
+          "en": [
+            "44818",
+            "80",
+            "21",
+            "502"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Modbus TCP écoute par défaut sur le port 502 ; le port 44818 est celui d'EtherNet/IP (messages explicites).",
+          "en": "Modbus TCP listens on port 502 by default; port 44818 is that of EtherNet/IP (explicit messaging)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi sauvegarde-t-on le programme de l'automate (et en conserve-t-on les versions) avant toute modification ?",
+          "en": "Why is the controller program backed up (and its versions kept) before any modification?"
+        },
+        "choix": {
+          "fr": [
+            "Pour pouvoir revenir à une version fonctionnelle en cas d'erreur et savoir ce qui a changé",
+            "Parce que le code l'interdit autrement",
+            "Cela n'est pas nécessaire",
+            "Pour des raisons esthétiques"
+          ],
+          "en": [
+            "To be able to return to a working version in case of error and know what changed",
+            "Because the code forbids it otherwise",
+            "It is not necessary",
+            "For aesthetic reasons"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Une sauvegarde versionnée permet de restaurer rapidement et de comparer les modifications, ce qui réduit les risques lors d'un changement.",
+          "en": "A versioned backup allows quick restoration and comparison of changes, which reduces risk during a change."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel rôle joue le contact auxiliaire de retour d'état d'un contacteur de moteur dans le programme ?",
+          "en": "What role does a motor contactor's auxiliary feedback contact play in the program?"
+        },
+        "choix": {
+          "fr": [
+            "Augmenter la tension",
+            "Aucun",
+            "Confirmer que le contacteur s'est bien fermé après la commande : sinon, un défaut « échec de démarrage » est déclaré après un délai",
+            "Remplacer le relais de surcharge"
+          ],
+          "en": [
+            "Increasing voltage",
+            "None",
+            "Confirming that the contactor actually closed after the command: otherwise, a \"failed to start\" fault is declared after a delay",
+            "Replacing the overload relay"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Sans retour d'état, l'automate suppose que le moteur tourne parce qu'il a donné l'ordre. Le contact auxiliaire permet de détecter un contacteur collé, ouvert ou un fusible grillé.",
+          "en": "Without feedback, the controller assumes the motor is running because it gave the command. The auxiliary contact detects a stuck, open contactor or a blown fuse."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi programme-t-on des interverrouillages logiques pour le démarrage d'une pompe ?",
+          "en": "Why are logic interlocks programmed for starting a pump?"
+        },
+        "choix": {
+          "fr": [
+            "Pour réduire le nombre de tags",
+            "Pour augmenter la vitesse",
+            "Pour décorer le programme",
+            "Pour empêcher le démarrage si une condition de sécurité n'est pas remplie (vanne d'aspiration fermée, niveau bas, etc.), afin de protéger l'équipement"
+          ],
+          "en": [
+            "To reduce the number of tags",
+            "To increase speed",
+            "To decorate the program",
+            "To prevent starting if a safety condition is not met (suction valve closed, low level, etc.), to protect the equipment"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les interverrouillages bloquent la commande tant que les conditions de sécurité ne sont pas réunies, ce qui évite de faire tourner une pompe à sec.",
+          "en": "Interlocks block the command until safety conditions are met, which avoids running a pump dry."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'une alarme avec mémorisation et acquittement ?",
+          "en": "What is a latched, acknowledged alarm?"
+        },
+        "choix": {
+          "fr": [
+            "Une alarme qui s'efface seule sans trace",
+            "Une alarme qui n'existe pas",
+            "Une alarme qui reste affichée tant que l'opérateur ne l'a pas reconnue (acquittée), même si la cause a disparu",
+            "Une alarme sonore seulement"
+          ],
+          "en": [
+            "An alarm that clears itself with no trace",
+            "An alarm that does not exist",
+            "An alarm that stays displayed until the operator has recognized (acknowledged) it, even if the cause has gone away",
+            "An audible alarm only"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "La mémorisation garde l'événement visible jusqu'à ce qu'un opérateur l'acquitte, pour ne pas manquer un défaut intermittent.",
+          "en": "Latching keeps the event visible until an operator acknowledges it, so an intermittent fault is not missed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un bloc de régulation PID d'automate, que signifie le passage du mode manuel au mode automatique ?",
+          "en": "In a controller PID block, what does switching from manual to automatic mode mean?"
+        },
+        "choix": {
+          "fr": [
+            "Le PID double sa sortie",
+            "Le capteur est désactivé",
+            "En manuel, l'opérateur impose directement la sortie ; en automatique, le PID calcule la sortie pour amener la mesure à la consigne",
+            "Le PID s'arrête"
+          ],
+          "en": [
+            "The PID doubles its output",
+            "The sensor is disabled",
+            "In manual, the operator directly sets the output; in automatic, the PID calculates the output to bring the measurement to the setpoint",
+            "The PID stops"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "En mode manuel, la sortie est fixée par l'opérateur ; en automatique, l'algorithme la calcule à partir de l'écart entre consigne et mesure.",
+          "en": "In manual mode, the output is set by the operator; in automatic, the algorithm calculates it from the error between setpoint and measurement."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi remplace-t-on la pile de sauvegarde d'un automate pendant qu'il est sous tension ?",
+          "en": "Why is a controller's backup battery replaced while it is powered?"
+        },
+        "choix": {
+          "fr": [
+            "Cela n'a aucune importance",
+            "Parce que c'est plus rapide",
+            "Pour ne pas perdre le contenu de la mémoire (programme et données) maintenu par la pile pendant le remplacement",
+            "Parce que la pile est dangereuse hors tension"
+          ],
+          "en": [
+            "It doesn't matter",
+            "Because it is faster",
+            "To avoid losing the memory contents (program and data) held by the battery during replacement",
+            "Because the battery is dangerous when unpowered"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Si l'on retire la pile alors que l'automate est hors tension, la mémoire volatile peut être perdue ; on la change sous tension, selon les consignes du fabricant.",
+          "en": "If the battery is removed while the controller is unpowered, volatile memory may be lost; it is changed with power on, per the manufacturer's instructions."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle bonne pratique de cybersécurité s'applique à un automate raccordé à un réseau ?",
+          "en": "What cybersecurity good practice applies to a controller connected to a network?"
+        },
+        "choix": {
+          "fr": [
+            "Changer les mots de passe par défaut, désactiver les services et ports inutiles et isoler le réseau de contrôle du réseau d'entreprise",
+            "Désactiver toutes les sauvegardes",
+            "Garder les mots de passe par défaut",
+            "Exposer l'automate sur Internet"
+          ],
+          "en": [
+            "Change default passwords, disable unnecessary services and ports, and isolate the control network from the corporate network",
+            "Disable all backups",
+            "Keep default passwords",
+            "Expose the controller to the Internet"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les principes de base : mots de passe robustes, réduction de la surface d'attaque (ports et services) et segmentation du réseau.",
+          "en": "Basic principles: strong passwords, reducing the attack surface (ports and services), and network segmentation."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert le langage séquentiel de type SFC (GRAFCET) ?",
+          "en": "What is the sequential language of the SFC (GRAFCET) type used for?"
+        },
+        "choix": {
+          "fr": [
+            "À décrire une séquence de procédé en étapes et transitions, ce qui rend la logique de séquence lisible et facile à diagnostiquer",
+            "À dessiner des plans de salle",
+            "À mesurer la vitesse",
+            "À remplacer le câblage"
+          ],
+          "en": [
+            "Describing a process sequence in steps and transitions, which makes sequence logic readable and easy to diagnose",
+            "Drawing room plans",
+            "Measuring speed",
+            "Replacing wiring"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le SFC structure un procédé séquentiel en étapes (actions) et transitions (conditions) : on voit en tout temps à quelle étape se trouve la machine.",
+          "en": "SFC structures a sequential process into steps (actions) and transitions (conditions): at any time you can see which step the machine is in."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi synchronise-t-on les horloges des automates et des systèmes de supervision (par exemple avec NTP) ?",
+          "en": "Why are the clocks of controllers and supervisory systems synchronized (for example with NTP)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour que les événements et alarmes soient horodatés de façon cohérente et qu'on puisse reconstituer l'enchaînement d'un incident",
+            "Pour augmenter la vitesse du réseau",
+            "Pour économiser de l'énergie",
+            "Parce que les automates n'ont pas d'horloge"
+          ],
+          "en": [
+            "So events and alarms are timestamped consistently and the sequence of an incident can be reconstructed",
+            "To increase network speed",
+            "To save energy",
+            "Because controllers have no clock"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une horloge commune permet de comparer les événements de plusieurs appareils et de retrouver la cause initiale d'un arrêt.",
+          "en": "A common clock allows comparing events from several devices and finding the initial cause of a shutdown."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Un automate a un temps de scrutation de 20 ms. Quel est approximativement le délai maximal entre le changement d'une entrée et la réaction de la sortie correspondante, en plus du filtre d'entrée et du temps de commutation de la sortie ?",
+          "en": "A controller has a 20 ms scan time. Approximately what is the maximum delay between an input change and the corresponding output reacting, in addition to the input filter and the output switching time?"
+        },
+        "choix": {
+          "fr": [
+            "Environ 200 ms",
+            "Environ 40 ms (jusqu'à environ deux scrutations)",
+            "Environ 2 ms",
+            "Environ 20 ms"
+          ],
+          "en": [
+            "About 200 ms",
+            "About 40 ms (up to roughly two scans)",
+            "About 2 ms",
+            "About 20 ms"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Dans le pire cas, le changement survient juste après la lecture des entrées : il est lu à la scrutation suivante, puis la sortie est mise à jour en fin de cycle, soit environ deux temps de scrutation.",
+          "en": "In the worst case, the change occurs just after the inputs are read: it is read on the next scan, then the output is updated at the end of the cycle, about two scan times."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi faut-il éviter les boucles de programme dont la durée d'exécution peut devenir très longue (par exemple une boucle FOR avec une borne variable non contrôlée) ?",
+          "en": "Why should program loops whose execution time can become very long be avoided (for example a FOR loop with an uncontrolled variable bound)?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'elles sont interdites par la norme",
+            "Parce qu'elles augmentent la mémoire disponible",
+            "Parce qu'elles réduisent la tension",
+            "Parce qu'elles peuvent allonger le temps de scrutation au-delà du chien de garde (watchdog) et provoquer un défaut majeur de l'automate"
+          ],
+          "en": [
+            "Because they are prohibited by the standard",
+            "Because they increase available memory",
+            "Because they reduce voltage",
+            "Because they can stretch the scan time beyond the watchdog and cause a major controller fault"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une boucle trop longue retarde toute la scrutation : si le temps du cycle dépasse la limite du chien de garde, l'automate passe en défaut et arrête le procédé.",
+          "en": "A loop that is too long delays the whole scan: if the cycle time exceeds the watchdog limit, the controller faults and stops the process."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un compteur en entier signé de 16 bits vaut 32 767. Que vaut-il après une incrémentation ?",
+          "en": "A 16-bit signed integer counter holds 32,767. What is its value after one increment?"
+        },
+        "choix": {
+          "fr": [
+            "−32 768 (débordement)",
+            "32 768",
+            "65 535",
+            "0"
+          ],
+          "en": [
+            "−32,768 (overflow)",
+            "32,768",
+            "65,535",
+            "0"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un entier signé de 16 bits ne dépasse pas 32 767 : l'incrémentation provoque un débordement et la valeur devient −32 768 ; on utilise un DINT ou un test de limite.",
+          "en": "A 16-bit signed integer cannot exceed 32,767: the increment causes an overflow and the value becomes −32,768; a DINT or a limit test is used."
+        }
+      },
+      {
+        "question": {
+          "fr": "En arithmétique entière, que donne la division 7 / 2 ?",
+          "en": "In integer arithmetic, what does the division 7 / 2 give?"
+        },
+        "choix": {
+          "fr": [
+            "3,5",
+            "4",
+            "3 (troncature)",
+            "2"
+          ],
+          "en": [
+            "3.5",
+            "4",
+            "3 (truncation)",
+            "2"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "La division entière tronque la partie décimale : 7 / 2 = 3. Pour garder les décimales, on convertit en REAL avant de diviser.",
+          "en": "Integer division truncates the decimal part: 7 / 2 = 3. To keep decimals, convert to REAL before dividing."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi évite-t-on de tester l'égalité exacte entre deux nombres à virgule flottante (REAL) ?",
+          "en": "Why is testing for exact equality between two floating-point numbers (REAL) avoided?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le code l'interdit",
+            "Parce que les arrondis de calcul rendent l'égalité exacte peu fiable : on compare plutôt avec une tolérance",
+            "Parce que les REAL n'ont pas de signe",
+            "Parce que c'est trop lent"
+          ],
+          "en": [
+            "Because code forbids it",
+            "Because rounding in calculations makes exact equality unreliable: a tolerance comparison is used instead",
+            "Because REALs have no sign",
+            "Because it is too slow"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les nombres à virgule flottante ne représentent pas exactement toutes les valeurs : on teste donc |A − B| < tolérance plutôt que A = B.",
+          "en": "Floating-point numbers do not represent all values exactly: test |A − B| < tolerance rather than A = B."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour mettre à l'échelle un signal avec des entiers, pourquoi vaut-il mieux multiplier avant de diviser ?",
+          "en": "To scale a signal with integers, why is it better to multiply before dividing?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que cela économise la mémoire",
+            "Parce que la multiplication est interdite en premier",
+            "Parce que diviser d'abord tronque la valeur et fait perdre de la précision ; multiplier d'abord conserve les chiffres significatifs (en veillant au dépassement)",
+            "Aucune différence"
+          ],
+          "en": [
+            "Because it saves memory",
+            "Because multiplication is prohibited first",
+            "Because dividing first truncates the value and loses precision; multiplying first keeps significant digits (taking care of overflow)",
+            "No difference"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec des entiers, une division prématurée écarte la partie fractionnaire. Il faut multiplier d'abord, en utilisant un type assez grand pour éviter un débordement.",
+          "en": "With integers, a premature division discards the fractional part. Multiply first, using a type large enough to avoid overflow."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle formule décrit un filtre passe-bas du premier ordre appliqué à une mesure bruitée (α entre 0 et 1) ?",
+          "en": "What formula describes a first-order low-pass filter applied to a noisy measurement (α between 0 and 1)?"
+        },
+        "choix": {
+          "fr": [
+            "Filtrée = Mesure + α",
+            "Filtrée(n) = Filtrée(n−1) + α × (Mesure − Filtrée(n−1))",
+            "Filtrée = Mesure / Mesure",
+            "Filtrée = Mesure × α"
+          ],
+          "en": [
+            "Filtered = Measurement + α",
+            "Filtered(n) = Filtered(n−1) + α × (Measurement − Filtered(n−1))",
+            "Filtered = Measurement / Measurement",
+            "Filtered = Measurement × α"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Ce filtre exponentiel lisse le bruit : plus α est petit, plus le filtrage est fort et la réponse lente.",
+          "en": "This exponential filter smooths noise: the smaller α is, the stronger the filtering and the slower the response."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'intérêt d'un signal de présence (heartbeat) échangé dans les deux sens entre un automate et un système de supervision ?",
+          "en": "What is the benefit of a heartbeat signal exchanged in both directions between a controller and a supervisory system?"
+        },
+        "choix": {
+          "fr": [
+            "Détecter rapidement une perte de communication ou un blocage de l'autre côté, et réagir de façon sûre",
+            "Aucun",
+            "Augmenter la tension",
+            "Faire clignoter l'écran"
+          ],
+          "en": [
+            "Quickly detecting a loss of communication or a lockup on the other side, and reacting safely",
+            "None",
+            "Increasing voltage",
+            "Making the screen blink"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Chaque partie incrémente ou bascule une valeur que l'autre surveille : si elle cesse de changer, la communication ou le programme de l'autre est considéré en défaut.",
+          "en": "Each side increments or toggles a value that the other monitors: if it stops changing, the other side's communication or program is considered faulty."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le principe d'un automate redondant (haute disponibilité, hot standby) ?",
+          "en": "What is the principle of a redundant controller (high availability, hot standby)?"
+        },
+        "choix": {
+          "fr": [
+            "Deux automates synchronisés dont le second prend le relais, sans à-coup, si le premier tombe en panne",
+            "Un automate qui s'arrête automatiquement",
+            "Deux automates indépendants sans lien",
+            "Un automate sans entrées"
+          ],
+          "en": [
+            "Two synchronized controllers where the second takes over, bumplessly, if the first fails",
+            "A controller that stops automatically",
+            "Two independent controllers with no link",
+            "A controller with no inputs"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les deux automates exécutent le même programme et échangent leur état ; en cas de défaillance du principal, le secondaire prend le contrôle avec peu ou pas d'interruption.",
+          "en": "Both controllers run the same program and exchange their state; if the primary fails, the secondary takes control with little or no interruption."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi segmente-t-on (VLAN, pare-feu) le réseau de contrôle du réseau d'entreprise ?",
+          "en": "Why is the control network segmented (VLAN, firewall) from the corporate network?"
+        },
+        "choix": {
+          "fr": [
+            "Pour augmenter la vitesse des câbles",
+            "Parce que c'est plus joli",
+            "Pour réduire la longueur des câbles",
+            "Pour limiter la propagation des cyberattaques et protéger les automates des accès non nécessaires"
+          ],
+          "en": [
+            "To increase cable speed",
+            "Because it looks nicer",
+            "To reduce cable length",
+            "To limit the spread of cyberattacks and protect controllers from unnecessary access"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La segmentation réduit la surface d'exposition des automates et limite les mouvements latéraux d'un attaquant.",
+          "en": "Segmentation reduces the controllers' exposure and limits an attacker's lateral movement."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle de la norme IEC 62443 en cybersécurité industrielle ?",
+          "en": "What is the role of the IEC 62443 standard in industrial cybersecurity?"
+        },
+        "choix": {
+          "fr": [
+            "Elle définit la couleur des câbles",
+            "Elle définit un cadre (zones, conduits, niveaux de sécurité) pour sécuriser les systèmes d'automatisation et de contrôle industriels",
+            "Elle remplace le Code de l'électricité",
+            "Elle s'applique uniquement au bureau"
+          ],
+          "en": [
+            "It defines cable color",
+            "It defines a framework (zones, conduits, security levels) to secure industrial automation and control systems",
+            "It replaces the Electrical Code",
+            "It applies only to the office"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "IEC 62443 organise la sécurité des systèmes industriels en zones et conduits, avec des niveaux de sécurité cibles, des exigences pour les produits et les processus.",
+          "en": "IEC 62443 organizes industrial system security into zones and conduits, with target security levels and requirements for products and processes."
+        }
+      },
+      {
+        "question": {
+          "fr": "En Modbus, quelle différence existe-t-il entre les registres de maintien (holding, 4xxxx) et les registres d'entrée (input, 3xxxx) ?",
+          "en": "In Modbus, what is the difference between holding registers (4xxxx) and input registers (3xxxx)?"
+        },
+        "choix": {
+          "fr": [
+            "Les registres de maintien sont en 8 bits",
+            "Les registres de maintien sont lisibles et inscriptibles ; les registres d'entrée sont en lecture seule",
+            "Les registres d'entrée sont plus rapides",
+            "Aucune"
+          ],
+          "en": [
+            "Holding registers are 8-bit",
+            "Holding registers can be read and written; input registers are read-only",
+            "Input registers are faster",
+            "None"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les holding registers (40001...) peuvent être lus et écrits ; les input registers (30001...) ne sont que lus, typiquement pour des mesures.",
+          "en": "Holding registers (40001...) can be read and written; input registers (30001...) are read only, typically for measurements."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une valeur REAL de 32 bits est transmise par Modbus. Quel point particulier faut-il gérer ?",
+          "en": "A 32-bit REAL value is transmitted over Modbus. What particular point must be handled?"
+        },
+        "choix": {
+          "fr": [
+            "Aucun",
+            "Elle occupe deux registres de 16 bits, et l'ordre des deux mots (word swap) varie selon les appareils : il faut le vérifier",
+            "Elle occupe un demi-registre",
+            "Elle devient un entier"
+          ],
+          "en": [
+            "None",
+            "It occupies two 16-bit registers, and the order of the two words (word swap) varies by device: it must be verified",
+            "It occupies half a register",
+            "It becomes an integer"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un REAL occupe deux registres de 16 bits ; l'ordre dans lequel les appareils les envoient diffère (big-endian ou word swap), source fréquente de valeurs aberrantes.",
+          "en": "A REAL occupies two 16-bit registers; the order in which devices send them differs (big-endian or word swap), a frequent source of nonsensical values."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qui distingue un automate de sécurité certifié (par exemple SIL 2 ou PL d) d'un automate standard ?",
+          "en": "What distinguishes a certified safety controller (for example SIL 2 or PL d) from a standard controller?"
+        },
+        "choix": {
+          "fr": [
+            "Sa couleur",
+            "Il est plus lent seulement",
+            "Il n'a pas de programme",
+            "Il est conçu, vérifié et certifié (redondance interne, diagnostics) pour exécuter des fonctions de sécurité avec un niveau de fiabilité défini"
+          ],
+          "en": [
+            "Its color",
+            "It is only slower",
+            "It has no program",
+            "It is designed, verified, and certified (internal redundancy, diagnostics) to execute safety functions with a defined level of reliability"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un automate de sécurité intègre des architectures redondantes et des diagnostics permettant d'atteindre un niveau d'intégrité de sécurité certifié ; un automate standard n'offre pas cette garantie.",
+          "en": "A safety controller integrates redundant architectures and diagnostics that allow reaching a certified safety integrity level; a standard controller does not offer this guarantee."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi les fonctions de sécurité nécessitent-elles des essais périodiques (proof tests) ?",
+          "en": "Why do safety functions require periodic proof tests?"
+        },
+        "choix": {
+          "fr": [
+            "Pour des raisons d'esthétique",
+            "Parce que le matériel s'améliore tout seul",
+            "Pour réduire la tension",
+            "Pour détecter les défaillances dangereuses non révélées avant qu'une demande réelle n'arrive, et maintenir le niveau de sécurité visé"
+          ],
+          "en": [
+            "For aesthetic reasons",
+            "Because equipment improves by itself",
+            "To reduce voltage",
+            "To detect dangerous undetected failures before a real demand occurs, and maintain the targeted safety level"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Certaines défaillances d'un dispositif de sécurité ne se manifestent pas tant qu'on ne le sollicite pas : des essais périodiques les révèlent à temps.",
+          "en": "Some failures of a safety device do not show up until it is called upon: periodic tests reveal them in time."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'un enregistrement séquentiel d'événements (SOE) ?",
+          "en": "What is a sequence of events (SOE) recording?"
+        },
+        "choix": {
+          "fr": [
+            "Un câble spécial",
+            "Un type de capteur",
+            "Un fichier de peinture",
+            "Un horodatage à haute résolution (de l'ordre de la milliseconde) des changements d'état, pour reconstituer l'ordre exact des événements lors d'un incident"
+          ],
+          "en": [
+            "A special cable",
+            "A type of sensor",
+            "A paint file",
+            "A high-resolution timestamp (on the order of a millisecond) of state changes, to reconstruct the exact order of events during an incident"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le SOE permet de savoir quel événement a précédé l'autre, ce qui est essentiel pour trouver la cause d'un arrêt rapide.",
+          "en": "SOE makes it possible to know which event preceded the other, which is essential to find the cause of a fast shutdown."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'une alarme « nuisance » (chattering) et comment la corrige-t-on ?",
+          "en": "What is a \"nuisance\" (chattering) alarm and how is it corrected?"
+        },
+        "choix": {
+          "fr": [
+            "Une alarme qui se déclenche et se rétablit répétitivement autour de son seuil ; on ajoute une temporisation et une bande morte (hystérésis)",
+            "Une alarme d'incendie ; avec un détecteur",
+            "Une alarme coûteuse ; avec un contrat",
+            "Une alarme silencieuse ; en la supprimant"
+          ],
+          "en": [
+            "An alarm that triggers and clears repeatedly around its threshold; add a delay and a deadband (hysteresis)",
+            "A fire alarm; with a detector",
+            "An expensive alarm; with a contract",
+            "A silent alarm; by deleting it"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un signal qui oscille autour d'un seuil génère des alarmes répétées ; un délai et une hystérésis (bande morte) évitent ces cycles et préservent l'attention de l'opérateur.",
+          "en": "A signal that oscillates around a threshold generates repeated alarms; a delay and hysteresis (deadband) avoid these cycles and preserve the operator's attention."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi ajoute-t-on une hystérésis (bande morte) à un seuil de commande comme le démarrage d'une pompe sur un niveau ?",
+          "en": "Why is hysteresis (deadband) added to a control threshold such as starting a pump on a level?"
+        },
+        "choix": {
+          "fr": [
+            "Pour augmenter la précision du capteur",
+            "Pour économiser de la mémoire",
+            "Pour éviter des cycles de marche/arrêt rapides quand la mesure oscille autour du seuil",
+            "Parce que c'est obligatoire dans tous les cas"
+          ],
+          "en": [
+            "To increase sensor accuracy",
+            "To save memory",
+            "To avoid rapid start/stop cycling when the measurement oscillates around the threshold",
+            "Because it is mandatory in all cases"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Avec deux seuils (démarrage et arrêt) séparés par une bande morte, la sortie ne change plus à chaque petite variation de la mesure.",
+          "en": "With two thresholds (start and stop) separated by a deadband, the output no longer changes with each small variation in the measurement."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que signifie qu'une variable est « rémanente » (retentive) dans un automate ?",
+          "en": "What does it mean for a variable to be \"retentive\" in a controller?"
+        },
+        "choix": {
+          "fr": [
+            "Elle est effacée à chaque scrutation",
+            "Elle est plus rapide",
+            "Elle ne peut jamais changer",
+            "Elle conserve sa valeur après une coupure d'alimentation ou un arrêt de l'automate"
+          ],
+          "en": [
+            "It is erased at each scan",
+            "It is faster",
+            "It can never change",
+            "It keeps its value after a power loss or controller stop"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les variables rémanentes (compteurs, consignes, totaux) gardent leur valeur lors d'un redémarrage, alors que les autres sont réinitialisées.",
+          "en": "Retentive variables (counters, setpoints, totals) keep their value through a restart, whereas others are reset."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert une routine d'initialisation exécutée au premier cycle de scrutation (first scan) ?",
+          "en": "What is an initialization routine executed on the first scan cycle used for?"
+        },
+        "choix": {
+          "fr": [
+            "À effacer le programme",
+            "À désactiver les alarmes",
+            "À placer les variables et les sorties dans un état connu et sûr au démarrage de l'automate",
+            "À accélérer le processeur"
+          ],
+          "en": [
+            "Erasing the program",
+            "Disabling alarms",
+            "Placing variables and outputs in a known, safe state when the controller starts up",
+            "Speeding up the processor"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Au démarrage, on initialise les états, on remet à zéro les séquences et on s'assure que les sorties démarrent dans un état prévu.",
+          "en": "At startup, states are initialized, sequences reset, and outputs are made to start in an expected state."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre un essai en usine (FAT) et un essai sur site (SAT) ?",
+          "en": "What is the difference between a factory acceptance test (FAT) and a site acceptance test (SAT)?"
+        },
+        "choix": {
+          "fr": [
+            "Le FAT se fait toujours sur site",
+            "Le SAT précède la fabrication",
+            "Le FAT vérifie le système chez le fabricant avant livraison ; le SAT le vérifie une fois installé et raccordé au procédé réel",
+            "Aucune"
+          ],
+          "en": [
+            "The FAT is always done on site",
+            "The SAT precedes manufacturing",
+            "The FAT verifies the system at the manufacturer before delivery; the SAT verifies it once installed and connected to the real process",
+            "None"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le FAT permet de corriger les défauts avant l'expédition, dans un environnement contrôlé ; le SAT confirme que tout fonctionne avec les vrais équipements et raccordements.",
+          "en": "The FAT allows correcting defects before shipping, in a controlled environment; the SAT confirms that everything works with the real equipment and connections."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi les modules d'entrées analogiques à isolation galvanique sont-ils recommandés dans une installation étendue ?",
+          "en": "Why are galvanically isolated analog input modules recommended in an extended installation?"
+        },
+        "choix": {
+          "fr": [
+            "Ils n'ont pas besoin de câble",
+            "Ils sont moins chers",
+            "Ils isolent le signal du châssis de l'automate, ce qui évite les boucles de terre et les différences de potentiel entre appareils éloignés",
+            "Ils consomment plus"
+          ],
+          "en": [
+            "They need no cable",
+            "They are cheaper",
+            "They isolate the signal from the controller chassis, which avoids ground loops and potential differences between distant devices",
+            "They consume more"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'isolation galvanique empêche les courants de circulation causés par des différences de potentiel de terre, source d'erreurs de mesure.",
+          "en": "Galvanic isolation prevents circulating currents caused by ground potential differences, a source of measurement errors."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une sortie à relais qui commande une charge inductive (bobine de contacteur ou de vanne) exige-t-elle un dispositif de suppression d'arc (diode, RC ou varistance) ?",
+          "en": "Why does a relay output driving an inductive load (contactor or valve coil) require an arc suppression device (diode, RC, or varistor)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour absorber la surtension produite à l'ouverture, qui érode les contacts du relais et perturbe l'électronique",
+            "Pour réduire le courant d'appel",
+            "Pour la décoration",
+            "Pour augmenter la tension"
+          ],
+          "en": [
+            "To absorb the overvoltage produced on opening, which erodes the relay contacts and disturbs the electronics",
+            "To reduce inrush current",
+            "For decoration",
+            "To increase voltage"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "À l'ouverture, l'énergie emmagasinée dans l'inductance produit une forte surtension qui use les contacts et génère du bruit ; un circuit de suppression la dissipe.",
+          "en": "On opening, the energy stored in the inductance produces a strong overvoltage that wears the contacts and generates noise; a suppression circuit dissipates it."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un capteur de proximité à 2 fils (type triac) laisse circuler un faible courant de fuite lorsqu'il est ouvert, et l'entrée de l'automate reste activée. Quelle solution est courante ?",
+          "en": "A 2-wire (triac type) proximity sensor lets a small leakage current flow when off, and the controller input stays on. What solution is common?"
+        },
+        "choix": {
+          "fr": [
+            "Ajouter une résistance de dérivation (bleeder) en parallèle sur l'entrée pour absorber le courant de fuite",
+            "Doubler la tension",
+            "Remplacer l'automate",
+            "Retirer le capteur"
+          ],
+          "en": [
+            "Add a bleeder resistor in parallel with the input to absorb the leakage current",
+            "Double the voltage",
+            "Replace the controller",
+            "Remove the sensor"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le courant de fuite d'un capteur à 2 fils peut suffire à maintenir l'entrée active ; une résistance en parallèle le dérive et ramène la tension d'entrée sous le seuil.",
+          "en": "The leakage current of a 2-wire sensor can be enough to keep the input active; a parallel resistor shunts it and brings the input voltage below the threshold."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un capteur de proximité de type NPN (qui commute vers le 0 V) doit être raccordé à un module d'entrées discrètes. Comment le module doit-il être câblé ?",
+          "en": "An NPN proximity sensor (which switches toward 0 V) must be connected to a discrete input module. How must the module be wired?"
+        },
+        "choix": {
+          "fr": [
+            "Avec son commun relié au +24 V (entrée de type « source »), de sorte que le capteur NPN ferme le circuit vers le 0 V",
+            "Il n'y a aucune contrainte",
+            "Avec son commun au 0 V, comme pour un capteur PNP",
+            "Avec une alimentation en 120 V c.a."
+          ],
+          "en": [
+            "With its common tied to +24 V (a \"sourcing\" input), so that the NPN sensor completes the circuit toward 0 V",
+            "There is no constraint",
+            "With its common at 0 V, as for a PNP sensor",
+            "With a 120 VAC supply"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un capteur NPN commute la ligne de signal vers le 0 V : le module doit fournir le +24 V par son commun pour que le courant circule dans l'entrée. Un capteur PNP, qui commute vers le +24 V, exige un commun au 0 V.",
+          "en": "An NPN sensor switches the signal line to 0 V: the module must supply +24 V through its common for current to flow in the input. A PNP sensor, which switches toward +24 V, requires a common at 0 V."
+        }
+      }
     ]
   },
   {
@@ -5938,6 +16372,1310 @@ window.QUESTIONNAIRES = [
         "explication": {
           "fr": "Restauration rapide et traçabilité des versions.",
           "en": "Fast restoration and version traceability."
+        }
+      }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Selon les bonnes pratiques de gestion des alarmes (ISA-18.2), que doit exiger chaque alarme configurée ?",
+          "en": "Under alarm management best practices (ISA-18.2), what should each configured alarm require?"
+        },
+        "choix": {
+          "fr": [
+            "Un arrêt de l'usine",
+            "Une réponse de l'opérateur : une action précise à entreprendre en réaction à l'alarme",
+            "Aucune action",
+            "Une simple information sans suite"
+          ],
+          "en": [
+            "A plant shutdown",
+            "A response from the operator: a specific action to take in reaction to the alarm",
+            "No action",
+            "Simple information with no follow-up"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une alarme doit signaler une situation anormale qui exige une action de l'opérateur ; si aucune action n'est requise, il s'agit d'une simple information qui ne devrait pas être une alarme.",
+          "en": "An alarm must signal an abnormal situation that requires operator action; if no action is required, it is simply information and should not be an alarm."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon les références de gestion des alarmes, quel taux moyen d'alarmes par opérateur est généralement visé en fonctionnement normal ?",
+          "en": "According to alarm management references, what average alarm rate per operator is generally targeted in normal operation?"
+        },
+        "choix": {
+          "fr": [
+            "Une centaine par heure",
+            "Aucune limite",
+            "Mille par heure",
+            "Environ une alarme toutes les 10 minutes en moyenne"
+          ],
+          "en": [
+            "About a hundred per hour",
+            "No limit",
+            "A thousand per hour",
+            "About one alarm every 10 minutes on average"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les guides de référence (ISA-18.2, EEMUA 191) visent à peu près une alarme par 10 minutes en moyenne ; au-delà, l'opérateur ne peut plus traiter correctement chaque alarme.",
+          "en": "Reference guides (ISA-18.2, EEMUA 191) aim for roughly one alarm per 10 minutes on average; beyond that, the operator can no longer properly handle each alarm."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment la répartition des priorités d'alarme est-elle typiquement conçue ?",
+          "en": "How is the distribution of alarm priorities typically designed?"
+        },
+        "choix": {
+          "fr": [
+            "La grande majorité en basse priorité, une proportion moyenne en priorité moyenne, et seulement une petite minorité en haute priorité",
+            "Toutes en haute priorité",
+            "Moitié haute, moitié basse",
+            "Toutes en basse priorité"
+          ],
+          "en": [
+            "The large majority low priority, a moderate share medium priority, and only a small minority high priority",
+            "All high priority",
+            "Half high, half low",
+            "All low priority"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si trop d'alarmes sont de haute priorité, la priorité perd son sens ; les références recommandent une très petite proportion de hautes priorités et une majorité de basses.",
+          "en": "If too many alarms are high priority, priority loses its meaning; references recommend a very small proportion of high priorities and a majority of low ones."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi ne doit-on pas utiliser la couleur seule pour distinguer un état sur une interface (par exemple rouge et vert) ?",
+          "en": "Why shouldn't color alone be used to distinguish a state on an interface (for example red and green)?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que les couleurs coûtent cher",
+            "Parce que les écrans ne reproduisent pas les couleurs",
+            "Parce qu'une partie des opérateurs est daltonienne : il faut doubler la couleur d'un texte, d'une forme ou d'un symbole",
+            "Parce que le rouge est interdit"
+          ],
+          "en": [
+            "Because colors are expensive",
+            "Because screens can't reproduce colors",
+            "Because some operators are color-blind: color must be paired with text, a shape, or a symbol",
+            "Because red is prohibited"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Environ 8 % des hommes ont un daltonisme rouge-vert : un état codé uniquement par la couleur peut être mal perçu ; on ajoute un libellé, une forme ou une icône.",
+          "en": "About 8% of men have red-green color blindness: a state coded only by color may be misperceived; add a label, shape, or icon."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que dit-on des animations décoratives (flèches clignotantes, éléments en mouvement continu) sur un écran de procédé ?",
+          "en": "What is said about decorative animations (flashing arrows, continuously moving elements) on a process screen?"
+        },
+        "choix": {
+          "fr": [
+            "Elles remplacent les alarmes",
+            "Elles distraient l'opérateur et masquent les vraies informations ; on les réserve à ce qui exige une attention",
+            "Elles réduisent le coût",
+            "Elles sont indispensables"
+          ],
+          "en": [
+            "They replace alarms",
+            "They distract the operator and mask the real information; they are reserved for what requires attention",
+            "They reduce cost",
+            "They are essential"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 1,
+        "explication": {
+          "fr": "Les animations inutiles détournent l'attention ; une interface efficace garde le mouvement pour les situations anormales.",
+          "en": "Needless animations draw attention away; an effective interface keeps motion for abnormal situations."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une fréquence de lecture très élevée pour tous les tags d'un écran peut-elle poser problème ?",
+          "en": "Why can a very high read rate for all of a screen's tags be a problem?"
+        },
+        "choix": {
+          "fr": [
+            "Elle supprime les alarmes",
+            "Elle réduit la tension",
+            "Elle surcharge le réseau et l'automate, ralentit l'interface et peut dégrader la communication ; on adapte la fréquence à chaque donnée",
+            "Elle n'a aucun effet"
+          ],
+          "en": [
+            "It removes alarms",
+            "It reduces voltage",
+            "It overloads the network and controller, slows the interface, and can degrade communication; the rate is matched to each data point",
+            "It has no effect"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Lire des centaines de tags à très haute fréquence sature la communication ; les valeurs lentes (température) n'ont pas besoin du même rythme que les rapides.",
+          "en": "Reading hundreds of tags at very high frequency saturates communication; slow values (temperature) don't need the same rate as fast ones."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre un tag interne et un tag externe d'une interface opérateur ?",
+          "en": "What is the difference between an internal tag and an external tag of an operator interface?"
+        },
+        "choix": {
+          "fr": [
+            "Un tag externe est toujours plus lent",
+            "Un tag interne n'existe que dans l'interface (par exemple un état d'affichage) ; un tag externe est lié à une adresse de l'automate",
+            "Un tag interne est toujours lié à un capteur",
+            "Aucune"
+          ],
+          "en": [
+            "An external tag is always slower",
+            "An internal tag exists only in the interface (for example a display state); an external tag is linked to a controller address",
+            "An internal tag is always linked to a sensor",
+            "None"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les tags internes servent à la logique propre à l'interface (navigation, filtres) ; les tags externes lisent ou écrivent des données dans l'automate.",
+          "en": "Internal tags serve the interface's own logic (navigation, filters); external tags read or write data in the controller."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une interface limite une consigne de pression entre 20 et 80 psi. Pourquoi cette limite doit-elle aussi être validée dans l'automate ?",
+          "en": "An interface limits a pressure setpoint between 20 and 80 psi. Why must this limit also be validated in the controller?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que l'interface peut être contournée ou mal configurée, et l'automate doit protéger le procédé indépendamment",
+            "Parce que l'automate n'a pas de mémoire",
+            "Parce que les limites sont interdites dans l'interface",
+            "Cela n'est pas nécessaire"
+          ],
+          "en": [
+            "Because the interface can be bypassed or misconfigured, and the controller must protect the process independently",
+            "Because the controller has no memory",
+            "Because limits are prohibited in the interface",
+            "It isn't necessary"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une limite dans l'interface seulement n'empêche pas une écriture venant d'ailleurs (autre interface, outil de programmation) ; la validation finale doit se faire dans l'automate.",
+          "en": "A limit in the interface alone does not prevent a write coming from elsewhere (another interface, a programming tool); final validation must be done in the controller."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi configure-t-on une déconnexion automatique après une période d'inactivité sur l'interface ?",
+          "en": "Why is automatic logout configured after a period of inactivity on the interface?"
+        },
+        "choix": {
+          "fr": [
+            "Pour empêcher qu'une personne non autorisée utilise une session restée ouverte avec des droits élevés",
+            "Pour réduire le bruit",
+            "Pour économiser l'écran",
+            "Pour accélérer le réseau"
+          ],
+          "en": [
+            "To prevent an unauthorized person from using a session left open with elevated rights",
+            "To reduce noise",
+            "To save the screen",
+            "To speed up the network"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un niveau d'accès élevé laissé ouvert expose les réglages critiques ; la déconnexion automatique rétablit rapidement le niveau de base.",
+          "en": "A high access level left open exposes critical settings; automatic logout quickly restores the base level."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'intérêt d'un journal d'audit (audit trail) sur les modifications de consignes ?",
+          "en": "What is the value of an audit trail on setpoint changes?"
+        },
+        "choix": {
+          "fr": [
+            "Augmenter la vitesse",
+            "Réduire la mémoire",
+            "Aucun",
+            "Savoir qui a changé quelle valeur et quand, ce qui facilite l'analyse d'incidents et répond aux exigences de traçabilité"
+          ],
+          "en": [
+            "Increasing speed",
+            "Reducing memory",
+            "None",
+            "Knowing who changed which value and when, which helps incident analysis and meets traceability requirements"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le journal consigne chaque changement (utilisateur, ancienne et nouvelle valeur, heure) : indispensable pour retrouver l'origine d'un problème.",
+          "en": "The log records each change (user, old and new value, time): essential to trace the origin of a problem."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on une bande morte (deadband) pour l'enregistrement des données historiques d'un tag ?",
+          "en": "Why is a deadband used for recording a tag's historical data?"
+        },
+        "choix": {
+          "fr": [
+            "Pour effacer les données",
+            "Pour n'enregistrer une valeur que si elle change suffisamment, ce qui réduit le volume de données sans perdre l'information utile",
+            "Pour augmenter le bruit",
+            "Pour supprimer l'horodatage"
+          ],
+          "en": [
+            "To erase data",
+            "To record a value only if it changes enough, which reduces data volume without losing useful information",
+            "To increase noise",
+            "To remove the timestamp"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Enregistrer à chaque variation minime sature le stockage ; une bande morte conserve les changements significatifs.",
+          "en": "Recording every minor variation saturates storage; a deadband keeps the significant changes."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel avantage a une échelle fixe sur un graphique de tendance par rapport à une échelle automatique ?",
+          "en": "What advantage does a fixed scale on a trend chart have over an automatic scale?"
+        },
+        "choix": {
+          "fr": [
+            "Elle est toujours plus précise",
+            "Elle permet de comparer visuellement les variations dans le temps sans que l'échelle ne change à chaque rafraîchissement",
+            "Elle supprime les valeurs",
+            "Aucun"
+          ],
+          "en": [
+            "It is always more accurate",
+            "It allows visually comparing variations over time without the scale changing at every refresh",
+            "It removes values",
+            "None"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 1,
+        "explication": {
+          "fr": "Avec une échelle automatique, un petit bruit peut paraître énorme ; une échelle fixe donne une perception cohérente de l'amplitude.",
+          "en": "With an automatic scale, a small noise can look huge; a fixed scale gives a consistent perception of amplitude."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle taille minimale de zone tactile est recommandée pour des boutons manipulés avec des gants ?",
+          "en": "What minimum touch target size is recommended for buttons operated with gloves?"
+        },
+        "choix": {
+          "fr": [
+            "Le plus petit possible",
+            "Des boutons nettement plus grands que pour un usage au doigt nu (de l'ordre de 0,4 po ou plus de côté)",
+            "1/16 po",
+            "Aucune règle"
+          ],
+          "en": [
+            "As small as possible",
+            "Buttons clearly larger than for bare-finger use (on the order of 0.4 in. or more per side)",
+            "1/16 in.",
+            "No rule"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les gants réduisent la précision : des boutons trop petits provoquent des erreurs de sélection ; on privilégie de grandes surfaces bien espacées.",
+          "en": "Gloves reduce precision: buttons that are too small cause selection errors; large, well-spaced targets are favored."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle règle de navigation est généralement recommandée pour accéder à un écran important ?",
+          "en": "What navigation rule is generally recommended for reaching an important screen?"
+        },
+        "choix": {
+          "fr": [
+            "Autant de clics que nécessaire",
+            "Dix clics au minimum",
+            "Aucune navigation",
+            "Pouvoir l'atteindre en peu de clics (environ trois au maximum) à partir de n'importe quel écran"
+          ],
+          "en": [
+            "As many clicks as needed",
+            "Ten clicks at minimum",
+            "No navigation",
+            "Being able to reach it in few clicks (about three at most) from any screen"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une hiérarchie trop profonde ralentit l'opérateur en situation d'urgence : les écrans critiques doivent rester à quelques clics.",
+          "en": "A hierarchy that is too deep slows the operator in an emergency: critical screens must stay within a few clicks."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que devrait montrer en priorité l'écran d'accueil d'une interface de procédé ?",
+          "en": "What should the home screen of a process interface show first?"
+        },
+        "choix": {
+          "fr": [
+            "Un logo seulement",
+            "Un jeu",
+            "Le manuel complet",
+            "Une vue d'ensemble de l'état du procédé et des alarmes actives"
+          ],
+          "en": [
+            "A logo only",
+            "A game",
+            "The full manual",
+            "An overview of the process status and active alarms"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "L'opérateur doit voir en un coup d'œil l'état global et les alarmes qui exigent son attention.",
+          "en": "The operator must see the overall state and the alarms requiring attention at a glance."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quand la communication avec l'automate est perdue, que doit faire l'interface pour les valeurs affichées ?",
+          "en": "When communication with the controller is lost, what must the interface do with displayed values?"
+        },
+        "choix": {
+          "fr": [
+            "Redémarrer l'automate",
+            "Les mettre à zéro",
+            "Continuer d'afficher les dernières valeurs sans rien signaler",
+            "Signaler clairement que les valeurs ne sont plus valides (grisées, hachurées ou marquées) pour éviter de se fier à des données périmées"
+          ],
+          "en": [
+            "Restart the controller",
+            "Set them to zero",
+            "Keep showing the last values without signaling anything",
+            "Clearly signal that the values are no longer valid (grayed, hatched, or marked) to avoid relying on stale data"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Des valeurs figées qui semblent normales sont dangereuses : l'interface doit indiquer visuellement la perte de communication.",
+          "en": "Frozen values that look normal are dangerous: the interface must visually indicate the loss of communication."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi affiche-t-on toujours l'unité de mesure (psi, gpm, °F) à côté d'une valeur ?",
+          "en": "Why is the unit of measurement (psi, gpm, °F) always displayed next to a value?"
+        },
+        "choix": {
+          "fr": [
+            "Pour éviter les erreurs d'interprétation, surtout quand des valeurs de natures différentes se côtoient",
+            "Pour économiser des tags",
+            "Parce que c'est facultatif",
+            "Pour l'esthétique"
+          ],
+          "en": [
+            "To avoid misinterpretation, especially when values of different kinds sit side by side",
+            "To save tags",
+            "Because it is optional",
+            "For aesthetics"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Une valeur sans unité est ambiguë : l'unité évite les confusions, surtout lors d'interventions sous pression.",
+          "en": "A value without a unit is ambiguous: the unit avoids confusion, especially during interventions under pressure."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'avantage d'un mode de simulation hors ligne d'une interface opérateur ?",
+          "en": "What is the advantage of an offline simulation mode for an operator interface?"
+        },
+        "choix": {
+          "fr": [
+            "Augmenter la vitesse du procédé",
+            "Aucun",
+            "Tester l'ergonomie et la logique des écrans sans raccordement au procédé réel, avant le déploiement",
+            "Remplacer l'automate"
+          ],
+          "en": [
+            "Speeding up the process",
+            "None",
+            "Testing screen ergonomics and logic without connecting to the real process, before deployment",
+            "Replacing the controller"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "On valide navigation, alarmes et animations sur banc ; cela réduit les surprises à la mise en service.",
+          "en": "Navigation, alarms, and animations are validated on a bench; this reduces surprises at commissioning."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert le mode « kiosque » d'une interface opérateur sur PC industriel ?",
+          "en": "What is the \"kiosk\" mode of an operator interface on an industrial PC used for?"
+        },
+        "choix": {
+          "fr": [
+            "À désactiver le réseau",
+            "À augmenter la mémoire",
+            "À afficher des publicités",
+            "À verrouiller l'accès au système d'exploitation et aux autres applications, pour que seul le logiciel d'interface soit accessible"
+          ],
+          "en": [
+            "Disabling the network",
+            "Increasing memory",
+            "Showing advertisements",
+            "Locking access to the operating system and other applications, so only the interface software is accessible"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le mode kiosque empêche l'opérateur de quitter l'application ou d'accéder aux fichiers du système, ce qui réduit les risques d'erreurs et de cyberintrusions.",
+          "en": "Kiosk mode prevents the operator from leaving the application or accessing system files, which reduces the risk of errors and cyber intrusions."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel type d'écran tactile fonctionne généralement avec des gants épais ?",
+          "en": "What type of touchscreen generally works with thick gloves?"
+        },
+        "choix": {
+          "fr": [
+            "Capacitif seulement, toujours",
+            "Les écrans en verre trempé uniquement",
+            "Résistif (sensible à la pression), qui réagit à un contact même avec un gant ; les capacitifs exigent souvent des gants conducteurs",
+            "Aucun"
+          ],
+          "en": [
+            "Capacitive only, always",
+            "Tempered glass screens only",
+            "Resistive (pressure-sensitive), which responds to contact even with a glove; capacitive screens often require conductive gloves",
+            "None"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un écran résistif détecte la pression et fonctionne avec presque n'importe quel objet ; un écran capacitif détecte la conductivité du doigt.",
+          "en": "A resistive screen detects pressure and works with almost any object; a capacitive screen detects the finger's conductivity."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi vérifie-t-on la lisibilité d'un écran sous éclairage direct (soleil, éclairage intense) ?",
+          "en": "Why is a screen's readability checked under direct lighting (sun, intense lighting)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour économiser la pile",
+            "Aucune raison",
+            "Parce que des reflets ou un contraste insuffisant rendent l'information illisible, ce qui nuit à l'exploitation",
+            "Pour la décoration"
+          ],
+          "en": [
+            "To save the battery",
+            "No reason",
+            "Because glare or insufficient contrast makes the information unreadable, hindering operations",
+            "For decoration"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 1,
+        "explication": {
+          "fr": "Un écran lisible en laboratoire peut être inutilisable en plein jour : on choisit la luminosité et le contraste en fonction de l'environnement.",
+          "en": "A screen readable in the lab may be unusable in daylight: brightness and contrast are chosen according to the environment."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi teste-t-on une mise à jour du micrologiciel (firmware) d'une interface sur un banc d'essai avant de la déployer ?",
+          "en": "Why is an interface firmware update tested on a test bench before being deployed?"
+        },
+        "choix": {
+          "fr": [
+            "Cela n'est jamais nécessaire",
+            "Pour retarder le projet",
+            "Pour s'assurer qu'elle est compatible avec le projet existant et ne provoque pas de comportements imprévus en production",
+            "Parce que les mises à jour sont toujours risquées"
+          ],
+          "en": [
+            "It is never necessary",
+            "To delay the project",
+            "To make sure it is compatible with the existing project and does not cause unexpected behavior in production",
+            "Because updates are always risky"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une mise à jour peut changer le comportement de fonctions existantes ; la tester hors production évite les surprises.",
+          "en": "An update can change the behavior of existing functions; testing it outside production avoids surprises."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'un « faceplate » (fenêtre standard d'un équipement) sur une interface de procédé ?",
+          "en": "What is a \"faceplate\" (a piece of equipment's standard window) on a process interface?"
+        },
+        "choix": {
+          "fr": [
+            "Une fenêtre standardisée (commandes, états, alarmes) qui s'ouvre en cliquant sur un équipement tel qu'un moteur ou une vanne, identique pour tous les équipements du même type",
+            "Un câble",
+            "Une plaque de métal",
+            "Un type d'alarme"
+          ],
+          "en": [
+            "A standardized window (controls, states, alarms) that opens by clicking on equipment such as a motor or valve, identical for all equipment of the same type",
+            "A cable",
+            "A metal plate",
+            "A type of alarm"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un faceplate regroupe les informations et commandes d'un équipement dans une fenêtre uniforme ; l'opérateur retrouve la même présentation partout.",
+          "en": "A faceplate groups an equipment's information and controls in a uniform window; the operator finds the same presentation everywhere."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi affiche-t-on, pour une boucle de régulation, la mesure (PV), la consigne (SP), la sortie et le mode (automatique ou manuel) ensemble ?",
+          "en": "Why are a control loop's measurement (PV), setpoint (SP), output, and mode (automatic or manual) displayed together?"
+        },
+        "choix": {
+          "fr": [
+            "Pour permettre à l'opérateur de comprendre d'un coup d'œil l'état de la boucle et de détecter un écart ou un mode inattendu",
+            "Pour remplir l'écran",
+            "Pour supprimer les alarmes",
+            "Pour augmenter la vitesse"
+          ],
+          "en": [
+            "So the operator can understand the loop's state at a glance and spot a deviation or an unexpected mode",
+            "To fill the screen",
+            "To remove alarms",
+            "To increase speed"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Voir ensemble PV, SP, sortie et mode permet de repérer immédiatement une boucle en manuel, une sortie saturée ou un écart persistant.",
+          "en": "Seeing PV, SP, output, and mode together immediately reveals a loop in manual, a saturated output, or a persistent deviation."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi réserve-t-on une bannière permanente en haut de l'écran de l'interface ?",
+          "en": "Why is a permanent banner reserved at the top of the interface screen?"
+        },
+        "choix": {
+          "fr": [
+            "Pour garder en tout temps visibles les informations essentielles : alarmes actives, utilisateur et niveau d'accès, date et heure, navigation principale",
+            "Pour cacher des données",
+            "Pour la publicité",
+            "Pour remplacer les alarmes"
+          ],
+          "en": [
+            "To keep essential information visible at all times: active alarms, user and access level, date and time, main navigation",
+            "To hide data",
+            "For advertising",
+            "To replace alarms"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 1,
+        "explication": {
+          "fr": "Une zone fixe donne à l'opérateur des repères constants, quel que soit l'écran affiché.",
+          "en": "A fixed area gives the operator constant reference points, whatever the screen displayed."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Dans la hiérarchie d'écrans recommandée par ISA-101, que présente typiquement le niveau 1 ?",
+          "en": "In the screen hierarchy recommended by ISA-101, what does level 1 typically present?"
+        },
+        "choix": {
+          "fr": [
+            "Le journal d'audit",
+            "Une vue d'ensemble de l'unité ou du procédé complet, pour surveiller l'état général",
+            "Les procédures de maintenance",
+            "Les détails d'un instrument"
+          ],
+          "en": [
+            "The audit trail",
+            "An overview of the unit or the entire process, for monitoring the general state",
+            "Maintenance procedures",
+            "The details of an instrument"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les niveaux vont de la vue d'ensemble (niveau 1) aux commandes de zone (2), aux détails d'équipement (3) et aux diagnostics et aide (4).",
+          "en": "Levels range from the overview (level 1) to area controls (2), equipment details (3), and diagnostics and help (4)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment des indicateurs analogiques (barres avec plages cibles et seuils d'alarme) améliorent-ils la conscience de la situation par rapport à des nombres seuls ?",
+          "en": "How do analog indicators (bars with target ranges and alarm thresholds) improve situation awareness compared to numbers alone?"
+        },
+        "choix": {
+          "fr": [
+            "Ils n'apportent rien",
+            "Ils augmentent le nombre d'alarmes",
+            "Ils cachent la valeur exacte",
+            "Ils montrent d'un coup d'œil où se situe la valeur dans sa plage normale et sa marge avant l'alarme, ce qui révèle les tendances avant le déclenchement"
+          ],
+          "en": [
+            "They add nothing",
+            "They increase the number of alarms",
+            "They hide the exact value",
+            "They show at a glance where the value stands within its normal range and its margin before the alarm, revealing trends before the alarm triggers"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un nombre brut oblige à interpréter ; une barre avec zones et seuils rend l'écart à la normale visible immédiatement.",
+          "en": "A raw number forces interpretation; a bar with zones and thresholds makes the deviation from normal immediately visible."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi limite-t-on le nombre d'éléments affichés simultanément sur un écran de procédé ?",
+          "en": "Why is the number of elements displayed simultaneously on a process screen limited?"
+        },
+        "choix": {
+          "fr": [
+            "Pour limiter la charge cognitive de l'opérateur et permettre de repérer rapidement les informations importantes",
+            "Parce que l'écran est petit",
+            "Pour supprimer les alarmes",
+            "Pour économiser la mémoire seulement"
+          ],
+          "en": [
+            "To limit the operator's cognitive load and allow quickly spotting important information",
+            "Because the screen is small",
+            "To remove alarms",
+            "To save memory only"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un écran surchargé noie l'information utile ; on regroupe et on hiérarchise pour que l'important ressorte.",
+          "en": "An overloaded screen drowns the useful information; items are grouped and prioritized so the important stands out."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce que la rationalisation des alarmes ?",
+          "en": "What is alarm rationalization?"
+        },
+        "choix": {
+          "fr": [
+            "Réduire le nombre d'écrans",
+            "Un type de capteur",
+            "Un processus d'examen de chaque alarme : justification, conséquence si elle est ignorée, action de l'opérateur, temps de réponse et priorité",
+            "Supprimer toutes les alarmes"
+          ],
+          "en": [
+            "Reducing the number of screens",
+            "A type of sensor",
+            "A review process for each alarm: justification, consequence if ignored, operator action, response time, and priority",
+            "Removing all alarms"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "La rationalisation documente pour chaque alarme pourquoi elle existe, ce que l'opérateur doit faire et en combien de temps, avant de la configurer.",
+          "en": "Rationalization documents for each alarm why it exists, what the operator must do, and how quickly, before it is configured."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce que la mise en dérogation (shelving) d'une alarme, et quelle règle l'encadre ?",
+          "en": "What is shelving of an alarm, and what rule governs it?"
+        },
+        "choix": {
+          "fr": [
+            "Désactiver tout le système d'alarmes",
+            "Masquer temporairement une alarme pour une durée limitée, avec autorisation, motif consigné et retour automatique",
+            "Changer sa couleur",
+            "Supprimer définitivement l'alarme sans trace"
+          ],
+          "en": [
+            "Disabling the whole alarm system",
+            "Temporarily hiding an alarm for a limited time, with authorization, a recorded reason, and automatic return",
+            "Changing its color",
+            "Permanently deleting the alarm with no trace"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le shelving permet de mettre de côté une alarme gênante pendant un temps limité, sous contrôle ; il ne remplace pas la correction de la cause.",
+          "en": "Shelving lets a nuisance alarm be set aside for a limited time, under control; it does not replace fixing the cause."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'une alarme dépendante de l'état (suppression conditionnelle) ?",
+          "en": "What is a state-based alarm (conditional suppression)?"
+        },
+        "choix": {
+          "fr": [
+            "Une alarme sans seuil",
+            "Une alarme qui change de couleur",
+            "Une alarme qui est supprimée ou modifiée selon l'état du procédé (par exemple pas d'alarme de bas débit lorsque la pompe est arrêtée)",
+            "Une alarme toujours active"
+          ],
+          "en": [
+            "An alarm with no threshold",
+            "An alarm that changes color",
+            "An alarm that is suppressed or modified depending on the process state (for example no low-flow alarm when the pump is stopped)",
+            "An always-active alarm"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Sans suppression conditionnelle, un arrêt normal génère une cascade d'alarmes inutiles ; on les supprime selon l'état de marche.",
+          "en": "Without conditional suppression, a normal shutdown generates a cascade of useless alarms; they are suppressed according to the running state."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que sont les « mauvais acteurs » (bad actors) dans l'analyse des alarmes ?",
+          "en": "What are \"bad actors\" in alarm analysis?"
+        },
+        "choix": {
+          "fr": [
+            "Les alarmes critiques seulement",
+            "Les quelques alarmes qui se déclenchent le plus souvent et génèrent une grande part du volume total ; les corriger réduit fortement la charge",
+            "Les alarmes jamais déclenchées",
+            "Les opérateurs peu compétents"
+          ],
+          "en": [
+            "Critical alarms only",
+            "The few alarms that trigger most often and generate a large share of the total volume; correcting them sharply reduces the load",
+            "Alarms never triggered",
+            "Operators who are not very skilled"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une petite fraction des alarmes produit généralement la majorité des événements ; on les traite en priorité.",
+          "en": "A small fraction of alarms generally produces the majority of events; they are handled first."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel avantage important offre OPC UA par rapport aux anciennes versions d'OPC pour échanger des données industrielles ?",
+          "en": "What important advantage does OPC UA offer over earlier versions of OPC for exchanging industrial data?"
+        },
+        "choix": {
+          "fr": [
+            "Il est indépendant de la plateforme, intègre la sécurité (authentification, chiffrement) et décrit les données de façon structurée",
+            "Il est plus ancien",
+            "Il ne fonctionne que sous un seul système",
+            "Il remplace le câblage"
+          ],
+          "en": [
+            "It is platform-independent, integrates security (authentication, encryption), and describes data in a structured way",
+            "It is older",
+            "It only works on a single system",
+            "It replaces wiring"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "OPC UA fonctionne sur diverses plateformes, offre des mécanismes de sécurité intégrés et un modèle d'information structuré.",
+          "en": "OPC UA works on various platforms, offers built-in security mechanisms, and a structured information model."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le principe de MQTT, souvent utilisé pour envoyer des données industrielles vers un système en nuage ?",
+          "en": "What is the principle of MQTT, often used to send industrial data to a cloud system?"
+        },
+        "choix": {
+          "fr": [
+            "Un protocole léger de publication/abonnement : des appareils publient des messages sur des sujets, qu'un courtier distribue aux abonnés",
+            "Un protocole réservé aux imprimantes",
+            "Une connexion directe poste à poste sans serveur",
+            "Un format de fichier"
+          ],
+          "en": [
+            "A lightweight publish/subscribe protocol: devices publish messages on topics, which a broker distributes to subscribers",
+            "A protocol reserved for printers",
+            "A direct peer-to-peer connection with no server",
+            "A file format"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec MQTT, les producteurs publient sur des sujets et les consommateurs s'abonnent via un courtier ; le protocole est léger et adapté aux liaisons limitées.",
+          "en": "With MQTT, producers publish on topics and consumers subscribe through a broker; the protocol is lightweight and suited to constrained links."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une architecture de supervision peut-elle comporter des serveurs redondants ?",
+          "en": "Why can a supervisory architecture include redundant servers?"
+        },
+        "choix": {
+          "fr": [
+            "Pour doubler la tension",
+            "Pour supprimer les alarmes",
+            "Pour consommer plus d'énergie",
+            "Pour éviter qu'une panne de serveur n'interrompe la surveillance et la collecte de données du procédé"
+          ],
+          "en": [
+            "To double voltage",
+            "To remove alarms",
+            "To consume more energy",
+            "To keep a server failure from interrupting process monitoring and data collection"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un serveur de secours prend le relais automatiquement si le principal tombe, ce qui maintient la visibilité du procédé.",
+          "en": "A standby server takes over automatically if the primary fails, which maintains visibility of the process."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle pratique de cybersécurité s'applique au système d'exploitation d'un poste d'interface industriel ?",
+          "en": "What cybersecurity practice applies to the operating system of an industrial interface workstation?"
+        },
+        "choix": {
+          "fr": [
+            "Ne jamais le mettre à jour",
+            "Appliquer les correctifs selon un processus testé, désactiver les ports USB et services inutiles et restreindre les comptes",
+            "Laisser tous les services actifs",
+            "Désactiver le pare-feu"
+          ],
+          "en": [
+            "Never update it",
+            "Apply patches through a tested process, disable unnecessary USB ports and services, and restrict accounts",
+            "Leave all services active",
+            "Disable the firewall"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les postes industriels sont des cibles : on réduit la surface d'attaque, on applique les correctifs de façon contrôlée et on limite les supports amovibles.",
+          "en": "Industrial workstations are targets: the attack surface is reduced, patches are applied in a controlled way, and removable media are limited."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la bonne pratique pour l'accès à distance à une interface de procédé ?",
+          "en": "What is good practice for remote access to a process interface?"
+        },
+        "choix": {
+          "fr": [
+            "Désactiver tout journal",
+            "Passer par un VPN avec authentification multifacteur, avec des droits limités, plutôt que d'exposer le service directement",
+            "Utiliser un mot de passe simple",
+            "Exposer directement le port d'accès à Internet"
+          ],
+          "en": [
+            "Disable all logging",
+            "Go through a VPN with multifactor authentication, with limited rights, rather than exposing the service directly",
+            "Use a simple password",
+            "Expose the access port directly to the Internet"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'accès direct depuis Internet est très risqué ; un tunnel sécurisé avec authentification renforcée et des droits minimaux réduit les dangers.",
+          "en": "Direct access from the Internet is very risky; a secure tunnel with strong authentication and minimal rights reduces the dangers."
+        }
+      },
+      {
+        "question": {
+          "fr": "En quoi consiste le principe du moindre privilège pour les comptes d'une interface ?",
+          "en": "What does the principle of least privilege mean for interface accounts?"
+        },
+        "choix": {
+          "fr": [
+            "Donner à tous les droits d'administrateur",
+            "Donner à chaque utilisateur uniquement les droits dont il a besoin pour son travail, rien de plus",
+            "Supprimer les comptes",
+            "Donner les droits aux invités"
+          ],
+          "en": [
+            "Give everyone administrator rights",
+            "Give each user only the rights they need for their work, nothing more",
+            "Delete accounts",
+            "Give rights to guests"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Limiter les droits réduit l'impact d'une erreur ou d'une intrusion : un opérateur n'a pas besoin de modifier la programmation.",
+          "en": "Limiting rights reduces the impact of an error or an intrusion: an operator does not need to change the programming."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utiliser des comptes individuels plutôt qu'un compte partagé (« operateur ») ?",
+          "en": "Why use individual accounts rather than a shared account (\"operator\")?"
+        },
+        "choix": {
+          "fr": [
+            "Pour compliquer l'accès",
+            "Pour réduire le nombre de mots de passe",
+            "Cela n'a aucune importance",
+            "Pour la traçabilité : on peut attribuer chaque action à une personne dans le journal d'audit"
+          ],
+          "en": [
+            "To complicate access",
+            "To reduce the number of passwords",
+            "It doesn't matter",
+            "For traceability: each action can be attributed to a person in the audit trail"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec un compte partagé, impossible de savoir qui a fait quoi ; les comptes individuels garantissent la responsabilité et la conformité.",
+          "en": "With a shared account, it is impossible to know who did what; individual accounts ensure accountability and compliance."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi vaut-il mieux que l'horodatage d'un événement soit fait à la source (dans l'automate) plutôt que par l'interface à la réception ?",
+          "en": "Why is it better for an event's timestamp to be applied at the source (in the controller) rather than by the interface on reception?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que l'automate n'a pas d'horloge",
+            "Cela revient au même",
+            "Parce que l'interface n'a pas d'horloge",
+            "Parce que les délais de communication faussent l'heure réelle de l'événement : l'horodatage à la source est plus précis"
+          ],
+          "en": [
+            "Because the controller has no clock",
+            "It amounts to the same",
+            "Because the interface has no clock",
+            "Because communication delays skew the event's real time: timestamping at the source is more accurate"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Entre l'événement et sa réception, il y a des délais de communication ; marquer l'heure à la source préserve l'ordre exact des événements.",
+          "en": "Between the event and its reception there are communication delays; stamping the time at the source preserves the exact order of events."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que signifie la « qualité » associée à la valeur d'un tag (bonne, douteuse, mauvaise) ?",
+          "en": "What does the \"quality\" associated with a tag value (good, uncertain, bad) mean?"
+        },
+        "choix": {
+          "fr": [
+            "La date de création",
+            "La précision en décimales",
+            "La couleur du tag",
+            "Une information indiquant si la valeur est fiable (communication, capteur en défaut, valeur forcée...) ; une mauvaise qualité signale un problème"
+          ],
+          "en": [
+            "The creation date",
+            "Precision in decimals",
+            "The tag's color",
+            "Information indicating whether the value is reliable (communication, faulty sensor, forced value...); bad quality signals a problem"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le système associe à chaque valeur un indicateur de qualité : l'interface doit signaler visuellement une valeur de mauvaise qualité.",
+          "en": "The system associates each value with a quality indicator: the interface must visually flag a value of bad quality."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un signal 4-20 mA lu par l'automate tombe à 3,5 mA. Que doit afficher une interface bien conçue ?",
+          "en": "A 4-20 mA signal read by the controller drops to 3.5 mA. What should a well-designed interface display?"
+        },
+        "choix": {
+          "fr": [
+            "Un état de défaut de capteur ou de boucle ouverte (valeur invalide), et non une mesure plausible",
+            "Zéro sans signalement",
+            "Un arrêt de l'usine",
+            "La valeur calculée comme si elle était normale"
+          ],
+          "en": [
+            "A sensor-fault or open-loop state (invalid value), not a plausible measurement",
+            "Zero with no notice",
+            "A plant shutdown",
+            "The calculated value as if it were normal"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un courant sous 4 mA est anormal (fil coupé ou capteur en défaut) : l'interface doit signaler le défaut plutôt que présenter une fausse mesure.",
+          "en": "A current below 4 mA is abnormal (broken wire or faulty sensor): the interface must signal the fault rather than present a false measurement."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi valide-t-on les valeurs d'une recette (limites) et consigne-t-on son chargement ?",
+          "en": "Why are a recipe's values validated (limits) and its download recorded?"
+        },
+        "choix": {
+          "fr": [
+            "Pour augmenter la taille des fichiers",
+            "Pour ralentir l'opérateur",
+            "Pour éviter de charger des paramètres hors limites ou partiels, et garder la trace de ce qui a été chargé dans l'équipement",
+            "Parce que les recettes sont toujours exactes"
+          ],
+          "en": [
+            "To increase file size",
+            "To slow down the operator",
+            "To avoid downloading out-of-limit or partial parameters, and keep a trace of what was loaded into the equipment",
+            "Because recipes are always correct"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une recette erronée peut endommager un produit ou un équipement : on vérifie les limites, on confirme le chargement complet et on le consigne.",
+          "en": "A wrong recipe can damage a product or equipment: limits are checked, full download is confirmed, and it is recorded."
+        }
+      },
+      {
+        "question": {
+          "fr": "Deux interfaces écrivent la même consigne en même temps. Quel est le risque, et quelle est la bonne pratique de conception ?",
+          "en": "Two interfaces write the same setpoint at the same time. What is the risk, and what is the good design practice?"
+        },
+        "choix": {
+          "fr": [
+            "L'automate s'arrête toujours",
+            "Les deux écritures s'additionnent",
+            "Aucun risque",
+            "La dernière écriture écrase l'autre sans avertissement ; on définit une seule interface « maître » à la fois ou une règle de prise de contrôle claire"
+          ],
+          "en": [
+            "The controller always stops",
+            "The two writes add up",
+            "No risk",
+            "The last write overwrites the other without warning; a single \"master\" interface is defined at a time or a clear takeover rule"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Sans règle de prise de contrôle, deux opérateurs peuvent se contredire sans le savoir ; on désigne un maître ou on affiche qui a le contrôle.",
+          "en": "Without a takeover rule, two operators may contradict each other without knowing it; a master is designated or who has control is displayed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi sépare-t-on les environnements de développement, d'essai et de production d'un système de supervision, avec un contrôle des versions ?",
+          "en": "Why are development, test, and production environments of a supervisory system kept separate, with version control?"
+        },
+        "choix": {
+          "fr": [
+            "Pour augmenter les coûts",
+            "Pour supprimer les sauvegardes",
+            "Pour tester les changements sans risque pour le procédé en marche, et pouvoir retrouver ou restaurer une version précise",
+            "Parce que c'est obligatoire dans toutes les usines"
+          ],
+          "en": [
+            "To increase costs",
+            "To eliminate backups",
+            "To test changes without risk to the running process, and be able to find or restore a precise version",
+            "Because it is mandatory in all plants"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un changement testé hors production évite les arrêts imprévus, et le contrôle de version permet de savoir ce qui est déployé et de revenir en arrière.",
+          "en": "A change tested outside production avoids unplanned shutdowns, and version control makes it possible to know what is deployed and roll back."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi fait-on valider l'ergonomie des écrans par les opérateurs avant la mise en service (essai d'acceptation utilisateur) ?",
+          "en": "Why are screen ergonomics validated by operators before commissioning (user acceptance testing)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour réduire le coût du matériel",
+            "Ce n'est pas utile",
+            "Parce que ceux qui utiliseront l'interface tous les jours détectent les problèmes de lisibilité, de navigation et de logique qu'un concepteur ne voit pas",
+            "Pour retarder le projet"
+          ],
+          "en": [
+            "To reduce hardware cost",
+            "It isn't useful",
+            "Because those who will use the interface every day spot readability, navigation, and logic problems a designer does not see",
+            "To delay the project"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les opérateurs connaissent le procédé et ses contraintes : leurs commentaires améliorent concrètement l'usage de l'interface.",
+          "en": "Operators know the process and its constraints: their comments concretely improve the interface's use."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une interface bilingue doit-elle aussi prévoir l'espace nécessaire au texte dans les deux langues ?",
+          "en": "Why must a bilingual interface also provide the space needed for text in both languages?"
+        },
+        "choix": {
+          "fr": [
+            "Pour augmenter la taille des polices",
+            "Pour économiser la mémoire",
+            "Parce que le texte traduit est souvent plus long et peut déborder ou être tronqué si l'espace n'a pas été prévu",
+            "Parce que les langues n'ont pas de longueur"
+          ],
+          "en": [
+            "To increase font size",
+            "To save memory",
+            "Because translated text is often longer and may overflow or be truncated if space has not been planned",
+            "Because languages have no length"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le même libellé peut être nettement plus long dans une autre langue ; on prévoit les zones de texte pour éviter les coupures.",
+          "en": "The same label can be significantly longer in another language; text areas are planned to avoid cut-offs."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce que l'alarme de « première sortie » (first-out) dans un enchaînement d'alarmes ?",
+          "en": "What is the \"first-out\" alarm in an alarm sequence?"
+        },
+        "choix": {
+          "fr": [
+            "L'alarme qui s'est déclenchée en premier dans une séquence, souvent la cause initiale parmi toutes celles qui suivent en cascade",
+            "Une alarme désactivée",
+            "La dernière alarme déclenchée",
+            "Une alarme de sortie de l'usine"
+          ],
+          "en": [
+            "The alarm that triggered first in a sequence, often the initial cause among all those that follow in a cascade",
+            "A disabled alarm",
+            "The last alarm triggered",
+            "A plant exit alarm"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Lors d'un arrêt, des dizaines d'alarmes apparaissent ; l'indication « first-out » désigne la première, qui pointe généralement vers la cause.",
+          "en": "During a shutdown, dozens of alarms appear; the \"first-out\" indication designates the first, which generally points to the cause."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi affiche-t-on, pour un équipement qui ne démarre pas, la liste des conditions de démarrage (permissives) satisfaites ou non ?",
+          "en": "Why is the list of satisfied or unsatisfied start conditions (permissives) displayed for equipment that will not start?"
+        },
+        "choix": {
+          "fr": [
+            "Pour que l'opérateur voie tout de suite quelle condition bloque le démarrage au lieu de chercher dans le programme",
+            "Pour décorer",
+            "Pour augmenter la vitesse",
+            "Pour supprimer l'équipement"
+          ],
+          "en": [
+            "So the operator immediately sees which condition blocks the start, instead of searching the program",
+            "To decorate",
+            "To increase speed",
+            "To remove the equipment"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un écran de permissives indique quelle condition (niveau, vanne, défaut...) empêche la marche, ce qui accélère le diagnostic.",
+          "en": "A permissives screen shows which condition (level, valve, fault...) prevents running, which speeds up diagnosis."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi les consignes et valeurs critiques modifiées par l'opérateur exigent-elles parfois une double validation (saisie puis confirmation) ?",
+          "en": "Why do critical setpoints and values changed by the operator sometimes require double validation (entry, then confirmation)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour réduire le risque d'une erreur de saisie à fort impact, comme une consigne de pression incorrecte",
+            "Parce que la validation est obligatoire pour chaque valeur",
+            "Pour augmenter la durée du travail",
+            "Pour supprimer la sécurité"
+          ],
+          "en": [
+            "To reduce the risk of a high-impact entry error, such as an incorrect pressure setpoint",
+            "Because validation is mandatory for each value",
+            "To lengthen the work",
+            "To remove safety"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour les changements dont l'erreur coûterait cher, une étape de confirmation donne l'occasion de se corriger avant l'envoi à l'automate.",
+          "en": "For changes where an error would be costly, a confirmation step gives a chance to correct before sending to the controller."
         }
       }
     ]
@@ -6600,6 +18338,1310 @@ window.QUESTIONNAIRES = [
           "en": "Slow, high-inertia processes benefit from the D term's anticipatory effect."
         }
       }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Un régulateur a un temps intégral de 0,5 minute par répétition. Combien de répétitions par minute (taux de remise à zéro, reset rate) cela représente-t-il ?",
+          "en": "A controller has an integral time of 0.5 minute per repeat. How many repeats per minute (reset rate) does this represent?"
+        },
+        "choix": {
+          "fr": [
+            "4 répétitions par minute",
+            "2 répétitions par minute",
+            "1 répétition par minute",
+            "0,5 répétition par minute"
+          ],
+          "en": [
+            "4 repeats per minute",
+            "2 repeats per minute",
+            "1 repeat per minute",
+            "0.5 repeat per minute"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le taux de répétition est l'inverse du temps intégral : 1 / 0,5 = 2 répétitions par minute.",
+          "en": "The repeat rate is the inverse of the integral time: 1 / 0.5 = 2 repeats per minute."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un régulateur PI a un gain Kp = 2 et un temps intégral Ti = 10 s. Quel est le gain intégral Ki = Kp / Ti ?",
+          "en": "A PI controller has a gain Kp = 2 and an integral time Ti = 10 s. What is the integral gain Ki = Kp / Ti?"
+        },
+        "choix": {
+          "fr": [
+            "0,02 s⁻¹",
+            "20 s⁻¹",
+            "2 s⁻¹",
+            "0,2 s⁻¹"
+          ],
+          "en": [
+            "0.02 s⁻¹",
+            "20 s⁻¹",
+            "2 s⁻¹",
+            "0.2 s⁻¹"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Ki = Kp / Ti = 2 / 10 = 0,2 par seconde : plus Ti est petit, plus l'action intégrale est forte.",
+          "en": "Ki = Kp / Ti = 2 / 10 = 0.2 per second: the smaller Ti is, the stronger the integral action."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans la forme standard (ISA) d'un régulateur PID, sur quels termes le gain proportionnel Kp agit-il ?",
+          "en": "In the standard (ISA) form of a PID controller, which terms does the proportional gain Kp act on?"
+        },
+        "choix": {
+          "fr": [
+            "Sur les trois termes (proportionnel, intégral et dérivé), qui sont exprimés par rapport à Kp",
+            "Seulement sur le terme proportionnel",
+            "Sur aucun terme",
+            "Seulement sur l'intégrale"
+          ],
+          "en": [
+            "On all three terms (proportional, integral, and derivative), which are expressed relative to Kp",
+            "Only the proportional term",
+            "No term",
+            "Only the integral"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Dans la forme standard, Kp multiplie l'ensemble : changer Kp modifie donc aussi, proportionnellement, les actions intégrale et dérivée, contrairement à la forme parallèle.",
+          "en": "In the standard form, Kp multiplies the whole expression: changing Kp therefore also proportionally changes the integral and derivative actions, unlike the parallel form."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un temps mort (retard pur) important dans un procédé rend-il la régulation plus difficile ?",
+          "en": "Why does a significant dead time (pure delay) in a process make control harder?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'il augmente le gain du procédé",
+            "Parce qu'il supprime le bruit",
+            "Parce que le régulateur ne voit l'effet de son action qu'après un délai, ce qui limite le gain utilisable et favorise l'instabilité",
+            "Parce qu'il accélère la réponse"
+          ],
+          "en": [
+            "Because it increases process gain",
+            "Because it removes noise",
+            "Because the controller only sees the effect of its action after a delay, which limits the usable gain and promotes instability",
+            "Because it speeds up the response"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec un retard, la correction agit trop tard : un gain élevé provoque des oscillations, d'où un réglage plus lent et prudent.",
+          "en": "With a delay, the correction acts too late: a high gain causes oscillations, hence a slower and more cautious tuning."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour un procédé du premier ordre soumis à un échelon, quelle fraction de la variation finale est atteinte après une constante de temps ?",
+          "en": "For a first-order process subjected to a step, what fraction of the final change is reached after one time constant?"
+        },
+        "choix": {
+          "fr": [
+            "100 %",
+            "Environ 63 %",
+            "Environ 37 %",
+            "Environ 10 %"
+          ],
+          "en": [
+            "100%",
+            "About 63%",
+            "About 37%",
+            "About 10%"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Après une constante de temps, la réponse atteint environ 63,2 % de sa valeur finale ; après trois constantes, environ 95 %.",
+          "en": "After one time constant, the response reaches about 63.2% of its final value; after three constants, about 95%."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un échelon de 10 % sur la sortie du régulateur provoque une variation de 5 psi de la mesure. Quel est le gain du procédé ?",
+          "en": "A 10% step on the controller output causes a 5 psi change in the measurement. What is the process gain?"
+        },
+        "choix": {
+          "fr": [
+            "2 psi/%",
+            "50 psi/%",
+            "0,5 psi/%",
+            "5 psi/%"
+          ],
+          "en": [
+            "2 psi/%",
+            "50 psi/%",
+            "0.5 psi/%",
+            "5 psi/%"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Gain du procédé = variation de la mesure / variation de la sortie = 5 psi / 10 % = 0,5 psi par %.",
+          "en": "Process gain = change in measurement / change in output = 5 psi / 10% = 0.5 psi per %."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la démarche de la méthode de la courbe de réaction (réglage en boucle ouverte) ?",
+          "en": "What is the approach of the reaction curve method (open-loop tuning)?"
+        },
+        "choix": {
+          "fr": [
+            "Éteindre le procédé",
+            "Mettre le régulateur en manuel, faire un petit échelon de sortie et mesurer le retard et la constante de temps du procédé pour calculer les réglages",
+            "Régler au hasard",
+            "Augmenter le gain jusqu'à l'oscillation"
+          ],
+          "en": [
+            "Shut down the process",
+            "Put the controller in manual, make a small output step, and measure the process delay and time constant to calculate settings",
+            "Tune at random",
+            "Increase gain until oscillation"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "En boucle ouverte, on observe la réponse du procédé à un échelon pour en déduire gain, retard et constante de temps, puis les réglages.",
+          "en": "In open loop, the process's response to a step is observed to infer gain, delay, and time constant, then the settings."
+        }
+      },
+      {
+        "question": {
+          "fr": "Par la méthode de Ziegler-Nichols en boucle fermée, on trouve un gain critique Ku = 4 et une période d'oscillation Pu = 20 s. Quels réglages PI propose-t-elle (Kp = 0,45 Ku ; Ti = Pu / 1,2) ?",
+          "en": "By the closed-loop Ziegler-Nichols method, an ultimate gain Ku = 4 and an oscillation period Pu = 20 s are found. What PI settings does it suggest (Kp = 0.45 Ku; Ti = Pu / 1.2)?"
+        },
+        "choix": {
+          "fr": [
+            "Kp = 1,8 ; Ti ≈ 16,7 s",
+            "Kp = 4 ; Ti = 20 s",
+            "Kp = 2,4 ; Ti = 10 s",
+            "Kp = 0,9 ; Ti = 40 s"
+          ],
+          "en": [
+            "Kp = 1.8; Ti ≈ 16.7 s",
+            "Kp = 4; Ti = 20 s",
+            "Kp = 2.4; Ti = 10 s",
+            "Kp = 0.9; Ti = 40 s"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Kp = 0,45 × 4 = 1,8 ; Ti = 20 / 1,2 ≈ 16,7 s. Ces valeurs de départ sont généralement ensuite affinées.",
+          "en": "Kp = 0.45 × 4 = 1.8; Ti = 20 / 1.2 ≈ 16.7 s. These starting values are usually refined afterward."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quels réglages sont typiques pour une boucle de pression ou de débit rapide, comparés à une boucle de niveau ?",
+          "en": "What settings are typical for a fast pressure or flow loop, compared to a level loop?"
+        },
+        "choix": {
+          "fr": [
+            "Intégrale assez rapide (Ti court) et gain modéré pour les boucles rapides de pression ou de débit ; réglage plus lent pour le niveau",
+            "Dérivée très forte partout",
+            "Aucune différence",
+            "Aucune intégrale"
+          ],
+          "en": [
+            "Fairly fast integral (short Ti) and moderate gain for fast pressure or flow loops; slower tuning for level",
+            "Very strong derivative everywhere",
+            "No difference",
+            "No integral"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les boucles de pression et de débit réagissent vite et sont bruitées : un PI à Ti court et gain modéré convient ; le niveau est souvent réglé plus doucement.",
+          "en": "Pressure and flow loops react quickly and are noisy: a PI with short Ti and moderate gain suits; level is often tuned more gently."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une boucle de niveau sur un réservoir tampon peut-elle accepter un réglage à faible gain ?",
+          "en": "Why can a level loop on a surge tank accept a low-gain tuning?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le niveau n'a pas de capteur",
+            "Parce que le réservoir est vide",
+            "Parce que le niveau ne bouge jamais",
+            "Parce qu'on veut lisser le débit de sortie : on tolère une variation du niveau entre deux limites plutôt qu'une régulation stricte"
+          ],
+          "en": [
+            "Because the level has no sensor",
+            "Because the tank is empty",
+            "Because the level never moves",
+            "Because the goal is to smooth the outlet flow: a variation of the level between two limits is tolerated rather than strict regulation"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un réservoir tampon sert à amortir les variations de débit : un faible gain laisse le niveau varier et lisse le débit en aval.",
+          "en": "A surge tank is used to damp flow variations: a low gain lets the level vary and smooths downstream flow."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi le type de vanne de régulation (air pour ouvrir ou air pour fermer) influence-t-il la configuration du régulateur ?",
+          "en": "Why does the type of control valve (air-to-open or air-to-close) influence the controller's configuration?"
+        },
+        "choix": {
+          "fr": [
+            "Il n'a aucun effet",
+            "Parce que la position de sécurité et le sens d'action de la vanne déterminent si le régulateur doit être en action directe ou inverse",
+            "Parce qu'il change la couleur",
+            "Parce qu'il modifie la tension"
+          ],
+          "en": [
+            "It has no effect",
+            "Because the valve's fail position and action direction determine whether the controller must be direct or reverse acting",
+            "Because it changes color",
+            "Because it changes voltage"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Selon que la vanne s'ouvre ou se ferme quand le signal augmente, le sens d'action du régulateur doit être choisi pour que la correction aille dans la bonne direction.",
+          "en": "Depending on whether the valve opens or closes when the signal increases, the controller's action direction must be chosen so the correction goes in the right direction."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelles sont deux méthodes courantes de prévention du windup de l'intégrale ?",
+          "en": "What are two common methods for preventing integral windup?"
+        },
+        "choix": {
+          "fr": [
+            "Supprimer l'action proportionnelle",
+            "Le blocage de l'intégrale quand la sortie est saturée (clamping) et le recalcul par rétroaction (back-calculation)",
+            "Désactiver le capteur",
+            "Augmenter le bruit"
+          ],
+          "en": [
+            "Removing the proportional action",
+            "Clamping the integral when the output is saturated, and back-calculation",
+            "Disabling the sensor",
+            "Increasing noise"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "On empêche l'intégrale de continuer à s'accumuler quand la sortie est limitée, soit en la gelant, soit en la recalant à partir de la sortie réellement appliquée.",
+          "en": "The integral is prevented from continuing to accumulate when the output is limited, either by freezing it or by resetting it from the actually applied output."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi limite-t-on la sortie d'un PID qui commande un variateur de fréquence de pompe, par exemple entre 30 et 60 Hz ?",
+          "en": "Why is the output of a PID that controls a pump variable frequency drive limited, for example between 30 and 60 Hz?"
+        },
+        "choix": {
+          "fr": [
+            "Pour économiser du papier",
+            "Pour rester dans la plage de vitesse sûre de la pompe et du moteur, en évitant les très basses vitesses et la surcharge",
+            "Pour augmenter le bruit",
+            "Pour supprimer la mesure"
+          ],
+          "en": [
+            "To save paper",
+            "To stay within the safe speed range of the pump and motor, avoiding very low speeds and overload",
+            "To increase noise",
+            "To remove the measurement"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Les limites de sortie traduisent les contraintes de l'équipement : une fréquence minimale protège la lubrification et le refroidissement.",
+          "en": "Output limits reflect the equipment's constraints: a minimum frequency protects lubrication and cooling."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment fonctionne une régulation à deux positions (tout ou rien) avec hystérésis ?",
+          "en": "How does on-off control with hysteresis work?"
+        },
+        "choix": {
+          "fr": [
+            "Elle ajuste la sortie en continu",
+            "Elle utilise une dérivée",
+            "Elle n'a aucun seuil",
+            "La sortie s'active en dessous d'un seuil bas et se désactive au-dessus d'un seuil haut, avec une bande morte entre les deux"
+          ],
+          "en": [
+            "It adjusts the output continuously",
+            "It uses a derivative",
+            "It has no threshold",
+            "The output turns on below a low threshold and off above a high threshold, with a deadband between the two"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 1,
+        "explication": {
+          "fr": "Deux seuils distincts empêchent un cycle marche-arrêt rapide quand la mesure oscille autour d'une valeur unique.",
+          "en": "Two distinct thresholds prevent rapid on-off cycling when the measurement oscillates around a single value."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert une rampe de consigne ?",
+          "en": "What is a setpoint ramp used for?"
+        },
+        "choix": {
+          "fr": [
+            "À augmenter le bruit",
+            "À mesurer la température",
+            "À supprimer l'intégrale",
+            "À faire varier progressivement la consigne vers sa nouvelle valeur, ce qui évite les à-coups et le dépassement"
+          ],
+          "en": [
+            "Increasing noise",
+            "Measuring temperature",
+            "Removing the integral",
+            "Gradually moving the setpoint to its new value, which avoids jolts and overshoot"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un changement de consigne brutal sollicite fortement l'actionneur ; une rampe adoucit la transition.",
+          "en": "An abrupt setpoint change strongly stresses the actuator; a ramp softens the transition."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce que le « coup de dérivée » (derivative kick) et comment l'évite-t-on ?",
+          "en": "What is \"derivative kick\" and how is it avoided?"
+        },
+        "choix": {
+          "fr": [
+            "Une panne du capteur",
+            "Une alarme ; en l'acquittant",
+            "Un bruit de la pompe ; en la remplaçant",
+            "Une brusque pointe de la sortie quand la consigne change, causée par la dérivée de l'erreur ; on calcule la dérivée sur la mesure plutôt que sur l'erreur"
+          ],
+          "en": [
+            "A sensor failure",
+            "An alarm; by acknowledging it",
+            "A pump noise; by replacing it",
+            "A sudden spike in the output when the setpoint changes, caused by the derivative of the error; the derivative is computed on the measurement rather than on the error"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un échelon de consigne produit une dérivée très grande de l'erreur ; en dérivant la mesure seulement, on évite cette pointe.",
+          "en": "A setpoint step produces a very large derivative of the error; by differentiating only the measurement, this spike is avoided."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est l'inconvénient du filtrage d'une mesure bruitée pour un PID ?",
+          "en": "What is the drawback of filtering a noisy measurement for a PID?"
+        },
+        "choix": {
+          "fr": [
+            "Le filtre ajoute un retard à la mesure, qui peut dégrader la stabilité s'il est trop fort",
+            "Il augmente le bruit",
+            "Il supprime la consigne",
+            "Aucun"
+          ],
+          "en": [
+            "The filter adds a delay to the measurement, which can degrade stability if too strong",
+            "It increases noise",
+            "It removes the setpoint",
+            "None"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un filtre réduit le bruit, mais introduit un délai : trop de filtrage rend la régulation lente ou instable.",
+          "en": "A filter reduces noise but introduces a delay: too much filtering makes control slow or unstable."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence entre l'asservissement (suivi de consigne) et la régulation (rejet de perturbation) ?",
+          "en": "What is the difference between servo control (setpoint tracking) and regulatory control (disturbance rejection)?"
+        },
+        "choix": {
+          "fr": [
+            "L'asservissement n'existe qu'en manuel",
+            "Aucune",
+            "L'asservissement concerne la façon dont la mesure suit les changements de consigne ; la régulation concerne la capacité à corriger les perturbations de charge. Le réglage optimal peut différer",
+            "La régulation n'existe qu'en automatique"
+          ],
+          "en": [
+            "Servo control only exists in manual",
+            "None",
+            "Servo control concerns how the measurement follows setpoint changes; regulatory control concerns the ability to correct load disturbances. The optimal tuning may differ",
+            "Regulatory control only exists in automatic"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un réglage agressif peut bien rejeter les perturbations mais produire des dépassements aux changements de consigne ; on cherche un compromis.",
+          "en": "An aggressive tuning may reject disturbances well but produce overshoot on setpoint changes; a compromise is sought."
+        }
+      },
+      {
+        "question": {
+          "fr": "En quoi consiste l'anticipation (feedforward) ?",
+          "en": "What does feedforward consist of?"
+        },
+        "choix": {
+          "fr": [
+            "À inverser la sortie",
+            "À supprimer l'intégrale",
+            "À attendre l'écart avant d'agir",
+            "À mesurer une perturbation connue (par exemple un débit de soutirage) et à corriger la sortie avant que la mesure ne dévie"
+          ],
+          "en": [
+            "Reversing the output",
+            "Removing the integral",
+            "Waiting for the error before acting",
+            "Measuring a known disturbance (for example a draw-off flow) and correcting the output before the measurement deviates"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'anticipation agit sur la cause (la perturbation) plutôt que sur l'effet : elle réduit fortement l'écart, en complément du PID.",
+          "en": "Feedforward acts on the cause (the disturbance) rather than the effect: it greatly reduces the deviation, in addition to the PID."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi peut-on avoir besoin de programmer des réglages différents selon le point de fonctionnement (programmation de gain) ?",
+          "en": "Why might different settings need to be programmed depending on the operating point (gain scheduling)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour compliquer",
+            "Parce que la tension change",
+            "Parce que le gain du procédé varie avec les conditions (par exemple débit ou vitesse), et un seul réglage ne convient pas à toute la plage",
+            "Parce que le PID change de marque"
+          ],
+          "en": [
+            "To complicate things",
+            "Because voltage changes",
+            "Because the process gain varies with conditions (for example flow or speed), and a single tuning does not suit the whole range",
+            "Because the PID changes brand"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si le gain du procédé change beaucoup, un réglage adapté à un point peut être instable à un autre ; on change les paramètres selon la plage.",
+          "en": "If the process gain changes a lot, a tuning suited to one point may be unstable at another; parameters are changed according to the range."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'entend-on par amortissement au quart d'amplitude, un critère associé aux réglages de Ziegler-Nichols ?",
+          "en": "What is meant by quarter-amplitude damping, a criterion associated with Ziegler-Nichols settings?"
+        },
+        "choix": {
+          "fr": [
+            "Une réduction du bruit de 25 %",
+            "Une vitesse de 25 %",
+            "Une réponse où chaque oscillation a environ le quart de l'amplitude de la précédente",
+            "Une alarme"
+          ],
+          "en": [
+            "A 25% noise reduction",
+            "A speed of 25%",
+            "A response where each oscillation has about a quarter of the amplitude of the previous one",
+            "An alarm"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Ce critère donne une réponse rapide, mais assez oscillante ; on le tempère souvent pour obtenir un réglage plus doux.",
+          "en": "This criterion gives a fast but fairly oscillatory response; it is often softened to obtain a gentler tuning."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi le frottement d'une vanne (stiction), combiné à l'action intégrale, peut-il provoquer des oscillations soutenues autour de la consigne ?",
+          "en": "Why can valve friction (stiction), combined with integral action, cause sustained oscillations around the setpoint?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le capteur est faux",
+            "Il ne le peut pas",
+            "Parce que la vanne reste collée jusqu'à ce que la sortie accumule assez, puis saute, dépassant la cible ; le cycle recommence",
+            "Parce que la vanne est trop lisse"
+          ],
+          "en": [
+            "Because the sensor is wrong",
+            "It can't",
+            "Because the valve stays stuck until the output accumulates enough, then jumps, overshooting the target; the cycle starts again",
+            "Because the valve is too smooth"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "La vanne ne bouge qu'après avoir franchi un seuil de force ; l'intégrale accumule jusque-là, la vanne saute, et le phénomène se répète en cycle limite.",
+          "en": "The valve only moves after crossing a force threshold; the integral accumulates until then, the valve jumps, and the phenomenon repeats as a limit cycle."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment la qualité du capteur influence-t-elle la qualité de la régulation ?",
+          "en": "How does sensor quality influence control quality?"
+        },
+        "choix": {
+          "fr": [
+            "La résolution, le bruit et le retard du capteur limitent la précision et la stabilité atteignables, quel que soit le réglage",
+            "Elle réduit la tension",
+            "Elle n'a aucun effet",
+            "Seulement la couleur du capteur"
+          ],
+          "en": [
+            "The sensor's resolution, noise, and delay limit the attainable accuracy and stability, whatever the tuning",
+            "It reduces voltage",
+            "It has no effect",
+            "Only the sensor's color"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un régulateur ne peut pas faire mieux que l'information qu'il reçoit ; un capteur bruité ou lent impose des réglages plus doux.",
+          "en": "A controller cannot do better than the information it receives; a noisy or slow sensor calls for gentler tuning."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est une bonne façon d'évaluer le comportement d'une boucle après un réglage ?",
+          "en": "What is a good way to evaluate a loop's behavior after tuning?"
+        },
+        "choix": {
+          "fr": [
+            "Faire un petit échelon de consigne (par exemple 5 à 10 %) et observer le dépassement, le temps de montée et le temps d'établissement sur la courbe de tendance",
+            "Aucun essai",
+            "Arrêter le procédé",
+            "Demander au hasard"
+          ],
+          "en": [
+            "Make a small setpoint step (for example 5 to 10%) and observe overshoot, rise time, and settling time on the trend",
+            "No test",
+            "Shut down the process",
+            "Ask at random"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un petit échelon contrôlé met en évidence la réponse de la boucle sans risque pour le procédé.",
+          "en": "A small controlled step reveals the loop's response without risk to the process."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel effet a un temps dérivé (Td) trop élevé sur une boucle dont la mesure est bruitée ?",
+          "en": "What effect does too high a derivative time (Td) have on a loop with a noisy measurement?"
+        },
+        "choix": {
+          "fr": [
+            "Il amplifie le bruit de mesure et fait osciller la sortie de l'actionneur, au risque d'instabilité",
+            "Il augmente la précision",
+            "Il supprime le bruit",
+            "Il supprime l'erreur statique"
+          ],
+          "en": [
+            "It amplifies measurement noise and makes the actuator output oscillate, at the risk of instability",
+            "It increases accuracy",
+            "It removes noise",
+            "It removes steady-state error"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "L'action dérivée réagit à la vitesse de variation : un bruit rapide produit de grandes variations de la sortie, d'où l'usage prudent, voire l'absence de dérivée sur les signaux bruités.",
+          "en": "Derivative action reacts to the rate of change: fast noise produces large variations of the output, hence the cautious use, or even absence, of derivative on noisy signals."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Une boucle à action proportionnelle seule a un gain de boucle total K = Kc × Kprocédé = 6. Pour un échelon de consigne de 10 psi, quel est approximativement l'écart permanent (erreur statique) ?",
+          "en": "A proportional-only loop has a total loop gain K = Kc × Kprocess = 6. For a setpoint step of 10 psi, what is approximately the steady-state error (offset)?"
+        },
+        "choix": {
+          "fr": [
+            "10 psi",
+            "Environ 1,4 psi",
+            "3,3 psi",
+            "0,5 psi"
+          ],
+          "en": [
+            "10 psi",
+            "About 1.4 psi",
+            "3.3 psi",
+            "0.5 psi"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Pour un procédé stable régulé en P seul, écart permanent = changement de consigne / (1 + K) = 10 / 7 ≈ 1,4 psi : c'est l'écart que l'action intégrale élimine.",
+          "en": "For a stable process under P-only control, offset = setpoint change / (1 + K) = 10 / 7 ≈ 1.4 psi: this is the offset that integral action eliminates."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'indique une marge de gain d'environ 2 ou plus dans l'analyse de stabilité d'une boucle ?",
+          "en": "What does a gain margin of about 2 or more indicate in a loop's stability analysis?"
+        },
+        "choix": {
+          "fr": [
+            "Que la boucle est instable",
+            "Que la boucle est en manuel",
+            "Que le capteur est défectueux",
+            "Que le gain pourrait être doublé environ avant que la boucle n'atteigne la limite d'instabilité, ce qui donne une marge de sécurité"
+          ],
+          "en": [
+            "That the loop is unstable",
+            "That the loop is in manual",
+            "That the sensor is faulty",
+            "That the gain could be roughly doubled before the loop reaches the limit of instability, which gives a safety margin"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La marge de gain mesure de combien on peut multiplier le gain avant l'instabilité ; une valeur autour de 2 ou plus est couramment recherchée.",
+          "en": "Gain margin measures by how much the gain can be multiplied before instability; a value around 2 or more is commonly sought."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le principe du réglage « lambda » (IMC) ?",
+          "en": "What is the principle of \"lambda\" (IMC) tuning?"
+        },
+        "choix": {
+          "fr": [
+            "Choisir la constante de temps souhaitée en boucle fermée (lambda) et en déduire les réglages à partir du modèle du procédé, pour une réponse sans dépassement et robuste",
+            "Augmenter le gain au maximum",
+            "Régler au hasard",
+            "Supprimer l'intégrale"
+          ],
+          "en": [
+            "Choose the desired closed-loop time constant (lambda) and derive the settings from the process model, for a robust response with no overshoot",
+            "Increase gain to the maximum",
+            "Tune at random",
+            "Remove the integral"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le réglage lambda fixe la vitesse de réponse voulue ; plus lambda est grand, plus la boucle est lente et robuste.",
+          "en": "Lambda tuning sets the desired response speed; the larger lambda is, the slower and more robust the loop."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quand le temps mort du procédé est du même ordre ou plus grand que sa constante de temps, quelle approche est parfois envisagée en complément ou à la place d'un PID classique ?",
+          "en": "When the process dead time is of the same order as or larger than its time constant, what approach is sometimes considered in addition to or instead of a classic PID?"
+        },
+        "choix": {
+          "fr": [
+            "Doubler le gain du PID",
+            "Retirer le capteur",
+            "Un prédicteur de Smith ou une commande avec modèle, qui compense explicitement le retard",
+            "Supprimer la consigne"
+          ],
+          "en": [
+            "Doubling the PID gain",
+            "Removing the sensor",
+            "A Smith predictor or model-based control, which explicitly compensates for the delay",
+            "Removing the setpoint"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Avec un retard dominant, un PID classique doit être réglé très prudemment ; un prédicteur de Smith utilise un modèle pour compenser le délai.",
+          "en": "With a dominant delay, a classic PID must be tuned very cautiously; a Smith predictor uses a model to compensate for the delay."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle règle d'ordonnancement s'applique à une régulation en cascade ?",
+          "en": "What sequencing rule applies to cascade control?"
+        },
+        "choix": {
+          "fr": [
+            "Le maître se règle toujours en dernier sans importance",
+            "La boucle esclave (interne) doit être nettement plus rapide que la boucle maître (par exemple trois à cinq fois), et se règle en premier",
+            "Les deux boucles doivent être identiques",
+            "La boucle esclave doit être plus lente que le maître"
+          ],
+          "en": [
+            "The master is always tuned last with no importance",
+            "The slave (inner) loop must be notably faster than the master loop (for example three to five times), and is tuned first",
+            "Both loops must be identical",
+            "The slave loop must be slower than the master"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "La cascade fonctionne si l'esclave corrige vite les perturbations internes ; on règle d'abord l'esclave (maître en manuel), puis le maître.",
+          "en": "Cascade works if the slave quickly corrects inner disturbances; the slave is tuned first (master in manual), then the master."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans une cascade, que doit-il se produire lorsque la sortie de la boucle esclave est saturée ?",
+          "en": "In a cascade, what must happen when the slave loop's output is saturated?"
+        },
+        "choix": {
+          "fr": [
+            "L'esclave s'arrête",
+            "Le maître doublera sa sortie",
+            "Le maître doit en être informé (suivi ou anti-windup) pour qu'il cesse d'accumuler de l'intégrale en demandant davantage",
+            "Rien"
+          ],
+          "en": [
+            "The slave stops",
+            "The master will double its output",
+            "The master must be informed (tracking or anti-windup) so it stops accumulating integral by asking for more",
+            "Nothing"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si l'esclave ne peut plus suivre la demande, le maître continuerait de l'augmenter : le mécanisme de suivi évite le windup du maître.",
+          "en": "If the slave can no longer follow the demand, the master would keep increasing it: the tracking mechanism prevents master windup."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'une régulation de rapport (ratio control) ?",
+          "en": "What is ratio control?"
+        },
+        "choix": {
+          "fr": [
+            "Une régulation de niveau",
+            "Maintenir un rapport fixe entre deux débits, par exemple en mélange, en faisant suivre un débit à l'autre selon un rapport",
+            "Une alarme",
+            "Une régulation de température"
+          ],
+          "en": [
+            "Level control",
+            "Maintaining a fixed ratio between two flows, for example in blending, by making one flow follow the other according to a ratio",
+            "An alarm",
+            "Temperature control"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le débit principal est mesuré et l'autre débit est asservi à un multiple de celui-ci : utile pour les mélanges et la combustion.",
+          "en": "The main flow is measured and the other flow is slaved to a multiple of it: useful for blending and combustion."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'une régulation à étendue partagée (split-range) ?",
+          "en": "What is split-range control?"
+        },
+        "choix": {
+          "fr": [
+            "Une seule sortie de régulateur qui commande deux actionneurs en séquence (par exemple chauffage puis refroidissement) selon la plage du signal",
+            "Deux capteurs sur une même vanne",
+            "Une régulation sans sortie",
+            "Un type de capteur"
+          ],
+          "en": [
+            "A single controller output that commands two actuators in sequence (for example heating then cooling) according to the signal range",
+            "Two sensors on one valve",
+            "Control with no output",
+            "A type of sensor"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La sortie 0-100 % est partagée : par exemple 0-50 % pour le refroidissement et 50-100 % pour le chauffage.",
+          "en": "The 0-100% output is shared: for example 0-50% for cooling and 50-100% for heating."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'une régulation de dépassement (override, ou sélective) ?",
+          "en": "What is override (or selective) control?"
+        },
+        "choix": {
+          "fr": [
+            "Une structure où un second régulateur (par exemple limiteur de pression) prend le contrôle de la sortie lorsque sa variable approche une limite, avec un sélecteur haut ou bas",
+            "Un régulateur sans capteur",
+            "Une régulation interdite",
+            "Une alarme sonore"
+          ],
+          "en": [
+            "A structure where a second controller (for example a pressure limiter) takes control of the output when its variable approaches a limit, with a high or low selector",
+            "A controller with no sensor",
+            "Prohibited control",
+            "An audible alarm"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un sélecteur de signaux laisse prendre la sortie à celui des régulateurs dont la demande est la plus restrictive, pour protéger l'équipement.",
+          "en": "A signal selector lets the controller with the most restrictive demand take the output, to protect the equipment."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment fonctionne l'auto-réglage par relais (relay feedback) ?",
+          "en": "How does relay feedback auto-tuning work?"
+        },
+        "choix": {
+          "fr": [
+            "Il supprime le capteur",
+            "Il double la consigne",
+            "Il coupe le courant",
+            "Il remplace temporairement le PID par un relais qui provoque une oscillation contrôlée, dont l'amplitude et la période permettent d'estimer le gain et la période critiques"
+          ],
+          "en": [
+            "It removes the sensor",
+            "It doubles the setpoint",
+            "It cuts power",
+            "It temporarily replaces the PID with a relay that causes a controlled oscillation, whose amplitude and period allow estimating the ultimate gain and period"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le test par relais produit une oscillation entretenue sans amener le procédé à l'instabilité ; on en déduit Ku et Pu pour calculer les réglages.",
+          "en": "The relay test produces a sustained oscillation without driving the process to instability; Ku and Pu are deduced to calculate the settings."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une boucle oscille de façon soutenue. Comment distinguer une cause de réglage d'une cause mécanique (vanne) ?",
+          "en": "A loop oscillates continuously. How do you tell a tuning cause from a mechanical (valve) cause?"
+        },
+        "choix": {
+          "fr": [
+            "C'est impossible",
+            "Passer en mode manuel et garder la sortie fixe : si l'oscillation persiste, elle vient du procédé ou d'une perturbation ; si elle cesse, elle provient du réglage (ou d'un frottement de vanne avec l'intégrale)",
+            "Redémarrer l'usine",
+            "Changer la couleur de l'écran"
+          ],
+          "en": [
+            "It is impossible",
+            "Switch to manual mode and hold the output fixed: if the oscillation persists, it comes from the process or a disturbance; if it stops, it comes from the tuning (or valve friction with the integral)",
+            "Restart the plant",
+            "Change the screen color"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une oscillation qui persiste en manuel provient d'une perturbation extérieure ; si elle disparaît, elle est liée à la boucle fermée (réglage ou frottement de vanne).",
+          "en": "An oscillation that persists in manual comes from an outside disturbance; if it disappears, it is tied to the closed loop (tuning or valve friction)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pour une pompe commandée par variateur, pourquoi le gain du procédé (pression par pourcentage de vitesse) varie-t-il avec le point de fonctionnement ?",
+          "en": "For a pump controlled by a drive, why does process gain (pressure per percent speed) vary with the operating point?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que la tension change",
+            "Parce que la pression varie avec le carré de la vitesse : le gain est faible à basse vitesse et plus élevé à haute vitesse",
+            "Parce que la pompe change de marque",
+            "Il ne varie pas"
+          ],
+          "en": [
+            "Because voltage changes",
+            "Because pressure varies with the square of speed: gain is low at low speed and higher at high speed",
+            "Because the pump changes brand",
+            "It doesn't vary"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "La pression étant proportionnelle au carré de la vitesse, une même variation de vitesse produit un changement de pression plus grand à haute vitesse.",
+          "en": "Since pressure is proportional to the square of speed, the same speed change produces a larger pressure change at high speed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Comment choisit-on généralement la période d'échantillonnage d'un régulateur numérique par rapport à la dynamique de la boucle ?",
+          "en": "How is the sampling period of a digital controller generally chosen relative to the loop's dynamics?"
+        },
+        "choix": {
+          "fr": [
+            "Aussi longue que possible",
+            "Nettement plus courte que le temps de réponse de la boucle fermée (de l'ordre de un dixième à un vingtième), sans surcharger l'automate",
+            "Égale à une heure",
+            "Sans importance"
+          ],
+          "en": [
+            "As long as possible",
+            "Notably shorter than the closed-loop response time (on the order of one tenth to one twentieth), without overloading the controller",
+            "Equal to one hour",
+            "It doesn't matter"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un échantillonnage trop lent retarde la correction et déstabilise ; trop rapide, il charge inutilement l'automate et amplifie le bruit.",
+          "en": "Sampling that is too slow delays the correction and destabilizes; too fast, it needlessly loads the controller and amplifies noise."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la résolution limitée d'une entrée analogique (par exemple 12 bits) pose-t-elle un problème particulier à l'action dérivée ?",
+          "en": "Why does the limited resolution of an analog input (for example 12 bits) pose a particular problem for derivative action?"
+        },
+        "choix": {
+          "fr": [
+            "Elle n'en pose pas",
+            "Parce que la dérivée supprime les bits",
+            "Parce que la tension change",
+            "Parce que les échelons de quantification produisent des variations brusques d'une lecture à l'autre, que la dérivée amplifie"
+          ],
+          "en": [
+            "It doesn't",
+            "Because the derivative removes bits",
+            "Because voltage changes",
+            "Because quantization steps produce abrupt changes between readings, which the derivative amplifies"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La mesure varie par petits sauts : dérivée de ces sauts = pointes importantes de sortie ; un filtre ou une résolution plus fine atténue le problème.",
+          "en": "The measurement varies in small jumps: the derivative of those jumps produces large output spikes; a filter or finer resolution reduces the problem."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi place-t-on un filtre passe-bas analogique avant l'échantillonnage de la mesure (anticrénelage) ?",
+          "en": "Why is an analog low-pass filter placed before sampling the measurement (anti-aliasing)?"
+        },
+        "choix": {
+          "fr": [
+            "Pour augmenter la tension",
+            "Pour accélérer la scrutation",
+            "Pour supprimer la consigne",
+            "Pour éliminer les composantes haute fréquence qui, mal échantillonnées, apparaîtraient comme de fausses oscillations basse fréquence"
+          ],
+          "en": [
+            "To increase voltage",
+            "To speed up scanning",
+            "To remove the setpoint",
+            "To remove high-frequency components that, poorly sampled, would appear as false low-frequency oscillations"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si un bruit rapide est échantillonné trop lentement, il se replie dans les basses fréquences (repliement) et ressemble à une vraie oscillation ; le filtre l'élimine avant.",
+          "en": "If fast noise is sampled too slowly, it folds into low frequencies (aliasing) and looks like a real oscillation; the filter removes it beforehand."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un PID commande un variateur dont la vitesse minimale est de 30 Hz. La pression reste trop haute même à cette vitesse minimale. Que se passe-t-il pour le PID, et quelle est la solution ?",
+          "en": "A PID controls a drive whose minimum speed is 30 Hz. Pressure stays too high even at that minimum speed. What happens to the PID, and what is the solution?"
+        },
+        "choix": {
+          "fr": [
+            "Le PID double la consigne",
+            "Le PID passe automatiquement à 0 Hz",
+            "Rien",
+            "La sortie sature à la limite basse et le PID ne peut plus corriger ; il faut revoir le dimensionnement ou prévoir une autre action (arrêt de la pompe, vanne de décharge)"
+          ],
+          "en": [
+            "The PID doubles the setpoint",
+            "The PID automatically goes to 0 Hz",
+            "Nothing",
+            "The output saturates at the low limit and the PID can no longer correct; sizing must be reviewed or another action provided (stopping the pump, a relief valve)"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Quand l'actionneur est à sa limite, la boucle perd sa capacité de correction ; il faut prévoir une stratégie complémentaire (arrêt, bypass).",
+          "en": "When the actuator is at its limit, the loop loses its ability to correct; a complementary strategy (stop, bypass) must be provided."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que signifie qu'un régulateur esclave est en « mode cascade » plutôt qu'en mode automatique local ?",
+          "en": "What does it mean for a slave controller to be in \"cascade mode\" rather than local automatic mode?"
+        },
+        "choix": {
+          "fr": [
+            "Que sa consigne provient de la sortie du régulateur maître, au lieu d'être saisie par l'opérateur",
+            "Qu'il n'a plus de capteur",
+            "Que sa sortie est fixée à 100 %",
+            "Qu'il est arrêté"
+          ],
+          "en": [
+            "That its setpoint comes from the master controller's output, instead of being entered by the operator",
+            "That it no longer has a sensor",
+            "That its output is fixed at 100%",
+            "That it is stopped"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "En mode cascade, la consigne de l'esclave est la sortie du maître ; en mode automatique local, c'est l'opérateur qui la fixe. Le passage de l'un à l'autre doit se faire sans à-coup.",
+          "en": "In cascade mode, the slave's setpoint is the master's output; in local automatic mode, the operator sets it. Switching from one to the other must be done bumplessly."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce que la forme de vitesse (incrémentale) de l'algorithme PID numérique ?",
+          "en": "What is the velocity (incremental) form of the digital PID algorithm?"
+        },
+        "choix": {
+          "fr": [
+            "Un PID sans intégrale",
+            "Un PID plus rapide",
+            "Un algorithme qui calcule à chaque cycle la variation de la sortie, ajoutée à la sortie précédente, ce qui facilite la limitation de sortie et le transfert sans à-coup",
+            "Un PID sans capteur"
+          ],
+          "en": [
+            "A PID with no integral",
+            "A faster PID",
+            "An algorithm that computes at each cycle the change in output, added to the previous output, which eases output limiting and bumpless transfer",
+            "A PID with no sensor"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "La forme incrémentale calcule ΔU ; comme l'accumulation est faite dans la sortie, la limitation de la sortie évite naturellement le windup.",
+          "en": "The incremental form computes ΔU; since accumulation is done in the output, limiting the output naturally avoids windup."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une régulation de niveau « en moyenne » (averaging level control) utilise-t-elle un gain faible ?",
+          "en": "Why does an averaging level control use a low gain?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le niveau est constant",
+            "Pour supprimer le capteur",
+            "Pour provoquer des oscillations",
+            "Pour laisser le niveau varier librement entre ses limites, ce qui lisse le débit de sortie et protège les procédés en aval"
+          ],
+          "en": [
+            "Because the level is constant",
+            "To remove the sensor",
+            "To cause oscillations",
+            "To let the level vary freely between its limits, which smooths outlet flow and protects downstream processes"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Quand le but est d'amortir les variations de débit, on ne cherche pas à maintenir le niveau fixe ; un gain faible fait absorber les variations par le réservoir.",
+          "en": "When the goal is to damp flow variations, the level is not held fixed; a low gain makes the tank absorb the variations."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que mesure l'intégrale de l'erreur absolue (IAE) utilisée pour évaluer la performance d'une boucle ?",
+          "en": "What does the integral of absolute error (IAE), used to evaluate loop performance, measure?"
+        },
+        "choix": {
+          "fr": [
+            "La température moyenne",
+            "La vitesse du moteur",
+            "La somme, dans le temps, de la valeur absolue de l'écart entre la consigne et la mesure : plus elle est faible, meilleure est la régulation",
+            "Le nombre d'alarmes"
+          ],
+          "en": [
+            "Average temperature",
+            "Motor speed",
+            "The sum, over time, of the absolute value of the deviation between setpoint and measurement: the lower it is, the better the control",
+            "The number of alarms"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'IAE cumule l'écart absolu : elle permet de comparer objectivement deux réglages sur le même essai.",
+          "en": "IAE accumulates absolute deviation: it allows objectively comparing two tunings on the same test."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la régulation de température d'un échangeur de chaleur est-elle souvent plus difficile que celle d'un débit ?",
+          "en": "Why is heat exchanger temperature control often harder than flow control?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que le capteur est invisible",
+            "Parce que la température ne change jamais",
+            "Parce que le procédé présente de grands retards et une inertie thermique, et un gain qui varie avec le débit, ce qui limite la rapidité du réglage",
+            "Elle est toujours plus simple"
+          ],
+          "en": [
+            "Because the sensor is invisible",
+            "Because temperature never changes",
+            "Because the process has large delays and thermal inertia, and a gain that varies with flow, which limits how fast the tuning can be",
+            "It is always simpler"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les échangeurs ont une réponse lente avec temps mort et un gain dépendant du débit ; un réglage prudent ou une anticipation est souvent nécessaire.",
+          "en": "Exchangers have a slow response with dead time and a flow-dependent gain; cautious tuning or feedforward is often needed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi les boucles de régulation couplées (interactives) doivent-elles être réglées avec soin ?",
+          "en": "Why must coupled (interacting) control loops be tuned carefully?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'elles n'ont pas de capteur",
+            "Elles ne s'influencent jamais",
+            "Parce que l'action d'une boucle perturbe l'autre ; on règle généralement les boucles l'une après l'autre, en rendant l'une nettement plus lente que l'autre",
+            "Parce que cela réduit le bruit"
+          ],
+          "en": [
+            "Because they have no sensor",
+            "They never influence each other",
+            "Because the action of one loop disturbs the other; loops are generally tuned one after another, making one notably slower than the other",
+            "Because it reduces noise"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Quand deux boucles agissent sur des variables liées, des réglages agressifs peuvent les faire se combattre ; on les sépare en vitesse.",
+          "en": "When two loops act on related variables, aggressive tunings can make them fight each other; they are separated in speed."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi une boucle de régulation ne remplace-t-elle pas une fonction de sécurité ?",
+          "en": "Why does a control loop not replace a safety function?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'une boucle de régulation peut défaillir (capteur, vanne, logiciel) ; la protection contre les situations dangereuses doit être assurée par un système indépendant",
+            "Parce qu'elle est interdite",
+            "Parce qu'elle est trop rapide",
+            "Parce qu'elle n'a pas de consigne"
+          ],
+          "en": [
+            "Because a control loop can fail (sensor, valve, software); protection against dangerous situations must be provided by an independent system",
+            "Because it is prohibited",
+            "Because it is too fast",
+            "Because it has no setpoint"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La régulation vise la performance, pas la sécurité : un dispositif indépendant (arrêt de sécurité, soupape) protège le personnel et l'équipement.",
+          "en": "Control aims at performance, not safety: an independent device (safety shutdown, relief valve) protects personnel and equipment."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce que l'autorité d'une vanne de régulation, et pourquoi importe-t-elle ?",
+          "en": "What is a control valve's authority, and why does it matter?"
+        },
+        "choix": {
+          "fr": [
+            "Le rapport entre la perte de charge de la vanne grande ouverte et la perte de charge totale du circuit ; une autorité trop faible déforme la caractéristique de la vanne et rend la régulation difficile",
+            "La marque de la vanne",
+            "La couleur de la vanne",
+            "Le prix de la vanne"
+          ],
+          "en": [
+            "The ratio of the fully open valve's pressure drop to the circuit's total pressure drop; too low an authority distorts the valve's characteristic and makes control difficult",
+            "The valve's brand",
+            "The valve's color",
+            "The valve's price"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Si la vanne ne représente qu'une petite part de la perte de charge du circuit, ses variations d'ouverture ont peu d'effet sur le débit sur une grande partie de la course.",
+          "en": "If the valve accounts for only a small share of the circuit's pressure drop, its changes in opening have little effect on flow over much of its travel."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un temps intégral Ti beaucoup plus court que le temps mort du procédé est-il un mauvais choix ?",
+          "en": "Why is an integral time Ti much shorter than the process dead time a poor choice?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que l'intégrale accumule l'erreur pendant le retard avant que la correction ne fasse effet, ce qui provoque dépassements et oscillations",
+            "Parce qu'il augmente la précision du capteur",
+            "Parce qu'il supprime l'intégrale",
+            "Parce qu'il ralentit la boucle"
+          ],
+          "en": [
+            "Because the integral accumulates error during the delay before the correction takes effect, which causes overshoot and oscillations",
+            "Because it increases sensor accuracy",
+            "Because it removes the integral",
+            "Because it slows the loop"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Pendant le temps mort, l'effet de la correction n'est pas encore visible : une intégrale trop rapide continue d'accumuler et cause un fort dépassement ; Ti doit rester de l'ordre ou supérieur au retard.",
+          "en": "During the dead time, the effect of the correction is not yet visible: too fast an integral keeps accumulating and causes strong overshoot; Ti should stay of the order of, or greater than, the delay."
+        }
+      }
     ]
   },
   {
@@ -7258,6 +20300,1310 @@ window.QUESTIONNAIRES = [
         "explication": {
           "fr": "Le laitier non retiré entre les passes peut être emprisonné dans la passe suivante, créant une inclusion de laitier et empêchant une fusion complète.",
           "en": "Slag not removed between passes can become trapped in the next pass, creating a slag inclusion and preventing complete fusion."
+        }
+      }
+    ],
+    "questionsAvance": [
+      {
+        "question": {
+          "fr": "Dans la classification AWS d'un fil plein GMAW, la désignation ER70S-6 indique notamment :",
+          "en": "In the AWS classification of a solid GMAW wire, the designation ER70S-6 indicates notably:"
+        },
+        "choix": {
+          "fr": [
+            "Un fil sans aucun élément d'alliage",
+            "Un fil plein (Solid), résistance minimale 70 000 psi, avec une teneur en désoxydants (Si, Mn) plus élevée (variante 6), adaptée aux surfaces légèrement oxydées ou rouillées",
+            "Un fil réservé uniquement à l'aluminium",
+            "Un fil fourré avec laitier"
+          ],
+          "en": [
+            "A wire with no alloying elements at all",
+            "A solid wire (Solid), minimum strength 70,000 psi, with a higher deoxidizer content (Si, Mn) (the \"6\" variant), suited to slightly oxidized or rusty surfaces",
+            "A wire reserved only for aluminum",
+            "A flux-cored wire with slag"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "ER = électrode/tige, 70 = résistance minimale de 70 000 psi, S = fil plein (Solid). Le suffixe « 6 » indique une teneur plus élevée en désoxydants (silicium, manganèse), ce qui aide sur des surfaces un peu oxydées.",
+          "en": "ER = electrode/rod, 70 = minimum strength of 70,000 psi, S = solid wire (Solid). The \"6\" suffix indicates a higher content of deoxidizers (silicon, manganese), which helps on slightly oxidized surfaces."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la principale différence entre le FCAW auto-protégé (self-shielded, sans gaz) et le FCAW à gaz de protection (gas-shielded) ?",
+          "en": "What is the main difference between self-shielded FCAW (no gas) and gas-shielded FCAW?"
+        },
+        "choix": {
+          "fr": [
+            "Le FCAW auto-protégé n'utilise aucun flux, contrairement au FCAW à gaz",
+            "Il n'y a aucune différence pratique entre les deux",
+            "Le FCAW à gaz ne peut jamais être utilisé en chantier extérieur",
+            "Le FCAW auto-protégé génère sa propre protection à partir du flux interne du fil, sans gaz externe, ce qui le rend plus tolérant au vent extérieur"
+          ],
+          "en": [
+            "Self-shielded FCAW uses no flux at all, unlike gas-shielded FCAW",
+            "There is no practical difference between the two",
+            "Gas-shielded FCAW can never be used on an outdoor site",
+            "Self-shielded FCAW generates its own shielding from the wire's internal flux, with no external gas, making it more tolerant of outdoor wind"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le FCAW auto-protégé (self-shielded, souvent noté FCAW-S) tire sa protection du flux interne du fil sans gaz externe, ce qui le rend plus résistant au vent et adapté aux chantiers extérieurs ; le FCAW à gaz (FCAW-G) demande un gaz externe comme le CO2 ou un mélange argon/CO2.",
+          "en": "Self-shielded FCAW (often noted FCAW-S) draws its shielding from the wire's internal flux with no external gas, making it more wind-resistant and suited to outdoor sites; gas-shielded FCAW (FCAW-G) requires an external gas such as CO2 or an argon/CO2 mix."
+        }
+      },
+      {
+        "question": {
+          "fr": "Que représente le carbone équivalent (CE), calculé à partir de la composition chimique d'un acier ?",
+          "en": "What does the carbon equivalent (CE), calculated from a steel's chemical composition, represent?"
+        },
+        "choix": {
+          "fr": [
+            "Un indice combinant plusieurs éléments d'alliage (carbone, manganèse, chrome, etc.) pour estimer la trempabilité et le risque de fissuration à l'hydrogène, et déterminer le préchauffage requis",
+            "La quantité exacte de carbone pur présente dans l'acier",
+            "La température de fusion de l'acier",
+            "Le prix de l'acier par kilogramme"
+          ],
+          "en": [
+            "An index combining several alloying elements (carbon, manganese, chromium, etc.) to estimate hardenability and hydrogen cracking risk, and to determine the required preheat",
+            "The exact amount of pure carbon present in the steel",
+            "The steel's melting temperature",
+            "The price of the steel per kilogram"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le carbone équivalent (souvent calculé avec la formule de l'IIW) combine plusieurs éléments d'alliage en un seul indice ; plus le CE est élevé, plus le risque de fissuration à l'hydrogène et de dureté excessive dans la zone affectée thermiquement est grand, ce qui influence directement le préchauffage requis.",
+          "en": "Carbon equivalent (often calculated with the IIW formula) combines several alloying elements into a single index; the higher the CE, the greater the risk of hydrogen cracking and excessive hardness in the heat-affected zone, which directly influences the required preheat."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'un traitement thermique post-soudage (PWHT, post-weld heat treatment) ?",
+          "en": "What is post-weld heat treatment (PWHT)?"
+        },
+        "choix": {
+          "fr": [
+            "Un nettoyage à l'eau chaude après soudage",
+            "Une peinture appliquée à chaud",
+            "Un chauffage contrôlé de l'assemblage soudé après soudage, à une température et durée précises, pour réduire les contraintes résiduelles et améliorer certaines propriétés métallurgiques",
+            "Un contrôle visuel effectué immédiatement après le soudage"
+          ],
+          "en": [
+            "A hot-water cleaning performed after welding",
+            "A paint applied while hot",
+            "A controlled heating of the welded assembly after welding, at a precise temperature and duration, to reduce residual stresses and improve certain metallurgical properties",
+            "A visual inspection performed immediately after welding"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le PWHT consiste à chauffer l'assemblage soudé selon un cycle contrôlé (température, durée, vitesse de montée et de refroidissement) après la soudure, principalement pour réduire les contraintes résiduelles et, selon le matériau, améliorer la ductilité ou réduire la dureté.",
+          "en": "PWHT involves heating the welded assembly through a controlled cycle (temperature, duration, heating and cooling rates) after welding, mainly to reduce residual stresses and, depending on the material, improve ductility or reduce hardness."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans la désignation des positions de soudage pour les tuyaux, que signifie la position « 6G » ?",
+          "en": "In pipe welding position designations, what does the \"6G\" position mean?"
+        },
+        "choix": {
+          "fr": [
+            "Une position utilisée uniquement pour l'aluminium",
+            "Un tuyau fixe (non rotatif), incliné à 45°, considérée comme l'une des positions de qualification les plus exigeantes",
+            "Une position à plat seulement",
+            "Une position horizontale fixe, tuyau horizontal, non rotatif"
+          ],
+          "en": [
+            "A position used only for aluminum",
+            "A fixed (non-rotating) pipe inclined at 45°, considered one of the most demanding qualification positions",
+            "A flat position only",
+            "A fixed horizontal position, horizontal pipe, non-rotating"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "La position 6G (tuyau fixe incliné à 45°, non rotatif) est l'une des positions de qualification de soudeur les plus exigeantes, car elle combine plusieurs orientations de soudage (à plat, verticale, au plafond) dans un seul joint continu.",
+          "en": "The 6G position (fixed pipe inclined at 45°, non-rotating) is one of the most demanding welder qualification positions, since it combines several welding orientations (flat, vertical, overhead) within a single continuous joint."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans une WPS, que désigne une « variable essentielle » par opposition à une « variable non essentielle » ?",
+          "en": "In a WPS, what does an \"essential variable\" mean, as opposed to a \"nonessential variable\"?"
+        },
+        "choix": {
+          "fr": [
+            "Une variable qui ne concerne que le soudeur, jamais la procédure",
+            "Une variable qui concerne uniquement l'apparence esthétique du cordon",
+            "Une variable qui, si elle change au-delà d'une limite qualifiée, exige une nouvelle qualification de la procédure (PQR)",
+            "Une variable qui n'a jamais d'importance"
+          ],
+          "en": [
+            "A variable that only concerns the welder, never the procedure",
+            "A variable that only concerns the bead's aesthetic appearance",
+            "A variable that, if changed beyond a qualified limit, requires requalifying the procedure (new PQR)",
+            "A variable that never matters"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une variable essentielle (comme le procédé, le métal de base, l'épaisseur qualifiée, ou le type de courant) affecte les propriétés mécaniques de la soudure ; un changement au-delà de la plage qualifiée exige une nouvelle qualification (nouveau PQR). Une variable non essentielle peut être modifiée sans requalification, mais la WPS doit être mise à jour.",
+          "en": "An essential variable (such as the process, base metal, qualified thickness, or current type) affects the weld's mechanical properties; a change beyond the qualified range requires requalification (a new PQR). A nonessential variable can be changed without requalification, but the WPS must be updated."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce qu'un PQR (Procedure Qualification Record) ?",
+          "en": "What is a PQR (Procedure Qualification Record)?"
+        },
+        "choix": {
+          "fr": [
+            "Une liste de prix des électrodes",
+            "Le document qui enregistre les résultats réels des essais (traction, pliage, etc.) effectués sur une soudure d'essai, servant à démontrer qu'une WPS produit des propriétés mécaniques acceptables",
+            "Un type de machine à souder",
+            "Le certificat personnel d'un soudeur"
+          ],
+          "en": [
+            "A price list for electrodes",
+            "The document that records the actual test results (tensile, bend, etc.) performed on a test weld, used to demonstrate that a WPS produces acceptable mechanical properties",
+            "A type of welding machine",
+            "A welder's personal certificate"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le PQR documente les résultats des essais destructifs (traction, pliage, parfois résilience) effectués sur un coupon de soudure test, démontrant que les paramètres de la WPS proposée produisent des propriétés mécaniques conformes au code applicable.",
+          "en": "The PQR documents the results of destructive tests (tensile, bend, sometimes impact) performed on a test weld coupon, demonstrating that the proposed WPS parameters produce mechanical properties compliant with the applicable code."
+        }
+      },
+      {
+        "question": {
+          "fr": "Selon les règles typiques de qualification (comme celles d'ASME Section IX), une WPS qualifiée en soudant une plaque de 1 po d'épaisseur permet généralement de souder en production des épaisseurs :",
+          "en": "Under typical qualification rules (such as ASME Section IX), a WPS qualified by welding a 1 in. thick plate generally allows production welding of thicknesses:"
+        },
+        "choix": {
+          "fr": [
+            "Dans une plage déterminée par le code autour de l'épaisseur testée (habituellement un ratio minimal et maximal basé sur l'épaisseur du coupon qualifié)",
+            "Seulement exactement 1 po, aucune autre épaisseur",
+            "N'importe quelle épaisseur, sans aucune limite",
+            "Seulement des épaisseurs inférieures à 1/8 po"
+          ],
+          "en": [
+            "Within a range determined by the code around the tested thickness (usually a minimum and maximum ratio based on the qualified coupon's thickness)",
+            "Only exactly 1 in., no other thickness",
+            "Any thickness, with no limit",
+            "Only thicknesses under 1/8 in."
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les codes de qualification de procédure (comme ASME Section IX) définissent une plage d'épaisseurs de production qualifiées en fonction de l'épaisseur du coupon d'essai, généralement avec un facteur multiplicateur pour l'épaisseur maximale et un minimum proportionnel.",
+          "en": "Procedure qualification codes (such as ASME Section IX) define a range of qualified production thicknesses based on the test coupon's thickness, generally with a multiplying factor for the maximum thickness and a proportional minimum."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel essai est couramment utilisé pour qualifier un soudeur, en plus de l'inspection visuelle ?",
+          "en": "What test is commonly used to qualify a welder, in addition to visual inspection?"
+        },
+        "choix": {
+          "fr": [
+            "Un essai de pliage guidé (face, envers ou latéral) ou un essai radiographique du joint d'essai, selon le code applicable",
+            "Un essai de résistance à la corrosion saline",
+            "Un essai de dureté Rockwell uniquement",
+            "Un test de conductivité électrique du cordon"
+          ],
+          "en": [
+            "A guided bend test (face, root, or side) or a radiographic test of the test joint, depending on the applicable code",
+            "A salt-spray corrosion resistance test",
+            "A Rockwell hardness test only",
+            "An electrical conductivity test of the bead"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "La qualification d'un soudeur repose généralement sur l'inspection visuelle du joint d'essai, suivie d'un essai de pliage guidé (qui révèle les défauts internes en pliant l'éprouvette) ou d'un contrôle radiographique, selon les exigences du code.",
+          "en": "Welder qualification generally relies on visual inspection of the test joint, followed by a guided bend test (which reveals internal defects by bending the specimen) or a radiographic check, depending on the code's requirements."
+        }
+      },
+      {
+        "question": {
+          "fr": "Qu'est-ce que le soufflage magnétique de l'arc (arc blow), parfois rencontré en SMAW sur de l'acier ferromagnétique ?",
+          "en": "What is arc blow, sometimes encountered in SMAW on ferromagnetic steel?"
+        },
+        "choix": {
+          "fr": [
+            "Un type de gaz de protection",
+            "Une méthode de préchauffage",
+            "Un bruit normal de l'arc électrique",
+            "Une déviation de l'arc causée par des champs magnétiques résiduels dans la pièce, rendant le contrôle du bain de fusion difficile"
+          ],
+          "en": [
+            "A type of shielding gas",
+            "A preheating method",
+            "A normal sound of the electric arc",
+            "A deflection of the arc caused by residual magnetic fields in the workpiece, making it difficult to control the weld pool"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le soufflage d'arc est une déviation de l'arc électrique causée par des champs magnétiques résiduels (souvent dus au magnétisme rémanent de la pièce ou à la position des mises à la terre), rendant le dépôt du cordon difficile à contrôler ; des solutions incluent le changement de position de la masse ou la démagnétisation de la pièce.",
+          "en": "Arc blow is a deflection of the electric arc caused by residual magnetic fields (often due to the workpiece's remnant magnetism or ground clamp placement), making bead deposition hard to control; solutions include relocating the ground connection or demagnetizing the part."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lorsqu'on choisit un métal d'apport « sous-apparié » (undermatched) par rapport au métal de base, cela signifie que :",
+          "en": "When choosing an \"undermatched\" filler metal relative to the base metal, this means that:"
+        },
+        "choix": {
+          "fr": [
+            "Le métal d'apport a une résistance mécanique supérieure au métal de base",
+            "Le métal d'apport a une résistance mécanique inférieure à celle du métal de base, un choix parfois délibéré pour certains aciers à très haute résistance afin d'améliorer la ductilité du joint",
+            "Le métal d'apport est toujours interdit par les codes",
+            "Le métal d'apport n'a aucune résistance mécanique définie"
+          ],
+          "en": [
+            "The filler metal has a higher mechanical strength than the base metal",
+            "The filler metal has a lower mechanical strength than the base metal, a choice sometimes made deliberately on certain very high-strength steels to improve joint ductility",
+            "The filler metal is always prohibited by codes",
+            "The filler metal has no defined mechanical strength"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un métal d'apport sous-apparié a une résistance inférieure à celle du métal de base ; ce choix est parfois fait délibérément sur des aciers à très haute résistance pour améliorer la ductilité et réduire le risque de fissuration dans le joint, au prix d'une résistance du joint légèrement inférieure à celle du métal de base.",
+          "en": "An undermatched filler metal has lower strength than the base metal; this choice is sometimes made deliberately on very high-strength steels to improve ductility and reduce cracking risk in the joint, at the cost of a joint strength slightly below that of the base metal."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi certains codes exigent-ils d'attendre un délai (par exemple 24 à 48 heures) avant d'effectuer le contrôle final par ultrasons ou radiographie sur certains aciers soudés à haute résistance ?",
+          "en": "Why do some codes require waiting a delay (for example 24 to 48 hours) before performing final ultrasonic or radiographic inspection on certain high-strength welded steels?"
+        },
+        "choix": {
+          "fr": [
+            "Ce délai n'a aucune justification technique",
+            "Pour permettre à l'hydrogène diffusible de migrer hors du joint et laisser le temps à une éventuelle fissuration différée à l'hydrogène de se manifester avant l'inspection finale",
+            "Parce que l'équipement d'inspection doit refroidir",
+            "Pour laisser le temps à la peinture de sécher"
+          ],
+          "en": [
+            "This delay has no technical justification",
+            "To allow diffusible hydrogen to migrate out of the joint and allow time for any delayed hydrogen cracking to appear before final inspection",
+            "Because inspection equipment needs to cool down",
+            "To allow time for paint to dry"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "La fissuration à l'hydrogène peut apparaître plusieurs heures, voire jours, après le soudage, à mesure que l'hydrogène diffusible migre dans le joint. Attendre avant l'inspection finale permet de détecter ces défauts différés plutôt que de les manquer lors d'un contrôle trop hâtif.",
+          "en": "Hydrogen cracking can appear several hours or even days after welding, as diffusible hydrogen migrates within the joint. Waiting before final inspection allows these delayed defects to be detected rather than missed by too-early inspection."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel est le rôle d'un anneau de support (backing ring) ou d'une bande de support (backing strip) lors du soudage d'un joint bout à bout ?",
+          "en": "What is the role of a backing ring or backing strip when welding a butt joint?"
+        },
+        "choix": {
+          "fr": [
+            "Décorer la soudure",
+            "Soutenir et contenir le bain de fusion à la racine du joint, surtout en soudage sur un seul côté, pour assurer une pénétration complète sans affaissement excessif",
+            "Remplacer le besoin de métal d'apport",
+            "Réduire la température de préchauffage requise"
+          ],
+          "en": [
+            "To decorate the weld",
+            "To support and contain the weld pool at the joint root, especially when welding from one side only, ensuring full penetration without excessive sagging",
+            "To replace the need for filler metal",
+            "To reduce the required preheat temperature"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Un anneau ou une bande de support contient le bain de fusion à la racine, particulièrement utile quand on ne peut souder que d'un seul côté du joint, assurant une pénétration complète sans trou ni affaissement excessif.",
+          "en": "A backing ring or strip contains the weld pool at the root, particularly useful when only one side of the joint can be welded, ensuring full penetration without burn-through or excessive sagging."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi utilise-t-on un gaz de purge (comme l'argon) à l'intérieur d'un tuyau en acier inoxydable pendant le soudage de la racine ?",
+          "en": "Why is a purge gas (such as argon) used inside a stainless steel pipe during root welding?"
+        },
+        "choix": {
+          "fr": [
+            "Pour refroidir l'extérieur du tuyau",
+            "Pour remplacer le gaz de protection de la torche",
+            "Pour augmenter la vitesse de soudage",
+            "Pour empêcher l'oxydation (formation de calamine/sugaring) de la racine côté intérieur, qui ne peut pas être protégée directement par la torche"
+          ],
+          "en": [
+            "To cool the outside of the pipe",
+            "To replace the torch's shielding gas",
+            "To increase welding speed",
+            "To prevent oxidation (sugaring) of the root on the inside, which cannot be directly shielded by the torch"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le gaz de purge interne déplace l'air (et donc l'oxygène) à l'intérieur du tuyau pendant le soudage de la racine, empêchant l'oxydation sévère (sugaring) de l'envers du cordon, qui ne peut pas être protégée directement par le gaz de la torche.",
+          "en": "Internal purge gas displaces air (and thus oxygen) inside the pipe during root welding, preventing severe oxidation (sugaring) of the underside of the bead, which cannot be directly shielded by the torch's gas."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quel type de distorsion correspond à un raccourcissement global de la longueur d'un assemblage soudé, dans la direction de la ligne de soudure ?",
+          "en": "What type of distortion corresponds to an overall shortening of a welded assembly's length, along the direction of the weld line?"
+        },
+        "choix": {
+          "fr": [
+            "La distorsion angulaire",
+            "La distorsion transversale uniquement",
+            "Le gauchissement (buckling)",
+            "Le retrait longitudinal (longitudinal shrinkage)"
+          ],
+          "en": [
+            "Angular distortion",
+            "Transverse distortion only",
+            "Buckling",
+            "Longitudinal shrinkage"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le retrait longitudinal est un raccourcissement net le long de l'axe du cordon de soudure, causé par la contraction du métal déposé et de la zone affectée thermiquement en refroidissant.",
+          "en": "Longitudinal shrinkage is a net shortening along the axis of the weld bead, caused by the contraction of the deposited metal and the heat-affected zone as it cools."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle méthode de contrôle non destructif par ultrasons permet de détecter des défauts orientés perpendiculairement à la surface (comme un manque de fusion sur les parois d'un joint en V), que l'inspection par faisceau droit ne détecte pas bien ?",
+          "en": "Which ultrasonic testing method can detect defects oriented perpendicular to the surface (such as lack of fusion on the walls of a V-groove joint), which straight-beam inspection does not detect well?"
+        },
+        "choix": {
+          "fr": [
+            "Le ressuage",
+            "L'inspection visuelle seule",
+            "L'inspection par faisceau droit uniquement",
+            "L'inspection par faisceau d'angle (angle beam), qui envoie l'onde ultrasonore selon un angle pour intercepter les défauts verticaux ou inclinés"
+          ],
+          "en": [
+            "Liquid penetrant testing",
+            "Visual inspection alone",
+            "Straight-beam inspection only",
+            "Angle-beam inspection, which sends the ultrasonic wave at an angle to intercept vertical or inclined defects"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le faisceau droit (perpendiculaire à la surface) détecte bien les défauts parallèles à la surface, comme le dédoublement (lamination), mais rate souvent les défauts inclinés ou verticaux comme le manque de fusion sur les parois d'un chanfrein ; le faisceau d'angle est conçu pour ces orientations.",
+          "en": "Straight beam (perpendicular to the surface) detects defects parallel to the surface well, such as lamination, but often misses inclined or vertical defects like lack of fusion on a bevel's walls; angle beam is designed for these orientations."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un rapport de radiographie industrielle, la densité du film (optical density) mesurée doit se situer dans une plage précise définie par le code. Pourquoi cette exigence existe-t-elle ?",
+          "en": "In an industrial radiography report, the measured film density (optical density) must fall within a precise range defined by the code. Why does this requirement exist?"
+        },
+        "choix": {
+          "fr": [
+            "Pour garantir un contraste et une sensibilité suffisants afin que les discontinuités internes (porosité, inclusions, fissures) soient visibles et interprétables de façon fiable",
+            "Parce que le film coûte plus cher à une certaine densité",
+            "La densité du film n'a aucun rapport avec la qualité de l'interprétation",
+            "Pour des raisons purement esthétiques"
+          ],
+          "en": [
+            "To guarantee sufficient contrast and sensitivity so that internal discontinuities (porosity, inclusions, cracks) are visible and reliably interpretable",
+            "Because film costs more at a certain density",
+            "Film density has no bearing on interpretation quality",
+            "For purely aesthetic reasons"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une densité de film trop faible ou trop élevée réduit le contraste et la capacité à distinguer les discontinuités internes ; les codes (comme ASME ou API) spécifient une plage de densité acceptable pour garantir une interprétation fiable des radiographies.",
+          "en": "Film density that is too low or too high reduces contrast and the ability to distinguish internal discontinuities; codes (such as ASME or API) specify an acceptable density range to ensure reliable interpretation of radiographs."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la dureté est-elle souvent mesurée dans la zone affectée thermiquement (ZAT) après le soudage de certains aciers, en particulier pour des applications en milieu corrosif contenant du sulfure d'hydrogène (H2S) ?",
+          "en": "Why is hardness often measured in the heat-affected zone (HAZ) after welding certain steels, particularly for applications in corrosive environments containing hydrogen sulfide (H2S)?"
+        },
+        "choix": {
+          "fr": [
+            "La dureté n'a aucun lien avec la résistance à la corrosion",
+            "Pour vérifier la couleur du métal",
+            "Parce qu'une dureté excessive dans la ZAT augmente le risque de fissuration sous contrainte en présence de sulfures (sulfide stress cracking)",
+            "Pour calculer le poids de la pièce soudée"
+          ],
+          "en": [
+            "Hardness has no relation to corrosion resistance",
+            "To check the metal's color",
+            "Because excessive hardness in the HAZ increases the risk of sulfide stress cracking",
+            "To calculate the welded part's weight"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Dans les environnements contenant du H2S (services dits « sour »), une dureté excessive dans la zone affectée thermiquement augmente significativement le risque de fissuration sous contrainte par sulfures ; des limites de dureté maximale (souvent autour de 22 HRC) sont imposées par des normes comme NACE MR0175.",
+          "en": "In H2S-containing environments (so-called \"sour\" service), excessive hardness in the heat-affected zone significantly increases the risk of sulfide stress cracking; maximum hardness limits (often around 22 HRC) are imposed by standards such as NACE MR0175."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la différence principale entre un préchauffage et un maintien de la température d'interpasse pendant le soudage multi-passes d'un acier épais à haute résistance ?",
+          "en": "What is the main difference between preheat and maintaining interpass temperature during multi-pass welding of thick, high-strength steel?"
+        },
+        "choix": {
+          "fr": [
+            "La température d'interpasse concerne seulement le gaz de protection",
+            "Le préchauffage se fait uniquement après la dernière passe",
+            "Il n'y a aucune différence, ce sont des synonymes",
+            "Le préchauffage est appliqué avant la première passe ; le maintien de la température d'interpasse (dans une plage minimale et parfois maximale) est contrôlé tout au long du soudage, entre les passes successives"
+          ],
+          "en": [
+            "Interpass temperature only concerns the shielding gas",
+            "Preheat is only done after the last pass",
+            "There is no difference, they are synonyms",
+            "Preheat is applied before the first pass; maintaining interpass temperature (within a minimum, and sometimes maximum, range) is controlled throughout welding, between successive passes"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le préchauffage est appliqué avant que la première passe ne soit déposée ; une fois le soudage commencé, la température d'interpasse (souvent avec une limite minimale, parfois aussi une limite maximale pour certains aciers) doit être maintenue entre chaque passe subséquente jusqu'à la fin du joint.",
+          "en": "Preheat is applied before the first pass is deposited; once welding begins, interpass temperature (often with a minimum limit, sometimes also a maximum for certain steels) must be maintained between each subsequent pass until the joint is complete."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors de la réparation (remplacement) d'une section de cordon défectueuse identifiée par radiographie, quelle étape est essentielle avant de resouder ?",
+          "en": "When repairing (removing) a defective section of bead identified by radiography, what step is essential before rewelding?"
+        },
+        "choix": {
+          "fr": [
+            "Resouder immédiatement par-dessus le défaut sans autre préparation",
+            "Augmenter uniquement le courant de soudage sans enlever le défaut",
+            "Enlever complètement le métal défectueux par meulage ou gougeage jusqu'à obtenir du métal sain, avant de ressouder selon une procédure qualifiée pour la réparation",
+            "Appliquer seulement une couche de peinture sur le défaut"
+          ],
+          "en": [
+            "Reweld immediately over the defect with no other preparation",
+            "Only increase the welding current without removing the defect",
+            "Completely remove the defective metal by grinding or gouging down to sound metal, before rewelding per a qualified repair procedure",
+            "Apply only a coat of paint over the defect"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Il faut retirer complètement le métal défectueux (par meulage, gougeage à l'arc-air, etc.) jusqu'à atteindre du métal sain confirmé, avant de ressouder la cavité selon une procédure de réparation qualifiée (souvent avec des exigences de préchauffage et d'inspection supplémentaires).",
+          "en": "The defective metal must be completely removed (by grinding, air-arc gouging, etc.) down to confirmed sound metal, before rewelding the cavity per a qualified repair procedure (often with additional preheat and inspection requirements)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans le soudage de métaux dissemblables (par exemple, acier au carbone sur acier inoxydable), quel enjeu métallurgique particulier doit être pris en compte dans le choix du métal d'apport ?",
+          "en": "When welding dissimilar metals (for example, carbon steel to stainless steel), what particular metallurgical concern must be considered in selecting the filler metal?"
+        },
+        "choix": {
+          "fr": [
+            "Le métal d'apport doit toujours être identique à l'acier au carbone",
+            "La dilution n'affecte jamais la résistance à la corrosion du joint",
+            "La dilution du métal de base dans le métal d'apport peut modifier la composition chimique du cordon ; un métal d'apport sur-allié (comme un inox 309) est souvent choisi pour compenser cette dilution",
+            "Aucun enjeu particulier, n'importe quel métal d'apport convient"
+          ],
+          "en": [
+            "The filler metal must always be identical to the carbon steel",
+            "Dilution never affects the joint's corrosion resistance",
+            "Dilution of the base metal into the filler metal can change the bead's chemical composition; an overalloyed filler metal (such as 309 stainless) is often chosen to compensate for this dilution",
+            "No particular concern, any filler metal works"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "La dilution du métal de base moins allié dans le cordon peut réduire la teneur en éléments d'alliage du dépôt final ; on choisit souvent un métal d'apport sur-allié (comme un acier inoxydable 309, riche en chrome et nickel) pour compenser cette dilution et maintenir les propriétés voulues, notamment la résistance à la corrosion.",
+          "en": "Dilution of the less-alloyed base metal into the bead can reduce the final deposit's alloying content; an overalloyed filler metal (such as 309 stainless steel, rich in chromium and nickel) is often chosen to compensate for this dilution and maintain desired properties, especially corrosion resistance."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi le rechargement dur (hardfacing) est-il appliqué par soudage sur certaines pièces industrielles, comme des vis de convoyeur ou des lames ?",
+          "en": "Why is hardfacing applied by welding to certain industrial parts, such as conveyor screws or blades?"
+        },
+        "choix": {
+          "fr": [
+            "Pour isoler électriquement la pièce",
+            "Pour améliorer l'apparence esthétique uniquement",
+            "Pour déposer une couche de métal résistante à l'usure, à l'abrasion ou à l'impact sur la surface d'une pièce, prolongeant sa durée de vie sans avoir à la fabriquer entièrement dans ce matériau coûteux",
+            "Pour réduire le poids total de la pièce"
+          ],
+          "en": [
+            "To electrically insulate the part",
+            "Only to improve aesthetic appearance",
+            "To deposit a layer of metal resistant to wear, abrasion, or impact on a part's surface, extending its life without having to manufacture the entire part from that costly material",
+            "To reduce the part's total weight"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 2,
+        "explication": {
+          "fr": "Le rechargement dur dépose une couche de métal résistant à l'usure (souvent un alliage dur à base de chrome, de carbures, etc.) seulement sur les surfaces exposées à l'abrasion ou à l'impact, ce qui est beaucoup plus économique que de fabriquer toute la pièce dans ce matériau.",
+          "en": "Hardfacing deposits a wear-resistant metal layer (often a hard alloy based on chromium, carbides, etc.) only on surfaces exposed to abrasion or impact, which is much more economical than manufacturing the entire part from that material."
+        }
+      },
+      {
+        "question": {
+          "fr": "Quelle est la cause la plus fréquente de fissuration à froid (délayed cracking) sous le cordon de soudure, après refroidissement complet, sur un acier à carbone équivalent élevé ?",
+          "en": "What is the most frequent cause of delayed (cold) cracking under the weld bead, after complete cooling, on a steel with high carbon equivalent?"
+        },
+        "choix": {
+          "fr": [
+            "Une combinaison d'hydrogène diffusible dans le joint, d'une structure martensitique dure dans la zone affectée thermiquement, et de contraintes résiduelles de retrait",
+            "Un mauvais choix de couleur du fil électrode",
+            "Un excès de gaz de protection",
+            "Une vitesse de soudage trop lente uniquement"
+          ],
+          "en": [
+            "A combination of diffusible hydrogen in the joint, a hard martensitic structure in the heat-affected zone, and residual shrinkage stresses",
+            "A poor choice of electrode wire color",
+            "Excess shielding gas",
+            "Too slow a welding speed only"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La fissuration à froid résulte typiquement de trois facteurs combinés : la présence d'hydrogène diffusible (provenant de l'humidité ou de la contamination), une microstructure dure et fragile (souvent martensitique) dans la zone affectée thermiquement d'un acier à CE élevé, et des contraintes résiduelles de retrait suffisantes pour initier la fissure.",
+          "en": "Cold cracking typically results from three combined factors: the presence of diffusible hydrogen (from moisture or contamination), a hard, brittle microstructure (often martensitic) in the heat-affected zone of a high-CE steel, and residual shrinkage stresses sufficient to initiate the crack."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un contexte de fabrication sous code (comme ASME ou CSA W47.1), qu'est-ce qu'un « livre de procédures de soudage » (welding procedure book) typique doit contenir pour chaque type de joint utilisé en production ?",
+          "en": "In a code-fabrication context (such as ASME or CSA W47.1), what must a typical welding procedure book contain for each joint type used in production?"
+        },
+        "choix": {
+          "fr": [
+            "La WPS qualifiée correspondante (ou une WPS couverte par un PQR applicable), avec toutes les variables essentielles et les plages qualifiées",
+            "Seulement les noms des soudeurs",
+            "Uniquement le prix des matériaux",
+            "Rien de particulier, c'est un document facultatif"
+          ],
+          "en": [
+            "The corresponding qualified WPS (or a WPS covered by an applicable PQR), with all essential variables and qualified ranges",
+            "Only the welders' names",
+            "Only material prices",
+            "Nothing in particular, it is an optional document"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Pour chaque type de joint utilisé en production sous un code de fabrication, l'atelier doit disposer d'une WPS qualifiée (appuyée par un PQR), précisant toutes les variables essentielles et leur plage qualifiée, que les soudeurs doivent suivre.",
+          "en": "For each joint type used in production under a fabrication code, the shop must have a qualified WPS (supported by a PQR), specifying all essential variables and their qualified range, which welders must follow."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans le soudage multi-passes d'un joint épais, que désigne la « séquence en cascade » (cascade sequence) ?",
+          "en": "In multi-pass welding of a thick joint, what does the \"cascade sequence\" refer to?"
+        },
+        "choix": {
+          "fr": [
+            "Diviser le joint en plusieurs courtes sections et compléter chaque section sur toute son épaisseur avant de passer à la section suivante, en chevauchant légèrement",
+            "Souder uniquement la dernière passe en premier",
+            "Souder toutes les passes sur toute la longueur du joint, une à la fois, de bout en bout",
+            "Une méthode réservée exclusivement au TIG"
+          ],
+          "en": [
+            "Dividing the joint into several short sections and completing each section through its full thickness before moving to the next, with slight overlap",
+            "Welding only the last pass first",
+            "Welding all passes along the joint's full length, one at a time, end to end",
+            "A method reserved exclusively for TIG"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "La séquence en cascade divise un long joint épais en courtes sections, chacune complétée sur toute son épaisseur avant de passer à la section suivante (avec un léger chevauchement), ce qui aide à répartir la chaleur et à réduire la distorsion comparé à souder chaque passe sur toute la longueur.",
+          "en": "The cascade sequence divides a long, thick joint into short sections, each completed through its full thickness before moving to the next section (with slight overlap), which helps distribute heat and reduce distortion compared to welding each pass along the full length."
+        }
+      }
+    ],
+    "questionsExpert": [
+      {
+        "question": {
+          "fr": "Un cordon de soudure sur un acier à haute résistance montre, 3 jours après le soudage, de fines fissures sous le cordon détectées par magnétoscopie, absentes lors de l'inspection visuelle initiale. Quelle est l'explication la plus probable ?",
+          "en": "A weld bead on high-strength steel shows, 3 days after welding, fine underbead cracks detected by magnetic particle testing, absent during the initial visual inspection. What is the most likely explanation?"
+        },
+        "choix": {
+          "fr": [
+            "Une erreur de calibration de l'appareil de magnétoscopie",
+            "Une fissuration différée à l'hydrogène (underbead cracking), causée par la diffusion lente de l'hydrogène combinée à une microstructure dure et des contraintes résiduelles",
+            "Un simple défaut esthétique sans conséquence",
+            "Une porosité normale du procédé"
+          ],
+          "en": [
+            "A calibration error in the magnetic particle equipment",
+            "Delayed hydrogen cracking (underbead cracking), caused by slow hydrogen diffusion combined with a hard microstructure and residual stresses",
+            "A simple cosmetic defect with no consequence",
+            "Normal process porosity"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'apparition retardée de fissures sous le cordon, plusieurs heures ou jours après le soudage, est la signature classique de la fissuration différée à l'hydrogène : l'hydrogène diffusible migre lentement vers les zones de concentration de contraintes et de dureté élevée (souvent la zone affectée thermiquement), où il fragilise le métal jusqu'à l'amorce de fissures.",
+          "en": "The delayed appearance of cracks under the bead, hours or days after welding, is the classic signature of delayed hydrogen cracking: diffusible hydrogen slowly migrates to zones of stress concentration and high hardness (often the heat-affected zone), where it embrittles the metal until cracks initiate."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors de l'analyse d'un bris en service d'une soudure, la surface de rupture montre des marques de plage (beach marks) concentriques et une zone de rupture finale plus rugueuse. Quel mode de défaillance ce type de faciès indique-t-il généralement ?",
+          "en": "When analyzing an in-service weld failure, the fracture surface shows concentric beach marks and a rougher final fracture zone. What failure mode does this type of fracture surface generally indicate?"
+        },
+        "choix": {
+          "fr": [
+            "Une rupture fragile instantanée sous charge statique unique",
+            "Un défaut de couleur du métal d'apport",
+            "Une corrosion uniforme généralisée",
+            "Une fatigue mécanique, avec propagation progressive d'une fissure sous chargement cyclique avant la rupture finale"
+          ],
+          "en": [
+            "An instantaneous brittle fracture under a single static load",
+            "A color defect in the filler metal",
+            "Generalized uniform corrosion",
+            "Mechanical fatigue, with progressive crack growth under cyclic loading before final fracture"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les marques de plage concentriques sont caractéristiques d'une rupture par fatigue : elles représentent la progression par à-coups d'une fissure sous chargement cyclique, jusqu'à ce que la section restante soit trop réduite pour supporter la charge, menant à une rupture finale plus rugueuse (souvent ductile ou fragile selon le matériau).",
+          "en": "Concentric beach marks are characteristic of a fatigue fracture: they represent the stepwise progression of a crack under cyclic loading, until the remaining section becomes too small to support the load, leading to a rougher final fracture (often ductile or brittle depending on the material)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Une WPS qualifiée en position 1G (à plat) seulement est-elle automatiquement valide pour souder en production dans toutes les positions (2G, 3G, 4G) ?",
+          "en": "Is a WPS qualified in the 1G (flat) position only automatically valid for production welding in all positions (2G, 3G, 4G)?"
+        },
+        "choix": {
+          "fr": [
+            "Non : la position de qualification est généralement une variable essentielle (ou du moins contrôlée) qui limite les positions de production autorisées, sauf qualification additionnelle ou disposition particulière du code pour certains procédés",
+            "Oui, toujours, la position n'est jamais une variable essentielle",
+            "Non, aucune WPS ne peut jamais couvrir plus d'une position, peu importe le procédé",
+            "Oui, mais seulement pour le TIG"
+          ],
+          "en": [
+            "No: the qualified position is generally an essential (or at least controlled) variable that limits authorized production positions, unless additional qualification or a specific code provision applies for certain processes",
+            "Yes, always; position is never an essential variable",
+            "No, no WPS can ever cover more than one position, regardless of process",
+            "Yes, but only for TIG"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "La position de soudage qualifiée limite généralement les positions autorisées en production ; une qualification en 1G seul ne couvre pas automatiquement les autres positions, bien que certains codes et procédés (par exemple certains essais qualifiant directement en position verticale ou au plafond) accordent une portée plus large selon des règles précises à vérifier dans le code applicable.",
+          "en": "The qualified welding position generally limits authorized production positions; qualification in 1G alone does not automatically cover other positions, although some codes and processes (for example, certain tests that qualify directly in vertical or overhead position) grant broader coverage per precise rules that must be checked in the applicable code."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors d'un essai de résilience (Charpy) sur un coupon de soudure destiné à un service à basse température, pourquoi teste-t-on séparément le métal de base, la zone affectée thermiquement (ZAT) ET le métal fondu ?",
+          "en": "During a Charpy impact test on a weld coupon intended for low-temperature service, why is the base metal, the heat-affected zone (HAZ), AND the weld metal tested separately?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que c'est une exigence esthétique uniquement",
+            "Parce que le code l'exige uniquement pour les soudures visibles",
+            "Parce que chacune de ces trois zones peut avoir une microstructure et une ténacité différentes, et la zone la plus fragile (souvent la ZAT à gros grains) doit être identifiée pour garantir la ténacité minimale exigée à la température de service",
+            "Parce que le métal fondu est toujours la zone la plus résistante, sans exception"
+          ],
+          "en": [
+            "Because it is purely an aesthetic requirement",
+            "Because the code only requires it for visible welds",
+            "Because each of these three zones can have a different microstructure and toughness, and the most brittle zone (often the coarse-grain HAZ) must be identified to ensure the minimum toughness required at service temperature",
+            "Because the weld metal is always the strongest zone, without exception"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le métal de base, la ZAT et le métal fondu peuvent avoir des microstructures très différentes après le cycle thermique du soudage ; la ZAT à gros grains, en particulier, est souvent la zone la plus susceptible d'une ténacité réduite, d'où l'importance de tester chaque zone séparément pour garantir la résilience minimale à la température de service requise.",
+          "en": "The base metal, HAZ, and weld metal can have very different microstructures after the welding thermal cycle; the coarse-grain HAZ, in particular, is often the zone most prone to reduced toughness, hence the importance of testing each zone separately to ensure the minimum impact toughness required at service temperature."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un contexte de fabrication de récipients sous pression, pourquoi un examen radiographique à 100 % (plutôt qu'un échantillonnage partiel) peut-il être exigé pour certains joints, selon le code et le service ?",
+          "en": "In pressure vessel fabrication, why might 100% radiographic examination (rather than partial sampling) be required for certain joints, depending on the code and service?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que cela réduit le temps de fabrication",
+            "Parce que le service (pression élevée, matière dangereuse, ou catégorie de joint critique) justifie une assurance qualité plus stricte, et certains codes accordent un taux de contrainte admissible plus élevé en échange d'un contrôle à 100 %",
+            "Parce que l'inspection partielle est toujours interdite par tous les codes",
+            "Pour des raisons esthétiques uniquement"
+          ],
+          "en": [
+            "Because it reduces fabrication time",
+            "Because the service (high pressure, hazardous material, or critical joint category) justifies stricter quality assurance, and some codes grant a higher allowable joint efficiency in exchange for 100% examination",
+            "Because partial inspection is always prohibited by all codes",
+            "For purely aesthetic reasons"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Certains codes de récipients sous pression (comme ASME Section VIII) permettent un taux de contrainte admissible plus élevé («joint efficiency» à 1,0) lorsque les joints sont radiographiés à 100 %, reconnaissant le niveau d'assurance qualité supérieur ; un examen partiel (spot) accorde généralement un taux inférieur.",
+          "en": "Some pressure vessel codes (such as ASME Section VIII) allow a higher allowable stress (joint efficiency of 1.0) when joints are 100% radiographed, recognizing the higher level of quality assurance; partial (spot) examination generally grants a lower efficiency."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un ingénieur soudage doit sélectionner un procédé pour souder un acier inoxydable duplex, sensible à la précipitation de phases intermétalliques fragiles si le refroidissement est trop lent ou l'apport de chaleur trop élevé. Quelle considération de procédure est la plus critique ?",
+          "en": "A welding engineer must select a process to weld duplex stainless steel, which is prone to precipitation of brittle intermetallic phases if cooling is too slow or heat input too high. What procedural consideration is most critical?"
+        },
+        "choix": {
+          "fr": [
+            "Toujours préchauffer à une température très élevée, comme pour un acier au carbone épais",
+            "Ignorer la température d'interpasse, qui n'a aucun effet sur les aciers duplex",
+            "Contrôler strictement l'apport de chaleur (heat input) et la température d'interpasse maximale pour limiter le temps passé dans la plage de température critique de précipitation des phases intermétalliques",
+            "Utiliser le plus grand apport de chaleur possible pour accélérer la production"
+          ],
+          "en": [
+            "Always preheat to a very high temperature, as for thick carbon steel",
+            "Ignore interpass temperature, which has no effect on duplex steels",
+            "Strictly control heat input and maximum interpass temperature to limit time spent in the critical temperature range for intermetallic phase precipitation",
+            "Use the highest possible heat input to speed up production"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les aciers inoxydables duplex sont sensibles à la précipitation de phases intermétalliques fragiles (comme la phase sigma) dans une plage de température spécifique ; un contrôle strict de l'apport de chaleur et d'une température d'interpasse MAXIMALE (contrairement à certains aciers au carbone où seul un minimum est imposé) limite le temps passé dans cette plage critique.",
+          "en": "Duplex stainless steels are prone to precipitation of brittle intermetallic phases (such as sigma phase) within a specific temperature range; strict control of heat input and a MAXIMUM interpass temperature (unlike some carbon steels where only a minimum is imposed) limits time spent in this critical range."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors d'une analyse de défaillance d'un réservoir soudé ayant subi une rupture fragile par temps très froid, quel facteur, propre au matériau et à la conception du joint, est le plus souvent examiné en premier ?",
+          "en": "In a failure analysis of a welded tank that suffered brittle fracture in very cold weather, what factor, specific to the material and joint design, is most often examined first?"
+        },
+        "choix": {
+          "fr": [
+            "Le nombre de soudeurs ayant travaillé sur le projet",
+            "La température de transition ductile-fragile du matériau et de la zone affectée thermiquement, comparée à la température de service réelle au moment de la rupture",
+            "Le fournisseur de l'électricité du site",
+            "La couleur de la peinture extérieure"
+          ],
+          "en": [
+            "The number of welders who worked on the project",
+            "The ductile-to-brittle transition temperature of the material and the heat-affected zone, compared to the actual service temperature at the time of fracture",
+            "The site's electricity supplier",
+            "The exterior paint color"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Une rupture fragile soudaine, surtout par temps froid, pointe directement vers la température de transition ductile-fragile du matériau (et de la ZAT) : si la température de service au moment de l'incident était sous cette température de transition, le matériau peut se comporter de façon fragile même sous une contrainte normalement acceptable.",
+          "en": "A sudden brittle fracture, especially in cold weather, points directly to the ductile-to-brittle transition temperature of the material (and the HAZ): if the service temperature at the time of the incident was below this transition temperature, the material can behave in a brittle manner even under normally acceptable stress."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un essai de traction transversal sur une soudure dissemblable (par exemple acier au carbone soudé à un acier inoxydable) peut-il montrer une rupture dans le métal de base plutôt que dans le cordon, et que signifie ce résultat ?",
+          "en": "Why might a transverse tensile test on a dissimilar-metal weld (for example, carbon steel welded to stainless steel) show failure in the base metal rather than in the bead, and what does this result mean?"
+        },
+        "choix": {
+          "fr": [
+            "Cela signifie généralement que le cordon de soudure est plus résistant que le métal de base le plus faible des deux, ce qui est le résultat recherché pour démontrer une soudure adéquate",
+            "Cela signifie toujours que le test est invalide et doit être repris",
+            "Cela signifie que le métal d'apport n'a aucune résistance",
+            "Cela indique nécessairement un défaut de fusion"
+          ],
+          "en": [
+            "It generally means the weld bead is stronger than the weaker of the two base metals, which is the desired result to demonstrate an adequate weld",
+            "It always means the test is invalid and must be redone",
+            "It means the filler metal has no strength at all",
+            "It necessarily indicates a fusion defect"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Si la rupture se produit dans le métal de base plutôt que dans le cordon ou à l'interface de fusion, cela démontre généralement que le joint soudé est au moins aussi résistant que le plus faible des deux métaux de base assemblés, ce qui est le résultat recherché lors d'un essai de qualification de ce type.",
+          "en": "If failure occurs in the base metal rather than in the bead or at the fusion line, this generally demonstrates that the welded joint is at least as strong as the weaker of the two base metals joined, which is the desired result in this type of qualification test."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans le cadre d'un programme d'intégrité des soudures sur un pipeline en service depuis plusieurs décennies, pourquoi la dureté mesurée sur le cordon original (souvent soudé avec des procédés plus anciens) est-elle un paramètre clé à réévaluer avant d'autoriser des travaux à chaud (hot tap) sur la ligne ?",
+          "en": "As part of a weld integrity program on a pipeline that has been in service for decades, why is the hardness measured on the original bead (often welded with older processes) a key parameter to reassess before authorizing hot tap work on the line?"
+        },
+        "choix": {
+          "fr": [
+            "Une dureté élevée dans la zone affectée thermiquement augmente le risque de fissuration lors du nouveau cycle thermique imposé par le hot tap, surtout en présence d'hydrogène ou de contraintes résiduelles",
+            "Les travaux à chaud sont toujours interdits peu importe la dureté",
+            "La dureté n'a aucun rapport avec les travaux à chaud",
+            "La dureté détermine uniquement la couleur du cordon"
+          ],
+          "en": [
+            "High hardness in the heat-affected zone increases the risk of cracking during the new thermal cycle imposed by the hot tap, especially in the presence of hydrogen or residual stresses",
+            "Hot tap work is always prohibited regardless of hardness",
+            "Hardness has no relation to hot tap work",
+            "Hardness only determines the bead's color"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un hot tap impose un nouveau cycle thermique localisé sur une soudure existante ; si la zone affectée thermiquement présente déjà une dureté élevée (microstructure dure, souvent due à des procédés ou aciers plus anciens), le risque de fissuration pendant ou après l'opération est accru, d'où l'importance d'évaluer la dureté avant d'autoriser ce type de travaux.",
+          "en": "A hot tap imposes a new localized thermal cycle on an existing weld; if the heat-affected zone already has high hardness (hard microstructure, often due to older processes or steels), the risk of cracking during or after the operation is increased, hence the importance of assessing hardness before authorizing this type of work."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un essai de pliage guidé (côté, face ou envers) révèle une discontinuité ouverte de 2 mm sur la surface convexe de l'éprouvette pliée. Que représente le plus probablement ce résultat ?",
+          "en": "A guided bend test (side, face, or root) reveals an open discontinuity of 2 mm on the convex surface of the bent specimen. What does this result most likely represent?"
+        },
+        "choix": {
+          "fr": [
+            "Une preuve que le métal d'apport était trop résistant",
+            "Un résultat qui n'a aucun lien avec la qualité du joint",
+            "Un défaut acceptable dans tous les cas, sans limite de taille",
+            "Un indicateur potentiel de discontinuité interne (comme un manque de fusion ou une inclusion) révélée par l'ouverture du métal sous la déformation imposée par le pliage ; la taille admissible est comparée aux critères du code applicable"
+          ],
+          "en": [
+            "Proof that the filler metal was too strong",
+            "A result with no bearing on joint quality",
+            "An acceptable defect in all cases, with no size limit",
+            "A potential indicator of an internal discontinuity (such as lack of fusion or an inclusion) revealed by the metal opening under the deformation imposed by bending; the allowable size is compared to the applicable code's criteria"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'essai de pliage guidé déforme plastiquement l'éprouvette, ce qui tend à ouvrir toute discontinuité interne préexistante (manque de fusion, inclusion, porosité alignée) à la surface pliée ; la taille de toute ouverture est comparée à des critères d'acceptation précis définis par le code (souvent autour de 1/8 po ou 3 mm selon le code et le type d'essai).",
+          "en": "The guided bend test plastically deforms the specimen, which tends to open any pre-existing internal discontinuity (lack of fusion, inclusion, aligned porosity) at the bent surface; the size of any opening is compared to precise acceptance criteria defined by the code (often around 1/8 in. or 3 mm depending on the code and test type)."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans la conception d'une procédure de soudage pour un acier martensitique à haute résistance (par exemple un acier trempé-revenu, Q&T), pourquoi limite-t-on à la fois la température d'interpasse MINIMALE et MAXIMALE, contrairement à un acier au carbone ordinaire où seul un minimum est généralement spécifié ?",
+          "en": "When designing a welding procedure for high-strength martensitic steel (for example, a quenched-and-tempered, Q&T steel), why is both the MINIMUM and MAXIMUM interpass temperature limited, unlike ordinary carbon steel where usually only a minimum is specified?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que ces aciers n'ont jamais besoin de contrôle thermique",
+            "Parce qu'une température d'interpasse trop élevée peut dégrader (adoucir) les propriétés mécaniques obtenues par le traitement thermique original de trempe-revenu dans la zone affectée thermiquement",
+            "Parce que la température maximale n'a aucun effet métallurgique",
+            "Parce que le code l'exige uniquement pour des raisons de sécurité incendie"
+          ],
+          "en": [
+            "Because these steels never need thermal control",
+            "Because too high an interpass temperature can degrade (soften) the mechanical properties obtained from the original quench-and-temper heat treatment in the heat-affected zone",
+            "Because maximum temperature has no metallurgical effect",
+            "Because the code requires it only for fire safety reasons"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les aciers trempés-revenus tirent leurs propriétés mécaniques d'un traitement thermique précis ; une température d'interpasse trop élevée pendant le soudage peut adoucir localement la zone affectée thermiquement (sur-revenu), réduisant la résistance en dessous des exigences, d'où l'imposition d'une limite maximale en plus du minimum habituel.",
+          "en": "Quenched-and-tempered steels derive their mechanical properties from a precise heat treatment; too high an interpass temperature during welding can locally soften the heat-affected zone (over-tempering), reducing strength below requirements, hence the imposition of a maximum limit in addition to the usual minimum."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors de la mise au point d'une nouvelle WPS pour un acier à paroi épaisse destiné à un service cyclique à fatigue (comme un composant sous vibration constante), quelle caractéristique géométrique du cordon fini est examinée de près, en plus des propriétés mécaniques internes ?",
+          "en": "When developing a new WPS for thick-walled steel intended for cyclic fatigue service (such as a component under constant vibration), what geometric feature of the finished bead is closely examined, in addition to internal mechanical properties?"
+        },
+        "choix": {
+          "fr": [
+            "Le nombre de soudeurs ayant travaillé sur le joint",
+            "Le profil du cordon et la transition avec le métal de base (concentrations de contraintes géométriques, comme un raccordement trop abrupt ou un sous-cutage), qui influencent fortement la durée de vie en fatigue",
+            "Le poids total du métal déposé, sans aucun lien avec la géométrie",
+            "Uniquement la couleur du cordon"
+          ],
+          "en": [
+            "The number of welders who worked on the joint",
+            "The bead profile and its transition to the base metal (geometric stress concentrations, such as an abrupt toe or undercut), which strongly influence fatigue life",
+            "The total weight of deposited metal, with no relation to geometry",
+            "Only the bead's color"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 3,
+        "explication": {
+          "fr": "En service cyclique, la durée de vie en fatigue est très sensible aux concentrations de contraintes géométriques (un raccordement abrupt entre le cordon et le métal de base, un sous-cutage, une convexité excessive) bien plus qu'aux propriétés mécaniques internes seules ; un profil de cordon lisse et une transition progressive sont donc examinés attentivement pour les applications à fatigue.",
+          "en": "In cyclic service, fatigue life is highly sensitive to geometric stress concentrations (an abrupt transition between the bead and base metal, undercut, excessive convexity) much more than to internal mechanical properties alone; a smooth bead profile and gradual transition are therefore closely examined for fatigue applications."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un audit de conformité d'un atelier certifié CSA W47.1, un inspecteur constate qu'un soudeur utilise une WPS dont les paramètres réels (ampérage, tension) dépassent légèrement la plage qualifiée enregistrée au PQR. Quelle est la conséquence la plus appropriée ?",
+          "en": "In a compliance audit of a CSA W47.1 certified shop, an inspector finds a welder using a WPS whose actual parameters (amperage, voltage) slightly exceed the qualified range recorded in the PQR. What is the most appropriate consequence?"
+        },
+        "choix": {
+          "fr": [
+            "Aucune, un léger dépassement est toujours sans conséquence",
+            "La production doit être arrêtée pour ce joint jusqu'à ce que la WPS soit corrigée ou qu'une nouvelle qualification couvrant la plage réellement utilisée soit complétée, car les paramètres hors plage qualifiée ne sont plus couverts par le PQR",
+            "Le soudeur doit simplement être félicité pour son initiative",
+            "Seul le contremaître doit en être informé, sans action supplémentaire"
+          ],
+          "en": [
+            "None, a slight overshoot is always without consequence",
+            "Production must be stopped for this joint until the WPS is corrected or a new qualification covering the actually used range is completed, since out-of-range parameters are no longer covered by the PQR",
+            "The welder should simply be commended for their initiative",
+            "Only the foreman needs to be informed, with no further action"
+          ]
+        },
+        "reponse": 1,
+        "complexite": 2,
+        "explication": {
+          "fr": "Si les paramètres réels utilisés en production sortent de la plage qualifiée enregistrée au PQR, la soudure produite n'est plus couverte par la qualification existante ; il faut corriger la pratique pour revenir dans la plage qualifiée, ou qualifier une nouvelle procédure couvrant la plage réellement nécessaire, avant de poursuivre la production.",
+          "en": "If the actual parameters used in production fall outside the qualified range recorded in the PQR, the weld produced is no longer covered by the existing qualification; the practice must be corrected to return within the qualified range, or a new procedure covering the actually needed range must be qualified, before continuing production."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la vitesse de refroidissement d'une soudure (de 800 °C à 500 °C, souvent notée t8/5) est-elle un paramètre clé en métallurgie du soudage des aciers, au-delà de la simple température d'interpasse ?",
+          "en": "Why is a weld's cooling rate (from 800°C to 500°C, often noted t8/5) a key parameter in steel welding metallurgy, beyond simple interpass temperature?"
+        },
+        "choix": {
+          "fr": [
+            "Elle n'a aucune importance pratique",
+            "Elle ne concerne que l'aspect visuel du cordon",
+            "Elle est identique pour tous les aciers, peu importe la composition",
+            "Elle détermine en grande partie la microstructure finale de la zone affectée thermiquement (par exemple, un refroidissement rapide favorise une structure dure de type martensite, un refroidissement lent favorise la ferrite plus ductile)"
+          ],
+          "en": [
+            "It has no practical importance",
+            "It only concerns the bead's visual appearance",
+            "It is identical for all steels, regardless of composition",
+            "It largely determines the final microstructure of the heat-affected zone (for example, rapid cooling favors a hard martensitic structure, slow cooling favors more ductile ferrite)"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le temps de refroidissement entre 800 °C et 500 °C (t8/5) influence directement la microstructure formée dans la zone affectée thermiquement ; un refroidissement rapide (t8/5 court) favorise des structures dures et potentiellement fragiles comme la martensite, tandis qu'un refroidissement plus lent (t8/5 plus long, via le préchauffage et le contrôle de l'apport de chaleur) favorise des structures plus ductiles.",
+          "en": "Cooling time between 800°C and 500°C (t8/5) directly influences the microstructure formed in the heat-affected zone; rapid cooling (short t8/5) favors hard, potentially brittle structures like martensite, while slower cooling (longer t8/5, via preheat and heat input control) favors more ductile structures."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans le cadre d'un essai de corrosion intergranulaire (par exemple selon ASTM A262) effectué sur une soudure d'acier inoxydable austénitique, que cherche-t-on spécifiquement à détecter ?",
+          "en": "In an intergranular corrosion test (for example per ASTM A262) performed on an austenitic stainless steel weld, what is specifically being detected?"
+        },
+        "choix": {
+          "fr": [
+            "La résistance mécanique générale du cordon",
+            "La dureté du métal de base loin du cordon",
+            "La couleur de l'oxydation de surface uniquement",
+            "La sensibilisation du matériau (précipitation de carbures de chrome aux joints de grains, souvent dans la zone affectée thermiquement), qui appauvrit localement le chrome et réduit la résistance à la corrosion intergranulaire"
+          ],
+          "en": [
+            "The bead's general mechanical strength",
+            "The hardness of the base metal far from the bead",
+            "Only the color of surface oxidation",
+            "Sensitization of the material (chromium carbide precipitation at grain boundaries, often in the heat-affected zone), which locally depletes chromium and reduces intergranular corrosion resistance"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "La sensibilisation d'un acier inoxydable austénitique (précipitation de carbures de chrome aux joints de grains lors d'un maintien dans une certaine plage de température, typique de la ZAT) appauvrit localement le chrome aux joints de grains, rendant le matériau vulnérable à la corrosion intergranulaire ; des essais comme ceux d'ASTM A262 visent à détecter cette susceptibilité.",
+          "en": "Sensitization of austenitic stainless steel (chromium carbide precipitation at grain boundaries during a hold within a certain temperature range, typical of the HAZ) locally depletes chromium at grain boundaries, making the material vulnerable to intergranular corrosion; tests such as ASTM A262 aim to detect this susceptibility."
+        }
+      },
+      {
+        "question": {
+          "fr": "Un composant soudé doit être qualifié pour un service à très basse température (cryogénique). En plus de la résilience Charpy, quel essai supplémentaire est souvent exigé pour certains aciers ou applications critiques ?",
+          "en": "A welded component must be qualified for very low-temperature (cryogenic) service. In addition to Charpy impact testing, what additional test is often required for certain steels or critical applications?"
+        },
+        "choix": {
+          "fr": [
+            "Un simple contrôle visuel suffit toujours à lui seul",
+            "Un essai de conductivité thermique du métal d'apport",
+            "Un essai de dureté uniquement, sans autre essai",
+            "Un essai CTOD (Crack Tip Opening Displacement), qui mesure la ténacité à la rupture de façon plus rigoureuse que le Charpy pour des applications critiques"
+          ],
+          "en": [
+            "A simple visual check is always sufficient on its own",
+            "A thermal conductivity test of the filler metal",
+            "A hardness test only, with no other test",
+            "A CTOD (Crack Tip Opening Displacement) test, which measures fracture toughness more rigorously than Charpy for critical applications"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 3,
+        "explication": {
+          "fr": "Pour les applications critiques ou à très basse température, un essai CTOD peut être exigé en complément du Charpy : il fournit une mesure plus rigoureuse et quantitative de la ténacité à la rupture (résistance à la propagation d'une fissure), particulièrement utile pour les analyses de mécanique de la rupture sur des structures critiques.",
+          "en": "For critical or very-low-temperature applications, a CTOD test may be required in addition to Charpy: it provides a more rigorous, quantitative measure of fracture toughness (resistance to crack propagation), particularly useful for fracture mechanics analyses on critical structures."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi le choix d'un métal d'apport à très bas taux d'hydrogène diffusible (par exemple, un fil ou une électrode certifiée H4, soit moins de 4 ml d'hydrogène diffusible par 100 g de métal déposé) est-il particulièrement important sur un acier à CE élevé et forte épaisseur ?",
+          "en": "Why is choosing a filler metal with very low diffusible hydrogen content (for example, an H4-certified wire or electrode, meaning less than 4 ml of diffusible hydrogen per 100 g of deposited metal) particularly important on a high-CE, thick-section steel?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que combiné à un CE élevé et une épaisseur importante (qui favorisent un refroidissement rapide et une dureté élevée dans la ZAT), un faible apport d'hydrogène réduit significativement le risque de fissuration différée à l'hydrogène",
+            "Parce que l'hydrogène diffusible n'a aucun effet sur l'acier",
+            "Parce que cela élimine automatiquement le besoin de préchauffage, peu importe l'épaisseur",
+            "Parce que cela améliore uniquement l'apparence du cordon"
+          ],
+          "en": [
+            "Because combined with high CE and significant thickness (which favor rapid cooling and high hardness in the HAZ), low hydrogen content significantly reduces the risk of delayed hydrogen cracking",
+            "Because diffusible hydrogen has no effect on steel",
+            "Because it automatically eliminates the need for preheat, regardless of thickness",
+            "Because it only improves the bead's appearance"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Un acier à CE élevé et à forte épaisseur est particulièrement susceptible à la fissuration à l'hydrogène, car il développe facilement une microstructure dure dans la ZAT ; combiner un métal d'apport à très bas hydrogène diffusible avec un préchauffage adéquat réduit significativement ce risque, bien que le préchauffage reste généralement nécessaire même avec un métal d'apport à bas hydrogène sur les aciers les plus sensibles.",
+          "en": "A high-CE, thick-section steel is particularly susceptible to hydrogen cracking, since it readily develops a hard HAZ microstructure; combining a very-low-hydrogen filler metal with adequate preheat significantly reduces this risk, although preheat generally remains necessary even with low-hydrogen filler metal on the most susceptible steels."
+        }
+      },
+      {
+        "question": {
+          "fr": "Lors d'une investigation de défaillance, une fissure est trouvée initiée à partir d'une inclusion non métallique allongée (stringer) orientée parallèlement à la surface du métal de base, juste sous la zone affectée thermiquement. Quel phénomène cette situation illustre-t-elle, particulièrement en soudage de brides ou de tubes en T (soudures en configuration \"tee\") ?",
+          "en": "In a failure investigation, a crack is found to have initiated from an elongated non-metallic inclusion (stringer) oriented parallel to the base metal's surface, just below the heat-affected zone. What phenomenon does this situation illustrate, particularly in welding flanges or T-joints (\"tee\" configuration welds)?"
+        },
+        "choix": {
+          "fr": [
+            "Une simple porosité de surface",
+            "Une fissuration à chaud classique du métal d'apport",
+            "Le déchirement lamellaire (lamellar tearing), causé par les contraintes de retrait transversales qui s'exercent dans le sens de l'épaisseur de la plaque, là où la ductilité est la plus faible à cause d'inclusions allongées",
+            "Un défaut qui ne peut survenir que sur l'aluminium"
+          ],
+          "en": [
+            "Simple surface porosity",
+            "Classic hot cracking of the filler metal",
+            "Lamellar tearing, caused by transverse shrinkage stresses acting through the plate's thickness direction, where ductility is lowest due to elongated inclusions",
+            "A defect that can only occur in aluminum"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le déchirement lamellaire se produit lorsque les contraintes de retrait du soudage s'exercent dans le sens de l'épaisseur (through-thickness) d'une plaque dont la ductilité dans cette direction est réduite par des inclusions non métalliques allongées ; c'est un risque classique dans les joints en T ou les brides fortement contraints, où le métal de base est sollicité dans sa direction la plus faible.",
+          "en": "Lamellar tearing occurs when welding shrinkage stresses act through the thickness direction of a plate whose ductility in that direction is reduced by elongated non-metallic inclusions; it is a classic risk in heavily restrained T-joints or flanges, where the base metal is stressed in its weakest direction."
+        }
+      },
+      {
+        "question": {
+          "fr": "À quoi sert un examen macrographique (coupe, polissage et attaque acide) d'une soudure d'essai ?",
+          "en": "What is a macro-etch examination (cut, polish, and acid etch) of a test weld used for?"
+        },
+        "choix": {
+          "fr": [
+            "À remplacer l'essai de traction",
+            "À mesurer la tension",
+            "À mesurer la couleur",
+            "À révéler la pénétration, la fusion entre passes, la forme du cordon et la zone affectée thermiquement, ainsi que les défauts visibles à l'œil ou à la loupe"
+          ],
+          "en": [
+            "Replacing the tensile test",
+            "Measuring voltage",
+            "Measuring color",
+            "Revealing penetration, fusion between passes, bead shape, and the heat-affected zone, as well as defects visible to the eye or under a magnifier"
+          ]
+        },
+        "reponse": 3,
+        "complexite": 2,
+        "explication": {
+          "fr": "On sectionne la soudure, on polit la surface et on l'attaque avec un réactif acide : la structure du cordon, la pénétration et les défauts apparaissent clairement.",
+          "en": "The weld is sectioned, the surface polished, and etched with an acid reagent: the bead's structure, penetration, and defects appear clearly."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans une analyse par éléments finis des contraintes résiduelles d'un assemblage soudé complexe, pourquoi les résultats purement numériques doivent-ils généralement être corroborés par des mesures physiques (comme la diffraction des rayons X ou la méthode du trou incrémental) avant une décision critique (comme éliminer un traitement thermique post-soudage) ?",
+          "en": "In a finite element analysis of residual stresses in a complex welded assembly, why must purely numerical results generally be corroborated by physical measurements (such as X-ray diffraction or the incremental hole-drilling method) before a critical decision (such as eliminating post-weld heat treatment)?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que les simulations numériques sont toujours exactes et n'ont jamais besoin de validation",
+            "Parce que cela n'a aucun lien avec la sécurité de la décision",
+            "Parce que les modèles numériques comportent des simplifications (propriétés des matériaux, conditions aux limites, séquence de soudage) qui peuvent diverger de la réalité ; une validation expérimentale réduit le risque de décision critique basée sur un modèle erroné",
+            "Parce que la mesure physique est toujours moins précise que la simulation"
+          ],
+          "en": [
+            "Because numerical simulations are always exact and never need validation",
+            "Because this has no bearing on the decision's safety",
+            "Because numerical models involve simplifications (material properties, boundary conditions, welding sequence) that can diverge from reality; experimental validation reduces the risk of a critical decision based on a flawed model",
+            "Because physical measurement is always less precise than simulation"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Les simulations par éléments finis reposent sur des hypothèses et des simplifications (propriétés de matériaux à haute température, séquence de soudage exacte, conditions aux limites) qui peuvent s'écarter de la réalité physique ; pour une décision critique en matière de sécurité (comme éliminer un PWHT), une validation par mesure physique est une pratique prudente et souvent exigée.",
+          "en": "Finite element simulations rely on assumptions and simplifications (high-temperature material properties, exact welding sequence, boundary conditions) that can deviate from physical reality; for a safety-critical decision (such as eliminating PWHT), validation by physical measurement is a prudent and often required practice."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi la position de la mise à la terre (ground) par rapport au joint soudé peut-elle influencer la qualité d'une soudure GTAW sur une pièce de précision, au-delà du simple risque de soufflage d'arc ?",
+          "en": "Why can the position of the ground clamp relative to the welded joint influence the quality of a GTAW weld on a precision part, beyond the simple risk of arc blow?"
+        },
+        "choix": {
+          "fr": [
+            "Elle affecte uniquement la couleur de l'arc, jamais la pénétration",
+            "Elle ne concerne que la sécurité électrique, jamais la qualité métallurgique",
+            "Un mauvais chemin de retour du courant peut créer des champs magnétiques asymétriques qui déforment localement l'arc, affectant la pénétration et la forme du cordon, en particulier sur des pièces complexes ou ferromagnétiques",
+            "La position de la masse n'a jamais d'effet sur la qualité du soudage GTAW"
+          ],
+          "en": [
+            "It only affects the arc's color, never penetration",
+            "It only concerns electrical safety, never metallurgical quality",
+            "A poor current return path can create asymmetric magnetic fields that locally distort the arc, affecting bead penetration and shape, particularly on complex or ferromagnetic parts",
+            "Ground position never affects GTAW weld quality"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "Au-delà du soufflage d'arc déjà connu, un mauvais positionnement de la masse peut créer un chemin de courant asymétrique générant des champs magnétiques qui déforment localement l'arc GTAW, affectant la stabilité, la forme et la pénétration du cordon, particulièrement critique sur des pièces de précision ou fortement ferromagnétiques.",
+          "en": "Beyond the already-known arc blow, poor ground clamp placement can create an asymmetric current path generating magnetic fields that locally distort the GTAW arc, affecting bead stability, shape, and penetration, particularly critical on precision or strongly ferromagnetic parts."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un essai de traction tout-métal-déposé (all-weld-metal tensile test), où l'éprouvette est usinée entièrement dans le métal fondu (sans métal de base), est-il parfois exigé en plus de l'essai de traction transversal classique ?",
+          "en": "Why is an all-weld-metal tensile test, where the specimen is machined entirely from the weld metal (no base metal), sometimes required in addition to the classic transverse tensile test?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que cet essai remplace toujours l'essai de pliage guidé",
+            "Parce qu'il est plus simple à réaliser que l'essai transversal",
+            "Parce qu'il isole les propriétés mécaniques réelles du métal déposé seul (résistance, élongation), indépendamment de la dilution ou de la résistance du métal de base, information essentielle pour certaines qualifications de métal d'apport",
+            "Parce que le métal de base n'a jamais d'incidence sur un essai de traction"
+          ],
+          "en": [
+            "Because this test always replaces the guided bend test",
+            "Because it is simpler to perform than the transverse test",
+            "Because it isolates the actual mechanical properties of the filler metal alone (strength, elongation), independent of dilution or base metal strength, information essential for certain filler metal qualifications",
+            "Because base metal never affects a tensile test"
+          ]
+        },
+        "reponse": 2,
+        "complexite": 3,
+        "explication": {
+          "fr": "L'essai tout-métal-déposé isole les propriétés mécaniques du métal d'apport seul, sans l'influence du métal de base ou de la dilution, ce qui est essentiel pour qualifier un consommable de soudage selon sa classification propre (comme une classe AWS), indépendamment du métal de base sur lequel il pourrait être déposé en production.",
+          "en": "The all-weld-metal test isolates the filler metal's mechanical properties alone, without the influence of base metal or dilution, which is essential for qualifying a welding consumable per its own classification (such as an AWS class), independent of the base metal it might be deposited on in production."
+        }
+      },
+      {
+        "question": {
+          "fr": "Dans un contexte de soudage robotisé à haute cadence en production, pourquoi la répétabilité du positionnement de la torche et des paramètres (plutôt que l'habileté individuelle d'un soudeur) devient-elle le facteur de qualité dominant à contrôler ?",
+          "en": "In high-rate robotic welding production, why does torch positioning and parameter repeatability (rather than an individual welder's skill) become the dominant quality factor to control?"
+        },
+        "choix": {
+          "fr": [
+            "Parce qu'une fois la procédure validée et le programme robot qualifié, la variabilité résiduelle provient principalement de la précision mécanique du robot, du positionnement de la pièce (fixturing) et de la stabilité des paramètres, plutôt que d'une variation humaine",
+            "Parce que la qualité en soudage robotisé ne dépend que de la vitesse de production",
+            "Parce que le soudage robotisé élimine complètement le besoin de toute procédure qualifiée",
+            "Parce que les robots ne peuvent jamais produire de défauts"
+          ],
+          "en": [
+            "Because once the procedure is validated and the robot program qualified, residual variability mainly comes from the robot's mechanical precision, part positioning (fixturing), and parameter stability, rather than human variation",
+            "Because quality in robotic welding only depends on production speed",
+            "Because robotic welding completely eliminates the need for any qualified procedure",
+            "Because robots can never produce defects"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Une fois qu'une procédure robotisée est qualifiée et validée, la source dominante de variabilité devient la précision mécanique du robot, la répétabilité du positionnement de la pièce (fixturing) et la stabilité des paramètres programmés, plutôt que l'habileté manuelle variable d'un soudeur ; un contrôle rigoureux de ces éléments mécaniques et de programmation devient alors central à la qualité.",
+          "en": "Once a robotic procedure is qualified and validated, the dominant source of variability becomes the robot's mechanical precision, the repeatability of part positioning (fixturing), and the stability of programmed parameters, rather than a welder's variable manual skill; rigorous control of these mechanical and programming elements then becomes central to quality."
+        }
+      },
+      {
+        "question": {
+          "fr": "Pourquoi un ingénieur en structures pourrait-il choisir délibérément un joint à pénétration partielle (plutôt qu'à pleine pénétration) pour certaines soudures d'angle ou bout à bout, malgré une résistance statique théorique inférieure ?",
+          "en": "Why might a structural engineer deliberately choose a partial-penetration joint (rather than full penetration) for certain fillet or butt welds, despite lower theoretical static strength?"
+        },
+        "choix": {
+          "fr": [
+            "Parce que, lorsque la charge appliquée ne l'exige pas, un joint à pénétration partielle peut suffire structurellement tout en réduisant le volume de métal déposé, la distorsion et le coût, sans compromettre la sécurité pour ce chargement particulier",
+            "Parce que la pénétration partielle est toujours interdite par les codes",
+            "Parce qu'un joint à pénétration partielle est toujours plus résistant qu'un joint à pleine pénétration",
+            "Parce que cela élimine le besoin de toute inspection"
+          ],
+          "en": [
+            "Because, when the applied load does not require it, a partial-penetration joint can be structurally sufficient while reducing deposited metal volume, distortion, and cost, without compromising safety for that particular loading",
+            "Because partial penetration is always prohibited by codes",
+            "Because a partial-penetration joint is always stronger than a full-penetration joint",
+            "Because it eliminates the need for any inspection"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 2,
+        "explication": {
+          "fr": "Lorsque l'analyse de charge démontre qu'un joint à pénétration partielle est structurellement suffisant pour le chargement réel (souvent pour des charges statiques modérées ou certains assemblages secondaires), ce choix réduit le volume de métal déposé, le temps de soudage, la distorsion et le coût, sans compromettre la sécurité, par rapport à une pleine pénétration systématique qui serait superflue.",
+          "en": "When load analysis demonstrates that a partial-penetration joint is structurally sufficient for the actual loading (often for moderate static loads or certain secondary assemblies), this choice reduces deposited metal volume, welding time, distortion, and cost, without compromising safety, compared to systematic full penetration that would be unnecessary."
+        }
+      },
+      {
+        "question": {
+          "fr": "En GMAW à transfert court-circuit (short-circuiting transfer), un défaut appelé « cold lap » (ou cold shut) apparaît en surface, où le métal déposé n'a pas fusionné avec le métal de base sous-jacent, malgré un cordon d'apparence extérieure acceptable. Quelle cause est la plus typique ?",
+          "en": "In short-circuiting transfer GMAW, a defect called \"cold lap\" (or cold shut) appears at the surface, where the deposited metal has not fused with the underlying base metal, despite a bead with an acceptable outward appearance. What cause is most typical?"
+        },
+        "choix": {
+          "fr": [
+            "Un ampérage insuffisant ou une vitesse de déplacement trop rapide pour le mode de transfert utilisé, déposant le métal par-dessus la surface sans la faire fondre suffisamment",
+            "Un excès de gaz de protection",
+            "Un ampérage et un apport de chaleur trop élevés",
+            "Une électrode trop propre"
+          ],
+          "en": [
+            "Insufficient amperage or too fast a travel speed for the transfer mode used, depositing metal over the surface without sufficiently melting it",
+            "Excess shielding gas",
+            "Too high an amperage and heat input",
+            "An electrode that is too clean"
+          ]
+        },
+        "reponse": 0,
+        "complexite": 3,
+        "explication": {
+          "fr": "Le cold lap survient quand le métal fondu se dépose sur une surface qui n'a pas atteint sa température de fusion, souvent à cause d'un ampérage trop faible ou d'une vitesse de déplacement excessive pour le mode de transfert par court-circuit ; le défaut est insidieux car le cordon peut sembler visuellement correct en surface, alors que la fusion réelle est absente localement.",
+          "en": "Cold lap occurs when molten metal is deposited onto a surface that has not reached its melting temperature, often due to insufficient amperage or excessive travel speed for the short-circuiting transfer mode; the defect is insidious because the bead may look visually correct at the surface while actual fusion is locally absent."
         }
       }
     ]
