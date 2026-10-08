@@ -16,9 +16,21 @@ const CONFIG = {
   // Utilisez une longue chaîne aléatoire.
   JETON: "ff-LnXJxYNIg5pWdQNf0w049AG3a2IquUfE",
 
-  // Identifiant d'un dossier Google Drive où enregistrer une copie de chaque PDF (facultatif).
-  // C'est la dernière partie de l'adresse du dossier : drive.google.com/drive/folders/<ID>
+  // Enregistre automatiquement une copie de CHAQUE PDF dans Google Drive. Activé par défaut : aucune
+  // configuration n'est nécessaire. Au tout premier rapport, le script crée lui-même, dans le Drive du
+  // compte qui exécute ce script, un dossier nommé d'après NOM_DOSSIER_AUTO (ou le retrouve s'il existe déjà),
+  // puis réutilise toujours ce même dossier par la suite.
+  ENREGISTRER_DANS_DRIVE: true,
+  NOM_DOSSIER_AUTO: "Rapports d'évaluation Flo-Fab",
+
+  // Facultatif : pour utiliser un dossier Drive précis plutôt que la création automatique ci-dessus, collez ici
+  // son identifiant (la dernière partie de l'adresse drive.google.com/drive/folders/<ID>). Le dossier doit
+  // appartenir au compte qui exécute ce script, ou lui être partagé en modification. Laissez vide sinon.
   DOSSIER_DRIVE_ID: "",
+
+  // true : envoyer aussi un courriel (comportement normal). false : enregistrer seulement dans Google Drive,
+  // sans envoyer de courriel (utile si vous ne voulez QUE l'archivage automatique dans Drive).
+  ENVOYER_COURRIEL: true,
 
   // Nom de l'expéditeur affiché dans les courriels.
   NOM_EXPEDITEUR: "Évaluation technique Flo-Fab",
@@ -31,19 +43,26 @@ const CONFIG = {
 };
 
 function doPost(e) {
+  const diag = { heure: new Date().toString(), etape: "début" };
+  const noter = () => { try { PropertiesService.getScriptProperties().setProperty("DERNIER_DIAGNOSTIC", JSON.stringify(diag)); } catch (e2) { /* sans conséquence */ } };
   try {
-    if (!e || !e.postData || !e.postData.contents) return reponse({ ok: false, erreur: "requête vide" });
+    diag.tailleRequete = (e && e.postData && e.postData.contents ? e.postData.contents.length : 0);
+    Logger.log("doPost reçu, taille du corps : " + diag.tailleRequete + " caractères");
+    if (!e || !e.postData || !e.postData.contents) { diag.etape = "REJETÉ : requête vide"; noter(); Logger.log(diag.etape); return reponse({ ok: false, erreur: "requête vide" }); }
     const d = JSON.parse(e.postData.contents);
+    diag.candidat = d.candidat; diag.questionnaire = d.questionnaire;
 
-    if (!CONFIG.JETON || d.jeton !== CONFIG.JETON) return reponse({ ok: false, erreur: "jeton invalide" });
-    if (!d.pdf || typeof d.pdf !== "string" || d.pdf.length > CONFIG.TAILLE_MAX_PDF) return reponse({ ok: false, erreur: "PDF absent ou trop volumineux" });
+    if (!CONFIG.JETON || d.jeton !== CONFIG.JETON) { diag.etape = "REJETÉ : jeton invalide (reçu : " + JSON.stringify(d.jeton) + ")"; noter(); Logger.log(diag.etape); return reponse({ ok: false, erreur: "jeton invalide" }); }
+    if (!d.pdf || typeof d.pdf !== "string" || d.pdf.length > CONFIG.TAILLE_MAX_PDF) { diag.etape = "REJETÉ : PDF absent ou trop volumineux (longueur : " + (d.pdf ? d.pdf.length : 0) + ")"; noter(); Logger.log(diag.etape); return reponse({ ok: false, erreur: "PDF absent ou trop volumineux" }); }
 
     // Limite du nombre d'envois par heure
     const cache = CacheService.getScriptCache();
     const cle = "envois-" + Utilities.formatDate(new Date(), "America/Toronto", "yyyyMMddHH");
     const n = Number(cache.get(cle) || 0);
-    if (n >= CONFIG.ENVOIS_MAX_PAR_HEURE) return reponse({ ok: false, erreur: "limite d'envois atteinte, réessayez plus tard" });
+    if (n >= CONFIG.ENVOIS_MAX_PAR_HEURE) { diag.etape = "REJETÉ : limite d'envois par heure atteinte (" + n + "/" + CONFIG.ENVOIS_MAX_PAR_HEURE + ")"; noter(); Logger.log(diag.etape); return reponse({ ok: false, erreur: "limite d'envois atteinte, réessayez plus tard" }); }
     cache.put(cle, String(n + 1), 3600);
+    diag.etape = "validation réussie"; noter();
+    Logger.log("Validation réussie pour : " + d.candidat + " / " + d.questionnaire);
 
     const nomFichier = nettoyerNomFichier(d.nomFichier || "Evaluation.pdf");
     const pdf = Utilities.newBlob(Utilities.base64Decode(d.pdf), "application/pdf", nomFichier);
@@ -52,13 +71,16 @@ function doPost(e) {
     const dest = CONFIG.DESTINATAIRES.split(",").map(s => s.trim()).filter(Boolean);
 
     const t = v => String(v == null ? "" : v);
+    // Note pondérée selon la difficulté (absente des anciennes versions de l'application : on retombe alors sur le %)
+    const pond = d.pourcentagePondere != null ? d.pourcentagePondere : d.pourcentage;
     const sujet = "Résultat d'évaluation : " + t(d.candidat) + ", " + t(d.questionnaire) +
-      " (" + t(d.pourcentage) + " %, " + t(d.niveau) + ")";
+      " (note pondérée " + t(pond) + " %, " + t(d.niveau) + ")";
 
     const lignesSections = (d.sections || []).map(s =>
       "<tr><td style='padding:4px 10px;border-bottom:1px solid #D5DCE3'>" + echapper(s.titre) + "</td>" +
       "<td style='padding:4px 10px;border-bottom:1px solid #D5DCE3;text-align:right'>" + echapper(s.note) + " / " + echapper(s.total) + "</td>" +
       "<td style='padding:4px 10px;border-bottom:1px solid #D5DCE3;text-align:right'>" + echapper(s.pourcentage) + " %</td>" +
+      "<td style='padding:4px 10px;border-bottom:1px solid #D5DCE3;text-align:right'>" + echapper(s.pourcentagePondere != null ? s.pourcentagePondere : s.pourcentage) + " %</td>" +
       "<td style='padding:4px 10px;border-bottom:1px solid #D5DCE3'>" + echapper(s.niveau) + "</td></tr>").join("");
 
     const html =
@@ -68,32 +90,121 @@ function doPost(e) {
       "<table style='border-collapse:collapse;margin:12px 0'>" +
       ligne("Candidat", d.candidat) + ligne("Poste", d.poste) + ligne("Date", d.date) +
 ligne("Questionnaire", d.questionnaire) +
-      ligne("Mode", d.mode === "pratique" ? "Pratique" : "Évaluation") +
+      ligne("Mode", d.mode === "papier" ? "Copie papier" : "Évaluation") +
+      (d.modeNom || d.modeQuestionnaire ? ligne("Difficulté", d.modeNom || d.modeQuestionnaire) : "") +
       (d.tentative ? ligne("Tentative", d.tentative + " sur " + d.maxTentatives) : "") +
-      ligne("Points", d.note + " / " + d.total + " (" + d.pourcentage + " %)") +
+      ligne("Points", d.note + " / " + d.total + " (" + d.pourcentage + " % au niveau)") +
+      (d.pourcentagePondere != null ? ligne("Note pondérée", d.pourcentagePondere + " %" + (d.coefficient != null ? " (coefficient de difficulté × " + Number(d.coefficient).toFixed(2) + ")" : "")) : "") +
       (d.nbQuestions ? ligne("Bonnes réponses", d.bonnesReponses + " / " + d.nbQuestions) : "") +
       ligne("Niveau", d.niveau) +
       ligne("Résultat", d.reussite ? "Seuil de réussite atteint (" + d.seuil + " %)" : "Sous le seuil de réussite (" + d.seuil + " %)") +
       ligne("Recommandation", d.recommandation) +
       "</table>" +
       (lignesSections ? "<table style='border-collapse:collapse;margin:12px 0'><tr style='background:#14233C;color:#fff'>" +
-        "<th style='padding:6px 10px;text-align:left'>Section</th><th style='padding:6px 10px'>Points</th><th style='padding:6px 10px'>%</th><th style='padding:6px 10px;text-align:left'>Niveau</th></tr>" +
+        "<th style='padding:6px 10px;text-align:left'>Section</th><th style='padding:6px 10px'>Points</th><th style='padding:6px 10px'>% niveau</th><th style='padding:6px 10px'>Note pondérée</th><th style='padding:6px 10px;text-align:left'>Niveau</th></tr>" +
         lignesSections + "</table>" : "") +
       "<p style='color:#5B6B7F;font-size:12px'>Courriel envoyé automatiquement par l'application d'évaluation technique Flo-Fab.</p></div>";
 
     const texte = "Candidat : " + t(d.candidat) + "\nQuestionnaire : " + t(d.questionnaire) +
-      "\nPoints : " + t(d.note) + " / " + t(d.total) + " (" + t(d.pourcentage) + " %)\nNiveau : " + t(d.niveau) +
+      (d.modeNom || d.modeQuestionnaire ? "\nDifficulté : " + t(d.modeNom || d.modeQuestionnaire) : "") +
+      "\nPoints : " + t(d.note) + " / " + t(d.total) + " (" + t(d.pourcentage) + " % au niveau)" +
+      (d.pourcentagePondere != null ? "\nNote pondérée : " + t(d.pourcentagePondere) + " %" : "") + "\nNiveau : " + t(d.niveau) +
       "\n\nLe rapport PDF est joint à ce courriel.";
 
-    const logo = Utilities.newBlob(Utilities.base64Decode(LOGO_FLOFAB_PNG), "image/png", "logo-flofab.png");
-    MailApp.sendEmail({ to: dest.join(","), subject: sujet, body: texte, htmlBody: html, attachments: [pdf], inlineImages: { logoFlofab: logo }, name: CONFIG.NOM_EXPEDITEUR });
+    // Le PDF est d'abord enregistré dans Google Drive (si activé), AVANT d'essayer d'envoyer le courriel :
+    // ainsi, une copie automatique est conservée même si l'envoi du courriel échoue pour une raison quelconque
+    // (quota dépassé, autorisation expirée, etc.).
+    let driveOk = false, driveErreur = null;
+    if (CONFIG.ENREGISTRER_DANS_DRIVE) {
+      try { const dossier = obtenirDossierDrive(); dossier.createFile(pdf); driveOk = true; diag.drive = "OK : " + dossier.getUrl(); Logger.log("Drive OK : fichier créé dans « " + dossier.getName() + " » (" + dossier.getUrl() + ")"); }
+      catch (err) { driveErreur = String(err && err.message ? err.message : err); diag.drive = "ÉCHEC : " + driveErreur; Logger.log("Drive ÉCHEC : " + driveErreur); }
+    } else { diag.drive = "désactivé"; Logger.log("Drive désactivé (ENREGISTRER_DANS_DRIVE = false)"); }
+    noter();
 
-    if (CONFIG.DOSSIER_DRIVE_ID) DriveApp.getFolderById(CONFIG.DOSSIER_DRIVE_ID).createFile(pdf);
+    let mailErreur = null;
+    if (CONFIG.ENVOYER_COURRIEL) {
+      try {
+        const logo = Utilities.newBlob(Utilities.base64Decode(LOGO_FLOFAB_PNG), "image/png", "logo-flofab.png");
+        MailApp.sendEmail({ to: dest.join(","), subject: sujet, body: texte, htmlBody: html, attachments: [pdf], inlineImages: { logoFlofab: logo }, name: CONFIG.NOM_EXPEDITEUR });
+        diag.courriel = "OK : " + dest.join(", "); Logger.log("Courriel OK : envoyé à " + dest.join(", "));
+      } catch (err) { mailErreur = String(err && err.message ? err.message : err); diag.courriel = "ÉCHEC : " + mailErreur; Logger.log("Courriel ÉCHEC : " + mailErreur); }
+    } else { diag.courriel = "désactivé"; Logger.log("Courriel désactivé (ENVOYER_COURRIEL = false)"); }
+    diag.etape = "terminé"; noter();
 
-    return reponse({ ok: true, destinataires: dest.join(", ") });
+    if (CONFIG.ENREGISTRER_DANS_DRIVE && !driveOk) {
+      // Le dossier Drive est configuré mais l'enregistrement a échoué : c'est signalé même si le courriel a réussi.
+      return reponse({ ok: !mailErreur, destinataires: CONFIG.ENVOYER_COURRIEL ? dest.join(", ") : "", drive: false,
+        erreur: (mailErreur ? mailErreur + " ; " : "") + "échec de l'enregistrement dans Google Drive : " + driveErreur });
+    }
+    if (mailErreur) {
+      return reponse({ ok: false, drive: driveOk,
+        erreur: mailErreur + (driveOk ? " (le PDF a tout de même été enregistré dans Google Drive)" : "") });
+    }
+    return reponse({ ok: true, destinataires: CONFIG.ENVOYER_COURRIEL ? dest.join(", ") : "", drive: driveOk });
   } catch (err) {
+    diag.etape = "EXCEPTION NON INTERCEPTÉE : " + (err && err.stack ? err.stack : err); noter();
+    Logger.log(diag.etape);
     return reponse({ ok: false, erreur: String(err && err.message ? err.message : err) });
   }
+}
+
+// À exécuter manuellement depuis l'éditeur pour voir ce qui s'est passé lors du DERNIER envoi réel reçu
+// (déclenché depuis la page GitHub), sans avoir besoin d'ouvrir la page Exécutions.
+function voirDernierEnvoi() {
+  const brut = PropertiesService.getScriptProperties().getProperty("DERNIER_DIAGNOSTIC");
+  if (!brut) { Logger.log("Aucun envoi reçu pour l'instant. Faites un essai depuis la page GitHub, puis relancez cette fonction."); return; }
+  const d = JSON.parse(brut);
+  Logger.log("Heure : " + d.heure);
+  Logger.log("Étape atteinte : " + d.etape);
+  Logger.log("Candidat / questionnaire : " + d.candidat + " / " + d.questionnaire);
+  Logger.log("Taille de la requête reçue : " + d.tailleRequete + " caractères");
+  Logger.log("Google Drive : " + (d.drive || "non atteint"));
+  Logger.log("Courriel : " + (d.courriel || "non atteint"));
+}
+
+// Retourne le dossier Google Drive où enregistrer les PDF, en le créant au besoin.
+// Priorité à CONFIG.DOSSIER_DRIVE_ID s'il est rempli ; sinon, retrouve ou crée un dossier nommé
+// CONFIG.NOM_DOSSIER_AUTO, et mémorise son identifiant pour ne pas le rechercher à chaque appel.
+function obtenirDossierDrive() {
+  if (CONFIG.DOSSIER_DRIVE_ID) return DriveApp.getFolderById(CONFIG.DOSSIER_DRIVE_ID);
+  const props = PropertiesService.getScriptProperties();
+  const idMemorise = props.getProperty("DOSSIER_AUTO_ID");
+  if (idMemorise) {
+    try { return DriveApp.getFolderById(idMemorise); }
+    catch (err) { /* le dossier mémorisé n'existe plus (supprimé) : on le recrée ci-dessous */ }
+  }
+  const existants = DriveApp.getFoldersByName(CONFIG.NOM_DOSSIER_AUTO);
+  const dossier = existants.hasNext() ? existants.next() : DriveApp.createFolder(CONFIG.NOM_DOSSIER_AUTO);
+  props.setProperty("DOSSIER_AUTO_ID", dossier.getId());
+  return dossier;
+}
+
+// Utilitaire facultatif : à exécuter manuellement si vous voulez forcer le script à retrouver ou
+// recréer son dossier Drive automatique (par exemple après l'avoir renommé ou déplacé).
+function reinitialiserDossierDrive() {
+  PropertiesService.getScriptProperties().deleteProperty("DOSSIER_AUTO_ID");
+  const dossier = obtenirDossierDrive();
+  Logger.log("Dossier Drive utilisé : " + dossier.getName() + " (" + dossier.getUrl() + ")");
+}
+
+// Simule un vrai envoi depuis l'application (sans passer par Internet ni par la page des Exécutions) :
+// exécutez cette fonction directement depuis l'éditeur (liste déroulante en haut, puis Exécuter).
+// Le journal s'affiche automatiquement en bas de l'écran (ou Affichage > Journaux) juste après l'exécution,
+// avec toutes les lignes ajoutées dans doPost : c'est le moyen le plus simple de voir ce qui se passe réellement.
+function testerDoPost() {
+  const faussePdf = Utilities.newBlob("ceci n'est pas un vrai PDF, juste un test", "text/plain").getBytes();
+  const payload = {
+    jeton: CONFIG.JETON,
+    nomFichier: "Test_" + new Date().getTime() + ".pdf",
+    pdf: Utilities.base64Encode(faussePdf),
+    candidat: "Test Manuel", poste: "Diagnostic", courrielEvaluateur: "",
+    date: Utilities.formatDate(new Date(), "America/Toronto", "yyyy-MM-dd"),
+    questionnaire: "Test de diagnostic", mode: "evaluation", tentative: 1, maxTentatives: 3,
+    note: 20, total: 25, pourcentage: 80, pourcentagePondere: 80, coefficient: 1, modeNom: "Expert", niveau: "Avancé", recommandation: "Aucune, ceci est un test.",
+    reussite: true, seuil: 75, sections: [{ titre: "1. Test", note: 20, total: 25, pourcentage: 80, pourcentagePondere: 80, niveau: "Avancé" }],
+  };
+  const resultat = doPost({ postData: { contents: JSON.stringify(payload) } });
+  Logger.log("RÉPONSE FINALE DE doPost : " + resultat.getContent());
 }
 
 // Permet de vérifier que le déploiement répond (ouvrir l'URL /exec dans un navigateur).
