@@ -71,14 +71,62 @@ Conseils pour une tablette partagée en atelier :
 
 ## Évaluation sur papier
 
-La section « Évaluation sur papier » de la page d'accueil permet de faire passer un questionnaire sans tablette :
+La section « Évaluation sur papier » de la page d'accueil (visible après avoir déverrouillé l'espace responsable) permet d'imprimer les questionnaires et de faire passer un questionnaire sans tablette. Trois choix précèdent les boutons :
 
-1. **Imprimer le questionnaire** : produit un PDF prêt à imprimer, avec la fiche du candidat, les instructions, les questions (points et complexité indiqués) et une feuille de réponses à cercles A, B, C, D. Il ne contient aucune réponse.
-2. **Saisir une copie papier** : le responsable entre les réponses inscrites par le candidat (A, B, C, D ou « – » pour sans réponse). L'application calcule le résultat pondéré et affiche la même page de résultats qu'en ligne, avec le rapport PDF, l'envoi par courriel et l'enregistrement dans l'historique (marqué « Papier »). La copie compte comme une tentative ; si le candidat a déjà atteint le maximum, un avertissement s'affiche, sans bloquer la saisie.
+- **Questionnaire** : l'un des 11 thèmes, ou le questionnaire complet (275 questions).
+- **Difficulté** : Standard, Avancé ou Expert (25 questions différentes pour chaque niveau).
+- **Langue** : Français ou English. La langue d'impression est indépendante de la langue choisie par les candidats sur l'écran d'accueil : le PDF entier (instructions, libellés, titres de sections, pied de page) est produit dans la langue choisie.
 
-Le choix du questionnaire se fait dans la liste (les 11 thèmes ou le questionnaire complet). Sur iPad, le PDF s'ouvre : touchez Partager, puis Imprimer. Les questionnaires Word fournis séparément restent utilisables ; ils ont le même ordre de questions et de réponses.
+Les deux boutons :
 
-Ne publiez pas les corrigés Word dans le dépôt GitHub : tout fichier du dépôt est accessible en ligne.
+1. **Imprimer le questionnaire** : produit un PDF prêt à imprimer, avec la fiche du candidat, les instructions, les questions (points et complexité indiqués) et une feuille de réponses à cercles A, B, C, D. La difficulté choisie est inscrite dans l'en-tête et dans le pied de page de chaque page, et la feuille de réponses indique les points du niveau choisi. Il ne contient aucune réponse. Le fichier est nommé selon le choix, par exemple `Questionnaire_pompes_expert_en.pdf` ou `Questionnaire_complet_avance_fr.pdf`.
+2. **Saisir une copie papier** : le responsable entre les réponses inscrites par le candidat (A, B, C, D ou « – » pour sans réponse). **La saisie utilise la difficulté sélectionnée dans la liste** : il faut donc garder le même choix que pour l'impression. L'application calcule le résultat pondéré avec le barème de ce niveau et affiche la même page de résultats qu'en ligne, avec le rapport PDF, l'envoi par courriel et l'enregistrement dans l'historique (marqué « Papier », avec le mode de difficulté). La copie compte comme une tentative du niveau choisi ; si le candidat a déjà atteint le maximum, un avertissement s'affiche, sans bloquer la saisie.
+
+### Corrigé (bonnes réponses et explications)
+
+Deux boutons supplémentaires, dans le même panneau et avec les mêmes choix (questionnaire, difficulté, langue), donnent accès au corrigé. Ils n'apparaissent qu'une fois l'espace responsable déverrouillé ; le candidat ne voit jamais le corrigé.
+
+- **Voir le corrigé** : ouvre un écran qui affiche la clé de correction (la bonne lettre de chaque question), puis chaque question avec ses quatre choix, la bonne réponse surlignée et l'explication. On peut y changer la difficulté et la langue sans revenir au panneau. Les boutons **Imprimer le corrigé (PDF)**, **Retour** et **Verrouiller** se trouvent en haut de l'écran.
+- **Imprimer le corrigé** : produit directement le PDF, sans passer par l'écran. Le PDF commence par la clé de correction (une grille par section), puis donne le détail des questions : la bonne réponse est marquée d'une case pleine et d'un texte en gras (lisible aussi à l'impression en noir et blanc), suivie de son explication. Chaque page porte la mention « Réservé au responsable » (ou « Supervisor only ») et le pied de page « corrigé, réservé au responsable ». Le fichier est nommé par exemple `Corrige_pompes_expert_en.pdf`. Le corrigé complet (275 questions) compte environ 85 pages.
+
+Le verrouillage automatique de l'espace responsable (après 15 minutes d'inactivité) ferme aussi l'écran du corrigé. Rappel : comme l'application est statique, les bonnes réponses se trouvent dans le code source de la page (voir « Limites »).
+
+Le questionnaire complet imprimé compte environ 60 pages (275 questions). Sur iPad, le PDF s'ouvre : touchez Partager, puis Imprimer. Les questionnaires Word fournis séparément restent utilisables pour le niveau Standard ; ils ont le même ordre de questions et de réponses, mais ils n'existent pas pour les niveaux Avancé et Expert.
+
+## Niveau du questionnaire (Standard / Avancé / Expert)
+
+Sur la page d'accueil, un sélecteur permet de choisir le niveau de difficulté avant de commencer un questionnaire :
+
+- **Standard** : les 25 questions de la section, comme avant.
+- **Avancé** : 25 questions plus difficiles que celles du niveau Standard, propres à ce niveau.
+- **Expert** : 25 questions encore plus difficiles (analyse, diagnostic, calculs avancés), propres à ce niveau.
+
+Les **11 sections** disposent chacune d'un ensemble dédié de 25 questions Avancé et de 25 questions Expert (bilingues), distinctes des 25 questions Standard : la banque compte donc 825 questions au total. Les points possibles par section et par niveau sont :
+
+| Section | Standard | Avancé | Expert |
+|---|---|---|---|
+| 1. Bases en mécanique (SAE) | 42 | 51 | 68 |
+| 2. Utilisation des outils | 49 | 50 | 60 |
+| 3. Lecture de plan | 43 | 49 | 68 |
+| 4. Pompes | 50 | 61 | 64 |
+| 5. Électricité et sécurité électrique | 40 | 57 | 69 |
+| 6. Variateurs de fréquence (VFD) | 50 | 57 | 69 |
+| 7. Installation et filage électrique | 41 | 56 | 68 |
+| 8. Automates programmables (PLC) | 51 | 55 | 71 |
+| 9. Interfaces opérateur (HMI) | 41 | 48 | 70 |
+| 10. Régulation PID | 52 | 65 | 74 |
+| 11. Soudure : méthode de travail et exécution | 44 | 63 | 70 |
+| **Total (275 questions par niveau)** | **503** | **612** | **751** |
+
+Si une nouvelle section est ajoutée un jour sans ensembles Avancé et Expert, l'application filtre automatiquement ses 25 questions Standard (Avancé : complexité moyenne et élevée ; Expert : complexité élevée seulement) en attendant que ces ensembles soient rédigés.
+
+Le nombre de questions affiché pour chaque section s'ajuste automatiquement selon le niveau choisi (25 pour chacun des trois niveaux). Les questions sont renumérotées (1, 2, 3...) après filtrage, sans trou dans la numérotation. Le niveau choisi est figé dès que le candidat clique sur « Commencer le questionnaire » : le changer ensuite sur l'accueil n'affecte pas un questionnaire déjà en cours.
+
+**Les tentatives sont comptées séparément pour chaque niveau** : un candidat qui échoue 3 fois en mode Expert peut quand même essayer le mode Standard sur la même section, et vice versa.
+
+Pour éviter toute confusion avec le niveau de *résultat* du candidat (Expert, Avancé, Intermédiaire, Débutant, Insuffisant, dans la grille d'évaluation), ce choix est toujours appelé **« Mode »** dans l'historique, les tentatives, le rapport PDF, l'export CSV et le courriel (champ « Difficulté ») — jamais « Niveau », qui reste réservé au résultat.
+
+Les documents Word fournis séparément contiennent seulement les 25 questions Standard de chaque section. Pour imprimer les niveaux Avancé et Expert, utilisez la section « Évaluation sur papier » de l'application (voir plus haut), qui permet de choisir la difficulté et la langue.
 
 ## Espace responsable
 
@@ -138,9 +186,34 @@ Le pourcentage est calculé sur les points obtenus : points obtenus ÷ points po
 
 Les résultats affichent les points, le nombre de bonnes réponses et le pourcentage. La complexité de chaque question se trouve dans `data/questionnaires.js` (champ `complexite`). Dans les questionnaires Word, elle est indiquée à côté de chaque question, et le corrigé donne les points de chaque question et les seuils de chaque niveau en points.
 
+## Note pondérée selon la difficulté
+
+Un même pourcentage ne représente pas le même exploit en Standard, en Avancé et en Expert. L'application calcule donc, en plus du pourcentage du niveau, une **note pondérée selon la difficulté** :
+
+> note pondérée = pourcentage du niveau × (coefficient du niveau ÷ plus grand coefficient)
+
+Avec les coefficients par défaut (Standard 1, Avancé 1,25, Expert 1,5), les facteurs sont **Standard × 0,67, Avancé × 0,83, Expert × 1,00** :
+
+| Pourcentage du niveau | Note pondérée en Standard | en Avancé | en Expert |
+|---|---|---|---|
+| 100 % | 67 % | 83 % | 100 % |
+| 84 % | 56 % | 70 % | 84 % |
+| 73 % | 49 % | 61 % | 73 % |
+
+Exemple : 84 % en Standard donne une note pondérée de 56 % (niveau « Débutant »), alors que 73 % en Expert donne 73 % (niveau « Intermédiaire ») : le résultat en Expert vaut davantage.
+
+- **Le niveau du candidat** (Expert, Avancé, Intermédiaire, Débutant, Insuffisant) s'applique à la **note pondérée** (voir la grille ci-dessous), et c'est la note pondérée que montrent la jauge, l'historique, le rapport PDF, l'export CSV et le courriel.
+- **La réussite d'un niveau** reste jugée sur le **pourcentage du niveau** (seuil de 75 % des points de ce niveau) : un candidat qui obtient 84 % en Standard a réussi le niveau Standard, même si sa note pondérée est de 56 %. Les tentatives restantes se calculent sur cette réussite.
+- Chaque résultat affiche les trois informations : le mode (difficulté), le résultat du niveau (%) et la note pondérée avec son coefficient. L'historique a les colonnes « % du niveau » et « Note pondérée » ; l'export CSV a « % du niveau », « Coefficient » et « Note pondérée % » ; le courriel indique la note pondérée dans le sujet et dans le corps (champ « Note pondérée »).
+- **Réglage des coefficients** : dans `config.js`, bloc `ponderation` (`standard`, `avance`, `expert`). Pour rapprocher les niveaux, augmentez le coefficient Standard (par exemple 1,2, ce qui donne les facteurs 0,80 / 0,93 / 1,00) ; pour désactiver la pondération, mettez les trois coefficients à 1. Une valeur invalide (zéro, négative ou non numérique) est ignorée et remplacée par la valeur par défaut. **Si votre `config.js` en ligne ne contient pas ce bloc, les coefficients par défaut s'appliquent** : il n'y a rien à ajouter pour que la pondération fonctionne.
+- Les résultats déjà enregistrés sont recalculés à l'affichage avec le coefficient de leur niveau ; ceux d'avant l'ajout des niveaux comptent comme Standard.
+- Pour le courriel, mettez à jour `Code.gs` (voir « Option : envoi automatique par serveur ») : sans cette mise à jour, le courriel fonctionne toujours, mais sans la ligne « Note pondérée ».
+
 ## Grille d'évaluation
 
-| Résultat | Niveau | Recommandation |
+La grille s'applique à la **note pondérée** (voir ci-dessus).
+
+| Note pondérée | Niveau | Recommandation |
 |---|---|---|
 | 90 – 100 % | Expert | Aucune formation requise ; peut agir comme personne-ressource |
 | 75 – 89 % | Avancé | Révision ciblée des questions manquées |
@@ -148,7 +221,7 @@ Les résultats affichent les points, le nombre de bonnes réponses et le pourcen
 | 40 – 59 % | Débutant | Formation structurée et accompagnement |
 | 0 – 39 % | Insuffisant | Formation complète avant réévaluation |
 
-Seuil de réussite suggéré : 75 %. Le pourcentage est calculé sur les points pondérés (voir plus haut). Pour le modifier, changez la constante `PASS` au début de `app.js`. Les niveaux sont définis dans la constante `LEVELS` du même fichier.
+Seuil de réussite d'un niveau : 75 % des points de ce niveau (constante `PASS` au début de `app.js`). Le pourcentage est calculé sur les points pondérés par la complexité (voir plus haut). Les niveaux de la grille sont définis dans la constante `LEVELS` du même fichier. Comme un résultat Standard plafonne à 67 % de note pondérée avec les coefficients par défaut, un candidat ne peut atteindre les niveaux « Avancé » et « Expert » qu'en réussissant les niveaux Avancé et Expert.
 
 ## Nombre maximal de tentatives
 
@@ -211,8 +284,8 @@ Une page statique comme GitHub Pages ne peut pas envoyer de courriel elle-même.
 3. Remplacez le contenu du fichier `Code.gs` par celui du fichier `google-apps-script/Code.gs` de ce dépôt.
 4. Modifiez le bloc `CONFIG` au début du fichier :
    - `DESTINATAIRES` : adresse qui reçoit tous les rapports (déjà réglée à `jeanto@flofab.com`) ;
-   - `JETON` : une longue chaîne aléatoire (par exemple 32 caractères) ;
-   - `DOSSIER_DRIVE_ID` : facultatif, identifiant du dossier Drive où conserver une copie des PDF.
+   - `JETON` : une longue chaîne aléatoire (par exemple 32 caractères).
+   - L'enregistrement automatique dans Google Drive (voir plus bas) est déjà activé : rien à configurer pour cette partie.
 5. Enregistrez, choisissez la fonction `testerEnvoi` dans la liste, puis cliquez sur **Exécuter**. Acceptez les autorisations demandées. Un courriel de test est envoyé aux destinataires.
 
 ### 2. Déployer le script comme application Web
@@ -242,6 +315,22 @@ window.FLOFAB_CONFIG = {
 ```
 
 Publiez la modification sur GitHub. Après chaque modification de `Code.gs`, faites **Déployer**, **Gérer les déploiements**, puis créez une nouvelle version pour qu'elle soit prise en compte (l'URL reste la même).
+
+### Enregistrement automatique dans Google Drive
+
+Chaque rapport PDF est aussi enregistré automatiquement dans Google Drive, **sans aucune configuration** : dès le tout premier rapport, le script crée lui-même un dossier nommé « Rapports d'évaluation Flo-Fab » dans le Drive du compte qui exécute le script (celui utilisé à l'étape « Créer le script »), puis réutilise toujours ce même dossier par la suite. Si un dossier portant déjà ce nom existe, le script le retrouve et l'utilise plutôt que d'en créer un autre.
+
+Le PDF est enregistré dans Drive **avant** que le script tente d'envoyer le courriel : une copie automatique est donc conservée même si l'envoi du courriel échoue (quota Gmail dépassé, autorisation expirée, etc.). C'est un filet de sécurité qui fonctionne dès l'installation, sans rien à faire de plus.
+
+Options, dans le bloc `CONFIG` de `Code.gs` :
+- `NOM_DOSSIER_AUTO` : changez le nom du dossier créé automatiquement.
+- `DOSSIER_DRIVE_ID` : pour utiliser un dossier Drive précis plutôt que la création automatique, collez ici son identifiant (la dernière partie de l'adresse `drive.google.com/drive/folders/`**`<ID>`**). Le dossier doit appartenir au compte qui exécute le script, ou lui être partagé en modification.
+- `ENREGISTRER_DANS_DRIVE: false` : désactive complètement l'enregistrement dans Drive.
+- `ENVOYER_COURRIEL: false` : désactive le courriel pour ne garder que l'enregistrement automatique dans Drive.
+
+Si vous renommez ou déplacez le dossier automatique et que le script n'arrive plus à le retrouver, exécutez la fonction `reinitialiserDossierDrive` depuis l'éditeur Apps Script : elle oublie le dossier mémorisé, en retrouve ou en recrée un, et affiche son nom et son lien dans le journal d'exécution (Ctrl+Entrée après l'exécution).
+
+Si le dossier Drive devient inaccessible (dossier supprimé, partage retiré) alors que le courriel continue de fonctionner, l'application ne l'affiche pas : vérifiez de temps à autre le journal d'exécution du script (icône horloge dans l'éditeur Apps Script) pour repérer ce genre d'erreur silencieuse.
 
 ### Destinataires et sécurité
 

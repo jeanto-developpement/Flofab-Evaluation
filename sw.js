@@ -1,6 +1,6 @@
 /* Service worker : permet d'utiliser l'application sans connexion (tablette en atelier, Wi-Fi instable).
    Changez VERSION à chaque mise à jour du site pour forcer le rafraîchissement du cache. */
-const VERSION = "flofab-eval-v21";
+const VERSION = "flofab-eval-v33";
 const APP = [
   "./", "./index.html", "./styles.css", "./app.js", "./config.js", "./data/questionnaires.js",
   "./manifest.webmanifest", "./icons/logo-flofab-blanc.svg", "./icons/logo-flofab.svg", "./icons/logo-pdf.js", "./icons/icon-192.png", "./icons/icon-512.png", "./icons/apple-touch-icon.png",
