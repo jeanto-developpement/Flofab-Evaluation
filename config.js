@@ -20,7 +20,7 @@ window.FLOFAB_CONFIG = {
   // Le candidat ne voit jamais son résultat ; seul le responsable, avec ce code, peut le consulter.
   // Changez cette valeur pour un code connu seulement des responsables.
   responsable: {
-    code: "1981",
+    code: "1980",
   },
   // Note pondérée selon la difficulté : le pourcentage obtenu est multiplié par (coefficient du niveau / plus grand coefficient).
   // Avec 1 / 1,25 / 1,5 : un 100 % en Standard donne une note pondérée de 67 %, en Avancé de 83 %, en Expert de 100 %.
@@ -36,7 +36,7 @@ window.FLOFAB_CONFIG = {
     envoiAutomatique: true,  // ouvrir l'envoi dès que le questionnaire est terminé
 
     // Envoi automatique par le serveur : coller ici l'URL du déploiement Google Apps Script (voir README.md)
-    url: "",                 // ← COLLER ICI l'URL de l'application Web Google Apps Script (se termine par /exec)
+    url: "https://script.google.com/macros/s/AKfycbwyfHktBhFv-43IElKeL3DYWlHRO6mJe9iS4r0CcA9P0tQMju4X_gEWXQXhehCdNGwn/exec",   // URL du déploiement Google Apps Script (se termine par /exec) : à changer seulement si vous créez un nouveau déploiement
     jeton: "ff-LnXJxYNIg5pWdQNf0w049AG3a2IquUfE",   // identique à JETON dans google-apps-script/Code.gs (déjà réglé)
   },
 };
