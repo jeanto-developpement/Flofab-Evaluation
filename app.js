@@ -488,6 +488,7 @@
       </table></div>
       <p class="small muted" style="margin-top:.6rem">${T("levelNote")(PASS, listeFacteurs(LANG))}</p>
 
+      ${unlocked && MAIL.methode !== "appareil" && !MAIL.url ? `<div class="notice no-print" role="alert"><p><strong>Envoi automatique par courriel non configuré.</strong> L'URL du script Google (champ <code>url</code> de <code>config.js</code>) est vide : les rapports ne partent pas d'eux-mêmes et leur statut reste « Non envoyé ». Renseignez l'URL dans <code>config.js</code> sur GitHub, ou utilisez « Envoyer par courriel » depuis chaque résultat.</p></div>` : ""}
       ${unlocked ? `<div class="resp-banner no-print" role="status"><p><strong>Espace responsable ouvert.</strong> Les résultats sont visibles. Verrouillez l'espace avant de remettre l'appareil à un candidat.</p><button class="btn" data-action="lock">Verrouiller</button></div>
       <h2 class="section-head">Évaluation sur papier</h2>
       <div class="panel paper-panel no-print">

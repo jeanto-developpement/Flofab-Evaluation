@@ -361,6 +361,12 @@ git push -u origin main
 
 Pour tester en local, ouvrez simplement `index.html` dans un navigateur (le mode hors ligne et l'installation ne fonctionnent qu'en ligne, sur une adresse https, comme GitHub Pages). Une connexion Internet est nécessaire pour la production du PDF (bibliothèque jsPDF chargée depuis cdn.jsdelivr.net).
 
+### Attention : ne pas écraser `config.js` avec une version sans votre URL
+
+Le fichier `config.js` contient votre configuration : code du responsable, adresse du destinataire, **URL du script Google** et jeton. Si on le remplace par un `config.js` dont l'URL est vide, l'envoi automatique cesse en silence : aucune demande ne part vers Google et le statut de chaque résultat reste « Non envoyé » (et non « Échec »). Le `config.js` fourni dans cette version est déjà rempli avec les valeurs de Flo-Fab (URL du déploiement, jeton, code), de sorte que le remplacer par celui-ci ne coupe plus l'envoi. Si vous créez un jour un nouveau déploiement Google (nouvelle URL) ou changez le code du responsable, modifiez ces deux lignes dans `config.js` sur GitHub.
+
+Si l'URL est vide alors que la méthode n'est pas « appareil », l'espace responsable affiche un avertissement rouge sur la page d'accueil. Un résultat resté « Non envoyé » peut être envoyé après coup : ouvrez-le (« Voir ») et cliquez sur « Envoyer par courriel ».
+
 ## Structure
 
 ```
